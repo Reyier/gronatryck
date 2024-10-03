@@ -1,7 +1,6 @@
-// src/App.js
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { CartProvider } from './context/CartContext'; // Make sure to import your CartProvider
+import { CartProvider } from './context/CartContext'; // Importera CartProvider
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Products from './pages/Products';

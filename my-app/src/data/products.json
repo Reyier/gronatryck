@@ -1,0 +1,110 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "name": "Dam sweatshirt med raglan-ärmar",
+        "artName": "StSt Eco 217, Sweatshirt Clara",
+        "artNr": "2566",
+        "category": "Sweatshirts",
+        "colorVariants": [
+          {"colorName": "Red", "colorCode": "#fff"},
+          {"colorName": "Blue", "colorCode": "#fff"},
+          {"colorName": "Green", "colorCode": "#fff"},
+          {"colorName": "Black", "colorCode": "#fff"}
+        ],
+        "sizeVariants": ["XS", "S", "M", "L", "XL","XXL"],
+        "description": "Sweatshirt för dam med raglan-ärmar samt insida med Terry. Det gör att plaggen upplevs lite tunnare än en modell med borstad fleece. Passar flera kroppstyper och modellen har 2×1 ribbade muddar till ärm och tröjslut. Fairwear kontrollerar bland annat om ett företags produktionsplanering är realistisk, att det inte finns några sena beställningar eller orimliga tidsfrister som leder till överdriven övertid. Den typen av information delas också öppet med allmänheten.",
+        "properties": ["Terry-insida", "2×1 Ribbade muddar", "Raglan ärmar"],
+        "material": "100% Ekologisk rättvisemärkt, ringspunnen och kammad bomull",
+        "weight": "300g/m2 (normaltjock)",
+        "priceTiers": [
+          {"minQuantity": 1, "maxQuantity": 25, "price": 261.00},
+          {"minQuantity": 26, "maxQuantity": 49, "price": 245.00},
+          {"minQuantity": 50, "maxQuantity": 99, "price": 235.00},
+          {"minQuantity": 100, "maxQuantity": 249, "price": 222.00},
+          {"minQuantity": 250, "maxQuantity": 499, "price": 215.00},
+          {"minQuantity": 500, "maxQuantity": null, "price": 209.00}
+        ],
+        "images": {
+          "main": "NyStruktur/img/informative/products/clara-cotton-pink/main.jpg",
+          "variants": {
+            "Red": "NyStruktur/public/img/informative/products/clara-cotton-pink/red.jpg",
+            "Blue": "/img/informative/products/clara-cotton-pink/red.jpg",
+            "Green": "/img/informative/products/clara-cotton-pink/red.jpg",
+            "Black": "/img/informative/products/clara-cotton-pink/red.jpg",
+            "Size": "/img/informative/products/clara-cotton-pink/size.jpg"
+          }
+        },
+        "dateAdded": "1992-05-14",
+        "isAvailable": true
+      },
+      {
+        "id": 2,
+        "name": "Mjuk mössa utan uppvik",
+        "artName": "Atlantis AT121, Beanie",
+        "artNr": "2598",
+        "category": "Mössor",
+        "colorVariants": [
+          {"colorName": "Black", "colorCode": "#fff"},
+          {"colorName": "Dark Grey", "colorCode": "#fff"},
+          {"colorName": "Navy", "colorCode": "#fff"},
+          {"colorName": "Olive", "colorCode": "#fff"},
+          {"colorName": "Red", "colorCode": "#fff"},
+          {"colorName": "Royal", "colorCode": "#fff"}
+        ],
+        "sizeVariants": ["Onesize"],
+        "description": "Global Recycled Standard intygar att material som används återvinns...",
+        "material": "100% Återvunnen PET",
+        "properties": ["Återvunnen material", "Global Recycled Standard", "Onesize"],
+        "priceTiers": [
+          {"minQuantity": 1, "maxQuantity": 25, "price": 66.00},
+          {"minQuantity": 50, "maxQuantity": 99, "price": 60.00},
+          {"minQuantity": 100, "maxQuantity": 249, "price": 55.00},
+          {"minQuantity": 250, "maxQuantity": 499, "price": 53.00},
+          {"minQuantity": 500, "maxQuantity": null, "price": 50.00}
+        ],
+        "images": {
+          "main": "/img/informative/products/clara-cotton-pink/main.jpg",
+          "variants": {
+            "Red": "/img/informative/products/clara-cotton-pink/red.jpg",
+            "Dark Grey": "/img/informative/products/clara-cotton-pink/red.jpg",
+            "Navy": "/img/informative/products/clara-cotton-pink/red.jpg",
+            "Olive": "/img/informative/products/clara-cotton-pink/red.jpg",
+            "Black": "/img/informative/products/clara-cotton-pink/size.jpg",
+            "Royal": "/img/informative/products/clara-cotton-pink/size.jpg"
+          }
+        },
+        "dateAdded": "1992-05-14",
+        "isAvailable": true
+      },
+      {
+        "id": 3,
+        "name": "Kraftig verktygsväska med dubbla handtag",
+        "artName": "Regatta RG374, Premium 16″ Tool Bag Tote",
+        "artNr": "2519",
+        "category": "Arbetskläder",
+        "colorVariants": [
+          {"colorName": "Black", "colorCode": "#fff"}
+        ],
+        "sizeVariants": ["Onesize"],
+        "description": "Verktygväska tillverkad av återvunnen polyester med vadderat stålhandtag, förstärkt botten samt axelrem. Väskan har ett flertal extrafickor och fästen för verktyg.",
+        "material": "Tyg: 100% återvunnen polyester",
+        "properties": ["Handtag", "Axelrem"],
+        "priceTiers": [
+          {"minQuantity": 10, "maxQuantity": 24, "price": 926.00},
+          {"minQuantity": 25, "maxQuantity": 49, "price": 833.00},
+          {"minQuantity": 50, "maxQuantity": 99, "price": 787.00},
+          {"minQuantity": 100, "maxQuantity": 249, "price": 763.00}
+        ],
+        "images": {
+          "main": "/img/informative/products/clara-cotton-pink/main.jpg",
+          "variants": {
+            "Black": "/img/informative/products/clara-cotton-pink/size.jpg"
+          }
+        },
+        "dateAdded": "1992-05-14",
+        "isAvailable": true
+      }
+    ]
+  }
+  

@@ -1,6 +1,6 @@
 // src/App.js
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { AuthProvider } from './context/AuthContext';  // Importera AuthProvider
+// import { AuthProvider } from './context/AuthContext';  // Importera AuthProvider
 import { CartProvider } from './context/CartContext'; // Importera CartProvider
 import Navbar from './components/Navbar';
 import Home from './pages/Home';

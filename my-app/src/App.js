@@ -4,6 +4,7 @@ import { CartProvider } from './context/CartContext'; // Importera CartProvider
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Products from './pages/Products';
+import ProductDetail from './pages/ProductDetail';
 import CartPage from './pages/CartPage';
 import Stanley from './pages/Stanley';
 import Blog from './pages/Blog';
@@ -49,19 +50,15 @@ function App() {
         const parsedUser = JSON.parse(storedUser);
         if (parsedUser.password === user.password) {
           setLoggedInUser(parsedUser);
-          if (parsedUser.role === 'Admin') {
-            setView('admin');
-          } else {
-            setView('customer');
-          }
+          return parsedUser; // Returnerar det inloggade användarobjektet
         } else {
           alert('Incorrect password.');
+          return null;
         }
       } else {
         alert('User does not exist.');
+        return null;
       }
-    } else {
-      setView('register');
     }
   };
 
@@ -104,9 +101,14 @@ function App() {
           <Route path="/register" element={<Register onRegister={handleRegister} />} />
           <Route path="/reset-password" element={<ResetPassword onReset={handleResetPassword} />} />
 
+
+          <Route path="/ProductDetail/:id" element={<ProductDetail />} /> 
           {/* Protected Routes */}
+          <Route path="/AdminPage" element={<AdminPage />} />
+          
           <Route path="/customer" element={loggedInUser ? <CustomerPage user={loggedInUser} onLogout={handleLogout} /> : <Navigate to="/login" />} />
           <Route path="/admin" element={loggedInUser && loggedInUser.role === 'Admin' ? <AdminPage onLogout={handleLogout} /> : <Navigate to="/login" />} />
+
         </Routes>
       </Router>
     </CartProvider>

@@ -1,20 +1,27 @@
-import { createContext, useState, useContext } from "react";
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
+// Skapa kontext
 const CartContext = createContext();
 
-export function useCart() {
-  return useContext(CartContext);
-}
+// Cart Provider komponent
+export const CartProvider = ({ children }) => {
+  const [cartItems, setCartItems] = useState(() => {
+    // Hämta varor från localStorage vid initialisering
+    const savedCart = localStorage.getItem('cartItems');
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
 
-export function CartProvider({ children }) {
-  const [cartItems, setCartItems] = useState([]);
+  useEffect(() => {
+    // Spara varorna i localStorage när cartItems ändras
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  }, [cartItems]);
 
-  const addToCart = (product) => {
-    setCartItems([...cartItems, product]);
+  const addToCart = (item) => {
+    setCartItems((prevItems) => [...prevItems, item]);
   };
 
   const removeFromCart = (id) => {
-    setCartItems(cartItems.filter(item => item.id !== id));
+    setCartItems((prevItems) => prevItems.filter(item => item.id !== id));
   };
 
   return (
@@ -22,4 +29,9 @@ export function CartProvider({ children }) {
       {children}
     </CartContext.Provider>
   );
-}
+};
+
+// Använd kontext
+export const useCart = () => {
+  return useContext(CartContext);
+};

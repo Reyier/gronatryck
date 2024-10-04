@@ -1,8 +1,7 @@
 // src/pages/Products.js
 import React from 'react';
 import { Link } from 'react-router-dom';
-import productData from '../data/products.json'; // Se till att du har JSON-filen i rätt mapp
-
+import productData from '../data/products.json';
 
 const Products = () => {
   return (
@@ -16,8 +15,8 @@ const Products = () => {
             <p>{product.description}</p>
             <p>Pris från: {product.priceTiers[0].price} SEK</p>
             <p>Kategori: {product.category}</p>
-            {/* Länk till individuell produktsida */}
-            <Link to={`/products/${product.id}`} style={styles.link}>Visa mer</Link>
+            {/* Se till att länken går till rätt URL */}
+            <Link to={`/ProductDetail/${product.id}`} style={styles.link}>Visa mer</Link>
           </div>
         ))}
       </div>

@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
 function CartPage() {
-  const { cartItems, removeFromCart } = useCart();
+  const { cartItems, updateCartItem, removeFromCart } = useCart();
   const navigate = useNavigate();
 
   // Get the logged-in user from localStorage
@@ -31,17 +31,38 @@ function CartPage() {
     }
   };
 
+  // Handle quantity change
+  const handleQuantityChange = (item, quantity) => {
+    if (quantity <= 0) {
+      removeFromCart(item.productId, item.selectedColor, item.size); // Remove item if quantity is 0
+    } else {
+      updateCartItem(item.productId, item.selectedColor, item.size, quantity); // Update quantity
+    }
+  };
+
   return (
     <div>
-      <h1>Varukorg</h1>
+      <h1>Kassa</h1>
       {cartItems.length === 0 ? (
         <p>Inga varor i varukorgen</p>
       ) : (
         <>
           <ul>
             {cartItems.map(item => (
-              <li key={item.productId + item.selectedColor + item.size}> 
-                <p>{item.name} - Färg: {item.selectedColor} - Storlek: {item.size} - Antal: {item.totalQuantity} - Pris/st: {item.pricePerItem} SEK</p>
+              <li key={item.productId + item.selectedColor + item.size}>
+                <p>{item.name} - Färg: {item.selectedColor} - Storlek: {item.size} - Pris/st: {item.pricePerItem} SEK</p>
+                
+                <div>
+                  <button onClick={() => handleQuantityChange(item, item.totalQuantity - 1)}>-</button>
+                  <input
+                    type="number"
+                    value={item.totalQuantity}
+                    min="0"
+                    onChange={(e) => handleQuantityChange(item, parseInt(e.target.value) || 0)}
+                  />
+                  <button onClick={() => handleQuantityChange(item, item.totalQuantity + 1)}>+</button>
+                </div>
+                
                 <p>Totalt: {item.totalPrice || (item.pricePerItem * item.totalQuantity).toFixed(2)} SEK</p>
                 <button onClick={() => removeFromCart(item.productId, item.selectedColor, item.size)}>Ta bort</button>
               </li>

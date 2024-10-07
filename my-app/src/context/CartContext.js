@@ -47,7 +47,21 @@ export const CartProvider = ({ children }) => {
       prevCartItems.filter(item => !(item.productId === productId && item.selectedColor === selectedColor && item.size === size))
     );
   };
-  
+
+  // Funktion för att uppdatera kvantiteten av en produkt i kundvagnen
+  const updateCartItem = (productId, selectedColor, size, newQuantity) => {
+    if (newQuantity <= 0) {
+      removeFromCart(productId, selectedColor, size); // Ta bort produkten om kvantiteten är 0 eller lägre
+    } else {
+      setCartItems((prevCartItems) =>
+        prevCartItems.map(item =>
+          item.productId === productId && item.selectedColor === selectedColor && item.size === size
+            ? { ...item, totalQuantity: newQuantity, totalPrice: (item.pricePerItem * newQuantity).toFixed(2) }
+            : item
+        )
+      );
+    }
+  };
 
   // Spara cartItems i localStorage varje gång de ändras
   useEffect(() => {
@@ -56,7 +70,7 @@ export const CartProvider = ({ children }) => {
 
   // Returnerar kontextvärdena
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart }}>
+    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, updateCartItem }}>
       {children}
     </CartContext.Provider>
   );

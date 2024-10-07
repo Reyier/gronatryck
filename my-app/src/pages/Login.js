@@ -1,76 +1,85 @@
-// components/Login.js
-
-
-
-
-// Göra sidan för loggain/ bli medlem
-// if epost finns i databas, forstätt logga in
-// else epost finns inte. knapp vill du registera dig
-// likt denna sida https://nelly.com/se/login/?redirectTo=/se/campaign/must-have-knits/
-
-
-
-
-
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function Login({ onLogin }) {
+function Login({ onLogin }) { // Accept onLogin as a prop
   const [user, setUser] = useState({
     email: '',
     password: ''
   });
 
-  const navigate = useNavigate(); // Use the useNavigate hook
+  const navigate = useNavigate();
 
+  // Check if user is already logged in
+  useEffect(() => {
+    const storedUser = localStorage.getItem('loggedInUser');
+    if (storedUser) {
+      const parsedUser = JSON.parse(storedUser);
+      // Redirect based on user role
+      if (parsedUser.role === 'Admin') {
+        navigate('/admin');
+      } else if (parsedUser.role === 'Customer') {
+        navigate('/customer');
+      }
+    }
+  }, [navigate]);
+
+  // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
   };
 
+  // Handle login click
   const handleLoginClick = () => {
-    const loggedInUser = onLogin(user); // Få det inloggade användarobjektet från onLogin
-    
+    const loggedInUser = onLogin(user); // Call the prop function to log in
+
     if (loggedInUser) {
-      // Kontrollera användarens roll och navigera till rätt sida
-      if (loggedInUser.role === 'Admin') {
-        navigate('/admin'); // Navigera till adminsidan
-      } else if (loggedInUser.role === 'Customer') {
-        navigate('/customer'); // Navigera till kundsidan
-      } else {
-        alert('Invalid role'); // Hantera okända roller om det behövs
-      }
-    } else {
-      alert('Login failed');
+      // Navigate based on user role is handled in the handleLogin function
     }
   };
 
   return (
     <div>
-      <h2>Logga in</h2>
-      <input 
-        type="email" 
-        name="email" 
-        placeholder="Email" 
-        value={user.email} 
-        onChange={handleChange} 
-      /><br />
-      <input 
-        type="password" 
-        name="password" 
-        placeholder="Lösenord" 
-        value={user.password} 
-        onChange={handleChange} 
-      /><br />
-      <button onClick={handleLoginClick}>Logga in</button>
-      <p onClick={() => navigate('/register')}>Har du inget konto? Registrera här.</p>
-      <p onClick={() => navigate('/reset-password')}>Glömt lösenord? Återställ här.</p>
+      <form>
+      <h2>Login</h2>
+      <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        value={user.email}
+        onChange={handleChange}
+      />
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        value={user.password}
+        onChange={handleChange}
+      />
+      <button onClick={handleLoginClick}>Login</button>
+      </form>
+
     </div>
   );
 }
 
 export default Login;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*

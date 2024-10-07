@@ -1,51 +1,70 @@
 // src/pages/Products.js
 import React from 'react';
-import { Link } from 'react-router-dom';
-import productData from '../data/products.json';
+//import { Link } from 'react-router-dom';
+// import productData from '../data/products.json';
+import products from '../data/product.js';
+import Card from '../components/Cards.js';
+import '../styles/card.css';
+
+
+console.log(products);
 
 const Products = () => {
+  const productCards = products.map((product) => {
+    const { productId, name, category, images, sizeVariants, priceTiers } =
+      product;
+    const { modelUrl, variants } = images;
+  
+    const minPrice = Math.min(...priceTiers.map((tier) => tier.price));
+    const maxPrice = Math.max(...priceTiers.map((tier) => tier.price));
+  
+    const firstVariantImage = variants[0].images;
+    const colorCodes = variants.slice(0, 2).map((variant) => variant.colorCode);
+  
+    return {
+      productId,
+      name,
+      category,
+      modelImage: modelUrl,
+      firstVariantImage,
+      minPrice,
+      maxPrice,
+      sizeVariantsCount: sizeVariants.length,
+      variantsCount: variants.length,
+      colorCodes,
+    };
+  });
   return (
-    <div className="products">
-      <h1>Produkter</h1>
-      <div className="product-list" style={styles.productList}>
-        {productData.products.map((product) => (
-          <div key={product.id} className="product-card" style={styles.card}>
-            <img src={product.images.main} alt={product.name} style={styles.image} />
-            <h2>{product.name}</h2>
-            <p>{product.description}</p>
-            <p>Pris från: {product.priceTiers[0].price} SEK</p>
-            <p>Kategori: {product.category}</p>
-            {/* Se till att länken går till rätt URL */}
-            <Link to={`/ProductDetail/${product.id}`} style={styles.link}>Visa mer</Link>
-          </div>
-        ))}
-      </div>
+    <div className="product-wrapper">
+       {productCards.map((card) => {
+      return (
+        <Card
+          key={card.productId}
+          id={card.productId}
+          name={card.name}
+          category={card.category}
+          modelImage={card.modelImage}
+          firstVariantImage={card.firstVariantImage}
+          minPrice={card.minPrice}
+          maxPrice={card.maxPrice}
+          sizeVariantsCount={card.sizeVariantsCount}
+          variantsCount={card.variantsCount}
+          colorCodes={card.colorCodes}
+        />
+      );
+    })}
     </div>
+
+    
   );
+   
+
+
+
+    
+ 
+
 };
 
-const styles = {
-  productList: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: '20px',
-    justifyContent: 'center',
-  },
-  card: {
-    border: '1px solid #ddd',
-    borderRadius: '8px',
-    padding: '20px',
-    width: '300px',
-    textAlign: 'center',
-  },
-  image: {
-    width: '100%',
-    height: 'auto',
-  },
-  link: {
-    textDecoration: 'none',
-    color: '#007bff',
-  },
-};
 
 export default Products;

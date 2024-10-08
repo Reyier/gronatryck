@@ -1,0 +1,53 @@
+.progress-tracker {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    padding: 0;
+    list-style-type: none;
+    counter-reset: step;
+}
+
+.step {
+    position: relative;
+    text-align: center;
+    flex-grow: 1;
+    padding: 10px;
+    color: #999; /* Standard färg för steg */
+}
+
+.step::before {
+    counter-increment: step;
+    content: counter(step);
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 50%;
+    background-color: #ccc; /* Färg för framtida steg */
+    color: white;
+    text-align: center;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.step-label {
+    display: block;
+    margin-top: 5px;
+}
+
+.step.active {
+    color: #a6b691; /* Färg för aktiva steg (påbörjat) */
+}
+
+.step.active::before {
+    background-color: #a6b691; /* Cirkelfärg för påbörjat steg */
+    
+}
+
+.step.completed {
+    color: #526040; /* Färg för avklarade steg */
+    border-bottom: 2px solid #526040; /* Undre kantlinje för avklarade steg */
+}
+
+.step.completed::before {
+    background-color: #526040; /* Bakgrundsfärg för avklarade stegnummer */
+}

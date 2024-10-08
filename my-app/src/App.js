@@ -16,6 +16,7 @@ import CustomerPage from './pages/CustomerPage';
 import AdminPage from './pages/AdminPage';
 import Checkout from './pages/Checkout'; 
 import "./styles/general.css";
+import Chat from './components/Chat';
 
 
 function App() {
@@ -101,6 +102,9 @@ const handleLogin = (user) => {
     <CartProvider>
       <Router>
         <Navbar loggedInUser={loggedInUser} onLogout={handleLogout} />
+
+        {/* Add Chat component here to make it appear on all pages */}
+        <Chat />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/stanley" element={<Stanley />} />
@@ -133,6 +137,7 @@ const handleLogin = (user) => {
     </CartProvider>
   );
 }
+
 
 export default App;
 

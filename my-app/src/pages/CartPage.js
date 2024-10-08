@@ -1,11 +1,12 @@
 import { useCart } from "../context/CartContext";
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import ProgressTracker from '../components/ProgressTracker';
 
 function CartPage() {
   const { cartItems, updateCartItem, removeFromCart } = useCart();
   const navigate = useNavigate();
-
+  
   // Get the logged-in user from localStorage
   const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
 
@@ -14,20 +15,16 @@ function CartPage() {
     return cartItems.reduce((total, item) => total + parseFloat(item.totalPrice || item.pricePerItem * item.totalQuantity), 0).toFixed(2);
   };
 
-  // Redirect to login if user is not logged in
-  useEffect(() => {
-    if (!loggedInUser && cartItems.length > 0) {
-      alert('Du måste vara inloggad för att gå till kassan.');
-      navigate('/login');
-    }
-  }, [loggedInUser, navigate, cartItems]);
+  const calculateTotalQuantity = () => {
+    return cartItems.reduce((total, item) => total + item.totalQuantity, 0);
+  };
 
   // Handle checkout click
   const handleCheckoutClick = () => {
     if (loggedInUser) {
       navigate('/checkout'); // Redirect to checkout if logged in
     } else {
-      navigate('/login'); // Redirect to login if not logged in
+      navigate('/login', { state: { from: { pathname: '/checkout' } } }); // Pass state indicating the user came from CartPage
     }
   };
 
@@ -42,7 +39,8 @@ function CartPage() {
 
   return (
     <div>
-      <h1>Kassa</h1>
+      <ProgressTracker />
+      <h1>Varukorg ({calculateTotalQuantity()} varor)</h1>
       {cartItems.length === 0 ? (
         <p>Inga varor i varukorgen</p>
       ) : (
@@ -51,7 +49,6 @@ function CartPage() {
             {cartItems.map(item => (
               <li key={item.productId + item.selectedColor + item.size}>
                 <p>{item.name} - Färg: {item.selectedColor} - Storlek: {item.size} - Pris/st: {item.pricePerItem} SEK</p>
-                
                 <div>
                   <button onClick={() => handleQuantityChange(item, item.totalQuantity - 1)}>-</button>
                   <input
@@ -62,7 +59,6 @@ function CartPage() {
                   />
                   <button onClick={() => handleQuantityChange(item, item.totalQuantity + 1)}>+</button>
                 </div>
-                
                 <p>Totalt: {item.totalPrice || (item.pricePerItem * item.totalQuantity).toFixed(2)} SEK</p>
                 <button onClick={() => removeFromCart(item.productId, item.selectedColor, item.size)}>Ta bort</button>
               </li>
@@ -71,11 +67,9 @@ function CartPage() {
           <h3>Totalt pris: {calculateTotalPrice()} SEK</h3>
         </>
       )}
-
       <Link to="/">Gå till startsidan</Link>
-      
       {cartItems.length > 0 && (
-        <button onClick={handleCheckoutClick}>Gå till kassa</button>
+        <button onClick={handleCheckoutClick}>Nästa steg</button>
       )}
     </div>
   );

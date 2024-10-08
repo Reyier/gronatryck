@@ -17,6 +17,7 @@ import AdminPage from './pages/AdminPage';
 import Checkout from './pages/Checkout'; 
 import "./styles/general.css";
 import Chat from './components/Chat';
+import ScrollToTopButton from './components/ScrollToTop';
 
 
 function App() {
@@ -104,7 +105,9 @@ const handleLogin = (user) => {
         <Navbar loggedInUser={loggedInUser} onLogout={handleLogout} />
 
         {/* Add Chat component here to make it appear on all pages */}
+        
         <Chat />
+       
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/stanley" element={<Stanley />} />
@@ -133,6 +136,8 @@ const handleLogin = (user) => {
               <Navigate to="/login" />} 
           />
         </Routes>
+        {/* Scroll to Top Button should appear on all pages */}
+        <ScrollToTopButton />
       </Router>
     </CartProvider>
   );

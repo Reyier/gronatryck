@@ -1,0 +1,33 @@
+.sticky-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    background-color: #606f4a;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 15px 40px;
+    font-size: 40px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+    width: 70px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    transition: background-color 0.3s ease;
+    padding-left: 25px;
+  }
+  
+  .sticky-btn.show {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .sticky-btn:hover {
+    background-color: #00fa0c;
+    color: black;
+  }
+
+ 

@@ -4,7 +4,7 @@
     border-radius: 15px;
     position: fixed;
     bottom: 30px;
-    right: 30px;
+    left: 30px; /* Flyttad från höger till vänster */
     background-color: #f0f4f8;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     overflow: hidden;
@@ -73,6 +73,7 @@
     cursor: pointer;
     font-size: 14px;
     transition: background-color 0.3s ease;
+   
 }
 
 .chat-footer button:hover {
@@ -100,7 +101,7 @@
 .chat-toggle-button {
     position: fixed;
     bottom: 30px;
-    right: 30px;
+    left: 30px; /* Flyttad från höger till vänster */
     background-color: #606f4a;
     color: white;
     padding: 10px 20px;
@@ -114,7 +115,6 @@
 .chat-toggle-button:hover {
     background-color: #9daf88;
 }
-
 
 .close-chat-btn {
     background: none;

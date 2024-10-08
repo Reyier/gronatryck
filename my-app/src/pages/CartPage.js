@@ -1,6 +1,6 @@
 import { useCart } from "../context/CartContext";
 import { Link, useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import ProgressTracker from '../components/ProgressTracker';
 
 function CartPage() {

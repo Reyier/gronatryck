@@ -21,7 +21,7 @@ const Navbar = () => {
 
   const handleSearch = (query) => {
     console.log("Sökfråga:", query);
-    // Här kan du navigera till sökresultatsidan eller filtrera produkter
+    
   };
 
 

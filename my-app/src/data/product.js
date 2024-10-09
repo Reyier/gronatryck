@@ -92,6 +92,7 @@ const products = [
               large:
                 "/img/informative/Rejal-oversize-sweatshirt-208-Radder-2.0-Vintage_G.-Dyed-Latte-1.jpg",
               alt: "Latte Sweatshirt",
+              
             },
           },
         ],

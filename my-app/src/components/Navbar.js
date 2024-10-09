@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/navbar.css';
-import Search from './Search';
+import SearchBar from './Search';
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -79,7 +79,7 @@ const Navbar = () => {
           <Link to="/cart">Kassa</Link>
         </li>
       </ul>
-      <Search onSearch={handleSearch} />
+      <SearchBar onSearch={handleSearch} />
     </nav>
   );
 };

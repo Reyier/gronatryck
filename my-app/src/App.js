@@ -20,6 +20,8 @@ import Chat from './components/Chat';
 import ScrollToTopButton from './components/ScrollToTop';
 
 
+
+
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null); // Track logged in user
 
@@ -104,7 +106,6 @@ const handleLogin = (user) => {
       <Router>
         <Navbar loggedInUser={loggedInUser} onLogout={handleLogout} />
 
-        {/* Add Chat component here to make it appear on all pages */}
         
         <Chat />
        
@@ -120,6 +121,7 @@ const handleLogin = (user) => {
           <Route path="/reset-password" element={<ResetPassword onReset={handleResetPassword} />} />
           <Route path="/produkter/:id/:productSlug" element={<ProductDetail />} /> 
           <Route path="/checkout" element={<Checkout />} /> 
+          <Route path="/produkter/:id" element={<ProductDetail />} />
 
 
           {/* Protected Routes */}

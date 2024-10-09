@@ -52,3 +52,14 @@
     background-color: green;
   }
   
+
+
+  .color-checkboxes {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .color-checkboxes label {
+    margin: 5px 0; /* Add some space between checkboxes */
+  }
+  

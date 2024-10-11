@@ -84,9 +84,14 @@ const totalPrintPrice = getPriceByTotalQuantity(totalQuantity)* totalQuantity;
 
 /////// Beräkning + schablon
 
+const totalPrintPriceNumber = Number(totalPrintPrice);
+const clothpriceNumber = Number(clothprice);
+const totalPrice = totalPrintPriceNumber + clothpriceNumber;
 
-const totalPrice = totalPrintPrice + clothprice
-
+console.log("Total Price:", totalPrice);
+console.log(clothprice)
+console.log(totalPrintPrice)
+console.log(totalPrice)
 
 
   const removeFromSpecification = (key) => {

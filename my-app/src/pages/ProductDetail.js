@@ -5,17 +5,25 @@ import { useCart } from "../context/CartContext";
 import ProductGallery from "../components/ProductGallery.js";
 import Radiobutton from "../components/RadioButton.js";
 import IncrementButton from "../components/IncrementButton.js";
+import {darkPrintPrice} from "../data/printPrice"; 
+
 
 const ProductDetail = () => {
   const { id } = useParams();
   const product = products.find((p) => p.productId === id);
-  
+  // const print = darkPrintPrice.find((price) => price.amount === );
+  //const price = darkPrintPrice.find((price) => price.amount[1]);
+  const [printIndex, setPrintIndex] = useState("");
+  const [quantity, setQuantity] = useState(0);
+
   const { addToCart } = useCart();
   
   const [selectedColor, setSelectedColor] = useState(product.images.variants[0]?.colorName);
   const [sizeQuantities, setSizeQuantities] = useState({}); 
   const [confirmationMessage, setConfirmationMessage] = useState('');
-
+  const [printType, setPrintType] = useState("dark"); // State to handle the selected print type
+  const [selectedPrintType, setSelectedPrintType] = useState("");
+  
   if (!product) {
     return <p>Produkten hittades inte.</p>;
   }
@@ -45,14 +53,41 @@ const ProductDetail = () => {
     return 0;
   };
 
+  const getPriceByTotalQuantity = (totalQuantity) => {
+    console.log(printIndex)
+    if (totalQuantity < 50) {
+      return darkPrintPrice.amount[25][printIndex]; // Hämta värdet från 25 om totalQuantity är under 25
+    } else if (totalQuantity < 100) {
+      return darkPrintPrice.amount[50][printIndex]; // Hämta värdet från 50 om totalQuantity är under 50
+    } else if (totalQuantity < 250) {
+      return darkPrintPrice.amount[100][printIndex]; // Hämta värdet från 100 om totalQuantity är under 100
+    } else if (totalQuantity < 500) {
+      return darkPrintPrice.amount[250][printIndex]; // Hämta värdet från 250 om totalQuantity är under 250
+    } else {
+      return darkPrintPrice.amount[500][printIndex]; // Hämta värdet från 250 om totalQuantity är under 250
+  };
+  };
+  
   const calculateTotalPriceByArtNr = () => {
     const totalQuantity = Object.values(sizeQuantities).reduce((total, qty) => total + qty, 0);
     const pricePerItem = calculatePricePerItem(totalQuantity);
-    const totalPrice = (pricePerItem * totalQuantity).toFixed(2);
-    return { totalQuantity, totalPrice, pricePerItem };
+    const clothprice = (pricePerItem * totalQuantity).toFixed(2);
+    
+    return { totalQuantity, clothprice, pricePerItem };
+    
   };
 
-  const { totalQuantity, totalPrice, pricePerItem } = calculateTotalPriceByArtNr();
+  const { totalQuantity, clothprice, pricePerItem } = calculateTotalPriceByArtNr();
+const totalPrintPrice = getPriceByTotalQuantity(totalQuantity)* totalQuantity;
+
+
+
+/////// Beräkning + schablon
+
+
+const totalPrice = totalPrintPrice + clothprice
+
+
 
   const removeFromSpecification = (key) => {
     const updatedQuantities = { ...sizeQuantities };
@@ -80,7 +115,7 @@ const ProductDetail = () => {
           size,
           totalQuantity: quantity,
           pricePerItem,
-          totalPrice: (pricePerItem * quantity).toFixed(2),
+          clothprice: (pricePerItem * quantity).toFixed(2),
         };
 
         addToCart(cartItem); // Lägg till varje enskild variant i varukorgen
@@ -89,6 +124,13 @@ const ProductDetail = () => {
 
     setConfirmationMessage('Produkten har lagts till i kundvagnen!');
   };
+
+  // Determine which print prices to use based on the print type (light or dark)
+  const printPrice = darkPrintPrice;
+
+  
+
+
 
   return ( 
     <div className="container">
@@ -144,25 +186,81 @@ const ProductDetail = () => {
             <hr />
             <p>Du måste handla minst {product.minBuy} av denna produkt</p>
             <hr />
-            <h3>Pristabell</h3>
-            <table>
-              <thead>
-                <tr>
-                  <th>Min. Kvantitet</th>
-                  <th>Max. Kvantitet</th>
-                  <th>Pris per styck (SEK)</th>
-                </tr>
-              </thead>
-              <tbody>
-                {product.priceTiers.map((tier, index) => (
-                  <tr key={index}>
-                    <td>{tier.minQuantity}</td>
-                    <td>{tier.maxQuantity !== null ? tier.maxQuantity : "+"}</td>
-                    <td>{tier.price} SEK</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+
+
+            <label>
+              Tryck:
+              <select onChange={((e) => {
+                const hej = e.target.value.slice(0, 1) - 1;
+                setPrintIndex(hej);
+                setSelectedPrintType(e.target.value)
+              })}>
+                <option value="">Utan tryck</option>
+                <option value="1 färg">1 färg</option>
+                <option value="2 färg">2 färg</option>
+                <option value="3 färg">3 färg</option>
+                <option value="4 färg">4 färg</option>
+                <option value="5 färg">5 färg</option>
+                <option value="6 färg">6 färg</option>
+                <option value="7 färg">7 färg</option>
+              </select>
+            </label>
+        <hr/>
+
+                
+
+
+   {/* Updated Price Table */}
+<h3>Prisinformation</h3>
+<table>
+  <thead>
+    <tr>
+      <td>Antal</td>
+      {/* Visa kvantiteter som kolumnrubriker */}
+      {product.priceTiers.map((tier, index) => (
+        <th key={index}>
+          {tier.maxQuantity !== null ? `${tier.minQuantity}-${tier.maxQuantity}` : `${tier.minQuantity}+`}
+        </th>
+      ))}
+    </tr>
+  </thead>
+  <tbody>
+    {/* Rad för Pris per styck */}
+    <tr>
+      <td>Pris/st</td>
+      {product.priceTiers.map((tier, index) => (
+        <td key={index}>{tier.price} SEK</td>
+      ))}
+    </tr>
+
+    <tr>
+            <td>Tryckpris en färg</td>
+            {Object.keys(printPrice.amount).map((key, index) => (
+              <td key={index}>
+                {printPrice.amount[key][0]} SEK
+              </td>
+            ))}
+          </tr>
+
+        
+          <tr>
+          <td>Schablon en färg</td>
+          <td>{printPrice.schablon[1]} SEK</td>
+          </tr> 
+
+
+        
+
+        
+  </tbody>
+</table>
+<th>
+          <small > Obs: Tryck- och schablonkostnaderna varierar beroende på plaggets färg och vald tryckmetod. Du kan även välja flerfärgsalternativ, vilket påverkar tryckpriset.</small>
+        
+        </th>
+
+
+
             <hr />
             {totalQuantity > 0 && (
               <div>
@@ -173,24 +271,38 @@ const ProductDetail = () => {
                     if (quantity > 0) {
                       return (
                         <li key={key}>
-                          ArtNr: {product.artNr}, Färg: {color}, {size}: ({quantity}) - Pris/ST: {pricePerItem} SEK
+                          ArtNr: {product.artNr}, Färg: {color}, {size}: ({quantity}) - Pris/ST: {pricePerItem} SEK 
                           <button 
                             onClick={() => removeFromSpecification(key)} 
                             style={{ marginLeft: "10px", color: "red" }}
                           >
                             Ta bort
                           </button>
+
+                          Totalt: {pricePerItem * quantity}
                         </li>
                       );
                     }
                     return null;
                   })}
                 </ul>
+                <ul>
+   
+    <li>Färgtryck: {selectedPrintType || "Inget valt"} {getPriceByTotalQuantity(totalQuantity)} SEK/ST Totalt: {totalPrintPrice} </li>
+    
+  </ul>
+                <ul>
+                Schablon
+                </ul>
                 <h4>Totalt antal: {totalQuantity} </h4>
+                <h4>Totalt pris: {clothprice} SEK </h4>
+                <h4>Totalt pris: {totalPrintPrice} SEK </h4>
                 <h4>Totalt pris: {totalPrice} SEK </h4>
                 <hr></hr> 
               </div>
             )}
+
+
             <div style={{ display: "flex", gap: "1.6rem" }}>
               <button 
                 style={{ flex: "1" }} 

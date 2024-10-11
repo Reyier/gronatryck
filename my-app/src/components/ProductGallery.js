@@ -37,9 +37,8 @@ function ProductGallery(props) {
     }
   }, [props.images]);
 
-  console.log(flattenedImagesArray);
+
   function changeMainImage(id) {
-    console.log(id);
     setMainImage({
       mainImageLarge: flattenedImagesArray[id].large,
       mainImageMedium: flattenedImagesArray[id].medium,

@@ -8,7 +8,7 @@
     position: absolute; /* Gör så att dropdown-listan positioneras absolut */
     top: 100%; /* Placera dropdown direkt under inputfältet */
     left: 0;
-    background: white;
+    
     border: 1px solid #ccc; /* Lägg till en kantlinje */
     border-radius: 8px; /* Rundade hörn */
     padding: 10px; /* Lite padding inuti dropdown-listan */
@@ -58,7 +58,7 @@
   }
   
   .dropdown-menu {
-    background-color: #f9f9f9;
+   
     border: 1px solid #ccc;
     padding: 10px;
     border-radius: 5px;

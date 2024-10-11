@@ -1,145 +1,169 @@
-/*src/components/Navbar.css */
+/* src/components/Navbar.css */
 .navbar {
-  background-color: #333;
-  color: white;
-  padding: 10px 20px;
+  background-color: #333; /* Dark background for desktop */
+  color: white; /* Text color */
+  padding: 15px 30px; /* Increased padding for better spacing */
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
 }
 
 .navbar-brand {
-  font-size: 24px;
+  font-size: 28px; /* Larger font size for branding */
   font-weight: bold;
+  text-transform: uppercase; /* Uppercase branding */
+  letter-spacing: 1px; /* Spacing between letters */
 }
 
 .navbar-links {
   list-style: none;
   display: flex;
-  gap: 20px;
+  gap: 30px; /* Increased gap for better spacing */
 }
 
 .navbar-links li {
-  display: inline;
+  position: relative; /* Needed for dropdown positioning */
 }
 
 .navbar-links a {
   color: white;
   text-decoration: none;
+  font-size: 16px; /* Font size adjustment */
+  transition: color 0.3s; /* Smooth transition for color change */
 }
 
 .navbar-links a:hover {
-  text-decoration: underline;
+  color: #FFD700; /* Golden color on hover */
 }
-
-
-
-
 
 /* Media Queries for Mobile */
 @media (max-width: 768px) {
-
   .navbar {
-    background-color: white;
-    color: #6E775E; /* Updated to match the design */
+    background-color: white; /* White background for mobile */
+    color: #333; /* Dark text for readability */
     padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
   }
   
   .navbar-brand img {
-    height: 40px;
-  }
-  
-  /* Full Links - Displayed on desktop */
-  .navbar-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-  }
-  
-  .navbar-links li {
-    display: inline;
-  }
-  
-  .navbar-links a {
-    color: #6E775E;
-    text-decoration: none;
-  }
-  
-  .navbar-links a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Mobile Icons */
-  .navbar-icons {
-    display: none;
-  }
-  .navbar-links {
-    display: none; /* Hide full links on mobile */
+    height: 40px; /* Logo size adjustment */
   }
 
-  .navbar-icons {
-    display: flex;
-    gap: 20px;
+  /* Hide full links on mobile */
+  .navbar-links {
+    display: none; /* Hidden on mobile */
   }
 
+  /* Show mobile icons */
+  .navbar-icons {
+    display: flex;
+    gap: 20px; /* Gap between icons */
+    color: #6E775E; /* Color for mobile icons */
+  }
+
+  /* Mobile Links */
   .navbar-links-mobile {
     list-style: none;
-    display: flex;
+    display: none; /* Initially hidden */
     flex-direction: column;
     gap: 15px;
-    padding: 0; /* Ensure no extra padding around */
-    background-color: white; /* Set background to ensure readability */
-    position: absolute; /* To ensure it overlays the content properly */
-    top: 60px; /* Adjust as per the height of the navbar */
+    padding: 0; 
+    background-color: white; 
+    position: absolute; 
+    top: 60px; 
     left: 0;
     right: 0;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional for better visibility */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
     z-index: 1000;
   }
-  
+
   .navbar-links-mobile a {
-    padding: 15px 20px; /* Add padding to increase click area */
-    color: #6E775E;
+    padding: 15px 20px; /* Increased padding for click area */
+    color: #6E775E; /* Mobile link color */
     text-decoration: none;
     font-weight: bold;
-    border-bottom: 1px solid #ddd; /* Optional: Add a separator between items */
+    border-bottom: 1px solid #ddd; 
+    transition: background-color 0.3s; /* Smooth transition for background */
   }
-  
+
   .navbar-links-mobile a:hover {
-    background-color: #f9f9f9; /* Hover effect for better user feedback */
+    background-color: #f9f9f9; /* Light background on hover */
   }
+
   /* Mobile Menu Toggle */
-.menu-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 24px;
-  color: #6E775E;
+  .menu-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #6E775E; /* Icon color for mobile */
+  }
 }
 
-/* Dropdown menu on mobile */
-.navbar-links-mobile {
-  list-style: none;
+/* Media Queries for Desktop */
+@media (min-width: 769px) {
+  .navbar {
+    background-color: #333; /* Keep dark background for desktop */
+    color: white; 
+  }
+
+  /* Show full links on desktop */
+  .navbar-links {
+    display: flex;
+  }
+
+  /* Hide mobile icons */
+  .navbar-icons {
+    display: none; 
+  }
+
+  /* Show dropdown menu on desktop */
+  .navbar-links-mobile {
+    display: none; 
+  }
+
+  .menu-toggle {
+    display: none; 
+  }
+}
+
+/* Cart and User Icons */
+.cart-icon, .dropdown-toggle {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
+  align-items: center;
+  cursor: pointer; /* Indicate clickable */
 }
 
-.navbar-links-mobile a {
-  color: #6E775E;
-  text-decoration: none;
+.cart-icon svg, .dropdown-toggle svg {
+  font-size: 22px; /* Adjust icon size */
+  margin-right: 8px; /* Space between icon and text */
+  transition: transform 0.3s; /* Smooth hover effect */
 }
 
-.navbar-links-mobile a:hover {
-  text-decoration: underline;
+.cart-icon:hover svg, .dropdown-toggle:hover svg {
+  transform: scale(1.1); /* Slightly enlarge on hover */
 }
 
-
-  
+/* Dropdown menu styles */
+.dropdown-menu {
+  position: absolute; /* Position relative to parent */
+  top: 100%; /* Position below the link */
+  left: 0;
+  background-color: white; /* Background for dropdown */
+  color: #333; /* Text color for dropdown */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Shadow for dropdown */
+  z-index: 1000; /* Ensure it appears above other elements */
 }
 
+.dropdown-menu li {
+  padding: 10px 15px; /* Padding for dropdown items */
+}
 
+.dropdown-menu a {
+  color: #333; /* Text color for dropdown links */
+  text-decoration: none; /* No underline */
+}
 
+.dropdown-menu a:hover {
+  background-color: #f0f0f0; /* Light background on hover */
+}

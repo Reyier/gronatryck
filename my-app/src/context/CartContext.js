@@ -3,6 +3,8 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 // Skapar CartContext
 const CartContext = createContext();
 
+
+
 // Custom Hook för att använda CartContext
 export const useCart = () => {
   return useContext(CartContext);
@@ -19,6 +21,7 @@ export const CartProvider = ({ children }) => {
   // Funktionslogik för att lägga till produkter i kundvagnen
   const addToCart = (product) => {
     setCartItems((prevCartItems) => {
+      
       const existingProduct = prevCartItems.find(
         (item) => item.productId === product.productId && item.selectedColor === product.selectedColor && item.size === product.size
       );

@@ -1,45 +1,48 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import products from "../data/product.js"; 
+import products from "../data/product.js";
 import { useCart } from "../context/CartContext";
 import ProductGallery from "../components/ProductGallery.js";
 import Radiobutton from "../components/RadioButton.js";
 import IncrementButton from "../components/IncrementButton.js";
-import {darkPrintPrice} from "../data/printPrice"; 
-
+import { darkPrintPrice } from "../data/printPrice";
 
 const ProductDetail = () => {
   const { id } = useParams();
   const product = products.find((p) => p.productId === id);
-  // const print = darkPrintPrice.find((price) => price.amount === );
-  //const price = darkPrintPrice.find((price) => price.amount[1]);
+  
   const [printIndex, setPrintIndex] = useState("");
   const [quantity, setQuantity] = useState(0);
 
   const { addToCart } = useCart();
-  
-  const [selectedColor, setSelectedColor] = useState(product.images.variants[0]?.colorName);
-  const [sizeQuantities, setSizeQuantities] = useState({}); 
-  const [confirmationMessage, setConfirmationMessage] = useState('');
+
+  const [selectedColor, setSelectedColor] = useState(
+    product.images.variants[0]?.colorName
+  );
+  const [sizeQuantities, setSizeQuantities] = useState({});
+  const [confirmationMessage, setConfirmationMessage] = useState("");
   const [printType, setPrintType] = useState("dark"); // State to handle the selected print type
   const [selectedPrintType, setSelectedPrintType] = useState("");
-  
+
   if (!product) {
     return <p>Produkten hittades inte.</p>;
   }
 
+  // Välja färg
   const handleColorChange = (color) => {
     setSelectedColor(color);
   };
 
+  // Kunna ändra storlek
   const handleQuantityChange = (size, quantity) => {
     const newQuantities = {
       ...sizeQuantities,
-      [`${selectedColor}-${size}`]: quantity, 
+      [`${selectedColor}-${size}`]: quantity,
     };
     setSizeQuantities(newQuantities);
   };
 
+  // Beräkning för pris (Bulkpriser)
   const calculatePricePerItem = (quantity) => {
     const { priceTiers } = product;
     for (const tier of priceTiers) {
@@ -47,52 +50,63 @@ const ProductDetail = () => {
         quantity >= tier.minQuantity &&
         (tier.maxQuantity === null || quantity <= tier.maxQuantity)
       ) {
-        return tier.price; 
+        return tier.price;
       }
     }
     return 0;
   };
 
+  // Hämta totalt antal för beräkning för tryck
   const getPriceByTotalQuantity = (totalQuantity) => {
-    console.log(printIndex)
+    console.log(printIndex);
     if (totalQuantity < 50) {
-      return darkPrintPrice.amount[25][printIndex]; // Hämta värdet från 25 om totalQuantity är under 25
+      return darkPrintPrice.amount[25][printIndex]; 
     } else if (totalQuantity < 100) {
-      return darkPrintPrice.amount[50][printIndex]; // Hämta värdet från 50 om totalQuantity är under 50
+      return darkPrintPrice.amount[50][printIndex]; 
     } else if (totalQuantity < 250) {
-      return darkPrintPrice.amount[100][printIndex]; // Hämta värdet från 100 om totalQuantity är under 100
+      return darkPrintPrice.amount[100][printIndex]; 
     } else if (totalQuantity < 500) {
-      return darkPrintPrice.amount[250][printIndex]; // Hämta värdet från 250 om totalQuantity är under 250
+      return darkPrintPrice.amount[250][printIndex]; 
     } else {
-      return darkPrintPrice.amount[500][printIndex]; // Hämta värdet från 250 om totalQuantity är under 250
+      return darkPrintPrice.amount[500][printIndex]; 
+    }
   };
-  };
-  
+
+  // Beräkning för pris för artikelnummer
   const calculateTotalPriceByArtNr = () => {
-    const totalQuantity = Object.values(sizeQuantities).reduce((total, qty) => total + qty, 0);
+    const totalQuantity = Object.values(sizeQuantities).reduce(
+      (total, qty) => total + qty,
+      0
+    );
     const pricePerItem = calculatePricePerItem(totalQuantity);
     const clothprice = (pricePerItem * totalQuantity).toFixed(2);
-    
+
     return { totalQuantity, clothprice, pricePerItem };
-    
   };
 
-  const { totalQuantity, clothprice, pricePerItem } = calculateTotalPriceByArtNr();
-const totalPrintPrice = getPriceByTotalQuantity(totalQuantity)* totalQuantity;
+  const { totalQuantity, clothprice, pricePerItem } =
+    calculateTotalPriceByArtNr();
+  const totalPrintPrice =
+    getPriceByTotalQuantity(totalQuantity) * totalQuantity;
 
+  /////// Beräkning + schablon
 
+  // Beräkning visning av totalt pris per artikel. Pris för plagg + tryck + schablon
+  let totalPrintPriceNumber = parseFloat(totalPrintPrice) || 0; // Convert to number or default to 0
+  let clothpriceNumber = parseFloat(clothprice) || 0; // Convert to number or default to 0
+  let totalPrice;
 
-/////// Beräkning + schablon
+  if (totalPrintPriceNumber === 0) {
+    totalPrice = clothpriceNumber;
+  } else {
+    totalPrice = totalPrintPriceNumber + clothpriceNumber;
+  }
 
-const totalPrintPriceNumber = Number(totalPrintPrice);
-const clothpriceNumber = Number(clothprice);
-const totalPrice = totalPrintPriceNumber + clothpriceNumber;
+  console.log("Cloth Price:", clothpriceNumber);
+  console.log("Total Print Price:", totalPrintPriceNumber);
+  console.log("Total Price:", totalPrice);
 
-console.log("Total Price:", totalPrice);
-console.log(clothprice)
-console.log(totalPrintPrice)
-console.log(totalPrice)
-
+// Ta bort från prisspecifikation
 
   const removeFromSpecification = (key) => {
     const updatedQuantities = { ...sizeQuantities };
@@ -102,9 +116,9 @@ console.log(totalPrice)
 
   const handleAddToCart = (event) => {
     event.preventDefault();
-    
+
     if (!selectedColor || totalQuantity === 0) {
-      setConfirmationMessage('Vänligen välj en färg och kvantitet.');
+      setConfirmationMessage("Vänligen välj en färg och kvantitet.");
       return;
     }
 
@@ -127,17 +141,15 @@ console.log(totalPrice)
       }
     });
 
-    setConfirmationMessage('Produkten har lagts till i kundvagnen!');
+    setConfirmationMessage("Produkten har lagts till i kundvagnen!");
   };
 
-  // Determine which print prices to use based on the print type (light or dark)
+  // Bestämma vilken data för tryckpriser. Dark är dyrast
   const printPrice = darkPrintPrice;
 
-  
 
-
-
-  return ( 
+  // Skriv ut kod på sidan
+  return (
     <div className="container">
       <ul className="breadcrumb">
         <li>Produkter</li>
@@ -177,12 +189,12 @@ console.log(totalPrice)
                 {product.sizeVariants.map((variant, index) => {
                   const key = `${selectedColor}-${variant}`;
                   return (
-                    <IncrementButton 
-                      key={index} 
-                      id={key} 
-                      size={variant} 
-                      handleChange={handleQuantityChange} 
-                      quantity={sizeQuantities[key] || 0} 
+                    <IncrementButton
+                      key={index}
+                      id={key}
+                      size={variant}
+                      handleChange={handleQuantityChange}
+                      quantity={sizeQuantities[key] || 0}
                     />
                   );
                 })}
@@ -192,14 +204,16 @@ console.log(totalPrice)
             <p>Du måste handla minst {product.minBuy} av denna produkt</p>
             <hr />
 
-
-            <label>
+                {/*Ifall vi ska använda tryck i produktdetaljer */}
+            {/* <label>
               Tryck:
-              <select onChange={((e) => {
-                const hej = e.target.value.slice(0, 1) - 1;
-                setPrintIndex(hej);
-                setSelectedPrintType(e.target.value)
-              })}>
+              <select
+                onChange={(e) => {
+                  const hej = e.target.value.slice(0, 1) - 1;
+                  setPrintIndex(hej);
+                  setSelectedPrintType(e.target.value);
+                }}
+              >
                 <option value="">Utan tryck</option>
                 <option value="1 färg">1 färg</option>
                 <option value="2 färg">2 färg</option>
@@ -210,61 +224,54 @@ console.log(totalPrice)
                 <option value="7 färg">7 färg</option>
               </select>
             </label>
-        <hr/>
+            <hr /> */}
 
+            {/* Prisinformation */}
+            <h3>Prisinformation</h3>
+            <table>
+              <thead>
+                <tr>
+                  <td>Antal</td>
+                  
+                  {product.priceTiers.map((tier, index) => (
+                    <th key={index}>
+                      {tier.maxQuantity !== null
+                        ? `${tier.minQuantity}-${tier.maxQuantity}`
+                        : `${tier.minQuantity}+`}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
                 
+                <tr>
+                  <td>Pris/st</td>
+                  {product.priceTiers.map((tier, index) => (
+                    <td key={index}>{tier.price} SEK</td>
+                  ))}
+                </tr>
 
+                <tr>
+                  <td>Tryckpris en färg</td>
+                  {Object.keys(printPrice.amount).map((key, index) => (
+                    <td key={index}>{printPrice.amount[key][0]} SEK</td>
+                  ))}
+                </tr>
 
-   {/* Updated Price Table */}
-<h3>Prisinformation</h3>
-<table>
-  <thead>
-    <tr>
-      <td>Antal</td>
-      {/* Visa kvantiteter som kolumnrubriker */}
-      {product.priceTiers.map((tier, index) => (
-        <th key={index}>
-          {tier.maxQuantity !== null ? `${tier.minQuantity}-${tier.maxQuantity}` : `${tier.minQuantity}+`}
-        </th>
-      ))}
-    </tr>
-  </thead>
-  <tbody>
-    {/* Rad för Pris per styck */}
-    <tr>
-      <td>Pris/st</td>
-      {product.priceTiers.map((tier, index) => (
-        <td key={index}>{tier.price} SEK</td>
-      ))}
-    </tr>
-
-    <tr>
-            <td>Tryckpris en färg</td>
-            {Object.keys(printPrice.amount).map((key, index) => (
-              <td key={index}>
-                {printPrice.amount[key][0]} SEK
-              </td>
-            ))}
-          </tr>
-
-        
-          <tr>
-          <td>Schablon en färg</td>
-          <td>{printPrice.schablon[1]} SEK</td>
-          </tr> 
-
-
-        
-
-        
-  </tbody>
-</table>
-<th>
-          <small > Obs: Tryck- och schablonkostnaderna varierar beroende på plaggets färg och vald tryckmetod. Du kan även välja flerfärgsalternativ, vilket påverkar tryckpriset.</small>
-        
-        </th>
-
-
+                <tr>
+                  <td>Schablon en färg</td>
+                  <td>{printPrice.schablon[1]} SEK</td>
+                </tr>
+              </tbody>
+            </table>
+            <th>
+              <small>
+                {" "}
+                Obs: Tryck- och schablonkostnaderna varierar beroende på
+                plaggets färg och vald tryckmetod. Du kan även välja
+                flerfärgsalternativ, vilket påverkar tryckpriset.
+              </small>
+            </th>
 
             <hr />
             {totalQuantity > 0 && (
@@ -276,14 +283,14 @@ console.log(totalPrice)
                     if (quantity > 0) {
                       return (
                         <li key={key}>
-                          ArtNr: {product.artNr}, Färg: {color}, {size}: ({quantity}) - Pris/ST: {pricePerItem} SEK 
-                          <button 
-                            onClick={() => removeFromSpecification(key)} 
+                          ArtNr: {product.artNr}, Färg: {color}, {size}: (
+                          {quantity}) - Pris/ST: {pricePerItem} SEK
+                          <button
+                            onClick={() => removeFromSpecification(key)}
                             style={{ marginLeft: "10px", color: "red" }}
                           >
                             Ta bort
                           </button>
-
                           Totalt: {pricePerItem * quantity}
                         </li>
                       );
@@ -292,27 +299,28 @@ console.log(totalPrice)
                   })}
                 </ul>
                 <ul>
-   
-    <li>Färgtryck: {selectedPrintType || "Inget valt"} {getPriceByTotalQuantity(totalQuantity)} SEK/ST Totalt: {totalPrintPrice} </li>
-    
-  </ul>
-                <ul>
-                Schablon
+                  {/* Ifall vi väljer att använda tryckpriser i prisspeficikation
+                  <li>
+                    Färgtryck: {selectedPrintType || "Inget valt"}{" "}
+                    {getPriceByTotalQuantity(totalQuantity)} SEK/ST Totalt:{" "}
+                    {totalPrintPrice}{" "}
+                  </li> */}
                 </ul>
+                {/*   */}
                 <h4>Totalt antal: {totalQuantity} </h4>
-                <h4>Totalt pris: {clothprice} SEK </h4>
-                <h4>Totalt pris: {totalPrintPrice} SEK </h4>
-                <h4>Totalt pris: {totalPrice} SEK </h4>
-                <hr></hr> 
+
+                <h4>Totalt pris: {totalPrice.toFixed(2)} SEK</h4>
+                <small>Tryck och schablonpriser tillkommer i kassan!</small>
+
+                <hr></hr>
               </div>
             )}
 
-
             <div style={{ display: "flex", gap: "1.6rem" }}>
-              <button 
-                style={{ flex: "1" }} 
-                className="btn btn--full" 
-                type="button" 
+              <button
+                style={{ flex: "1" }}
+                className="btn btn--full"
+                type="button"
                 onClick={handleAddToCart}
               >
                 Lägg till i offert
@@ -324,7 +332,7 @@ console.log(totalPrice)
         </section>
       </main>
     </div>
-  ); 
+  );
 };
 
 export default ProductDetail;

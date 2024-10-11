@@ -96,12 +96,17 @@ import SearchBar from './Search';
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  
+  const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
+
   // Dummy user state for demonstration
   const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
 
   const handleDropdownToggle = () => {
     setIsDropdownOpen(prevState => !prevState);
+  };
+
+  const handleUserDropdownToggle = () => {
+    setIsUserDropdownOpen(prevState => !prevState);
   };
 
   const handleLogout = () => {
@@ -124,13 +129,38 @@ const Navbar = () => {
 
       {/* Icons for mobile */}
       <div className="navbar-icons">
-        <Link to="/cart">
+        <Link to="/cart" className="icon cart-icon">
           <FaShoppingCart />
         </Link>
-        <Link to="/login">
+        <div
+          className="icon user-icon"
+          onMouseEnter={handleUserDropdownToggle}
+          onMouseLeave={handleUserDropdownToggle}
+        >
           <FaUserAlt />
-        </Link>
-        <Link to="/search">
+          {isUserDropdownOpen && (
+            <ul className="user-dropdown">
+              {loggedInUser ? (
+                <>
+                  <li>
+                    <Link to="/customer">Profil</Link>
+                  </li>
+                  <li onClick={handleLogout}>Logga ut</li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <Link to="/login">Logga in</Link>
+                  </li>
+                  <li>
+                    <Link to="/register">Registrera dig</Link>
+                  </li>
+                </>
+              )}
+            </ul>
+          )}
+        </div>
+        <Link to="/search" className="icon">
           <FaSearch />
         </Link>
         <button onClick={handleDropdownToggle} className="menu-toggle">
@@ -163,7 +193,6 @@ const Navbar = () => {
             {loggedInUser ? (
               <>
                 <Link to="/customer">Profil</Link>
-                <Link to="/orders">Beställningar</Link>
                 <span onClick={handleLogout}>Logga ut</span>
               </>
             ) : (
@@ -193,17 +222,21 @@ const Navbar = () => {
         <li>
           <Link to="/contact">Kontakta oss</Link>
         </li>
-        <li className="dropdown" onClick={handleDropdownToggle}>
-          <span className="dropdown-toggle">Användare</span>
-          {isDropdownOpen && (
+        <li className="cart-icon">
+          <Link to="/cart"> 
+            <FaShoppingCart /> 
+          </Link>
+        </li>
+        <li className="dropdown" onMouseEnter={handleUserDropdownToggle} onMouseLeave={handleUserDropdownToggle}>
+          <span className="dropdown-toggle user-icon">
+            <FaUserAlt /> 
+          </span>
+          {isUserDropdownOpen && (
             <ul className="dropdown-menu">
               {loggedInUser ? (
                 <>
                   <li>
                     <Link to="/customer">Profil</Link>
-                  </li>
-                  <li>
-                    <Link to="/orders">Beställningar</Link>
                   </li>
                   <li onClick={handleLogout}>Logga ut</li>
                 </>
@@ -220,9 +253,6 @@ const Navbar = () => {
             </ul>
           )}
         </li>
-        <li>
-          <Link to="/cart">Kassa</Link>
-        </li>
       </ul>
       <SearchBar onSearch={handleSearch} />
     </nav>
@@ -230,3 +260,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

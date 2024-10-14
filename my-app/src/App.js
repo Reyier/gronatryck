@@ -18,6 +18,7 @@ import Checkout from './pages/Checkout';
 import "./styles/general.css";
 import Chat from './components/Chat';
 import ScrollToTopButton from './components/ScrollToTop';
+import ConfirmationPage from './pages/ConfirmationPage';
 
 
 
@@ -122,6 +123,7 @@ const handleLogin = (user) => {
           <Route path="/produkter/:id/:productSlug" element={<ProductDetail />} /> 
           <Route path="/checkout" element={<Checkout />} /> 
           <Route path="/produkter/:id" element={<ProductDetail />} />
+          <Route path="/confirmation" element={<ConfirmationPage />} />
 
 
           {/* Protected Routes */}

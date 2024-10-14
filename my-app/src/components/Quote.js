@@ -29,7 +29,7 @@ const Quote = ({ customer, cartItems, totalCost }) => {
         <thead>
           <tr>
             <th>Namn</th>
-            <th>Beskrivning</th>
+           
             <th>Kvantitet</th>
             <th>Storlek</th> {/* Kolumn för storlek */}
             <th>Enhetspris</th>
@@ -40,7 +40,7 @@ const Quote = ({ customer, cartItems, totalCost }) => {
           {cartItems.map((item) => (
             <tr key={item.productId}>
               <td>{item.name}</td>
-              <td>{item.description || 'Ingen beskrivning'}</td>
+              
               <td>{item.totalQuantity}</td>
               <td>{item.size || 'Ingen storlek angiven'}</td> {/* Visa storlek */}
               <td>{item.pricePerItem} SEK</td>

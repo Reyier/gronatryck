@@ -118,31 +118,33 @@ const ProductDetail = () => {
     event.preventDefault();
 
     if (!selectedColor || totalQuantity === 0) {
-      setConfirmationMessage("Vänligen välj en färg och kvantitet.");
-      return;
+        setConfirmationMessage("Vänligen välj en färg och kvantitet.");
+        return;
     }
 
     // Lägg till varje storlek och kvantitet separat i varukorgen
     Object.entries(sizeQuantities).forEach(([key, quantity]) => {
-      if (quantity > 0) {
-        const [color, size] = key.split("-");
-        const cartItem = {
-          productId: product.productId,
-          name: product.name,
-          brand: product.brand,
-          selectedColor: color,
-          size,
-          totalQuantity: quantity,
-          pricePerItem,
-          clothprice: (pricePerItem * quantity).toFixed(2),
-        };
+        if (quantity > 0) {
+            const [color, size] = key.split("-");
+            const cartItem = {
+                productId: product.productId,
+                name: product.name,
+                brand: product.brand,
+                selectedColor: color,
+                size,
+                totalQuantity: quantity,
+                pricePerItem,
+                clothprice: (pricePerItem * quantity).toFixed(2),
+                totalPrintPrice: getPriceByTotalQuantity(totalQuantity) * quantity,
+                totalPrice: (parseFloat((pricePerItem * quantity).toFixed(2)) + (getPriceByTotalQuantity(totalQuantity) * quantity)).toFixed(2),
+            };
 
-        addToCart(cartItem); // Lägg till varje enskild variant i varukorgen
-      }
+            addToCart(cartItem); // Lägg till varje enskild variant i varukorgen
+        }
     });
 
     setConfirmationMessage("Produkten har lagts till i kundvagnen!");
-  };
+};
 
   // Bestämma vilken data för tryckpriser. Dark är dyrast
   const printPrice = darkPrintPrice;

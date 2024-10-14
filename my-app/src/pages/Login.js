@@ -1,10 +1,13 @@
 // src/components/Login.js
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import '../styles/login.css';
+
 
 const Login = ({ onLogin }) => {
   const [user, setUser] = useState({ email: '', password: '' });
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,7 +20,10 @@ const Login = ({ onLogin }) => {
     if (loggedInUser) {
       // Store logged in user in localStorage
       localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
-      navigate("/"); // Redirect to home page
+
+      // Navigate back to the place user came from, or to home if no from is set
+      const from = location.state?.from || "/";
+      navigate(from);
     } else {
       alert("Login failed");
     }
@@ -25,17 +31,19 @@ const Login = ({ onLogin }) => {
 
   return (
     <div>
+      <h2>Mina sidor</h2>
+    <div className='login-container'>
       <form>
-        <h2>Logga in</h2>
-        <input
+        
+        <input className='input-login'
           type="email"
           name="email"
-          placeholder="Email"
+          placeholder="Email eller kundnummer"
           value={user.email}
           onChange={handleChange}
           required
         />
-        <input
+         <input className='input-login'
           type="password"
           name="password"
           placeholder="Lösenord"
@@ -43,14 +51,19 @@ const Login = ({ onLogin }) => {
           onChange={handleChange}
           required
         />
+        
+       
+        <p onClick={() => navigate('/reset-password')} style={{ cursor: 'pointer', color: 'blue' }}>
+          Glömt lösenord?
+          
+        </p>
+        <p onClick={() => navigate('/register')}>Ny kund? Skapa konto här</p>
+
         <button type="button" onClick={handleLoginClick}>
           Logga in
         </button>
-        <p onClick={() => navigate('/register')}>Har du inget konto? Registrera dig här.</p>
-        <p onClick={() => navigate('/reset-password')} style={{ cursor: 'pointer', color: 'blue' }}>
-          Glömt lösenord?
-        </p>
       </form>
+    </div>
     </div>
   );
 };

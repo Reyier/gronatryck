@@ -2,10 +2,10 @@
 :root{
     font-size: 62.5%;
       /*COLORS*/
-  --primary-color: #526040;
-  --primary-100: #a6b691;
-  --primary-200: #252c1c;
-  --bright-color: #f7efdf;
+  --primary-color: #373a21;
+  --primary-100: #606f4a;
+  --primary-200: #9daf88;
+  --bright-color: #e0e5d3;
   --white-color: #fff;
 
   /*Z index*/
@@ -18,6 +18,8 @@
   --bodyFont: "Poppins", sans-serif;
 
 }
+
+
 body{
     font-size: 1.6rem;
 }

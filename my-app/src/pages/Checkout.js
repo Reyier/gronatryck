@@ -4,12 +4,14 @@ import { useCart } from '../context/CartContext';
 import Quote from '../components/Quote';
 import '../styles/checkout.css'; // Import CSS
 import ProgressTracker from '../components/ProgressTracker';
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+const generateOrderId = () => {
+  return Math.floor(10000 + Math.random() * 90000).toString(); // Generates a random 5-digit number
+};
 
 function Checkout() {
-
   const navigate = useNavigate();
-
   const { cartItems } = useCart();
   const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
 
@@ -26,14 +28,28 @@ function Checkout() {
 
   const totalCost = calculateTotalPrice();
 
+  const handleCheckout = () => {
+    // Simulate order processing here
+    const orderDetails = {
+      customerInfo,
+      items: cartItems,
+      totalCost,
+      orderId: generateOrderId() // This should come from your backend in a real application
+    };
+
+    // Navigate to the confirmation page with order details
+    navigate('/confirmation', { state: { orderDetails } });
+  };
+
   return (
     <div className="checkout-container">
-      <ProgressTracker/>
+      <ProgressTracker />
       <h1>Checkout</h1>
       {loggedInUser ? (
         <>
           <h2>Kundinformation</h2>
-          <form><label>
+          <form>
+            <label>
               För & Efternamn
               <input type="text" name="personName" value={customerInfo.personName} onChange={handleChange} />
             </label><br />
@@ -61,7 +77,7 @@ function Checkout() {
 
           <Quote customer={customerInfo} cartItems={cartItems} totalCost={totalCost} />
           <p onClick={() => navigate('/cart')}>Gå tillbaka till varukorg.</p>
-          <button onClick={() => alert('Köpet har genomförts!')}>Skicka offert</button>
+          <button onClick={handleCheckout}>Skicka offert</button>
         </>
       ) : (
         <p>Du måste vara inloggad för att se offerten.</p>
@@ -71,5 +87,3 @@ function Checkout() {
 }
 
 export default Checkout;
-
-

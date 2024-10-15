@@ -202,7 +202,7 @@ const Navbar = () => {
       <div className="navbar-top">
         <div className="navbar-brand">
           <Link to="/">
-            <img src="/path/to/logo.png" alt="Gröna Tryck" className="navbar-logo" />
+            <img src="/img/decorative/logotyp_horizontell.png" alt="Gröna Tryck" className="navbar-logo" />
           </Link>
         </div>
 

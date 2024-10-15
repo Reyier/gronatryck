@@ -33,33 +33,44 @@ const Login = ({ onLogin }) => {
     <div>
       <h2>Mina sidor</h2>
     <div className='login-container'>
+      <h3>Logga in</h3>
       <form>
-        
-        <input className='input-login'
-          type="email"
-          name="email"
-          placeholder="Email eller kundnummer"
-          value={user.email}
-          onChange={handleChange}
-          required
-        />
-         <input className='input-login'
-          type="password"
-          name="password"
-          placeholder="Lösenord"
-          value={user.password}
-          onChange={handleChange}
-          required
-        />
-        
+      <div className="input-container">
+  <h6 className='input-label'>Email eller kundnummer</h6>
+  <input
+    className='input-login'
+    type="email"
+    name="email"
+    id="email"
+    placeholder="Email eller kundnummer"
+    value={user.email}
+    onChange={handleChange}
+    required
+  />
+</div>
+
+<div className="input-container">
+  <h6 className='input-label'>Lösenord</h6>
+  <input
+    className='input-login'
+    type="password"
+    name="password"
+    id="password"
+    placeholder="Lösenord"
+    value={user.password}
+    onChange={handleChange}
+    required
+  />
+</div>
+
        
-        <p onClick={() => navigate('/reset-password')} style={{ cursor: 'pointer', color: 'blue' }}>
+        <p className='login-link' onClick={() => navigate('/reset-password')}>
           Glömt lösenord?
           
         </p>
-        <p onClick={() => navigate('/register')}>Ny kund? Skapa konto här</p>
+        <p className='login-link' onClick={() => navigate('/register')}>Ny kund? Skapa konto här</p>
 
-        <button type="button" onClick={handleLoginClick}>
+        <button className='login-btn' type="button" onClick={handleLoginClick}>
           Logga in
         </button>
       </form>

@@ -2,9 +2,9 @@
 :root{
     font-size: 62.5%;
       /*COLORS*/
-  --primary-color: #373a21;
-  --primary-100: #606f4a;
-  --primary-200: #9daf88;
+  --primary-dark: #373a21;
+  --primary-green: #606f4a;
+  --primary-lightgreen: #9daf88;
   --bright-color: #e0e5d3;
   --white-color: #fff;
 
@@ -15,120 +15,49 @@
   --layer-4: 35;
 
   /*FONT*/
-  --bodyFont: "Poppins", sans-serif;
+  --bodyFont: "Source Sans 3", sans-serif;
+  --headingFont: "Montserrat", sans-serif;
+  --subHeadingFont: "Raleway", sans-serif;
+
+  --fontSizeXXL: 4.5rem;  /* 45px */
+  --fontSizeXL: 3.5rem;   /* 35px */
+  --fontSizeLG: 2.9rem;    /* 29px */
+  --fontSizeMD: 2.3rem;    /* 23px */
+  --fontSizeSM: 1.8rem;    /* 18px */
+  --fontSizeXS: 1.4rem;    /* 14px */
+  --fontSizeXSS: 0.9rem; /* 9px */
+
+
+
+
+--small-spacing: 1rem;
+--medium-spacing: 2rem;
+--large-spacing: 3rem;
+
+
+--border-radius: 6px;
 
 }
+
 
 
 body{
-    font-size: 1.6rem;
+  background-color: white;
+  font-size: var(--fontSizeXS);
+  font-family: var(--bodyFont);
+
+}
+.heading-1, .heading-2, .heading-3{
+  font-family: var(--headingFont);
+}
+.subheading-1, .subheading-2, .subheading-3{
+  font-family: var(--subHeadingFont);
+}
+.heading-1{
+  font-size: var(--fontSizeXL);
 }
 .container{
-    max-width: 1400px;
-    margin-inline: auto;
+  max-width: 1400px;
+  margin-inline: auto;
 }
-.product {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2.4rem;
-  }
-  
-  /* radioknapparna för färgval*/
-  .color-circle-main input[type="radio"] {
-    display: none;
-  }
-  .color-circle {
-    display: inline-block;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    margin: 5px;
-    cursor: pointer;
-    border: 2px solid transparent;
-    transition: transform 0.3s;
-  }
-  input[type="radio"]:checked + .color-circle {
-    border: 2px solid #fff;
-    transform: scale(110%);
-    outline: 2px solid var(--primary-color);
-  }
-  
-  /*number-input */
-  .increment-input {
-    display: flex;
-    align-items: center;
-  }
-  .increment-number-input {
-    margin-inline-start: 1.6rem;
-    background-color: #f2f2f2;
-    border-radius: 1.6rem;
-    border: 1px solid #cecece;
-    display: flex;
-  }
-  .increment-number-input input {
-    background-color: transparent;
-    padding: 0.2rem 0.8rem;
-    max-width: 6rem;
-  }
-  .increment-number-input input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-  .increment-number-input input[type="number"] {
-    -moz-appearance: textfield;
-  }
-  .increment-button {
-    padding: 0.8rem 1rem;
-    font-size: 2.4rem;
-  }
-  
-  .product-gallery {
-    overflow: hidden;
-  }
-  .thumbnail-images {
-    margin-block-start: 1.6rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.6rem;
-  }
-  .thumbnail-image {
-    width: 100px;
-    height: auto;
-    cursor: pointer;
-  }
-
-  .breadcrumb {
-    font-size: 1.5rem;
-    list-style: none;
-    li {
-      display: inline;
-    }
-    li + li:before {
-      padding: 8px;
-      color: black;
-      content: "/\00a0";
-    }
-  }
-  .btn {
-    display: inline-block;
-    border-radius: 2rem;
-    padding: 1.2rem 2.4rem;
-    text-align: center;
-    border: 1px solid transparent;
-  }
-  .btn--full {
-    background-color: var(--primary-color);
-    color: var(--bright-color);
-  }
-  .btn--ghost {
-    border-color: var(--primary-color);
-  }
-  
-
-  @media screen and (max-width: 998px) {
-    .product {
-      grid-template-columns: 1fr;
-    }
-  }
-  
 

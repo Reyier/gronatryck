@@ -1,35 +1,84 @@
 
-.login-container{
-    width: 90%;
-    height: auto;
-    background-color:  var(--primary-200);
-    padding: 5rem;
-    margin: auto;
-    border-radius: 8px;
+
+.input-container {
+    margin-bottom: 2rem; 
+   
+
+  }
   
-    
+  .input-label {
+    font-size: var(--fontSizeXS);
+    color: var(--primary-dark);  
+    margin-bottom: 5px; 
+    width:100% ;
+     
+  }
 
-}
-
-.input-login{
-    background-color: var(--bright-color);
+  form{
     width: 100%;
-    height: 5rem;
-   margin: auto;
-   margin-bottom: 1rem;
-   border-radius: 8px;
-}
+  }
 
-.input-login::placeholder {
-   
-    padding-left: 1rem;
-
-}
-
-h2{
-   
-    margin: 5rem;
+.login-container {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 90%;
+    height: auto;
+    background-color: var(--primary-lightgreen);
+    padding: 4rem 2rem 4rem 2rem;
+    margin: auto;
+    border-radius: var(--border-radius);
+    margin-bottom: 5rem ;
+
+}
+
+.input-login {
+  background-color: var(--bright-color);
+  width: 100%;
+  height: 4rem;
+  padding-left: 1rem;
+  border-radius: var(--border-radius);
+  border: none;
+  font-size: var(--fontSizeXS);
+}
+
+
+
+h2 {
+  margin: 5rem;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: var(--headingFont);
+  font-weight: bold;
+  font-size: var(--fontSizeXL);
+}
+
+h3 {
+    font-size: var(--fontSizeMD);
+    font-family: var( --subHeadingFont);
+    font-weight:500;
+    margin: 0 0 1.5rem 0; 
+    align-self: flex-start; 
+}
+
+.login-link {
+  text-decoration: underline;
+  color: var(--primary-dark);
+  margin-bottom: 0;
+  font-family: var(--bodyFont);
+  font-size: var(--fontSizeXS);
+}
+
+.login-btn {
+    background-color: var(--primary-green);
+    padding: 1rem 3rem;
+    border-radius: 48px;
     text-align: center;
+    font-size: var(--fontSizeXS);
+    margin: 0 auto;
+    margin-top: 4rem;
+    display: block;
+    color: white;
 }

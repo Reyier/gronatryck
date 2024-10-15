@@ -1,12 +1,4 @@
-/* Grundlayout för varukorgssidan */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f4f9;
-    margin: 0;
-    padding: 0;
-    color: #333;
-  }
-  
+
 .cartpage{
   width: 80%;
   justify-content: center;
@@ -167,9 +159,6 @@ body {
     }
   }
   
-  body{
-    margin-bottom:2000px ;
-}
 
 .cart-page-container {
   display: flex;

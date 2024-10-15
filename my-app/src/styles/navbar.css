@@ -177,8 +177,9 @@
   flex-direction: column;
   position: relative;
   z-index: 100;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  
  width: 100;
+ margin-bottom: 5rem;
 }
 
 
@@ -270,7 +271,7 @@
   z-index: 999;
   padding-top: 60px;
   transition: right 0.3s ease;
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  
 }
 
 .mobile-menu.open {
@@ -318,7 +319,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+ 
   z-index: 998;
   display: none; /* Initially hidden */
 
@@ -353,7 +354,7 @@
     background-color: white;
     padding: 10px 20px;
     z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    
   }
 
   .navbar-links {

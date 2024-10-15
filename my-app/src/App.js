@@ -19,8 +19,7 @@ import "./styles/general.css";
 import Chat from './components/Chat';
 import ScrollToTopButton from './components/ScrollToTop';
 import ConfirmationPage from './pages/ConfirmationPage';
-
-
+import Footer from './components/Footer'; // Importera Footer
 
 
 function App() {
@@ -53,32 +52,31 @@ function App() {
     }
   };
 
-
-// Handle login
-const handleLogin = (user) => {
-  if (!user || !user.email || !user.password) {
-    alert('Please enter both email and password.');
-    return null;
-  }
-
-  const storedUser = localStorage.getItem(user.email);
-  
-  if (storedUser) {
-    const parsedUser = JSON.parse(storedUser);
-
-    if (parsedUser.password === user.password) {
-      setLoggedInUser(parsedUser);
-      localStorage.setItem('loggedInUser', JSON.stringify(parsedUser)); // Save logged in user
-      return parsedUser; // Return the logged-in user object
-    } else {
-      alert('Incorrect password.');
+  // Handle login
+  const handleLogin = (user) => {
+    if (!user || !user.email || !user.password) {
+      alert('Please enter both email and password.');
       return null;
     }
-  } else {
-    alert('User does not exist.');
-    return null;
-  }
-};
+
+    const storedUser = localStorage.getItem(user.email);
+    
+    if (storedUser) {
+      const parsedUser = JSON.parse(storedUser);
+
+      if (parsedUser.password === user.password) {
+        setLoggedInUser(parsedUser);
+        localStorage.setItem('loggedInUser', JSON.stringify(parsedUser)); // Save logged in user
+        return parsedUser; // Return the logged-in user object
+      } else {
+        alert('Incorrect password.');
+        return null;
+      }
+    } else {
+      alert('User does not exist.');
+      return null;
+    }
+  };
 
 
   // Hantera lösenordsåterställning
@@ -106,7 +104,6 @@ const handleLogin = (user) => {
     <CartProvider>
       <Router>
         <Navbar loggedInUser={loggedInUser} onLogout={handleLogout} />
-
         
         <Chat />
        
@@ -140,13 +137,14 @@ const handleLogin = (user) => {
               <Navigate to="/login" />} 
           />
         </Routes>
-        {/* Scroll to Top Button should appear on all pages */}
+        
         <ScrollToTopButton />
+        <Footer /> {/* Lägg till Footer här */}
       </Router>
     </CartProvider>
   );
 }
 
-
 export default App;
+
 

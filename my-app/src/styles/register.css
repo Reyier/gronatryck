@@ -1,0 +1,41 @@
+.input-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive columns */
+    gap: 1rem; /* Space between input items */
+    width: 100%; /* Full width of the container */
+}
+
+.input-row {
+    display: flex; /* Use flexbox to place inputs in a row */
+    gap: 1rem; /* Space between the two inputs */
+}
+
+.input-item {
+    flex: 1; /* Allow input items to grow equally */
+}
+
+.input-label {
+    margin-bottom: 0.5rem; /* Space between label and input */
+}
+
+.input-login {
+    width: 100%; /* Full width of the input */
+    padding: 0.75rem; /* Add some padding */
+    border: 1px solid #ccc; /* Simple border */
+    border-radius: 4px; /* Rounded corners */
+}
+
+h4{
+    font-size: var(--fontSizeSM);
+    font-weight: 500;
+}
+
+.info-text{
+    font-size: var(--fontSizeXSS);
+    margin: 0;
+}
+.news{
+    font-size: var(--fontSizeXS);
+   
+    
+}

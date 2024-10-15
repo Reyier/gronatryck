@@ -6,6 +6,7 @@ import ProductGallery from "../components/ProductGallery.js";
 import Radiobutton from "../components/RadioButton.js";
 import IncrementButton from "../components/IncrementButton.js";
 import { darkPrintPrice } from "../data/printPrice";
+import '../styles/product.css';
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -163,7 +164,7 @@ const ProductDetail = () => {
         <ProductGallery images={product.images} />
         <section>
           <p>{product.brand}</p>
-          <h1>{product.name}</h1>
+          <h1 className="heading-1">{product.name}</h1>
           <p>{product.description}</p>
           <hr />
           <form>

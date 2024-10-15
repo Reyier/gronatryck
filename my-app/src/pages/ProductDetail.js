@@ -6,12 +6,13 @@ import ProductGallery from "../components/ProductGallery.js";
 import Radiobutton from "../components/RadioButton.js";
 import IncrementButton from "../components/IncrementButton.js";
 import { darkPrintPrice } from "../data/printPrice";
-import '../styles/product.css';
+
+import "../styles/product.css";
 
 const ProductDetail = () => {
   const { id } = useParams();
   const product = products.find((p) => p.productId === id);
-  
+
   const [printIndex, setPrintIndex] = useState("");
   const [quantity, setQuantity] = useState(0);
 
@@ -61,15 +62,15 @@ const ProductDetail = () => {
   const getPriceByTotalQuantity = (totalQuantity) => {
     console.log(printIndex);
     if (totalQuantity < 50) {
-      return darkPrintPrice.amount[25][printIndex]; 
+      return darkPrintPrice.amount[25][printIndex];
     } else if (totalQuantity < 100) {
-      return darkPrintPrice.amount[50][printIndex]; 
+      return darkPrintPrice.amount[50][printIndex];
     } else if (totalQuantity < 250) {
-      return darkPrintPrice.amount[100][printIndex]; 
+      return darkPrintPrice.amount[100][printIndex];
     } else if (totalQuantity < 500) {
-      return darkPrintPrice.amount[250][printIndex]; 
+      return darkPrintPrice.amount[250][printIndex];
     } else {
-      return darkPrintPrice.amount[500][printIndex]; 
+      return darkPrintPrice.amount[500][printIndex];
     }
   };
 
@@ -107,7 +108,7 @@ const ProductDetail = () => {
   console.log("Total Print Price:", totalPrintPriceNumber);
   console.log("Total Price:", totalPrice);
 
-// Ta bort från prisspecifikation
+  // Ta bort från prisspecifikation
 
   const removeFromSpecification = (key) => {
     const updatedQuantities = { ...sizeQuantities };
@@ -119,57 +120,82 @@ const ProductDetail = () => {
     event.preventDefault();
 
     if (!selectedColor || totalQuantity === 0) {
-        setConfirmationMessage("Vänligen välj en färg och kvantitet.");
-        return;
+      setConfirmationMessage("Vänligen välj en färg och kvantitet.");
+      return;
     }
 
     // Lägg till varje storlek och kvantitet separat i varukorgen
     Object.entries(sizeQuantities).forEach(([key, quantity]) => {
-        if (quantity > 0) {
-            const [color, size] = key.split("-");
-            const cartItem = {
-                productId: product.productId,
-                name: product.name,
-                brand: product.brand,
-                selectedColor: color,
-                size,
-                totalQuantity: quantity,
-                pricePerItem,
-                clothprice: (pricePerItem * quantity).toFixed(2),
-                totalPrintPrice: getPriceByTotalQuantity(totalQuantity) * quantity,
-                totalPrice: (parseFloat((pricePerItem * quantity).toFixed(2)) + (getPriceByTotalQuantity(totalQuantity) * quantity)).toFixed(2),
-            };
+      if (quantity > 0) {
+        const [color, size] = key.split("-");
+        const cartItem = {
+          productId: product.productId,
+          name: product.name,
+          brand: product.brand,
+          selectedColor: color,
+          size,
+          totalQuantity: quantity,
+          pricePerItem,
+          clothprice: (pricePerItem * quantity).toFixed(2),
+          totalPrintPrice: getPriceByTotalQuantity(totalQuantity) * quantity,
+          totalPrice: (
+            parseFloat((pricePerItem * quantity).toFixed(2)) +
+            getPriceByTotalQuantity(totalQuantity) * quantity
+          ).toFixed(2),
+        };
 
-            addToCart(cartItem); // Lägg till varje enskild variant i varukorgen
-        }
+        addToCart(cartItem); // Lägg till varje enskild variant i varukorgen
+      }
     });
 
     setConfirmationMessage("Produkten har lagts till i kundvagnen!");
-};
+  };
 
   // Bestämma vilken data för tryckpriser. Dark är dyrast
   const printPrice = darkPrintPrice;
 
-
   // Skriv ut kod på sidan
   return (
     <div className="container">
-      <ul className="breadcrumb">
+      {/* Finns ingen desing för detta i mobil
+       <ul className="breadcrumb">
         <li>Produkter</li>
         <li>{product.category}</li>
         <li>{product.name}</li>
       </ul>
-      <hr />
+      <hr /> */}
+
       <main className="product">
         <ProductGallery images={product.images} />
         <section>
-          <p>{product.brand}</p>
+          <p className="brand-name">{product.brand}</p>
           <h1 className="heading-1">{product.name}</h1>
-          <p>{product.description}</p>
-          <hr />
+          <p className="product-description">{product.description}</p>
+
+          <div className="certificate-container">
+            {product.certificates.map((certificate, index) => (
+              <div key={index} className="certificate-item">
+                <a
+                  href={certificate.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src={certificate.img}
+                    alt={certificate.name}
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = "/img/default-image.svg";
+                    }}
+                  />
+                </a>
+              </div>
+            ))}
+          </div>
+
           <form>
             <fieldset>
-              <legend>Färg:</legend>
+              <legend className="subheading-1">Färg:</legend>
               {product.images.variants.map((variant, index) => (
                 <Radiobutton
                   key={index}
@@ -179,35 +205,30 @@ const ProductDetail = () => {
                 />
               ))}
             </fieldset>
-            <hr />
-            <fieldset>
-              <legend>Antal</legend>
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr 1fr",
-                  gap: "1.6rem",
-                }}
-              >
-                {product.sizeVariants.map((variant, index) => {
-                  const key = `${selectedColor}-${variant}`;
-                  return (
-                    <IncrementButton
-                      key={index}
-                      id={key}
-                      size={variant}
-                      handleChange={handleQuantityChange}
-                      quantity={sizeQuantities[key] || 0}
-                    />
-                  );
-                })}
-              </div>
-            </fieldset>
-            <hr />
-            <p>Du måste handla minst {product.minBuy} av denna produkt</p>
-            <hr />
 
-                {/*Ifall vi ska använda tryck i produktdetaljer */}
+            <div className="size-container">
+              <fieldset>
+                <legend className="subheading-1">Antal</legend>
+                <div className="grid-container">
+                  {product.sizeVariants.map((variant, index) => {
+                    const key = `${selectedColor}-${variant}`;
+                    return (
+                      <IncrementButton
+                        key={index}
+                        id={key}
+                        size={variant}
+                        handleChange={handleQuantityChange}
+                        quantity={sizeQuantities[key] || 0}
+                      />
+                    );
+                  })}
+                </div>
+              </fieldset>
+            </div>
+
+            <p>Du måste handla minst {product.minBuy} av denna produkt</p>
+
+            {/*Ifall vi ska använda tryck i produktdetaljer */}
             {/* <label>
               Tryck:
               <select
@@ -235,7 +256,7 @@ const ProductDetail = () => {
               <thead>
                 <tr>
                   <td>Antal</td>
-                  
+
                   {product.priceTiers.map((tier, index) => (
                     <th key={index}>
                       {tier.maxQuantity !== null
@@ -246,7 +267,6 @@ const ProductDetail = () => {
                 </tr>
               </thead>
               <tbody>
-                
                 <tr>
                   <td>Pris/st</td>
                   {product.priceTiers.map((tier, index) => (

@@ -6,7 +6,7 @@
   --primary-green: #606f4a;
   --primary-lightgreen: #9daf88;
   --bright-color: #e0e5d3;
-  --white-color: #fff;
+  --white-color: #fafafa;
 
   /*Z index*/
   --layer-1: 5;
@@ -42,7 +42,7 @@
 
 
 body{
-  background-color: white;
+  background-color: #FAFAFA ;
   font-size: var(--fontSizeXS);
   font-family: var(--bodyFont);
 
@@ -50,11 +50,23 @@ body{
 .heading-1, .heading-2, .heading-3{
   font-family: var(--headingFont);
 }
-.subheading-1, .subheading-2, .subheading-3{
+.subheading-1, .subheading-2{
   font-family: var(--subHeadingFont);
 }
 .heading-1{
+  font-size: var(--fontSizeXXL);
+}
+.heading-2{
   font-size: var(--fontSizeXL);
+}
+.heading-3{
+  font-size: var(--fontSizeLG);
+}
+.subheading-1{
+  font-size: var(--fontSizeMD);
+}
+.subheading-2{
+  font-size: var(--fontSizeSM);
 }
 .container{
   max-width: 1400px;

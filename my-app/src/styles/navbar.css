@@ -170,7 +170,7 @@
 
 /* General navbar styling (for desktop) */
 .navbar {
-  background-color: white;
+  background-color: #FAFAFA ;
   color: #6E775E;
   padding: 10px 20px;
   display: flex;
@@ -361,3 +361,10 @@
     display: none; /* Hide desktop menu links */
   }
 }
+
+
+
+
+
+
+

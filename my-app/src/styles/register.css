@@ -1,44 +1,95 @@
+
+
 .input-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive columns */
-    gap: 1rem; /* Space between input items */
-    width: 100%; /* Full width of the container */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Automatisk kolumnfyllning med minimi 300px */
+    gap: 1rem; /* Avstånd mellan grid-elementen */
+    width: 100%; /* Full bredd */
 }
 
 .input-row {
-    display: flex; /* Use flexbox to place inputs in a row */
-    gap: 1rem; /* Space between the two inputs */
+    display: flex; /* Flexbox för rader */
+    gap: 1rem; /* Avstånd mellan element i raden */
 }
 
 .input-item {
-    flex: 1; /* Allow input items to grow equally */
+    flex: 1; /* Gör så att varje input-item växer jämnt */
 }
 
 .input-label {
-    margin-bottom: 0.5rem; /* Space between label and input */
+    margin-bottom: 0.5rem; /* Marginal under etiketten */
 }
 
 .input-login {
-    width: 100%; /* Full width of the input */
-    padding: 0.75rem; /* Add some padding */
-    border: 1px solid #ccc; /* Simple border */
-    border-radius: 4px; /* Rounded corners */
+    width: 100%; /* Full bredd för inmatningsfältet */
+    padding: 0.75rem; /* Inre marginal */
+    border: 1px solid #ccc; /* Ramfärg */
+    border-radius: 4px; /* Rundade hörn */
 }
 
-h4{
-    font-size: var(--fontSizeSM);
-    font-weight: 500;
+h4 {
+    font-size: var(--fontSizeSM); /* Storlek för rubriken */
+    font-weight: 500; /* Tyngd på texten */
 }
 
-.info-text{
-    font-size: var(--fontSizeXSS);
+.info-text {
+    font-size: var(--fontSizeXSS); /* Textstorlek för info-text */
+    margin: 1rem 0; /* Ingen marginal */
+}
+
+.checkbox-container {
+    display: flex; /* Flexbox för checkbox-container */
+    align-items: center; /* Vertikal centrering */
+    cursor: pointer; /* Pekare vid hover */
+    font-size: var(--fontSizeXS); /* Textstorlek */
+}
+
+.checkbox-container label {
+    position: relative; /* Positionering för labeln */
+    cursor: pointer; /* Pekare vid hover */
+}
+
+/* CSS för lösenordssektionen */
+.password-section {
+    grid-column: span 2; /* Gör att lösenordssektionen tar upp hela raden */
+    padding: 0;
     margin: 0;
-}
-.news{
-    font-size: var(--fontSizeXS); 
+   
 }
 
-.news-input{
-    border-radius: 60px;
-    background-color:red;
+.login-btn {
+    background-color: var(--primary-green);
+    padding: 1rem 3rem;
+    border-radius: 48px;
+    text-align: center;
+    font-size: var(--fontSizeXS);
+    margin: 0 auto; /* Detta borde centrera knappen */
+    margin-top: 4rem;
+    display: block; /* Block-element centreras automatiskt */
+    color: white;
+    width: 100%;
+}
+
+
+
+
+
+/* Media Query för Desktop */
+@media (min-width: 768px) {
+    .input-grid {
+        grid-template-columns: repeat(2, 1fr); /* Två kolumner på desktop */
+    }
+
+   
+}
+
+/* Media Query för Mobil */
+@media (max-width: 767px) {
+    .input-grid {
+        grid-template-columns: 1fr; /* En kolumn på mobil */
+    }
+
+    .password-section {
+        grid-column: span 1; /* Låt lösenordssektionen ta upp en kolumn */
+    }
 }

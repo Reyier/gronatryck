@@ -25,7 +25,7 @@
     align-items: center;
     width: 90%;
     height: auto;
-    background-color: var(--primary-lightgreen);
+    background-color: var(--bright-color);
     padding: 4rem 2rem 4rem 2rem;
     margin: auto;
     border-radius: var(--border-radius);
@@ -34,7 +34,7 @@
 }
 
 .input-login {
-  background-color: var(--bright-color);
+  background-color: var( --white-color);
   width: 100%;
   height: 4rem;
   padding-left: 1rem;
@@ -81,4 +81,13 @@ h3 {
     margin-top: 4rem;
     display: block;
     color: white;
+
+}
+
+
+@media (min-width: 769px) {
+    .login-container {
+        width: 40%; 
+       
+    }
 }

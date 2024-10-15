@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ImageThumbnail from "./ImageThumbnail";
+import '../styles/product.css';
 
 function ProductGallery(props) {
   const [
@@ -37,7 +38,6 @@ function ProductGallery(props) {
     }
   }, [props.images]);
 
-
   function changeMainImage(id) {
     setMainImage({
       mainImageLarge: flattenedImagesArray[id].large,
@@ -52,15 +52,15 @@ function ProductGallery(props) {
       <div className="main-image">
         <img
           src={mainImageLarge}
-          srcSet={`${mainImageSmall}, 600w, ${mainImageMedium}, 1024w, ${mainImageLarge}, 1600w,`}
+          srcSet={`${mainImageSmall} 600w, ${mainImageMedium} 1024w, ${mainImageLarge} 1600w`}
           sizes="(max-width: 600px) 600px, (max-width: 1024px) 1024px, 1600px"
           alt={mainImageAlt}
           loading="lazy"
         />
       </div>
-      <div className="thumbnail-images">
-        {flattenedImagesArray.map((variant, index) => {
-          return (
+      <div className="thumbnail-carousel">
+        <div className="thumbnail-images">
+          {flattenedImagesArray.map((variant, index) => (
             <ImageThumbnail
               key={index}
               id={index}
@@ -70,8 +70,8 @@ function ProductGallery(props) {
               alt={variant.alt}
               handleClick={changeMainImage}
             />
-          );
-        })}
+          ))}
+        </div>
       </div>
     </div>
   );

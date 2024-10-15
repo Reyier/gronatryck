@@ -6,7 +6,7 @@
 }
 
   .container {
-    width: 90%;
+    /* width: 90%; */
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
@@ -64,15 +64,15 @@
     margin-left: 2rem;
   }
   
-  input[type="number"] {
-    width: 50px;
+/*   input[type="number"] {
+    width: 300px;
     padding: 6px;
     font-size: 1em;
     text-align: center;
     border: 1px solid #ccc;
     border-radius: 5px;
     margin: 0 10px;
-  }
+  } */
   
   textarea {
     width: 100%;

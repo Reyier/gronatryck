@@ -17,14 +17,20 @@ const products = [
       certificates: [
         {
           name: "FairTrade",
-          img: "imgurltocertificate",
-          link: "https://wwww.fairtrade.com",
+          img: "/img/certificates/fairtrade-certified-cotton.svg",  
+          link: "https://www.fairtrade.com",
         },
         {
-          name: "FairTrade",
-          img: "imgurltocertificate",
-          link: "https://wwww.fairtrade.com",
+          name: "Amfori",
+          img: "/img/certificates/amfori.svg",  
+          link: "https://www.fairtrade.com",
         },
+        {
+          name: "Sai",
+          img: "/img/certificates/sai.svg",  
+          link: "https://www.fairtrade.com",
+        },
+        
       ],
       brand: "Stanley Stella",
       minBuy: 10,
@@ -118,15 +124,21 @@ const products = [
       certificates: [
         {
           name: "FairTrade",
-          img: "imgurltocertificate",
-          link: "https://wwww.fairtrade.com",
+          img: "/img/certificates/fairtrade-certified-cotton.svg",  
+          link: "https://www.fairtrade.com",
         },
         {
-          name: "FairTrade",
-          img: "imgurltocertificate",
-          link: "https://wwww.fairtrade.com",
+          name: "Amfori",
+          img: "/img/certificates/amfori.svg",  
+          link: "https://www.fairtrade.com",
+        },
+        {
+          name: "Sai",
+          img: "/img/certificates/sai.svg",  
+          link: "https://www.fairtrade.com",
         },
       ],
+
       brand: "Neutral",
       minBuy: 10,
       priceTiers: [

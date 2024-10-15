@@ -175,16 +175,22 @@ export default Navbar;
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaShoppingCart, FaUserAlt, FaSearch, FaBars, FaTimes } from 'react-icons/fa';
+import SearchBar from './Search'; // Importera SearchBar
 import '../styles/navbar.css';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false); // Tillstånd för sökfältet
 
   const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
 
   const toggleMenu = () => {
     setIsMenuOpen((prevState) => !prevState);
+  };
+
+  const toggleSearch = () => {
+    setIsSearchOpen((prevState) => !prevState);
   };
 
   const handleUserDropdownToggle = () => {
@@ -193,12 +199,10 @@ const Navbar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('loggedInUser');
-    // Redirect or update state if necessary
   };
 
   return (
     <nav className="navbar">
-      {/* Top bar for desktop and mobile */}
       <div className="navbar-top">
         <div className="navbar-brand">
           <Link to="/">
@@ -206,7 +210,6 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Icons for mobile and desktop */}
         <div className="navbar-icons">
           <Link to="/cart" className="icon cart-icon">
             <FaShoppingCart />
@@ -239,16 +242,28 @@ const Navbar = () => {
               </ul>
             )}
           </div>
-          <Link to="/search" className="icon">
+
+          {/* Sökikon */}
+          <button onClick={toggleSearch} className="icon search-icon">
             <FaSearch />
-          </Link>
+          </button>
+
           <button onClick={toggleMenu} className="menu-toggle">
             {isMenuOpen ? <FaTimes /> : <FaBars />}
           </button>
         </div>
       </div>
 
-      {/* Desktop menu centered */}
+      {/* Sökfältet */}
+      {isSearchOpen && (
+        <div className="navbar-search">
+          <SearchBar /> {/* Använd SearchBar-komponenten */}
+          <button className="close-search" onClick={toggleSearch}>
+            <FaTimes />
+          </button>
+        </div>
+      )}
+
       <ul className="navbar-links">
         <li>
           <Link to="/">Hem</Link>
@@ -273,7 +288,6 @@ const Navbar = () => {
         </li>
       </ul>
 
-      {/* Mobile menu */}
       <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`}>
         <ul className="navbar-links-mobile">
           <li>
@@ -294,8 +308,6 @@ const Navbar = () => {
           <li>
             <Link to="/resellers">För Återförsäljare</Link>
           </li>
-
-          {/* Contact Details */}
           <li className="contact-info">
             <p>Ring oss på: <a href="tel:+4690131340">+46 (0)90 13 13 40</a></p>
             <p>Maila oss på: <a href="mailto:kontakt@gronatryck.se">kontakt@gronatryck.se</a></p>
@@ -303,12 +315,10 @@ const Navbar = () => {
         </ul>
       </div>
 
-      {/* Overlay when menu is open */}
-      {isMenuOpen && (
-        <div className="menu-overlay" onClick={toggleMenu}></div>
-      )}
+      {isMenuOpen && <div className="menu-overlay" onClick={toggleMenu}></div>}
     </nav>
   );
 };
 
 export default Navbar;
+

@@ -217,16 +217,16 @@ function Register({ onRegister }) {
               required
             />
           </div>
-
-          
-        </div>
-
-        <div className="news"> 
-    <input type="checkbox" id="news" name="news" />
+          <div className="news"> 
+    <input type="checkbox" id="news" name="news" class="news-input"/>
     <label for="news">Ja, Jag vill ta emot nyhetsbrev.</label>
   </div>
 
       </div>
+          
+        </div>
+
+       
     </div>
   );
 }

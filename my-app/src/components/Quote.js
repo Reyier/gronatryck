@@ -13,7 +13,7 @@ const Quote = ({ customer, cartItems, totalCost }) => {
 
   return (
     <div className="quote-summary">
-      <h2>Offert</h2>
+      <h1 className='heading-2'>Offert</h1>
       <h3>Kundinformation:</h3>
       <p>Företagsnamn: {customer.companyName || 'Inget företag angivet'}</p>
       <p>Företagsadress: {customer.street || 'Ingen adress angiven'}</p>

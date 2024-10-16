@@ -45,11 +45,11 @@ function Checkout() {
     <div className="checkout-container">
       <ProgressTracker />
       <div className="cart-heading">
-        <h1 className="heading-3">Checkout </h1>
+        <h1 className="heading-1">Checkout </h1>
       </div>
       {loggedInUser ? (
         <>
-          <h2>Kundinformation</h2>
+          <h1 className='heading-2'>Kundinformation</h1>
           <form>
             <label>
               För & Efternamn

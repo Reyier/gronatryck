@@ -1,0 +1,35 @@
+/* Breadcrumb.css */
+.breadcrumb-wrapper{
+    margin: 7rem 0 0 2rem;
+}
+  
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    font-size: var(--fontSizeXS);  
+    color: #333;  
+  }
+  
+  .breadcrumb a {
+    text-decoration: none;
+    color: var(--primare-green); 
+    transition: color 0.3s;  
+  }
+  
+  .breadcrumb a:hover {
+    text-decoration: underline;  
+    color: var(--primare-dark);  
+  }
+  
+  .breadcrumb-separator {
+    margin: 0 5px; 
+  }
+  
+  
+  /* .category-heading {
+    font-size: 24px;  
+    font-weight: bold;  
+    margin: 10px 0 20px 0;  
+    color: #333;  
+  }
+   */

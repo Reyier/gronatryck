@@ -1,7 +1,10 @@
 import React from 'react';
+import Header from "../components/NavbarMax";
 
 const Home = () => {
-  return <h1>Välkommen till Stanley Stella</h1>;
+  return (<div>
+    <Header /> {/* Max header bar */}
+  </div>);
 };
 
 export default Home; // Standardexport

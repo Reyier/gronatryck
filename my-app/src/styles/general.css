@@ -43,9 +43,14 @@
 
 body{
   background-color: #FAFAFA ;
-  font-size: var(--fontSizeXS);
+  font-size: var(--fontSizeSM);
   font-family: var(--bodyFont);
+  line-height: 1.6;
 
+}
+a{
+  text-decoration: none;
+  color: var(--primary-green);
 }
 .heading-1, .heading-2, .heading-3{
   font-family: var(--headingFont);
@@ -68,8 +73,28 @@ body{
 .subheading-2{
   font-size: var(--fontSizeSM);
 }
+
+.main-body{
+font-size: var(--fontSizeXS);
+}
+
+.info-text{
+  font-size: var(--fontSizeXSS);
+ 
+}
+
+.nav-link{
+  font-family: var(--subHeadingFont);
+  font-size: var( --fontSizeSM);
+ 
+}
+
+
+
 .container{
   max-width: 1400px;
   margin-inline: auto;
 }
-
+.small-spacing{
+margin: var(--small-spacing)
+}

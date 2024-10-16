@@ -3,7 +3,7 @@ import { useCart } from "../context/CartContext";
 import { Link, useNavigate } from "react-router-dom";
 import ProgressTracker from "../components/ProgressTracker";
 import "../styles/CartPage.css";
-import { darkPrintPrice } from "../data/printPrice"; // Assuming this imports your price tiers
+import { darkPrintPrice } from "../data/printPrice";
 import products from "../data/product.js";
 
 function CartPage() {
@@ -14,6 +14,10 @@ function CartPage() {
   const navigate = useNavigate();
   const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
+  const [openPrintSection, setOpenPrintSection] = useState(false);
+  const togglePrintSection = () => {
+    setOpenPrintSection((prev) => !prev);
+  };
   const handleGlobalFileUpload = (e) => setGlobalFile(e.target.files[0]);
   const handleGlobalCommentChange = (e) => setGlobalComment(e.target.value);
 
@@ -42,6 +46,16 @@ function CartPage() {
       .toFixed(2);
   };
 
+  const itemTotalPrice = (quantity, product) => {
+    const pricePerItem = getPriceByTotalQuantity(quantity, product);
+
+    const totalPrice = pricePerItem * quantity;
+
+    return totalPrice.toFixed(2);
+  };
+
+  console.log(itemTotalPrice);
+
   const getPriceByTotalQuantity = (totalQuantity, product) => {
     const priceTier = product.priceTiers.find((tier) => {
       return (
@@ -53,18 +67,43 @@ function CartPage() {
   };
 
   const totalPrintPrice = () => {
-    return cartItems
-      .reduce((total, item) => {
-        const printIndex = globalPrintType
+    if (!cartItems || cartItems.length === 0) return "0.00";
+
+    const itemsTotal = cartItems.reduce((total, item) => {
+      const printIndex =
+        globalPrintType &&
+        globalPrintType !== "" &&
+        globalPrintType !== "Utan tryck"
           ? parseInt(globalPrintType.split(" ")[0]) - 1
-          : 0;
-        const printPricePerItem = globalPrintType
+          : null;
+
+      const printPricePerItem =
+        printIndex !== null
           ? getPrintPriceByTotalQuantity(item.totalQuantity, printIndex)
           : 0;
-        return total + printPricePerItem * item.totalQuantity;
-      }, 0)
-      .toFixed(2);
+
+      const itemTotal = printPricePerItem * item.totalQuantity;
+      console.log(`Item Total for ${item.name || "unknown"}: ${itemTotal}`);
+      return total + itemTotal;
+    }, 0);
+
+    const stencilPrice = totalStencilPrice();
+    console.log(`Stencil Price: ${stencilPrice}`);
+
+    const totalPrice = itemsTotal + stencilPrice;
+    console.log(
+      `Items Total: ${itemsTotal}, Stencil Price: ${stencilPrice}, Total Price: ${totalPrice}`
+    );
+
+    if (typeof totalPrice !== "number") {
+      console.error(`Expected a number but got: ${totalPrice}`);
+      return "0.00";
+    }
+
+    return totalPrice.toFixed(2);
   };
+
+  console.log(totalPrintPrice);
 
   const getPrintPriceByTotalQuantity = (totalQuantity, printIndex) => {
     if (totalQuantity < 50) {
@@ -96,37 +135,34 @@ function CartPage() {
     return cartItems.reduce((total, item) => total + item.totalQuantity, 0);
   };
 
-  // Function to navigate to product detail page
   const navigateToProductDetail = (productId) => {
-    navigate(`/products/${productId}`); // Assume your product detail page has this route
+    navigate(`/products/${productId}`);
   };
 
-  // Price per item calculation based on selected print type
   const pricePerItem = useMemo(() => {
     if (globalPrintType) {
       const totalQuantity = getTotalQuantity();
-      const printIndex = parseInt(globalPrintType.split(" ")[0]) - 1; // Get the index based on the selected print type
+      const printIndex = parseInt(globalPrintType.split(" ")[0]) - 1;
       return totalQuantity > 0
-        ? getPrintPriceByTotalQuantity(totalQuantity, printIndex).toFixed(2) // Get the price for the current quantity
-        : 0; // Avoid division by zero
+        ? getPrintPriceByTotalQuantity(totalQuantity, printIndex).toFixed(2)
+        : 0;
     }
-    return 0; // Default to 0 if no print type is selected
+    return 0;
   }, [cartItems, globalPrintType]);
 
-  // Function to display print prices
   const renderPrintPrices = () => {
     return (
       <table>
         <thead>
           <tr>
-            <th>Antal</th>
-            <th>Pris 1 färg</th>
-            <th>Pris 2 färg</th>
-            <th>Pris 3 färg</th>
-            <th>Pris 4 färg</th>
-            <th>Pris 5 färg</th>
-            <th>Pris 6 färg</th>
-            <th>Pris 7 färg</th>
+            <td>Antal</td>
+            <th>1 färg</th>
+            <th>2 färg</th>
+            <th>3 färg</th>
+            <th>4 färg</th>
+            <th>5 färg</th>
+            <th>6 färg</th>
+            <th>7 färg</th>
           </tr>
         </thead>
         <tbody>
@@ -134,7 +170,7 @@ function CartPage() {
             <tr key={quantity}>
               <td>{quantity}</td>
               {prices.map((price, index) => (
-                <td key={index}>{price} SEK</td>
+                <th key={index}>{price} SEK</th>
               ))}
             </tr>
           ))}
@@ -143,11 +179,18 @@ function CartPage() {
     );
   };
 
+  const totalStencilPrice = () => {
+    if (!globalPrintType) return "0.00";
+    const printIndex = parseInt(globalPrintType.split(" ")[0]);
+    return darkPrintPrice.schablon[printIndex] || 0;
+  };
+
   return (
     <div className="cartpage">
       <ProgressTracker />
-      <h1>Varukorg ({getTotalQuantity()} varor)</h1>
-
+      <div className="cart-heading">
+        <h1 className="heading-3">Varukorg ({getTotalQuantity()} varor)</h1>
+      </div>
       {cartItems.length === 0 ? (
         <p>Inga varor i varukorgen</p>
       ) : (
@@ -162,101 +205,117 @@ function CartPage() {
                     className="cart-list"
                     key={item.productId + item.selectedColor + item.size}
                   >
-                    <Link to={`/produkter/${item.productId}`}>
+                    <Link
+                      to={`/produkter/${item.productId}`}
+                      className="cart-item"
+                    >
                       <img
-                        src={product.images.variants.find(
-                          (v) => v.colorName === item.selectedColor
-                        )?.images.medium}
+                        src={
+                          product.images.variants.find(
+                            (v) => v.colorName === item.selectedColor
+                          )?.images.medium
+                        }
                         alt={product.name}
+                        className="cart-item-image"
                       />
-                      <p>
-                        {product.name} - Färg: {item.selectedColor} - Storlek:{" "}
-                        {item.size}
-                      </p>
-                      <p>
-                        Pris/st:{" "}
-                        {getPriceByTotalQuantity(item.totalQuantity, product)} SEK
-                      </p>
+                      <div className="cart-item-details">
+                        <button
+                          className="remove-btn"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            removeFromCart(
+                              item.productId,
+                              item.selectedColor,
+                              item.size
+                            );
+                          }}
+                        >
+                          <span>x</span>
+                        </button>
+                        <p className="cart-item-name">{product.name}</p>
+                        <p className="cart-item-color">
+                          Färg: {item.selectedColor}
+                        </p>
+                        <p className="cart-item-size">Storlek: {item.size}</p>
+                        <p className="cart-item-price">
+                          Pris/st:{" "}
+                          {getPriceByTotalQuantity(item.totalQuantity, product)}{" "}
+                          SEK
+                        </p>
+                        <p className="cart-item-total-price">
+                          Totalt: {itemTotalPrice(item.totalQuantity, product)}{" "}
+                          SEK
+                        </p>
+                      </div>
                     </Link>
 
-                    <div>
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation(); // Prevent triggering the Link
-                          handleQuantityChange(item, item.totalQuantity - 1);
-                        }}
-                      >
-                        -
-                      </button>
-                      <input
-                        type="number"
-                        value={item.totalQuantity}
-                        min="0"
-                        onChange={(e) =>
-                          handleQuantityChange(
-                            item,
-                            parseInt(e.target.value) || 0
-                          )
-                        }
-                      />
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation(); // Prevent triggering the Link
-                          handleQuantityChange(item, item.totalQuantity + 1);
-                        }}
-                      >
-                        +
-                      </button>
-
-                      <button
-                        className="remove-btn"
-                        onClick={(e) => {
-                          e.stopPropagation(); // Prevent triggering the Link
-                          removeFromCart(
-                            item.productId,
-                            item.selectedColor,
-                            item.size
-                          );
-                        }}
-                      >
-                        Ta bort
-                      </button>
+                    <div className="increment-container">
+                      <div className="increment-number-input">
+                        <button
+                          className="increment-buttons"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleQuantityChange(item, item.totalQuantity - 1);
+                          }}
+                        >
+                          -
+                        </button>
+                        <input
+                          className="input-number"
+                          type="number"
+                          value={item.totalQuantity}
+                          min="0"
+                          onChange={(e) =>
+                            handleQuantityChange(
+                              item,
+                              parseInt(e.target.value) || 0
+                            )
+                          }
+                        />
+                        <button
+                          className="increment-buttons"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleQuantityChange(item, item.totalQuantity + 1);
+                          }}
+                        >
+                          +
+                        </button>
+                      </div>
                     </div>
                   </li>
                 );
               })}
             </ul>
-
-            <h5>Pris för kläder: {clothTotalPrice()} SEK</h5>
-            <h5>Pris för tryck: {totalPrintPrice()} SEK</h5>
-            <h2>
-              Totalt pris:{" "}
-              {parseFloat(clothTotalPrice()) + parseFloat(totalPrintPrice())}{" "}
-              SEK
-            </h2>
           </div>
 
           {/* Print Container */}
           <div className="print-container">
-            <h2>Tryckalternativ:</h2>
-            <label>
-              Välj tryck:
-              <select onChange={handleGlobalPrintTypeChange} value={globalPrintType}>
-                <option value="">Utan tryck</option>
-                <option value="1 färg">1 färg</option>
-                <option value="2 färg">2 färg</option>
-                <option value="3 färg">3 färg</option>
-                <option value="4 färg">4 färg</option>
-                <option value="5 färg">5 färg</option>
-                <option value="6 färg">6 färg</option>
-                <option value="7 färg">7 färg</option>
-              </select>
-            </label>
-            <h4>Antal: {getTotalQuantity()}</h4>
-            <h4>Pris/St: {pricePerItem} SEK</h4> {/* Dynamically display price per item */}
-            <h4>Totalt tryckpris: {totalPrintPrice()} SEK</h4>
-
-            {/* File upload and comment section */}
+            <div className="cart-heading">
+              <h1 className="heading-3">Tryckalternativ:</h1>
+            </div>
+            <div className="label-container">
+              <label>
+                Välj tryck:
+                <select
+                  onChange={handleGlobalPrintTypeChange}
+                  value={globalPrintType}
+                >
+                  <option value="">Utan tryck</option>
+                  <option value="1 färg">1 färg</option>
+                  <option value="2 färg">2 färg</option>
+                  <option value="3 färg">3 färg</option>
+                  <option value="4 färg">4 färg</option>
+                  <option value="5 färg">5 färg</option>
+                  <option value="6 färg">6 färg</option>
+                  <option value="7 färg">7 färg</option>
+                </select>
+              </label>
+            </div>
+            <h4 className="main-body">Antal: {getTotalQuantity()}</h4>
+            <h4 className="main-body">Pris/St: {pricePerItem} SEK</h4>{" "}
+            <h4 className="main-body"> Schablon: {totalStencilPrice()}SEK</h4>
+            <h4 className="main-body">Totalt tryckpris: {totalPrintPrice()} SEK</h4>
             <div className="file-upload-section">
               <label>
                 Ladda upp fil:
@@ -268,22 +327,48 @@ function CartPage() {
                   value={globalComment}
                   onChange={handleGlobalCommentChange}
                   rows="4"
-                  placeholder="Skriv din kommentar här..."
+                  placeholder="Besrkiv hur du vill använda ditt tryck här..."
                 />
               </label>
             </div>
-
-            {/* Render print prices */}
-            <h3>Tryckpriser:</h3>
-            {renderPrintPrices()}
+            <div className="collapse-container ">
+              <h3
+                className="main-body"
+                onClick={togglePrintSection}
+                style={{ cursor: "pointer" }}
+              >
+                Tryckpriser:
+                <span className="toggle-arrow">
+                  {openPrintSection ? "▲" : "▼"}
+                </span>
+              </h3>
+              {openPrintSection && renderPrintPrices()}
+            </div>
           </div>
         </div>
       )}
 
-      <Link to="/">Gå till startsidan</Link>
+      <div className="price-container">
+        <h5 className="main-body">Pris för kläder: {clothTotalPrice()} SEK</h5>
+        <h5 className="main-body">Pris för tryck: {totalPrintPrice()} SEK</h5>
+     
+        <div className="cart-heading left">
+          <h1 className="heading-3">
+            Totalt pris:{" "}
+            {parseFloat(clothTotalPrice()) + parseFloat(totalPrintPrice())} SEK
+          </h1>
+        </div>
+      </div>
+
+
+      <div className="btn-container">
       {cartItems.length > 0 && (
-        <button onClick={handleCheckoutClick}>Nästa steg</button>
+        <button className="main-btn" onClick={handleCheckoutClick}>
+          Nästa steg
+        </button>
       )}
+</div>
+
     </div>
   );
 }

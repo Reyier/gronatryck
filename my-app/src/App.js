@@ -21,6 +21,8 @@ import ScrollToTopButton from './components/ScrollToTop';
 import ConfirmationPage from './pages/ConfirmationPage';
 import Footer from './components/Footer'; // Importera Footer
 
+import Header from './components/NavbarMax';
+
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null); // Track logged in user
@@ -109,11 +111,11 @@ function App() {
        
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/stanley" element={<Stanley />} />
-          <Route path="/products" element={<Products />} />
+          <Route path="/stanley-stella" element={<Stanley />} />
+          <Route path="/produkter" element={<Products />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/blog" element={<Blog />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/kontakt" element={<Contact />} />
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
           <Route path="/register" element={<Register onRegister={handleRegister} />} />
           <Route path="/reset-password" element={<ResetPassword onReset={handleResetPassword} />} />

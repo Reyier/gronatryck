@@ -1,12 +1,291 @@
 
 .cartpage{
+  width: 90%;
+  justify-content: center;
+  margin: auto;
+  background-color: var(--white-color);
+}
+
+.cart-heading{
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+.cart-content{
+  width: 100%;
+  
+}
+
+.cart-list{
+  max-width: 100ch;
+   
+    border-radius: 6px;
+  margin-bottom: 5rem;
+}
+
+.cart-item {
+  display: flex; 
+  align-items: center;
+  text-decoration: none; 
+  margin: 1rem 0; 
+ 
+  position: relative;
+  border-radius: 6px; 
+ font-family: var(--BodyFont);
+  font-size: var(--fontSizeXS);
+  color: #333;
+  
+}
+
+
+.remove-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;  
+  right: 1rem; 
+  top: 0.5rem;
+  color: #d9534f; 
+  font-size: 2rem;
+  padding: 0; 
+  line-height: 0;
+}
+
+
+.increment-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end; 
+  align-items: center;
+  margin-left: auto; 
+  text-align: center;
+}
+
+
+.cart-item-image {
+  width: 35%; 
+  height: auto;
+  margin-right: 1rem; 
+ 
+}
+
+.cart-item-details {
+  flex-grow: 1; 
+ 
+  
+}
+
+.cart-item-name {
+  margin: 0; 
+}
+
+.cart-item-price {
+  margin: 0;
+  color: #333; 
+}
+
+
+
+
+
+
+
+.quantity-container{
+  display: flex;
+  align-items: center;
+  margin: auto;
+}
+
+.increment-buttons{
+  font-size: 2rem;
+  padding: 0 2rem;
+}
+
+
+.print-container {
+  width: 100%;
+  padding: 2rem 0;
+  
+  border-radius: 6px;
+  margin-top: 2rem;
+  font-family: var(--bodyFont);
+  
+}
+
+.print-container label {
+  font-weight: bold;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.print-container select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  background-color: #ffffff;
+}
+
+.print-container textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.print-container h4 {
+  color: #6c757d;
+  margin: 5px 0;
+}
+
+
+.left{
+  text-align: left;
+}
+
+
+.btn-container{
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  margin: 5rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.file-upload-section {
+  margin-top: 1.5rem;
+}
+
+.file-upload-section label {
+  font-weight: bold;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.file-upload-section input[type="file"] {
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  background-color: #ffffff;
+  width: 100%;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.file-upload-section input[type="file"]::file-selector-button {
+  background-color:var(--primary-lightgreen);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  margin-left: 5px;
+  transition: background-color 0.2s;
+}
+
+.file-upload-section input[type="file"]::file-selector-button:hover {
+  background-color: var(--primary-green);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .print-container {
+  margin: 3rem 0;
+}
+
+.print-container h1 {
+  margin: 1rem 0;
+} */
+
+
+
+
+
+
+/* .cartpage{
   width: 80%;
   justify-content: center;
   margin: auto;
 }
 
   .container {
-    /* width: 90%; */
+    /* width: 90%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
@@ -36,14 +315,10 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
   
-  p {
-    font-size: 1.1em;
-    color: #555;
-    margin: 10px 0;
-  }
+
   
   /* Produkthantering (knappar och inputfält) */
-  button {
+  /* button {
     background-color: #a6b691;
     color: white;
     border: none;
@@ -58,11 +333,9 @@
   button:hover {
     background-color: #526040;
   }
+ */
 
-
-  .remove-btn{
-    margin-left: 2rem;
-  }
+ 
   
 /*   input[type="number"] {
     width: 300px;
@@ -72,7 +345,7 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     margin: 0 10px;
-  } */
+  } 
   
   textarea {
     width: 100%;
@@ -93,7 +366,7 @@
     margin-top: 15px;
   }
   
-  /* Stil för checkboxar */
+  /* Stil för checkboxar 
   input[type="checkbox"] {
     margin-right: 8px;
   }
@@ -104,7 +377,7 @@
     margin-bottom: 10px;
   }
   
-  /* Totalt pris och checkout-knapp */
+  /* Totalt pris och checkout-knapp 
   h3 {
     font-size: 1.5em;
     color: #222;
@@ -128,17 +401,17 @@
   }
   
   /* Gå till startsidan länk */
-  a {
+/*   a {
     text-decoration: none;
     color: #007bff;
     font-size: 1.1em;
   }
-  
-  a:hover {
+   */
+/*   a:hover {
     text-decoration: underline;
-  }
+  } */
   
-  /* Responsiv design för mindre skärmar */
+  /* Responsiv design för mindre skärmar 
   @media screen and (max-width: 768px) {
     h1 {
       font-size: 2em;
@@ -150,9 +423,9 @@
       padding: 10px;
     }
   
-    input[type="number"] {
+    /* input[type="number"] {
       width: 40px;
-    }
+    } 
     
     .container {
       padding: 10px;
@@ -162,19 +435,33 @@
 
 .cart-page-container {
   display: flex;
-  justify-content: space-between; /* Space between main content and print container */
-  margin: 20px; /* Add some margin */
+  justify-content: space-between; /* Space between main content and print container 
+  margin: 20px; /* Add some margin 
 }
 
 .cart-content {
-  flex: 1; /* This will take the remaining space */
-  margin-right: 20px; /* Space between content and the print container */
+  flex: 1; /* This will take the remaining space 
+  margin-right: 20px; /* Space between content and the print container 
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .print-container {
-  width: 50rem; /* Set a fixed width for the print container */
+  width: 50rem; /* Set a fixed width for the print container 
   padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   
-}
+} */

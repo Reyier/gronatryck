@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ImageThumbnail from "./ImageThumbnail";
-import '../styles/product.css';
+import '../styles/productdetail.css';
 
 function ProductGallery(props) {
   const [

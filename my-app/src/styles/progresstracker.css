@@ -1,10 +1,11 @@
 .progress-tracker {
     display: flex;
     justify-content: space-between;
-    margin: 20px 0;
+    margin: 8rem 0 0 0;
     padding: 0;
     list-style-type: none;
     counter-reset: step;
+    background-color: var(--white-color);
 }
 
 .step {

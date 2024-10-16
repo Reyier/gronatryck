@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import Quote from '../components/Quote';
-import '../styles/checkout.css'; // Import CSS
+import '../styles/checkout.css'; 
 import ProgressTracker from '../components/ProgressTracker';
 import { useNavigate } from "react-router-dom";
 
@@ -44,7 +44,9 @@ function Checkout() {
   return (
     <div className="checkout-container">
       <ProgressTracker />
-      <h1>Checkout</h1>
+      <div className="cart-heading">
+        <h1 className="heading-3">Checkout </h1>
+      </div>
       {loggedInUser ? (
         <>
           <h2>Kundinformation</h2>

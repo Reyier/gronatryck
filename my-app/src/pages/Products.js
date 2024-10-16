@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import products from '../data/product.js';
-import Card from '../components/Cards.js';
-import '../styles/card.css';
-import { useLocation } from 'react-router-dom';
+import React, { useState } from "react";
+import products from "../data/product.js";
+import Card from "../components/Cards.js";
+import "../styles/card.css";
+import { useLocation } from "react-router-dom";
+import Breadcrumb from "../components/Breadcrumb.js";
 
 const getUniqueColors = (products) => {
   const colors = new Set();
@@ -38,9 +39,9 @@ const getUniqueSizes = (products) => {
 const Products = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const kategori = searchParams.get('kategori')?.toLowerCase();
+  const kategori = searchParams.get("kategori")?.toLowerCase();
 
-  const [sort, setSort] = useState('');
+  const [sort, setSort] = useState("");
   const [selectedColors, setSelectedColors] = useState([]);
   const [selectedBrands, setSelectedBrands] = useState([]);
   const [selectedSizes, setSelectedSizes] = useState([]);
@@ -53,35 +54,48 @@ const Products = () => {
   const uniqueBrands = getUniqueBrands(products);
   const uniqueSizes = getUniqueSizes(products);
 
-  const filteredProducts = products.filter((product) => {
-    const matchesSearch = kategori
-      ? product.name.toLowerCase().includes(kategori) || 
-        product.category.toLowerCase().includes(kategori)
-      : true;
 
-    const matchesColor = selectedColors.length > 0
-      ? product.images.variants?.some((variant) => selectedColors.includes(variant.colorName.toLowerCase()))
-      : true;
 
-    const matchesBrand = selectedBrands.length > 0
-      ? selectedBrands.includes(product.brand?.toLowerCase())
-      : true;
 
-    const matchesSize = selectedSizes.length > 0
-      ? selectedSizes.some(size => product.sizeVariants?.includes(size))
-      : true;
+  const filteredProducts = products
+    .filter((product) => {
+      const matchesSearch = kategori
+        ? product.name.toLowerCase().includes(kategori) ||
+          product.category.toLowerCase().includes(kategori)
+        : true;
 
-    return matchesSearch && matchesColor && matchesBrand && matchesSize;
-  }).sort((a, b) => {
-    if (sort === 'Nyast') return b.date - a.date;
-    if (sort === 'Lägsta pris') return a.priceTiers[0]?.price - b.priceTiers[0]?.price;
-    if (sort === 'Högsta pris') return b.priceTiers[0]?.price - a.priceTiers[0]?.price;
-    if (sort === 'Deals') return a.discount ? -1 : 1;
-    return 0;
-  });
+      const matchesColor =
+        selectedColors.length > 0
+          ? product.images.variants?.some((variant) =>
+              selectedColors.includes(variant.colorName.toLowerCase())
+            )
+          : true;
+
+      const matchesBrand =
+        selectedBrands.length > 0
+          ? selectedBrands.includes(product.brand?.toLowerCase())
+          : true;
+
+      const matchesSize =
+        selectedSizes.length > 0
+          ? selectedSizes.some((size) => product.sizeVariants?.includes(size))
+          : true;
+
+      return matchesSearch && matchesColor && matchesBrand && matchesSize;
+    })
+    .sort((a, b) => {
+      if (sort === "Nyast") return b.date - a.date;
+      if (sort === "Lägsta pris")
+        return a.priceTiers[0]?.price - b.priceTiers[0]?.price;
+      if (sort === "Högsta pris")
+        return b.priceTiers[0]?.price - a.priceTiers[0]?.price;
+      if (sort === "Deals") return a.discount ? -1 : 1;
+      return 0;
+    });
 
   const productCards = filteredProducts.map((product) => {
-    const { productId, name, category, images, sizeVariants, priceTiers } = product;
+    const { productId, name, category, images, sizeVariants, priceTiers } =
+      product;
     const { modelUrl, variants } = images;
 
     const minPrice = Math.min(...priceTiers.map((tier) => tier.price));
@@ -105,7 +119,7 @@ const Products = () => {
   });
 
   const resetFilters = () => {
-    setSort('');
+    setSort("");
     setSelectedColors([]);
     setSelectedBrands([]);
     setSelectedSizes([]);
@@ -132,109 +146,166 @@ const Products = () => {
     );
   };
 
+  const [isFilterVisible, setIsFilterVisible] = useState(false);
+
+
+
   return (
+
+    <div>
+      <div>
+    <Breadcrumb category={kategori} />
+    <h2 className="subheading-1">Alla kläder</h2>
+</div>
+
     <div className="product-wrapper">
-      <h2>{kategori ? `Sökresultat för "${kategori}"` : ''}</h2>
+
+      
+
+
       <div className="filter-wrapper">
-        
-        <label>
-          Sortera:
-          <select value={sort} onChange={(e) => setSort(e.target.value)}>
-            <option value="">Välj sortering</option>
-            <option value="Nyast">Nyast</option>
-            <option value="Lägsta pris">Lägsta pris</option>
-            <option value="Högsta pris">Högsta pris</option>
-            <option value="Deals">Deals</option>
-          </select>
-        </label>
-
-        <div className="filter-group">
-          <button 
-            className="filter-button" 
-            onClick={() => setIsColorDropdownOpen((prev) => !prev)}
-          >
-            Färg {selectedColors.length > 0 && `(${selectedColors.length})`}
-          </button>
-          {isColorDropdownOpen && (
-            <div className="dropdown-menu">
-              {uniqueColors.map((color) => (
-                <label key={color.name} style={{ display: 'flex', alignItems: 'center' }}>
-                  <input 
-                    type="checkbox" 
-                    value={color.name} 
-                    checked={selectedColors.includes(color.name)} 
-                    onChange={() => handleColorChange(color.name)} 
-                    style={{ marginRight: '10px' }}
-                  />
-                  <span style={{
-                    display: 'inline-block',
-                    width: '20px',
-                    height: '20px',
-                    backgroundColor: color.code,
-                    borderRadius: '50%',
-                    marginRight: '8px',
-                    verticalAlign: 'middle'
-                  }}></span>
-                  {color.name.charAt(0).toUpperCase() + color.name.slice(1)}
-                </label>
-              ))}
-            </div>
-          )}
-        </div>
-
-        <div className="filter-group">
-          <button 
-            className="filter-button" 
-            onClick={() => setIsBrandDropdownOpen((prev) => !prev)}
-          >
-            Varumärke {selectedBrands.length > 0 && `(${selectedBrands.length})`}
-          </button>
-          {isBrandDropdownOpen && (
-            <div className="dropdown-menu">
-              {uniqueBrands.map((brand) => (
-                <label key={brand} style={{ display: 'flex', alignItems: 'center' }}>
-                  <input 
-                    type="checkbox" 
-                    value={brand} 
-                    checked={selectedBrands.includes(brand)} 
-                    onChange={() => handleBrandChange(brand)} 
-                    style={{ marginRight: '10px' }}
-                  />
-                  {brand.charAt(0).toUpperCase() + brand.slice(1)}
-                </label>
-              ))}
-            </div>
-          )}
-        </div>
-
-        <div className="filter-group">
-          <button 
-            className="filter-button" 
-            onClick={() => setIsSizeDropdownOpen((prev) => !prev)}
-          >
-            Storlek {selectedSizes.length > 0 && `(${selectedSizes.length})`}
-          </button>
-          {isSizeDropdownOpen && (
-            <div className="dropdown-menu">
-              {uniqueSizes.map((size) => (
-                <label key={size} style={{ display: 'flex', alignItems: 'center' }}>
-                  <input 
-                    type="checkbox" 
-                    value={size} 
-                    checked={selectedSizes.includes(size)} 
-                    onChange={() => handleSizeChange(size)} 
-                    style={{ marginRight: '10px' }}
-                  />
-                  {size}
-                </label>
-              ))}
-            </div>
-          )}
-        </div>
-
-        <button onClick={resetFilters} style={{ marginTop: '10px' }}>
-          Återställ filter
+       
+        <button
+          className="filter-toggle-btn"
+          onClick={() => setIsFilterVisible((prev) => !prev)}
+        >
+          Filtrea och sortera
+          <span className="toggle-arrow">{isFilterVisible ? "▲" : "▼"}</span>
         </button>
+
+        
+        {isFilterVisible && (
+          <div className="filter-content">
+            <div className="filter-group">
+              <label
+                className="filter-label main-body"
+                style={{ cursor: "pointer" }}
+              >
+                Sortera:
+                <select value={sort} onChange={(e) => setSort(e.target.value)}>
+                  <option value="">Välj sortering</option>
+                  <option value="Nyast">Nyast</option>
+                  <option value="Lägsta pris">Lägsta pris</option>
+                  <option value="Högsta pris">Högsta pris</option>
+                  <option value="Deals">Deals</option>
+                </select>
+              </label>
+            </div>
+
+            <div className="filter-group">
+              <h3
+                className="main-body"
+                onClick={() => setIsColorDropdownOpen((prev) => !prev)}
+                style={{ cursor: "pointer" }}
+              >
+                Färg {selectedColors.length > 0 && `(${selectedColors.length})`}
+                <span className="toggle-arrow">
+                  {isColorDropdownOpen ? "▲" : "▼"}
+                </span>
+              </h3>
+              {isColorDropdownOpen && (
+                <div className="dropdown-menu">
+                  {uniqueColors.map((color) => (
+                    <label
+                      key={color.name}
+                      style={{ display: "flex", alignItems: "center" }}
+                    >
+                      <input
+                        type="checkbox"
+                        value={color.name}
+                        checked={selectedColors.includes(color.name)}
+                        onChange={() => handleColorChange(color.name)}
+                        style={{ marginRight: "10px" }}
+                      />
+                      <span
+                        style={{
+                          display: "inline-block",
+                          width: "20px",
+                          height: "20px",
+                          backgroundColor: color.code,
+                          borderRadius: "50%",
+                          marginRight: "8px",
+                          verticalAlign: "middle",
+                        }}
+                      ></span>
+                      {color.name.charAt(0).toUpperCase() + color.name.slice(1)}
+                    </label>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <div className="filter-group">
+              <h3
+                className="main-body"
+                onClick={() => setIsBrandDropdownOpen((prev) => !prev)}
+                style={{ cursor: "pointer" }}
+              >
+                Varumärke{" "}
+                {selectedBrands.length > 0 && `(${selectedBrands.length})`}
+                <span className="toggle-arrow">
+                  {isBrandDropdownOpen ? "▲" : "▼"}
+                </span>
+              </h3>
+              {isBrandDropdownOpen && (
+                <div className="dropdown-menu">
+                  {uniqueBrands.map((brand) => (
+                    <label
+                      key={brand}
+                      style={{ display: "flex", alignItems: "center" }}
+                    >
+                      <input
+                        type="checkbox"
+                        value={brand}
+                        checked={selectedBrands.includes(brand)}
+                        onChange={() => handleBrandChange(brand)}
+                        style={{ marginRight: "10px" }}
+                      />
+                      {brand.charAt(0).toUpperCase() + brand.slice(1)}
+                    </label>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <div className="filter-group">
+              <h3
+                className="main-body"
+                onClick={() => setIsSizeDropdownOpen((prev) => !prev)}
+                style={{ cursor: "pointer" }}
+              >
+                Storlek{" "}
+                {selectedSizes.length > 0 && `(${selectedSizes.length})`}
+                <span className="toggle-arrow">
+                  {isSizeDropdownOpen ? "▲" : "▼"}
+                </span>
+              </h3>
+              {isSizeDropdownOpen && (
+                <div className="dropdown-menu">
+                  {uniqueSizes.map((size) => (
+                    <label
+                      key={size}
+                      style={{ display: "flex", alignItems: "center" }}
+                    >
+                      <input
+                        type="checkbox"
+                        value={size}
+                        checked={selectedSizes.includes(size)}
+                        onChange={() => handleSizeChange(size)}
+                        style={{ marginRight: "10px" }}
+                      />
+                      {size}
+                    </label>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <button className="reset" onClick={resetFilters} style={{ marginTop: "10px" }}>
+              Återställ filter
+            </button>
+          </div>
+        )}
       </div>
 
       {productCards.length > 0 ? (
@@ -256,6 +327,7 @@ const Products = () => {
       ) : (
         <p>Inga produkter hittades för din sökning.</p>
       )}
+    </div>
     </div>
   );
 };

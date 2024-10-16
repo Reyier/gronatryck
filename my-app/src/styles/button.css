@@ -1,0 +1,37 @@
+.main-btn {
+    background-color: var(--primary-green); /* Olive green button color */
+    color: var( --white-color);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--bodyFont);
+}
+  
+.main-btn::after {
+    content: '→'; /* Arrow icon */
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+
+  
+.main-btn-small{
+  background-color: var(--primary-green);
+  color: var(--white-color);
+  font-size: var( --fontSizeXS);
+  font-family:var(--subHeadingFont) ;
+  padding: 1rem 3rem;
+  border-radius: 6px;
+
+}
+
+.remove-btn{
+  margin-left: 2rem;
+}
+
+.remove-btn:hover{
+  color: red;
+}

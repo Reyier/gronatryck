@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import products from "../data/product.js";
 import { useCart } from "../context/CartContext";
@@ -6,36 +6,33 @@ import ProductGallery from "../components/ProductGallery.js";
 import Radiobutton from "../components/RadioButton.js";
 import IncrementButton from "../components/IncrementButton.js";
 import { darkPrintPrice } from "../data/printPrice";
-
-import "../styles/product.css";
+import Breadcrumb from "../components/Breadcrumb.js";
+import "../styles/button.css";
+import "../styles/productdetail.css";
 
 const ProductDetail = () => {
   const { id } = useParams();
   const product = products.find((p) => p.productId === id);
-
-  const [printIndex, setPrintIndex] = useState("");
-  const [quantity, setQuantity] = useState(0);
-
   const { addToCart } = useCart();
 
-  const [selectedColor, setSelectedColor] = useState(
-    product.images.variants[0]?.colorName
-  );
+  // State variables
+  const [printIndex, setPrintIndex] = useState("");
+  const [quantity, setQuantity] = useState(0);
+  const [selectedColor, setSelectedColor] = useState(product.images.variants[0]?.colorName);
   const [sizeQuantities, setSizeQuantities] = useState({});
   const [confirmationMessage, setConfirmationMessage] = useState("");
-  const [printType, setPrintType] = useState("dark"); // State to handle the selected print type
-  const [selectedPrintType, setSelectedPrintType] = useState("");
+  const [isExpanded, setIsExpanded] = useState(false); // for read more functionality
+  const [openSection, setOpenSection] = useState(null); // Track which section is open
 
-  if (!product) {
-    return <p>Produkten hittades inte.</p>;
-  }
+  // Toggle open section function
+  const toggleSection = (section) => {
+    setOpenSection(openSection === section ? null : section); // Toggle logic
+  };
 
-  // Välja färg
   const handleColorChange = (color) => {
     setSelectedColor(color);
   };
 
-  // Kunna ändra storlek
   const handleQuantityChange = (size, quantity) => {
     const newQuantities = {
       ...sizeQuantities,
@@ -44,7 +41,6 @@ const ProductDetail = () => {
     setSizeQuantities(newQuantities);
   };
 
-  // Beräkning för pris (Bulkpriser)
   const calculatePricePerItem = (quantity) => {
     const { priceTiers } = product;
     for (const tier of priceTiers) {
@@ -58,7 +54,6 @@ const ProductDetail = () => {
     return 0;
   };
 
-  // Hämta totalt antal för beräkning för tryck
   const getPriceByTotalQuantity = (totalQuantity) => {
     console.log(printIndex);
     if (totalQuantity < 50) {
@@ -74,7 +69,6 @@ const ProductDetail = () => {
     }
   };
 
-  // Beräkning för pris för artikelnummer
   const calculateTotalPriceByArtNr = () => {
     const totalQuantity = Object.values(sizeQuantities).reduce(
       (total, qty) => total + qty,
@@ -91,11 +85,8 @@ const ProductDetail = () => {
   const totalPrintPrice =
     getPriceByTotalQuantity(totalQuantity) * totalQuantity;
 
-  /////// Beräkning + schablon
-
-  // Beräkning visning av totalt pris per artikel. Pris för plagg + tryck + schablon
-  let totalPrintPriceNumber = parseFloat(totalPrintPrice) || 0; // Convert to number or default to 0
-  let clothpriceNumber = parseFloat(clothprice) || 0; // Convert to number or default to 0
+  let totalPrintPriceNumber = parseFloat(totalPrintPrice) || 0;
+  let clothpriceNumber = parseFloat(clothprice) || 0;
   let totalPrice;
 
   if (totalPrintPriceNumber === 0) {
@@ -103,12 +94,6 @@ const ProductDetail = () => {
   } else {
     totalPrice = totalPrintPriceNumber + clothpriceNumber;
   }
-
-  console.log("Cloth Price:", clothpriceNumber);
-  console.log("Total Print Price:", totalPrintPriceNumber);
-  console.log("Total Price:", totalPrice);
-
-  // Ta bort från prisspecifikation
 
   const removeFromSpecification = (key) => {
     const updatedQuantities = { ...sizeQuantities };
@@ -118,13 +103,11 @@ const ProductDetail = () => {
 
   const handleAddToCart = (event) => {
     event.preventDefault();
-
     if (!selectedColor || totalQuantity === 0) {
       setConfirmationMessage("Vänligen välj en färg och kvantitet.");
       return;
     }
 
-    // Lägg till varje storlek och kvantitet separat i varukorgen
     Object.entries(sizeQuantities).forEach(([key, quantity]) => {
       if (quantity > 0) {
         const [color, size] = key.split("-");
@@ -144,33 +127,61 @@ const ProductDetail = () => {
           ).toFixed(2),
         };
 
-        addToCart(cartItem); // Lägg till varje enskild variant i varukorgen
+        addToCart(cartItem);
       }
     });
 
-    setConfirmationMessage("Produkten har lagts till i kundvagnen!");
+    setConfirmationMessage("Produkten har lagts till i offerten!");
   };
 
-  // Bestämma vilken data för tryckpriser. Dark är dyrast
+
+  useEffect(() => {
+    if (confirmationMessage) {
+      const timer = setTimeout(() => {
+        setConfirmationMessage(""); 
+      }, 3000); 
+
+      return () => clearTimeout(timer); 
+    }
+  }, [confirmationMessage]);
+
+  const toggleDescription = () => {
+    setIsExpanded(!isExpanded);
+  };
+
+  const truncatedDescription = product.description.length > 150
+  ? `${product.description.substring(0, 150)}...`
+  : product.description;
+
+
   const printPrice = darkPrintPrice;
 
-  // Skriv ut kod på sidan
   return (
+    <div>
+    <Breadcrumb />
     <div className="container">
-      {/* Finns ingen desing för detta i mobil
-       <ul className="breadcrumb">
-        <li>Produkter</li>
-        <li>{product.category}</li>
-        <li>{product.name}</li>
-      </ul>
-      <hr /> */}
-
+      
       <main className="product">
         <ProductGallery images={product.images} />
         <section>
           <p className="brand-name">{product.brand}</p>
-          <h1 className="heading-1">{product.name}</h1>
-          <p className="product-description">{product.description}</p>
+          <h1 className="heading-2">{product.name}</h1>
+
+
+
+
+
+          <p className="product-description">
+            {isExpanded ? product.description : truncatedDescription}
+          </p>
+          <button onClick={toggleDescription} className="read-more-btn">
+            {isExpanded ? "" : "Läs mer"}
+          </button>
+
+
+
+
+
 
           <div className="certificate-container">
             {product.certificates.map((certificate, index) => (
@@ -195,7 +206,7 @@ const ProductDetail = () => {
 
           <form>
             <fieldset>
-              <legend className="subheading-1">Färg:</legend>
+              <legend className="main-body">Färg:</legend>
               {product.images.variants.map((variant, index) => (
                 <Radiobutton
                   key={index}
@@ -208,7 +219,7 @@ const ProductDetail = () => {
 
             <div className="size-container">
               <fieldset>
-                <legend className="subheading-1">Antal</legend>
+                <legend className="main-body">Antal</legend>
                 <div className="grid-container">
                   {product.sizeVariants.map((variant, index) => {
                     const key = `${selectedColor}-${variant}`;
@@ -225,135 +236,194 @@ const ProductDetail = () => {
                 </div>
               </fieldset>
             </div>
+            <div className="main-body">
+              <p>
+                Minst antal utan tryck: {product.minBuy} st
+              </p>
+              <p>Minst antal med tryck: 25 st</p>
+            </div>
 
-            <p>Du måste handla minst {product.minBuy} av denna produkt</p>
-
-            {/*Ifall vi ska använda tryck i produktdetaljer */}
-            {/* <label>
-              Tryck:
-              <select
-                onChange={(e) => {
-                  const hej = e.target.value.slice(0, 1) - 1;
-                  setPrintIndex(hej);
-                  setSelectedPrintType(e.target.value);
-                }}
+            {/* Prisinformation Section */}
+            <div className="collapse-container">
+              <h3
+                className="main-body"
+                onClick={() => toggleSection("price")}
+                style={{ cursor: "pointer" }}
               >
-                <option value="">Utan tryck</option>
-                <option value="1 färg">1 färg</option>
-                <option value="2 färg">2 färg</option>
-                <option value="3 färg">3 färg</option>
-                <option value="4 färg">4 färg</option>
-                <option value="5 färg">5 färg</option>
-                <option value="6 färg">6 färg</option>
-                <option value="7 färg">7 färg</option>
-              </select>
-            </label>
-            <hr /> */}
+                Prisinformation
+                <span className="toggle-arrow">
+                  {openSection === "price" ? "▲" : "▼"}
+                </span>
+              </h3>
 
-            {/* Prisinformation */}
-            <h3>Prisinformation</h3>
-            <table>
-              <thead>
-                <tr>
-                  <td>Antal</td>
+              {/* Wrap the table and additional info in a single div */}
+              {openSection === "price" && (
+                <div>
+                  <table>
+                    <thead>
+                      <tr>
+                        <td>Antal</td>
+                        {product.priceTiers.map((tier, index) => (
+                          <th key={index}>
+                            {tier.maxQuantity !== null
+                              ? `${tier.minQuantity}-${tier.maxQuantity}`
+                              : `${tier.minQuantity}+`}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Pris (SEK/st)</td>
+                        {product.priceTiers.map((tier, index) => (
+                          <th key={index}>{tier.price} </th>
+                        ))}
+                      </tr>
+                      <tr>
+                        <td>Tryckpris en färg (SEK)</td>
+                        {Object.keys(printPrice.amount).map((key, index) => (
+                          <th key={index}>{printPrice.amount[key][0]} </th>
+                        ))}
+                      </tr>
+                      <tr>
+                        <td>Schablon en färg(SEK)</td>
+                        <th>{printPrice.schablon[1]} </th>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p className="main-body">
+                    Obs: Tryck -och schablonkostnaderna varierar beroende på
+                    plaggets färg och tryckmetod. Du kan även välja
+                    flerfärgsalternativ, vilket påverkar tryckpriset.
+                  </p>
+                </div>
+              )}
+            </div>
 
-                  {product.priceTiers.map((tier, index) => (
-                    <th key={index}>
-                      {tier.maxQuantity !== null
-                        ? `${tier.minQuantity}-${tier.maxQuantity}`
-                        : `${tier.minQuantity}+`}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Pris/st</td>
-                  {product.priceTiers.map((tier, index) => (
-                    <td key={index}>{tier.price} SEK</td>
-                  ))}
-                </tr>
+            {/* Produktinformation Section */}
 
-                <tr>
-                  <td>Tryckpris en färg</td>
-                  {Object.keys(printPrice.amount).map((key, index) => (
-                    <td key={index}>{printPrice.amount[key][0]} SEK</td>
-                  ))}
-                </tr>
+            <div className="collapse-container">
+              <h3
+                className="main-body"
+                onClick={() => toggleSection("product")}
+                style={{ cursor: "pointer" }}
+              >
+                Specifikationer
+                <span className="toggle-arrow">
+                  {openSection === "product" ? "▲" : "▼"}
+                </span>
+              </h3>
 
-                <tr>
-                  <td>Schablon en färg</td>
-                  <td>{printPrice.schablon[1]} SEK</td>
-                </tr>
-              </tbody>
-            </table>
-            <th>
-              <small>
-                {" "}
-                Obs: Tryck- och schablonkostnaderna varierar beroende på
-                plaggets färg och vald tryckmetod. Du kan även välja
-                flerfärgsalternativ, vilket påverkar tryckpriset.
-              </small>
-            </th>
+              {/* Wrap the product details in a single div */}
+              {openSection === "product" && (
+                <div className="product-collapse">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>Artikelnummer</td>
+                        <td>{product.artNr}</td>
+                      </tr>
 
-            <hr />
+                      <tr>
+                      <td></td>
+                        <td>{product.description}</td>
+                      </tr>
+                      <tr>
+                        <td>Storlek</td>
+                        <td>
+                          Finns i storlekarna: {product.sizeVariants.join(", ")}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Material</td>
+                        <td>{product.material}</td>
+                      </tr>
+                      <tr>
+                        <td>Materialvikt</td>
+                        <td>{product.weight}</td>
+                      </tr>
+
+                      <tr>
+                        <td>Egenskaper</td>
+                        <td>
+                          <ul>
+                            {product.properties.map((property, index) => (
+                              <li key={index}>{property}</li>
+                            ))}
+                          </ul>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>Certifikat</td>
+                        <td>
+                          <ul>
+                            {product.certificates.map((certificate, index) => (
+                              <li key={index}>
+                                <a
+                                  href={certificate.link}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  {certificate.name}
+                                </a>
+                              </li>
+                            ))}
+                          </ul>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
+
+           
+
             {totalQuantity > 0 && (
-              <div>
-                <h3>Prisspecifikation</h3>
-                <ul>
-                  {Object.entries(sizeQuantities).map(([key, quantity]) => {
-                    const [color, size] = key.split("-");
-                    if (quantity > 0) {
-                      return (
-                        <li key={key}>
-                          ArtNr: {product.artNr}, Färg: {color}, {size}: (
-                          {quantity}) - Pris/ST: {pricePerItem} SEK
-                          <button
-                            onClick={() => removeFromSpecification(key)}
-                            style={{ marginLeft: "10px", color: "red" }}
-                          >
-                            Ta bort
-                          </button>
-                          Totalt: {pricePerItem * quantity}
-                        </li>
-                      );
-                    }
-                    return null;
-                  })}
-                </ul>
-                <ul>
-                  {/* Ifall vi väljer att använda tryckpriser i prisspeficikation
-                  <li>
-                    Färgtryck: {selectedPrintType || "Inget valt"}{" "}
-                    {getPriceByTotalQuantity(totalQuantity)} SEK/ST Totalt:{" "}
-                    {totalPrintPrice}{" "}
-                  </li> */}
-                </ul>
-                {/*   */}
-                <h4>Totalt antal: {totalQuantity} </h4>
+              <div className="order-container">
+                 <hr />
+                <h4>Din beställning:</h4>
 
-                <h4>Totalt pris: {totalPrice.toFixed(2)} SEK</h4>
-                <small>Tryck och schablonpriser tillkommer i kassan!</small>
+                <ul>
+        {Object.entries(sizeQuantities).map(([key, quantity]) => (
+          <li key={key}>
+            {key}: {quantity} 
+            <button className="remove-btn" onClick={() => removeFromSpecification(key)}>Ta bort</button>
+          </li>
+        ))}
+      </ul>
+             
+                <p>
+                  Antal: <span>{totalQuantity}</span>
+                </p>
+                <p>Pris per styck {pricePerItem} SEK</p>
+                <p>
+                  Totalt pris: <span>{totalPrice.toFixed(2)} SEK</span>
+                </p>
 
-                <hr></hr>
+                <div className="button-container">
+                  <button onClick={handleAddToCart} className="main-btn">
+                    Lägg till i offert
+                  </button>
+                </div>
+
+                {confirmationMessage && (
+              <p className="confirmation-message">{confirmationMessage}</p>
+            )}
+                <div className="small-spacing">
+                <p className="main-body">
+                  Vår offert är flexibel! Du kan justera dina val innan du
+                  bekräftar, så att du får det du verkligen vill ha.
+                </p>
+                </div>
               </div>
             )}
-
-            <div style={{ display: "flex", gap: "1.6rem" }}>
-              <button
-                style={{ flex: "1" }}
-                className="btn btn--full"
-                type="button"
-                onClick={handleAddToCart}
-              >
-                Lägg till i offert
-              </button>
-            </div>
-            {confirmationMessage && <p>{confirmationMessage}</p>}
-            <p>En offertförfråga hos oss är alltid kostnadfri</p>
+           
           </form>
         </section>
       </main>
+    </div>
     </div>
   );
 };

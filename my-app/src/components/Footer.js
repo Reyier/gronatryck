@@ -9,7 +9,7 @@ const Footer = () => {
         <footer className="footer">
             <ul className="footer-links">
                 <li>
-                    <Link to="./contact">Kontakt</Link>
+                    <Link to="./kontakt">Kontakt</Link>
                 </li>
                 <li>
                     <Link to="/TermsOfPurchase">Köpvillkor</Link> 

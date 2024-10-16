@@ -33,33 +33,34 @@ function IncrementButton(props) {
   
   return (
     <div className="increment-input">
-    <label htmlFor={props.size}>{props.size}:</label>
-    <div className="increment-number-input">
-      <button
-        onClick={decreaseNumber}
-        type="button"
-        className="increment-button"
-      >
-        -
-      </button>
-      <input
-        className="input-number"
-        onChange={changeNumber}
-        type="number"
-        id={props.size}
-        min="0"
-        value={number}
-      />
-      <button
-        onClick={increaseNumber}
-        type="button"
-        className="increment-button"
-      >
-        +
-      </button>
+      <label htmlFor={props.size}>{props.size}:</label>
+      <div className="increment-number-input">
+        <button
+          onClick={decreaseNumber}
+          type="button"
+          className="increment-button"
+        >
+          -
+        </button>
+        <input
+          className="input-number"
+          onChange={changeNumber}
+          type="number"
+          id={props.size}
+          min="0"
+          value={number}
+        />
+        <button
+          onClick={increaseNumber}
+          type="button"
+          className="increment-button"
+        >
+          +
+        </button>
+      </div>
     </div>
-  </div>
   );
+  
 }
 
 export default IncrementButton;

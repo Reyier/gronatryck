@@ -41,18 +41,14 @@ function Card(props) {
       </Link>
       <div className="card-content">
         <header className="card-header">
-          <p className="card-category">{props.category}</p>
+          <p className="card-category info-text">{props.category}</p>
           <Link to={`/produkter/${props.id}/${slugify(props.name)}`}>
-            <h2 className="card-name">{props.name}</h2>
+            <h2 className="card-name main-body">{props.name}</h2>
           </Link>
         </header>
-        <section className="card-info">
-          <p className="card-price">
-            Från {props.minPrice},00 - {props.maxPrice},00 SEK
-          </p>
-        </section>
-        <footer className="card-footer">
-          <p>{props.sizeVariantsCount} olika storlekar</p>
+
+        <div className="card-footer">
+          <p className="main-body">{props.sizeVariantsCount} olika storlekar</p>
           <div style={{ display: "flex", alignItems: "center", gap: ".8rem" }}>
             <span
               className="circle-color"
@@ -62,13 +58,21 @@ function Card(props) {
               className="circle-color"
               style={{ backgroundColor: props.colorCodes[1] }}
             ></span>
-            <p>
+            <p className="main-body">
               {" "}
               + {props.variantsCount - 2}{" "}
               {props.variantsCount - 2 > 1 ? "färger" : "färg"} till
             </p>
           </div>
-        </footer>
+        </div>
+
+        <section className="card-info">
+          <p className="card-price .subheading-2">
+            Från {props.minPrice},00 SEK
+          </p>
+        </section>
+
+       
       </div>
     </article>
   );

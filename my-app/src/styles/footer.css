@@ -4,7 +4,7 @@
    background-color: var(--bright-color);
     padding: 20px;
     font-family: Arial, sans-serif;
-    color: #5a593a;
+    color: var(--primary-dark);
     display: grid;
     justify-content: center;
 }
@@ -18,7 +18,7 @@
 .footer-links li {
     margin-bottom: 10px;
     font-size: 16px;
-    border-bottom: 1px solid #dadad5;
+    border-bottom: 1px solid var(--primary-lightgreen);
     padding-bottom: 10px;
 }
 
@@ -39,17 +39,17 @@
 
 .icon {
     font-size: 24px;
-    color: #5a593a;
+    color: var(--primary-green);
     cursor: pointer;
 }
 
 .icon:hover {
-    color: #333;
+    color: var(--primary-dark);
 }
 
 .copyright {
     font-size: 12px;
-    color: #5a593a;
+    color: var(--primary-green);
     margin-top: 20px;
 }
 

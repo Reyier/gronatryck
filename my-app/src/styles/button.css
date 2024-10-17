@@ -9,6 +9,18 @@
     align-items: center;
     font-family: var(--bodyFont);
 }
+
+.second-btn {
+  background-color: var(--white-color); /* Olive green button color */
+  color: var( --primary-green);
+  padding: 10px 20px;
+  border: var(--primary-green) solid 1px;
+  border-radius: 5px;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--bodyFont);
+}
   
 .main-btn::after {
     content: '→'; /* Arrow icon */
@@ -28,8 +40,28 @@
 
 }
 
+.btn-container-1{
+  display: flex;
+  justify-content:center ;
+  margin: auto;
+}
+
+.btn-container-2{
+  display: flex;
+  margin: 1rem 0;
+  justify-content: center;
+  width: 100%;
+  gap: 2rem;
+}
+
+.btn-container-2 button{
+text-align: center;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
 .remove-btn{
-  margin-left: 2rem;
+  margin-left: 2rem ;
 }
 
 .remove-btn:hover{

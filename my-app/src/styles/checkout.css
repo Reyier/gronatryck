@@ -7,10 +7,84 @@
 
 
 
+.quote-summary h1{
+    margin: auto;
+    text-align: center;
+}
+
+.quote-summary .subheading-3{
+    margin: 0;
+    justify-content:flex-start;
+    text-align: left;
+}
 
 
 
 
+.quote-container{
+    margin: 0.5rem 0;
+}
+
+
+.quote-container th{
+   text-align: left;
+   
+}
+
+
+  
+  .item-row {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .item-name {
+   
+    margin-bottom: 5px;
+
+  }
+  
+  .item-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 5px;
+  }
+  
+  
+  
+  .detail-label {
+    font-weight: 500;
+    margin-right: 5px;
+  } 
+
+  .price-heading{
+    margin: 2rem;
+  }
+
+.confirmation-heading{
+    margin-top: 10rem;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+  height: auto;
+  background-color: var(--bright-color);
+  padding: 4rem 2rem;
+  margin: auto;
+  margin-top: 10rem;
+  border-radius: 6px;
+}
+  .confirmation-page{
+    width: 90%;
+    
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    height: 100vh;
+    
+  }
 
 
 

@@ -54,40 +54,53 @@ function Contact() {
 
         </div>
       ) : (
+        
         <form onSubmit={handleSubmit}>
+              <div className="cart-heading">
+        <h1 className="heading-3">Kontakta oss</h1>
+      </div>
+          <div className='login-container print-container'>
+            <div className='input-container'>
           <div>
             <label>Namn:</label>
             <input
+            className='input-login'
               type="text"
               name="name"
               value={formData.name}
               onChange={handleChange}
               required
+              placeholder='För & Efternamn'
             />
           </div>
           <div>
             <label>Email:</label>
             <input
+            className='input-login'
               type="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
+              placeholder='test@test.se'
               required
             />
           </div>
           <div>
             <label>Telefonnummer:</label>
             <input
+            className='input-login'
               type="tel"
               name="phone"
               value={formData.phone}
               onChange={handleChange}
+              placeholder='123456789'
               required
             />
           </div>
-          <div>
+          <div className='file-upload-section'>
             <label>Ladda upp en fil eller bild:</label>
             <input
+            
               type="file"
               name="file"
               onChange={handleChange}
@@ -99,16 +112,25 @@ function Contact() {
               <img src={imagePreviewUrl} alt="Förhandsvisning" style={{ width: '200px', height: 'auto' }} />
             </div>
           )}
-          <div>
+          <div className='file-upload-section'>
             <label>Meddelande:</label>
             <textarea
               name="message"
               value={formData.message}
               onChange={handleChange}
+              placeholder='Skriv ett meddelande...'
               required
             ></textarea>
+            
           </div>
-          <button type="submit">Skicka</button>
+
+          <div className='btn-container-1'> 
+          <button className="main-btn" type="submit" >Skicka</button>
+         
+          </div>
+         
+          </div>
+          </div>
         </form>
       )}
     </div>

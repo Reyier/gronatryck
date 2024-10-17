@@ -13,18 +13,22 @@
     text-align: center;
     flex-grow: 1;
     padding: 10px;
-    color: #999; /* Standard färg för steg */
+    color: #999; /* Standard color for future steps */
 }
 
-.step::before {
+.step-link {
+    text-decoration: none;
+    color: inherit; /* Inherit color for both number and label */
+}
+
+.step-number {
     counter-increment: step;
-    content: counter(step);
     width: 30px;
     height: 30px;
     line-height: 30px;
     border-radius: 50%;
-    background-color: #ccc; /* Färg för framtida steg */
-    color: white;
+    background-color: #ccc; /* Default background for future steps */
+    color: white; /* Number color set to white */
     text-align: center;
     display: inline-block;
     margin-bottom: 5px;
@@ -35,20 +39,24 @@
     margin-top: 5px;
 }
 
-.step.active {
-    color: #a6b691; /* Färg för aktiva steg (påbörjat) */
+.step.active .step-number {
+    background-color: var(--primary-lightgreen); /* Circle background color for active step */
+    color: white; /* Ensure number in active step remains white */
 }
 
-.step.active::before {
-    background-color: #a6b691; /* Cirkelfärg för påbörjat steg */
-    
+.step.active .step-label {
+    color: var(--primary-lightgreen); /* Label color for the active step */
+}
+
+.step.completed .step-number {
+    background-color: var(--primary-green); /* Circle background for completed steps */
+    color: white; /* Ensure the number remains white for completed steps */
+}
+
+.step.completed .step-label {
+    color: var(--primary-green); /* Label color for completed steps */
 }
 
 .step.completed {
-    color: #526040; /* Färg för avklarade steg */
-    border-bottom: 2px solid #526040; /* Undre kantlinje för avklarade steg */
-}
-
-.step.completed::before {
-    background-color: #526040; /* Bakgrundsfärg för avklarade stegnummer */
+    border-bottom: 2px solid var(--primary-green); /* Underline for completed steps */
 }

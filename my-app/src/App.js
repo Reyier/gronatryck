@@ -7,6 +7,8 @@ import Products from './pages/Products';
 import ProductDetail from './pages/ProductDetail';
 import CartPage from './pages/CartPage';
 import Stanley from './pages/Stanley';
+import Services from './pages/Services';
+import Resells from './pages/Resells.js'
 import Blog from './pages/Blog';
 import Contact from './pages/Contact';
 import Login from './pages/Login';
@@ -112,7 +114,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/stanley-stella" element={<Stanley />} />
+          <Route path="/services" element={<Services />} />
           <Route path="/produkter" element={<Products />} />
+          <Route path="/resells" element={<Resells />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/kontakt" element={<Contact />} />

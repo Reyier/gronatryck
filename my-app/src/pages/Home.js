@@ -12,6 +12,8 @@ const Home = () => {
         </div>
       </header>
 
+      <div className="body-container">
+
       {/* Section 2: Sustainability Message */}
       <section className="sustainability-section">
         <h1 className="main-heading">Tryck med omtanke</h1>
@@ -113,7 +115,7 @@ const Home = () => {
         </form>
         <button type="submit" className="main-btn">Registrera</button>
       </section>
-
+      </div>
     </div>
     
   );

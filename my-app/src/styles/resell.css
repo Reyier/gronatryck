@@ -1,0 +1,21 @@
+.resell-page {
+    width: 90%;
+    justify-content: center;
+    margin: auto;
+}
+
+
+.resell-image-container {
+    width: 50rem; /* Adjust width as needed */
+    height: 50rem; /* Set height to match width */
+    overflow: hidden; /* Hide overflow */
+    border-radius: 50%; /* Circular shape */
+    
+}
+
+.resell-image {
+    width: 100%; /* Fill the container */
+    height: 100%; /* Fill the container */
+    object-fit: cover; /* Cover to fill without distortion */
+    border-radius: 50%; /* Circular image */
+}

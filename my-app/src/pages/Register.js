@@ -66,7 +66,9 @@ function Register({ onRegister }) {
 
   return (
     <div>
-      <h2>Mina sidor</h2>
+     <div className="cart-heading">
+      <h1 className='heading-3'>Mina sidor</h1>
+      </div>
       <div className="login-container">
         <h3>Skapa konto</h3>
         <form onSubmit={handleSubmit}>

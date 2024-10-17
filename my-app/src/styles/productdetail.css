@@ -1,5 +1,7 @@
 /*Sektion för Bilder*/
-
+.container{
+  width: 90%;
+}
 .product-gallery {
   display: flex;
   flex-direction: column;

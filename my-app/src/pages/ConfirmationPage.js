@@ -12,23 +12,20 @@ const ConfirmationPage = () => {
 
   return (
     <div>
-      <h1>Tack för ditt köp!</h1>
-      <h2>Ordernummer: {orderDetails.orderId}</h2>
-      <h3>Sammanfattning av din beställning:</h3>
-      <ul>
-        {orderDetails.items.map((item, index) => (
-          <li key={index}>
-            {item.name} - Antal: {item.totalQuantity} - Pris: {item.pricePerItem} SEK
-          </li>
-        ))}
-      </ul>
-      <h4>Totalt belopp: {orderDetails.totalCost} SEK</h4>
-      <h4>Kundinformation:</h4>
-      <p>Namn: {orderDetails.customerInfo.personName}</p>
-      <p>Företagsnamn: {orderDetails.customerInfo.companyName}</p>
-      <p>Telefon: {orderDetails.customerInfo.phone}</p>
-      <p>E-post: {orderDetails.customerInfo.email}</p>
-      <button onClick={() => window.location.href = '/'}>Gå tillbaka till startsidan</button>
+      <div className='confirmation-page '>
+      <div className='confirmation-heading'>
+      <h1 className='heading-3'>Tack för din offert!</h1>
+      <h3 className='subheading-2 '>Offertnummer: {orderDetails.orderId}</h3>
+
+      <p className='main-body'>
+        Vi tittar nu på din offert. Vi kontaktar er så fort vi kan!
+      </p>
+      
+      <div className='btn-container-2'>
+      <button className="second-btn"onClick={() => window.location.href = '/'}>Gå till startsidan</button>
+      </div>
+      </div>
+      </div>
     </div>
   );
 };

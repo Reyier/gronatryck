@@ -55,13 +55,7 @@ h2 {
   font-size: var(--fontSizeXL);
 }
 
-h3 {
-    font-size: var(--fontSizeMD);
-    font-family: var( --subHeadingFont);
-    font-weight:500;
-    margin: 0 0 1.5rem 0; 
-    align-self: flex-start; 
-}
+
 
 .login-link {
   text-decoration: underline;

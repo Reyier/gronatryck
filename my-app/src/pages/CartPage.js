@@ -316,6 +316,8 @@ function CartPage() {
             <h4 className="main-body">Pris/St: {pricePerItem} SEK</h4>{" "}
             <h4 className="main-body"> Schablon: {totalStencilPrice()}SEK</h4>
             <h4 className="main-body">Totalt tryckpris: {totalPrintPrice()} SEK</h4>
+
+            
             <div className="file-upload-section">
               <label>
                 Ladda upp fil:
@@ -352,7 +354,7 @@ function CartPage() {
         <h5 className="main-body">Pris för kläder: {clothTotalPrice()} SEK</h5>
         <h5 className="main-body">Pris för tryck: {totalPrintPrice()} SEK</h5>
      
-        <div className="cart-heading left">
+        <div className="cart-heading price-heading left">
           <h1 className="heading-3">
             Totalt pris:{" "}
             {parseFloat(clothTotalPrice()) + parseFloat(totalPrintPrice())} SEK

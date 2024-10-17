@@ -386,14 +386,19 @@ const ProductDetail = () => {
                 <h4>Din beställning:</h4>
 
                 <ul>
+                 
         {Object.entries(sizeQuantities).map(([key, quantity]) => (
           <li key={key}>
-            {key}: {quantity} 
+             <p>
+                Färg: {""}
+              
+            {key}:  {quantity} 
             <button className="remove-btn" onClick={() => removeFromSpecification(key)}>Ta bort</button>
+            </p>
           </li>
         ))}
       </ul>
-             
+              
                 <p>
                   Antal: <span>{totalQuantity}</span>
                 </p>

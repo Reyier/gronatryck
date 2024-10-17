@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import Quote from '../components/Quote';
-import '../styles/checkout.css'; 
+import '../styles/checkout.css';
 import ProgressTracker from '../components/ProgressTracker';
 import { useNavigate } from "react-router-dom";
 
@@ -49,37 +49,94 @@ function Checkout() {
       </div>
       {loggedInUser ? (
         <>
-          <h1 className='heading-2'>Kundinformation</h1>
+
+          <h1 className='heading-3'>Kundinformation</h1>
+
           <form>
-            <label>
-              För & Efternamn
-              <input type="text" name="personName" value={customerInfo.personName} onChange={handleChange} />
-            </label><br />
-            <label>
-              Företagsnamn:
-              <input type="text" name="companyName" value={customerInfo.companyName} onChange={handleChange} />
-            </label><br />
-            <label>
-              Företagsadress:
-              <input type="text" name="street" value={customerInfo.street} onChange={handleChange} />
-            </label><br />
-            <label>
-              Telefon:
-              <input type="text" name="phone" value={customerInfo.phone || ''} onChange={handleChange} />
-            </label><br />
-            <label>
-              E-post:
-              <input type="email" name="email" value={customerInfo.email} onChange={handleChange} required />
-            </label><br />
-            <label>
-              Organisationsnummer:
-              <input type="text" name="organizationNumber" value={customerInfo.organizationNumber || ''} onChange={handleChange} />
-            </label>
+            <div className="input-container">
+              <h6 className='input-label'>För & Efternamn</h6>
+              <input
+                className='input-login'
+                type="text"
+                name="personName"
+                value={customerInfo.personName}
+                onChange={handleChange}
+                placeholder="För & Efternamn"
+                required
+              />
+            </div>
+
+            <div className="input-container">
+              <h6 className='input-label'>Företagsnamn</h6>
+              <input
+                className='input-login'
+                type="text"
+                name="companyName"
+                value={customerInfo.companyName}
+                onChange={handleChange}
+                placeholder="Företagsnamn"
+              />
+            </div>
+
+            <div className="input-container">
+              <h6 className='input-label'>Företagsadress</h6>
+              <input
+                className='input-login'
+                type="text"
+                name="street"
+                value={customerInfo.street}
+                onChange={handleChange}
+                placeholder="Företagsadress"
+              />
+            </div>
+
+            <div className="input-container">
+              <h6 className='input-label'>Telefon</h6>
+              <input
+                className='input-login'
+                type="text"
+                name="phone"
+                value={customerInfo.phone || ''}
+                onChange={handleChange}
+                placeholder="Telefon"
+              />
+            </div>
+
+            <div className="input-container">
+              <h6 className='input-label'>E-post</h6>
+              <input
+                className='input-login'
+                type="email"
+                name="email"
+                value={customerInfo.email}
+                onChange={handleChange}
+                placeholder="E-post"
+                required
+              />
+            </div>
+
+            <div className="input-container">
+              <h6 className='input-label'>Organisationsnummer</h6>
+              <input
+                className='input-login'
+                type="text"
+                name="organizationNumber"
+                value={customerInfo.organizationNumber || ''}
+                onChange={handleChange}
+                placeholder="Organisationsnummer"
+              />
+            </div>
           </form>
 
-          <Quote customer={customerInfo} cartItems={cartItems} totalCost={totalCost} />
-          <p onClick={() => navigate('/cart')}>Gå tillbaka till varukorg.</p>
-          <button onClick={handleCheckout}>Skicka offert</button>
+      
+          <Quote customer={customerInfo} cartItems={cartItems} totalCost={totalCost}
+           />
+
+
+<div className='btn-container-2'>
+          <button className='second-btn' onClick={() => navigate('/cart')}>Gå till varukorg</button>
+          <button className='main-btn' onClick={handleCheckout}>Skicka offert</button>
+          </div>
         </>
       ) : (
         <p>Du måste vara inloggad för att se offerten.</p>

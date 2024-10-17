@@ -31,9 +31,11 @@ const Login = ({ onLogin }) => {
 
   return (
     <div>
-      <h2>Mina sidor</h2>
+      <div className="cart-heading">
+      <h1 className='heading-3'>Mina sidor</h1>
+      </div>
     <div className='login-container'>
-      <h3>Logga in</h3>
+      <h3 className='subheading-1'>Logga in</h3>
       <form>
       <div className="input-container">
   <h6 className='input-label'>Email eller kundnummer</h6>

@@ -9,6 +9,7 @@ import {
 } from "react-icons/fa";
 import SearchBar from "./Search";
 import "../styles/navbar.css";
+import SubNav from "./SubNav"
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -177,7 +178,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/" className="nav-link" onClick={handleLinkClick}>
+            <Link to="/services" className="nav-link" onClick={handleLinkClick}>
               Tjänster
             </Link>
           </li>
@@ -197,7 +198,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/" className="nav-link" onClick={handleLinkClick}>
+            <Link to="/resells" className="nav-link" onClick={handleLinkClick}>
               För Återförsäljare
             </Link>
           </li>

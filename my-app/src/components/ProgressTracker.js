@@ -34,7 +34,7 @@ const ProgressTracker = () => {
           className={`step ${index < currentStep() ? 'completed' : ''} ${index === currentStep() ? 'active' : ''}`}
         >
           <Link to={step.path} className="step-link">
-            <span className="step-number">{index + 1}</span> {/* Add step number explicitly */}
+            <span className="step-number">{index + 1}</span> 
             <span className="step-label">{step.label}</span>
           </Link>
         </div>

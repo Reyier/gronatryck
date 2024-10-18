@@ -104,36 +104,37 @@ const ProductDetail = () => {
   const handleAddToCart = (event) => {
     event.preventDefault();
     if (!selectedColor || totalQuantity === 0) {
-      setConfirmationMessage("Vänligen välj en färg och kvantitet.");
-      return;
+        setConfirmationMessage("Vänligen välj en färg och kvantitet.");
+        return;
     }
 
+    // Iterate over size quantities and add to cart for each size/color combo
     Object.entries(sizeQuantities).forEach(([key, quantity]) => {
-      if (quantity > 0) {
-        const [color, size] = key.split("-");
-        const cartItem = {
-          productId: product.productId,
-          name: product.name,
-          brand: product.brand,
-          selectedColor: color,
-          size,
-          totalQuantity: quantity,
-          pricePerItem,
-          clothprice: (pricePerItem * quantity).toFixed(2),
-          totalPrintPrice: getPriceByTotalQuantity(totalQuantity) * quantity,
-          totalPrice: (
-            parseFloat((pricePerItem * quantity).toFixed(2)) +
-            getPriceByTotalQuantity(totalQuantity) * quantity
-          ).toFixed(2),
-        };
+        if (quantity > 0) {
+            const [color, size] = key.split("-");
+            const cartItem = {
+                productId: product.productId,
+                name: product.name,
+                brand: product.brand,
+                selectedColor: color,
+                size: size,
+                totalQuantity: quantity,
+                pricePerItem: calculatePricePerItem(quantity),
+                clothprice: (calculatePricePerItem(quantity) * quantity).toFixed(2),
+                totalPrintPrice: getPriceByTotalQuantity(totalQuantity) * quantity,
+                totalPrice: (
+                    parseFloat((calculatePricePerItem(quantity) * quantity).toFixed(2)) +
+                    getPriceByTotalQuantity(totalQuantity) * quantity
+                ).toFixed(2),
+            };
 
-        addToCart(cartItem);
-      }
+            console.log("Adding to cart:", cartItem);
+            addToCart(cartItem); // This will either add a new item or update the quantity
+        }
     });
 
     setConfirmationMessage("Produkten har lagts till i offerten!");
-  };
-
+};
 
   useEffect(() => {
     if (confirmationMessage) {

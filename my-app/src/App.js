@@ -108,6 +108,7 @@ function App() {
     <CartProvider>
       <Router>
         <Navbar loggedInUser={loggedInUser} onLogout={handleLogout} />
+       
         
         <Chat />
        

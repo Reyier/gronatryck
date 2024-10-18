@@ -41,15 +41,18 @@ export const CartProvider = ({ children }) => {
             item.selectedColor === product.selectedColor &&
             item.size === product.size
         );
-
+    
         if (existingProduct) {
-            // Om produkten redan finns, uppdatera kvantiteten
+            // If the product already exists, update the quantity
             updateCartItem(product.productId, product.selectedColor, product.size, existingProduct.totalQuantity + product.totalQuantity);
         } else {
-            // Lägg till produkten i varukorgen
-            setCartItems([...cartItems, product]);
+            // Otherwise, add the new product to the cart
+            setCartItems(prevItems => [...prevItems, product]);
         }
     };
+
+
+    
 
     return (
         <CartContext.Provider value={{ cartItems, updateCartItem, removeFromCart, addToCart }}>

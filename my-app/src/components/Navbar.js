@@ -9,13 +9,12 @@ import {
 } from "react-icons/fa";
 import SearchBar from "./Search";
 import "../styles/navbar.css";
-import SubNav from "./SubNav"
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [isSubNavOpen, setIsSubNavOpen] = useState(false); 
+  const [isSortimentOpen, setIsSortimentOpen] = useState(false); // State för Sortiment
 
   const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
@@ -35,19 +34,17 @@ const Navbar = () => {
     localStorage.removeItem("loggedInUser");
   };
 
-  // const handleSubNavToggle = () => {
-  //   setIsSubNavOpen((prevState) => !prevState);
-  // };
- 
+  const handleSortimentClick = () => {
+    if (window.innerWidth <= 768) { // Kontrollera om fönstrets bredd är mindre än eller lika med 768px
+      setIsSortimentOpen((prevState) => !prevState); // Toggle för Sortiment-menyn
+    }
+  };
+
   // Handle link clicks
   const handleLinkClick = (e) => {
-    if (e.currentTarget.innerText === "Sortiment") {
-      e.preventDefault(); // Prevent the default link behavior
-      //handleSubNavToggle(); // Toggle the SubNav
-    } else {
-      setIsMenuOpen(false); // Close menu when any other link is clicked
-    }
-  }; 
+    setIsMenuOpen(false); // Close menu when any other link is clicked
+    setIsSortimentOpen(false); // Stäng Sortiment-menyn
+  };
 
   return (
     <nav className="navbar">
@@ -63,10 +60,34 @@ const Navbar = () => {
         </div>
         <ul className="navbar-links">
           {/* Sortiment Button */}
-          <li>
-            <button className="nav-link" onClick={handleLinkClick}>
+          <li className="sortiment-dropdown">
+            <button className="nav-link" onClick={handleSortimentClick}>
               Sortiment
             </button>
+            {isSortimentOpen && window.innerWidth <= 768 && ( // Kontrollera att det är en mobil enhet
+              <ul className="dropdown-menu">
+                <li>
+                  <Link to="/kategori1" className="dropdown-item" onClick={handleLinkClick}>
+                    Kategori 1
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/kategori2" className="dropdown-item" onClick={handleLinkClick}>
+                    Kategori 2
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/kategori3" className="dropdown-item" onClick={handleLinkClick}>
+                    Kategori 3
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/kategori4" className="dropdown-item" onClick={handleLinkClick}>
+                    Kategori 4
+                  </Link>
+                </li>
+              </ul>
+            )}
           </li>
           <li>
             <Link to="/" className="nav-link" onClick={handleLinkClick}>
@@ -168,7 +189,7 @@ const Navbar = () => {
       <div className={`mobile-menu ${isMenuOpen ? "open" : ""}`}>
         <ul className="navbar-links-mobile navbar-text">
           <li>
-          <Link to="/" className="nav-link" onClick={handleLinkClick}>
+            <Link to="/" className="nav-link" onClick={handleLinkClick}>
               Sortiment
             </Link>
           </li>
@@ -224,11 +245,9 @@ const Navbar = () => {
       </div>
 
       {isMenuOpen && <div className="menu-overlay" onClick={toggleMenu}></div>}
-
-      {/* SubNav component
-      <SubNav isVisible={isSubNavOpen} onClose={handleSubNavToggle} /> */}
     </nav>
   );
 };
 
 export default Navbar;
+

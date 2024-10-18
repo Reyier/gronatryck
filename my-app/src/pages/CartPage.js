@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useCart } from "../context/CartContext";
 import { Link, useNavigate } from "react-router-dom";
 import ProgressTracker from "../components/ProgressTracker";
@@ -85,7 +85,11 @@ function CartPage() {
       const itemTotal = printPricePerItem * item.totalQuantity;
       console.log(`Item Total for ${item.name || "unknown"}: ${itemTotal}`);
       return total + itemTotal;
+
+      
     }, 0);
+
+    
 
     const stencilPrice = totalStencilPrice();
     console.log(`Stencil Price: ${stencilPrice}`);
@@ -125,6 +129,16 @@ function CartPage() {
 
   const handleCheckoutClick = () => {
     if (loggedInUser) {
+      const totalQuantity = getTotalQuantity();
+      const totalClothPriceValue = clothTotalPrice();
+      const totalPrintPriceValue = totalPrintPrice();
+  
+     
+      localStorage.setItem("totalQuantity", totalQuantity);
+      localStorage.setItem("totalClothPrice", totalClothPriceValue);
+      localStorage.setItem("totalPrintPrice", totalPrintPriceValue);
+  
+      // Navigate to the checkout page
       navigate("/checkout");
     } else {
       navigate("/login", { state: { from: "/checkout" } });
@@ -185,6 +199,15 @@ function CartPage() {
     return darkPrintPrice.schablon[printIndex] || 0;
   };
 
+  useEffect(() => {
+    const printPrice = totalPrintPrice();
+    localStorage.setItem("totalPrintPrice", printPrice);
+  }, [cartItems, globalPrintType]);
+
+
+
+
+
   return (
     <div className="cartpage">
       <ProgressTracker />
@@ -205,49 +228,56 @@ function CartPage() {
                     className="cart-list"
                     key={item.productId + item.selectedColor + item.size}
                   >
-                    <Link
-                      to={`/produkter/${item.productId}`}
-                      className="cart-item"
-                    >
-                      <img
-                        src={
-                          product.images.variants.find(
-                            (v) => v.colorName === item.selectedColor
-                          )?.images.medium
-                        }
-                        alt={product.name}
-                        className="cart-item-image"
-                      />
-                      <div className="cart-item-details">
-                        <button
-                          className="remove-btn"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            removeFromCart(
-                              item.productId,
-                              item.selectedColor,
-                              item.size
-                            );
-                          }}
-                        >
-                          <span>x</span>
-                        </button>
-                        <p className="cart-item-name">{product.name}</p>
-                        <p className="cart-item-color">
-                          Färg: {item.selectedColor}
-                        </p>
-                        <p className="cart-item-size">Storlek: {item.size}</p>
-                        <p className="cart-item-price">
-                          Pris/st:{" "}
-                          {getPriceByTotalQuantity(item.totalQuantity, product)}{" "}
-                          SEK
-                        </p>
-                        <p className="cart-item-total-price">
-                          Totalt: {itemTotalPrice(item.totalQuantity, product)}{" "}
-                          SEK
-                        </p>
-                      </div>
-                    </Link>
+                    <div className="cart-item">
+                      <Link
+                        to={`/produkter/${item.productId}`}
+                        className="cart-item-link"
+                      >
+                        <img
+                          src={
+                            product.images.variants.find(
+                              (v) => v.colorName === item.selectedColor
+                            )?.images.medium
+                          }
+                          alt={product.name}
+                          className="cart-item-image"
+                        />
+                        <div className="cart-item-details">
+                          <p className="cart-item-name">{product.name}</p>
+                          <p className="cart-item-color">
+                            Färg: {item.selectedColor}
+                          </p>
+                          <p className="cart-item-size">Storlek: {item.size}</p>
+                          <p className="cart-item-price">
+                            Pris/st:{" "}
+                            {getPriceByTotalQuantity(
+                              item.totalQuantity,
+                              product
+                            )}{" "}
+                            SEK
+                          </p>
+                          <p className="cart-item-total-price">
+                            Totalt:{" "}
+                            {itemTotalPrice(item.totalQuantity, product)} SEK
+                          </p>
+                        </div>
+                      </Link>
+
+                      {/* Remove Button Outside the Link */}
+                      <button
+                        className="remove-btn"
+                        onClick={(e) => {
+                          e.stopPropagation(); // Prevent the Link from being triggered
+                          removeFromCart(
+                            item.productId,
+                            item.selectedColor,
+                            item.size
+                          );
+                        }}
+                      >
+                        <span>x</span>
+                      </button>
+                    </div>
 
                     <div className="increment-container">
                       <div className="increment-number-input">
@@ -315,9 +345,9 @@ function CartPage() {
             <h4 className="main-body">Antal: {getTotalQuantity()}</h4>
             <h4 className="main-body">Pris/St: {pricePerItem} SEK</h4>{" "}
             <h4 className="main-body"> Schablon: {totalStencilPrice()}SEK</h4>
-            <h4 className="main-body">Totalt tryckpris: {totalPrintPrice()} SEK</h4>
-
-            
+            <h4 className="main-body">
+              Totalt tryckpris: {totalPrintPrice()} SEK
+            </h4>
             <div className="file-upload-section">
               <label>
                 Ladda upp fil:
@@ -351,9 +381,10 @@ function CartPage() {
       )}
 
       <div className="price-container">
+      <h5 className="main-body">Antal varor: {getTotalQuantity()} St</h5>
         <h5 className="main-body">Pris för kläder: {clothTotalPrice()} SEK</h5>
         <h5 className="main-body">Pris för tryck: {totalPrintPrice()} SEK</h5>
-     
+
         <div className="cart-heading price-heading left">
           <h1 className="heading-3">
             Totalt pris:{" "}
@@ -362,17 +393,19 @@ function CartPage() {
         </div>
       </div>
 
-
       <div className="btn-container">
-      {cartItems.length > 0 && (
-        <button className="main-btn" onClick={handleCheckoutClick}>
-          Nästa steg
-        </button>
-      )}
-</div>
-
+        {cartItems.length > 0 && (
+          <button className="main-btn" onClick={handleCheckoutClick}>
+            Nästa steg
+          </button>
+        )}
+      </div>
     </div>
+
+    
   );
+
+  
 }
 
 export default CartPage;

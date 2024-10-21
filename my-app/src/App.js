@@ -6,7 +6,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import { CartProvider } from "./context/CartContext"; // Importera CartProvider
-import Navbar from "./components/Navbar";
+//import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
 import ProductDetail from "./pages/ProductDetail";
@@ -112,61 +112,63 @@ function App() {
     <CartProvider>
       <Router>
         {/* <Navbar loggedInUser={loggedInUser} onLogout={handleLogout} /> */}
-        <Header />
-        <Chat />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/stanley-stella" element={<Stanley />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/produkter" element={<Products />} />
-          <Route path="/resells" element={<Resells />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/kontakt" element={<Contact />} />
-          <Route path="/mina-sidor" element={<CustomerPage />} />
-          <Route path="/login" element={<Login onLogin={handleLogin} />} />
-          <Route
-            path="/register"
-            element={<Register onRegister={handleRegister} />}
-          />
-          <Route path="/sortiment" element={<Assortment />} />
-          <Route
-            path="/reset-password"
-            element={<ResetPassword onReset={handleResetPassword} />}
-          />
-          <Route
-            path="/produkter/:id/:productSlug"
-            element={<ProductDetail />}
-          />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/produkter/:id" element={<ProductDetail />} />
-          <Route path="/confirmation" element={<ConfirmationPage />} />
-          <Route path="/about-us" element={<Aboutus />} />
+        <div className="page-wrapper">
+          <Header />
+          <Chat />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/stanley-stella" element={<Stanley />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/produkter" element={<Products />} />
+            <Route path="/resells" element={<Resells />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/kontakt" element={<Contact />} />
+            <Route path="/mina-sidor" element={<CustomerPage />} />
+            <Route path="/login" element={<Login onLogin={handleLogin} />} />
+            <Route
+              path="/register"
+              element={<Register onRegister={handleRegister} />}
+            />
+            <Route path="/sortiment" element={<Assortment />} />
+            <Route
+              path="/reset-password"
+              element={<ResetPassword onReset={handleResetPassword} />}
+            />
+            <Route
+              path="/produkter/:id/:productSlug"
+              element={<ProductDetail />}
+            />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/produkter/:id" element={<ProductDetail />} />
+            <Route path="/confirmation" element={<ConfirmationPage />} />
+            <Route path="/about-us" element={<Aboutus />} />
 
-          {/* Protected Routes */}
-          <Route
-            path="/customer"
-            element={
-              loggedInUser && loggedInUser.role === "Customer" ? (
-                <CustomerPage user={loggedInUser} onLogout={handleLogout} />
-              ) : (
-                <Navigate to="/login" />
-              )
-            }
-          />
-          <Route
-            path="/admin"
-            element={
-              loggedInUser && loggedInUser.role === "Admin" ? (
-                <AdminPage onLogout={handleLogout} />
-              ) : (
-                <Navigate to="/login" />
-              )
-            }
-          />
-        </Routes>
-        <ScrollToTopButton />
-        <Footer /> {/* Lägg till Footer här */}
+            {/* Protected Routes */}
+            <Route
+              path="/customer"
+              element={
+                loggedInUser && loggedInUser.role === "Customer" ? (
+                  <CustomerPage user={loggedInUser} onLogout={handleLogout} />
+                ) : (
+                  <Navigate to="/login" />
+                )
+              }
+            />
+            <Route
+              path="/admin"
+              element={
+                loggedInUser && loggedInUser.role === "Admin" ? (
+                  <AdminPage onLogout={handleLogout} />
+                ) : (
+                  <Navigate to="/login" />
+                )
+              }
+            />
+          </Routes>
+          <ScrollToTopButton />
+          <Footer /> {/* Lägg till Footer här */}
+        </div>
       </Router>
     </CartProvider>
   );

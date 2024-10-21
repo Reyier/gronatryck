@@ -44,6 +44,11 @@ a {
   text-decoration: none;
   color: var(--primary-green);
 }
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 .heading-1,
 .heading-2,
 .heading-3 {

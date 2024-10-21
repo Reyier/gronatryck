@@ -9,11 +9,16 @@ const Home = () => {
       <Hero />
       <div className="body-container">
         <div>
-          <section className="popular-categories">
+          {/*  Bryt upp populära kategorier till en egen komponent, möjligtvis en mer generell komponent som innehåller kategorier så kan vi återanvända den inne på stortiment/kläder också fast där ha en större lista 
+          De behöver även göras om till <Link> element för att de ska ta en vidare till den kategorin. Vi måste då göra någon dynamisk route som tar en dit man vill.*/}
+          <section
+            className="popular-categories"
+            style={{ marginBlockStart: "3.4rem" }}
+          >
             <div className="categories-grid">
               <div className="category">
                 <img
-                  src="./img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"
+                  src="/img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"
                   alt="T-shirt"
                 />
                 <div className="category-label label-with-bg main-body ">
@@ -22,7 +27,7 @@ const Home = () => {
               </div>
               <div className="category">
                 <img
-                  src="./img/informative/Liner_Desert Dust_Duo_Front_Main_0.jpg"
+                  src="/img/informative/Liner_Desert Dust_Duo_Front_Main_0.jpg"
                   alt="Västar"
                 />
                 <div className="category-label label-with-bg main-body">
@@ -31,7 +36,7 @@ const Home = () => {
               </div>
               <div className="category">
                 <img
-                  src="./img/informative/Trekker_Desert Dust_Duo_Front_Main_0.jpg"
+                  src="/img/informative/Trekker_Desert Dust_Duo_Front_Main_0.jpg"
                   alt="Jackor"
                 />
                 <div className="category-label label-with-bg main-body">
@@ -40,7 +45,7 @@ const Home = () => {
               </div>
               <div className="category">
                 <img
-                  src="./img/informative/Cruiser 2.0_Heather Haze_Duo_Front_Main_0.jpg"
+                  src="/img/informative/Cruiser 2.0_Heather Haze_Duo_Front_Main_0.jpg"
                   alt="Huvtröjor"
                 />
                 <div className="category-label label-with-bg main-body">
@@ -130,11 +135,11 @@ const Home = () => {
             <blockquote className="testimonial-quote">
               <p className="main-body">
                 “Jag vill att min merch speglar mina värderingar, och tack vare
-                Gröna Tryck kunde jag erbjuda mina fans produkter jag verkligen står
-                bakom,” säger Petter.
-            </p>
-            <br></br>
-            <p className="main-body">
+                Gröna Tryck kunde jag erbjuda mina fans produkter jag verkligen
+                står bakom,” säger Petter.
+              </p>
+              <br></br>
+              <p className="main-body">
                 “Det var också otroligt smidigt att beställa i bulk och få allt
                 levererat snabbt, samtidigt som jag vet att produkterna är
                 certifierade och miljövänliga.”

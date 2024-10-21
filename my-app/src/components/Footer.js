@@ -6,8 +6,8 @@ import '../styles/footer.css'; // Make sure to create and link this CSS file
 
 const Footer = () => {
     return (
-        <footer className="footer">
-            <ul className="footer-links">
+        <div className="footer">
+            <ul className="footer-links main-body">
                 <li>
                     <Link to="./kontakt">Kontakt</Link>
                 </li>
@@ -20,7 +20,7 @@ const Footer = () => {
             </ul>
             <div className="social-media">
                 <p>Vi finns även här</p>
-                <div className="icons">
+                <div className="icons ">
                     <a href="https://www.facebook.com/gronatryck/?locale=sv_SE" target='_blank'><FaFacebookF className="icon" /></a>
                     <a href="https://www.linkedin.com/company/gronatryck/" target='_blank'><FaLinkedinIn className="icon" /></a>
                     <a href="https://www.youtube.com/@gronatryck508" target='_blank'><FaYoutube className="icon" /></a>
@@ -28,7 +28,7 @@ const Footer = () => {
                 </div>
             </div>
             <p className="copyright">Copyright © gröna tryck 2024</p>
-        </footer>
+        </div>
     );
 }
 

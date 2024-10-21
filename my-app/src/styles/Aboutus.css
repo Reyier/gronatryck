@@ -1,0 +1,39 @@
+.kundansvariga-img{
+   border-radius: 50%;
+   width: 150px; 
+   margin-bottom: 100px;
+}
+
+.header-img{
+    margin-bottom: 50px;
+}
+
+.sammarbete-logo{
+    width: 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    
+}
+
+.text-containers{
+    background-color: var(--bright-color);
+}
+
+.sammarbete-container{
+    bottom: 50px;
+    left: 400px;
+    right: 40px;
+    background-color: var(--bright-color);
+    width: 200px;
+ 
+}
+
+.img-container{
+    bottom: 300px;
+    left: 400px;
+    right: 40px;
+   
+    
+}
+

@@ -1,46 +1,132 @@
-import React, {useState} from "react";
-import { Link } from "react-router-dom";
-import { LuUser2, LuShoppingCart, LuSearch, LuMenu   } from "react-icons/lu";
-import "../styles/maxcss.css"
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { LuChevronRight, LuX, LuShoppingCart, LuSearch, LuUser2 } from "react-icons/lu";
+import "../styles/header.css";
 
+const navLinks = [
+  { to: "/sortiment", textContent: "Sortiment", icon: <LuChevronRight /> },
+  { to: "/tjanster", textContent: "Tjänster" },
+  { to: "/stanley-stella", textContent: "Stanley Stella" },
+  { to: "/hallbara-material", textContent: "Hållbara Material" },
+  { to: "/om-grona-tryck", textContent: "Om Gröna Tryck" },
+  { to: "/for-aterforsaljare", textContent: "För Återförsäljare" },
+  { to: "/mina-sidor", textContent: "Mina Sidor" },
+];
 
-function Header(){
-    const [isOpen, setIsOpen] = useState(false)
+export default function Header() {
+  const [mobileMenuActive, setMobileMenuActive] = useState(false);
+  const [searchActive, setSearchActive] = useState(false);
+  const navigate = useNavigate();
 
-    function toggleMenu(){
-        console.log("hi");
-        setIsOpen(!isOpen);
-    }
-return <header className="page-navigation">
-      <Link to="/" className="logo"><img src="/img/decorative/logotyp_horizontell.png" alt="the brand logotype of Görna Tryck"/></Link>
-    <NavbarMax isShowing={isOpen}/>
-    <ul className="action-nav">
-        <li><button><LuShoppingCart/></button></li>
-        <li><button><LuUser2/></button></li>
-        <li><button><LuSearch/></button></li>
-        <li className="mobile-toggle"><button onClick={toggleMenu}><LuMenu/></button></li>
-    </ul>
+  function toggleMenu() {
+    setMobileMenuActive((a) => !a);
+  }
+  function cancelSearch() {
+    setSearchActive((p) => !p);
+  }
+
+  function toggleCart() {
+    navigate("/cart");
+  }
+  function toggleSite(){
+    navigate("/mina-sidor");
+  }
+  return (
+    <header className="page-header">
+      <SearchContainer handleClick={cancelSearch} isActive={searchActive} />
+
+      <div className="container top-bar">
+        <Link to="/" className="logo">
+          <img src="/img/gronatryck_logo_webb.png" alt="brand logotype" />
+        </Link>
+        <nav>
+          <NavList links={navLinks} className="desktop" />
+        </nav>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            fontSize: "2.4rem",
+            gap: "1.6rem",
+          }}
+        >
+          <IconButton icon={<LuShoppingCart />} handleClick={toggleCart} />
+          <IconButton icon={<LuUser2 />} handleClick={toggleSite} />
+          <IconButton icon={<LuSearch />} handleClick={cancelSearch} />
+          
+          <HamburgerMenu onClick={toggleMenu} />
+        </div>
+        <div className={`mobile-menu-2 ${mobileMenuActive ? "active" : ""}`}>
+          <NavList links={navLinks} handleClick={toggleMenu} />
+        </div>
+      </div>
     </header>
-
+  );
 }
 
-function NavbarMax(props){
-    return(
-        
-    <nav>
-        <ul className={`max-main-nav ${props.isShowing ? 'active' : ''}`}>
-            <li><Link to="/sortiment">Sortiment</Link></li>
-            <li><Link to="/tjanster">Tjänster</Link></li>
-            <li><Link to="/stanley-stella">Stanley Stella</Link></li>
-            <li><Link to="/hallbara-material">Hållbara Material</Link></li>
-            <li><Link to="/om-grona-tryck">Om Gröna Tryck</Link></li>
-            <li><Link to="/for-aterforsaljare">För Återförsäljare</Link></li>
-            <li><Link to="/mina-sidor">Mina Sidor</Link></li>
-        </ul>
-    </nav>
-
-    )
-
+function IconButton({ icon, handleClick }) {
+  return (
+    <button onClick={handleClick} className="icon-button">
+      {icon}
+    </button>
+  );
 }
 
-export default Header;
+function NavList({ links, className, handleClick }) {
+  return (
+    <ul className={`nav ${className ? className : ""}`}>
+      {links.map((link) => {
+        return (
+          <li>
+            <Link
+              className="nav-link"
+              key={link.textContent}
+              to={link.to}
+              onClick={handleClick}
+            >
+              {link.textContent}
+              {link.icon && link.icon}
+            </Link>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
+function SearchContainer({ handleClick, isActive }) {
+  return (
+    <div className={`search-container ${isActive ? "active" : ""}`}>
+      <div className="container search--content">
+        <IconButton
+          icon={<LuSearch />}
+          handleClick={() => console.log("pressed search btn")}
+        />
+        <input type="search" placeholder="Sök i vårt sortiment..." />
+        <IconButton icon={<LuX />} handleClick={handleClick} />
+      </div>
+    </div>
+  );
+}
+
+function HamburgerMenu({ onClick }) {
+  const [active, setActive] = useState(false);
+
+  function handleClick() {
+    setActive((a) => !a);
+    onClick();
+  }
+  return (
+    <button
+      className="hamburger"
+      aria-label="Menu"
+      aria-expanded={active ? "true" : "false"}
+      aria-controls="navigation"
+      onClick={handleClick}
+    >
+      <span className="hamburger--line"></span>
+      <span className="hamburger--line"></span>
+      <span className="hamburger--line"></span>
+    </button>
+  );
+}

@@ -90,7 +90,7 @@ const Navbar = () => {
             )}
           </li>
           <li>
-            <Link to="/" className="nav-link" onClick={handleLinkClick}>
+            <Link to="/services" className="nav-link" onClick={handleLinkClick}>
               Tjänster
             </Link>
           </li>
@@ -105,7 +105,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/om-oss" className="nav-link" onClick={handleLinkClick}>
+            <Link to="/about-us" className="nav-link" onClick={handleLinkClick}>
               Om Gröna Tryck
             </Link>
           </li>
@@ -214,7 +214,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/om-oss" className="nav-link" onClick={handleLinkClick}>
+            <Link to="/about-us" className="nav-link" onClick={handleLinkClick}>
               Om Gröna Tryck
             </Link>
           </li>

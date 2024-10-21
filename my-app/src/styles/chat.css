@@ -1,15 +1,18 @@
 .chat-window {
-    width: 350px;
-    height: 450px;
-    border-radius: 15px;
+    width:100%;
+    height: 45rem;
+    border-radius: 6px;
     position: fixed;
-    bottom: 30px;
-    left: 30px; /* Flyttad från höger till vänster */
+    bottom: 0;
+   
     background-color: #f0f4f8;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    z-index: 1000;
+    margin: auto;
+    
 }
 
 .chat-header {
@@ -102,17 +105,22 @@
 .chat-toggle-button {
     position: fixed;
     bottom: 30px;
-    left: 30px; /* Flyttad från höger till vänster */
-    background-color: #606f4a;
+    left: 30px; 
+    background-color: var(--primary-green);
     color: white;
-    padding: 10px 20px;
+    width: 6rem; 
+    height: 6rem; 
     border: none;
-    border-radius: 50px;
+    border-radius: 50%; 
     cursor: pointer;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease;
+    z-index: 1000;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    padding: 0; 
 }
-
 .chat-toggle-button:hover {
     background-color: #9daf88;
 }
@@ -131,4 +139,22 @@
 
 .close-chat-btn:hover {
     color: #ff6666;
+}
+
+@media (min-width: 768px) {
+
+.chat-window{
+width:30%;
+height: 80%;
+border-radius: 6px;
+bottom: 30px;
+left: 30px; 
+}
+
+
+
+.chat-container{
+    width: 10%;
+}
+
 }

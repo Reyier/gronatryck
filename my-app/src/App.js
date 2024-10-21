@@ -22,7 +22,7 @@ import Chat from './components/Chat';
 import ScrollToTopButton from './components/ScrollToTop';
 import ConfirmationPage from './pages/ConfirmationPage';
 import Footer from './components/Footer'; // Importera Footer
-
+import Aboutus from './pages/Aboutus.js';
 import Header from './components/NavbarMax';
 
 
@@ -128,6 +128,8 @@ function App() {
           <Route path="/checkout" element={<Checkout />} /> 
           <Route path="/produkter/:id" element={<ProductDetail />} />
           <Route path="/confirmation" element={<ConfirmationPage />} />
+          <Route path="/about-us" element={<Aboutus/>} />
+
 
 
           {/* Protected Routes */}

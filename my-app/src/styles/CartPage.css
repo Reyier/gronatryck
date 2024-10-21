@@ -185,13 +185,10 @@
 }
 
 
-.btn-container{
-  display: flex;
-  margin: auto;
-  justify-content: center;
+.btn-container .main-btn{
+  
   margin: 5rem;
 }
-
 
 
 

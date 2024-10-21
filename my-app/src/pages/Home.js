@@ -4,26 +4,31 @@ import Button from "../components/Button";
 
 const Home = () => {
   return (
-    <div>
+    <div className="home-page">
       <header className="header-container">
         <div className="header-content">
+        <div className="header-img">
+              <img
+                src="/img/decorative/new-balance-brick-wood-57-40-2.jpg"
+                alt="Person wearing sustainable clothing"
+              
+              />
+            </div>
           <div className="header-video-overlay"></div>
+          <div className="header-btn">
           <Button
             to="/produkter"
-            className="main-btn"
+            className="main-btn btn-container"
             content="Utforska vårt sortiment"
           />
+          </div>
         </div>
       </header>
 
-      <div className="body-container">
-        {/* Section 2: Sustainability Message
-      <section className="sustainability-section">
-        <h1 className="main-heading">Tryck med omtanke</h1>
-        <p className="subheading">– hållbarhet i varje detalj.</p>
-      </section> */}
 
-        {/* Section 3: Popular Categories */}
+
+      <div className="body-container">
+       
         <div>
           <section className="popular-categories">
             <div className="categories-grid">
@@ -73,7 +78,7 @@ const Home = () => {
         </div>
 
         <section className="certified-section">
-          <h1 className="section-heading heading-2">Rättvisecertifierade</h1>
+          <h1 className="section-heading heading-3">Rättvisecertifierade</h1>
           <div className="certified-content">
             <div className="certified-text">
 
@@ -99,7 +104,7 @@ const Home = () => {
 
               <Button
                 to="/mer-info"
-                className="learn-more-btn main-btn btn-container"
+                className="learn-more-btn main-btn btn-container-1"
                 content="Läs mer"
               />
             </div>
@@ -117,7 +122,7 @@ const Home = () => {
 
         {/* Section 5: Beställningsprocess */}
         <section className="order-process">
-  <h1 className="section-heading heading-2">Beställningsprocess</h1>
+  <h1 className="section-heading heading-3">Beställningsprocess</h1>
   <div className="process-steps">
     {Array.from({ length: 4 }, (_, index) => (
       <React.Fragment key={index}>
@@ -172,24 +177,44 @@ const Home = () => {
 
         </section>
 
+
+     
+      <section className="sustainability-section">
+      <div className="sustainability-container">
+      <h1 className="section-heading subheading-1">Tryck med omtanke</h1>
+        <p className="main-body">– hållbarhet i varje detalj.</p>
+        </div>
+      </section> 
+
+        
+
+
+
+
+
+
+
+
+
         {/* Section 7: Membership Registration */}
         <section className="membership-section">
-          <h2 className="section-heading">Häng med oss!</h2>
-          <p className="membership-subheading">
-            Registrera dig som medlem och få bonus på dina köp!
-          </p>
-          <form className="membership-form">
-            <input
-              type="email"
-              className="email-input"
-              placeholder="Din e-post"
-              required
-            />
-          </form>
-          <button type="submit" className="main-btn">
-            Registrera
-          </button>
-        </section>
+    <div className="brush-background"></div> {/* Background div */}
+    
+    <form className="membership-form">
+      <p className="membership-subheading main-body">
+        Anmäl dig till vårt nyhetsbrev för att få exklusiva insikter om våra hållbara tjänster och lösningar.
+    </p>
+        <input
+            type="email"
+            className="email-input"
+            placeholder="Din e-post"
+            required
+        />
+        <button type="submit" className="main-btn">
+            Prenumerera nu!
+        </button>
+    </form>
+</section>
       </div>
     </div>
   );

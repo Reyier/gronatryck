@@ -127,10 +127,11 @@ const Home = () => {
             <blockquote className="testimonial-quote">
               <p className="main-body">
                 “Jag vill att min merch speglar mina värderingar, och tack vare
-                Gröna Tryck kunde jag erbjuda mina fans produkter jag verkligen
-                står bakom,” säger Petter.
-              </p>
-              <p className="info-text">
+                Gröna Tryck kunde jag erbjuda mina fans produkter jag verkligen står
+                bakom,” säger Petter.
+            </p>
+            <br></br>
+            <p className="main-body">
                 “Det var också otroligt smidigt att beställa i bulk och få allt
                 levererat snabbt, samtidigt som jag vet att produkterna är
                 certifierade och miljövänliga.”

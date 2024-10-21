@@ -128,142 +128,21 @@ button {
   color: red;
 }
 
-/*
-.search-container {
-  position: relative; 
-  color: #000;
-  max-width: 400px; 
-  width: 100%; 
-  margin: 0 auto;
+@media (min-width: 768px){
 
-.dropdown-list {
-  position: absolute; 
-  top: 100%; 
-  left: 0;
-  border: 1px solid #ccc; 
-  border-radius: 8px; 
-  padding: 10px; 
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
-  z-index: 1000; 
-  width: 100%; 
-  background-color: var(#fafafa); 
-}
+  
+   
+  .filter-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 2rem; 
+  }
 
-.dropdown-list h2 {
-  font-size: 15px;
-  text-align: left;
-  margin-left: -2px;
-  margin-top: 5px;
-}
-.dropdown-list ul {
-  list-style: none; 
-  padding: 0;
-  margin: 0; 
-}
+  .filter-group {
+    margin-bottom: 1.5rem;
+  }
+  
 
-.dropdown-list li {
-  cursor: pointer; 
-  padding: 10px; 
-  transition: background-color 0.3s;
-}
-
-.dropdown-list li:hover {
-  background-color: #f0f0f0;
-}
+  }
 
 
-.product-wrapper {
-  padding: 20px; 
-}
-
-.filter-wrapper {
-  margin-bottom: 20px;
-}
-
-.filter-group {
-  margin-right: 15px; 
-}
-
-.filter-button {
-  color: black; 
-  border: 1px solid black; 
-  padding: 10px; 
-  cursor: pointer; 
-  border-radius: 5px; 
-  transition: background-color 0.3s; 
-}
-
-.filter-button:hover {
-  background-color: #f0f0f0;
-}
-
-.dropdown-menu {
-  border: 1px solid #ccc; 
-  padding: 10px;
-  border-radius: 5px; 
-  margin-top: 5px;
-  max-height: 200px; 
-  overflow-y: auto; 
-}
-
-.reset-button {
-  background-color: #dc3545; 
-  color: white; 
-  border: none; 
-  padding: 10px; 
-  cursor: pointer; 
-  border-radius: 5px; 
-  transition: background-color 0.3s; 
-}
-
-.reset-button:hover {
-  background-color: #c82333; 
-}
-
-
-*/
-
-/* Stil för sökfältet */
-/* .navbar-search {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 10px;
-  background-color: white;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-}
-
-.navbar-search input {
-  flex-grow: 1; /* Gör så att input tar upp maximalt utrymme */
-/*padding: 10px;
-  border: none;
-  outline: none;
-  font-size: 16px;
-  color: #6E775E;
-  background-color: transparent; /* Gör bakgrunden transparent för en minimalistisk look */
-/*}
-
-.navbar-search .search-icon {
-  font-size: 18px;
-  margin-right: 10px;
-  color: #6E775E;
-}
-
-.navbar-search .close-search {
-  background: none;
-  border: none;
-  font-size: 20px;
-  margin-left: 10px;
-  color: #6E775E;
-  cursor: pointer;
-}
-
-.navbar-search .close-search:hover {
-  color: #333;
-}
- */

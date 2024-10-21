@@ -77,11 +77,6 @@ const Home = () => {
                 </p>
               </div>
 
-              <Button
-                to="/mer-info"
-                className="learn-more-btn main-btn btn-container-1"
-                content="Läs mer"
-              />
             </div>
             <div className="certified-image half-img">
               <img
@@ -89,7 +84,15 @@ const Home = () => {
                 alt="Person wearing sustainable clothing"
               />
             </div>
+            
           </div>
+
+          
+          <Button
+                to="/mer-info"
+                className="learn-more-btn main-btn btn-container"
+                content="Läs mer"
+              />
         </section>
 
         {/* Section 5: Beställningsprocess */}

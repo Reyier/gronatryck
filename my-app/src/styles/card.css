@@ -4,7 +4,7 @@
   max-width: 1440px;
   width: 90%;
   margin-inline: auto;
-  justify-content: space-between;
+
   gap: 1rem;
   
 }
@@ -114,29 +114,36 @@
   opacity: 0;
 }
 
-/* 
-.card-content {
-  padding: 1.6rem;
-}
 
-.card-name {
-  line-height: 1;
-  margin-block: 1.6rem;
-}
+@media (min-width: 768px){
 
-.circle-color {
-  display: inline-block;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  background-color: green;
-}
+  .product-wrapper{
+    width: 80%;
+   
+  }
 
-.color-checkboxes {
-  display: flex;
-  flex-direction: column;
-}
+  .card {
+    width: 24%;
+    max-width: 250px; 
+  }
+  
 
-.color-checkboxes label {
-  margin: 5px 0; /* Add some space between checkboxes 
-}*/
+  }
+
+
+  @media (min-width: 1005px){
+
+    .product-wrapper{
+      width: 70%;
+      
+     
+    }
+
+    
+  }
+
+  @media (min-width: 1500px){
+    .product-wrapper{
+      width: 60%;
+    }
+  }

@@ -164,7 +164,8 @@ const ProductDetail = () => {
       
       <main className="product">
         <ProductGallery images={product.images} />
-        <section>
+        
+        <section className="product-info">
           <p className="brand-name">{product.brand}</p>
           <h1 className="heading-2">{product.name}</h1>
 

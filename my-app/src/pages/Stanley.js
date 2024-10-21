@@ -36,7 +36,7 @@ const Stanley = () => {
           </div>
 
           <img
-            className="main-image"
+            className="stanley-image"
             src="./img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"
           />
 

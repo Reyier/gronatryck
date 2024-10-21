@@ -152,7 +152,7 @@ const Products = () => {
 
   return (
 
-    <div>
+    <div className="product-page">
       <div>
     <Breadcrumb category={kategori} />
     <h2 className="subheading-1">Alla kläder</h2>

@@ -1,14 +1,37 @@
 // components/CustomerPage.js
-import React from 'react';
+import React, { useState } from "react";
+import Login from "./Login";
+import { useNavigate } from "react-router-dom";
 
-function CustomerPage({ user, onLogout }) {
+function CustomerPage() {
+  function isAuthenticated() {
+    return localStorage.getItem("loggedInUser") ? true : false;
+  }
+  const [isLoggedIn, setIsLoggedIn] = useState(isAuthenticated());
+
   return (
-    <div>
-      <h2>Välkommen {user.firstname}!</h2>
-      
-      <button onClick={onLogout}>Logga ut</button>
-    </div>
+    <section style={{ marginBlockStart: "10.8rem" }}>
+      <h1 className="heading-1">Mina Sidor</h1>
+      {isLoggedIn ? <Dashboard /> : <Login />}
+    </section>
   );
 }
 
 export default CustomerPage;
+
+function Dashboard() {
+  const navigate = useNavigate();
+  return (
+    <div>
+      Hej användare!
+      <button
+        onClick={() => {
+          localStorage.removeItem("loggedInUser");
+          navigate("/");
+        }}
+      >
+        Logga ut
+      </button>
+    </div>
+  );
+}

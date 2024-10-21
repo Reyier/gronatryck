@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
-import "../styles/button.css"
+import "../styles/button.css";
 
-function Button(props){
-    return <Link to={props.to} className={props.className}>{props.content}</Link>
+function Button({ to, className, content }) {
+  return (
+    <Link to={to} className={className}>
+      {content}
+    </Link>
+  );
 }
-
 
 export default Button;

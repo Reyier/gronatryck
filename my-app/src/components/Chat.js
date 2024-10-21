@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import '../styles/chat.css'; // Se till att CSS-filen finns
+import React, { useState } from "react";
+import "../styles/chat.css"; // Se till att CSS-filen finns
+import { LuMessageCircle } from "react-icons/lu";
 
 const Chat = () => {
   const [isVisible, setIsVisible] = useState(false); // Håll koll på om chatten är synlig eller inte
@@ -12,8 +13,12 @@ const Chat = () => {
     <div className="chat-container">
       {/* Knappen för att öppna/stänga chatten */}
       {!isVisible && (
-        <button onClick={toggleChat} className="chat-toggle-button">
-          Chatt
+        <button
+          onClick={toggleChat}
+          className="chat-toggle-button"
+          style={{ fontSize: "2.8rem" }}
+        >
+          <LuMessageCircle />
         </button>
       )}
 
@@ -21,8 +26,10 @@ const Chat = () => {
         <div className="chat-window">
           {/* Header för chatten */}
           <div className="chat-header">
-           <div> <h4>Kundtjänst</h4>
-            <div className="online-status"></div>
+            <div>
+              {" "}
+              <h4>Kundtjänst</h4>
+              <div className="online-status"></div>
             </div>
             {/* Ny knapp för att stänga chatten */}
             <button className="close-chat-btn" onClick={toggleChat}>
@@ -48,11 +55,6 @@ const Chat = () => {
 };
 
 export default Chat;
-
-
-
-
-
 
 /*
 

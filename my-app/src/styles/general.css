@@ -1,7 +1,7 @@
 @import "./reset.css";
-:root{
-    font-size: 62.5%;
-      /*COLORS*/
+:root {
+  font-size: 62.5%;
+  /*COLORS*/
   --primary-dark: #373a21;
   --primary-green: #606f4a;
   --primary-lightgreen: #9daf88;
@@ -19,82 +19,73 @@
   --headingFont: "Montserrat", sans-serif;
   --subHeadingFont: "Raleway", sans-serif;
 
-  --fontSizeXXL: 4.5rem;  /* 45px */
-  --fontSizeXL: 3.5rem;   /* 35px */
-  --fontSizeLG: 2.9rem;    /* 29px */
-  --fontSizeMD: 2.3rem;    /* 23px */
-  --fontSizeSM: 1.8rem;    /* 18px */
-  --fontSizeXS: 1.4rem;    /* 14px */
+  --fontSizeXXL: 4.5rem; /* 45px */
+  --fontSizeXL: 3.5rem; /* 35px */
+  --fontSizeLG: 2.9rem; /* 29px */
+  --fontSizeMD: 2.3rem; /* 23px */
+  --fontSizeSM: 1.8rem; /* 18px */
+  --fontSizeXS: 1.4rem; /* 14px */
   --fontSizeXSS: 0.9rem; /* 9px */
 
+  --small-spacing: 1rem;
+  --medium-spacing: 2rem;
+  --large-spacing: 3rem;
 
-
-
---small-spacing: 1rem;
---medium-spacing: 2rem;
---large-spacing: 3rem;
-
-
---border-radius: 6px;
-
+  --border-radius: 6px;
 }
 
-
-
-body{
-  background-color: #FAFAFA ;
+body {
+  background-color: #fafafa;
   font-size: var(--fontSizeSM);
   font-family: var(--bodyFont);
   line-height: 1.6;
-
 }
-a{
+a {
   text-decoration: none;
   color: var(--primary-green);
 }
-.heading-1, .heading-2, .heading-3{
+.heading-1,
+.heading-2,
+.heading-3 {
   font-family: var(--headingFont);
 }
-.subheading-1, .subheading-2{
+.subheading-1,
+.subheading-2 {
   font-family: var(--subHeadingFont);
 }
-.heading-1{
+.heading-1 {
   font-size: var(--fontSizeXXL);
 }
-.heading-2{
+.heading-2 {
   font-size: var(--fontSizeXL);
 }
-.heading-3{
+.heading-3 {
   font-size: var(--fontSizeLG);
 }
-.subheading-1{
+.subheading-1 {
   font-size: var(--fontSizeMD);
 }
-.subheading-2{
+.subheading-2 {
   font-size: var(--fontSizeSM);
 }
 
-.main-body{
-font-size: var(--fontSizeXS);
+.main-body {
+  font-size: var(--fontSizeXS);
 }
 
-.info-text{
+.info-text {
   font-size: var(--fontSizeXSS);
- 
 }
 
-.nav-link{
+.nav-link {
   font-family: var(--subHeadingFont);
-  font-size: var( --fontSizeSM);
- 
+  font-size: var(--fontSizeSM);
 }
 
-
-
-.container{
-  max-width: 1400px;
+.container {
+  max-width: 1376px;
   margin-inline: auto;
 }
-.small-spacing{
-margin: var(--small-spacing)
+.small-spacing {
+  margin: var(--small-spacing);
 }

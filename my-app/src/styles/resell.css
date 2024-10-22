@@ -1,21 +1,55 @@
 .resell-page {
     width: 90%;
-    justify-content: center;
+    justify-content: center; 
     margin: auto;
+    max-width: 800px; 
 }
 
+.resell-page-container {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+}
+
+.resell-container {
+    text-align: left; 
+    margin: 2rem 0; 
+}
 
 .resell-image-container {
     width: 50rem; /* Adjust width as needed */
     height: 50rem; /* Set height to match width */
     overflow: hidden; /* Hide overflow */
     border-radius: 50%; /* Circular shape */
-    
+    margin: 0 auto; /* Center the image container */
+    position: relative; /* Ensure children are positioned correctly */
 }
 
 .resell-image {
     width: 100%; /* Fill the container */
     height: 100%; /* Fill the container */
     object-fit: cover; /* Cover to fill without distortion */
+    position: absolute; /* Position absolute to ensure it fills the container */
+    top: 50%; /* Center it vertically */
+    left: 50%; /* Center it horizontally */
+    transform: translate(-50%, -50%); /* Adjust position */
     border-radius: 50%; /* Circular image */
+}
+
+@media (min-width: 768px) {
+    .resell-page-container {
+        flex-direction: row; /* Align items horizontally on larger screens */
+        justify-content: space-between; /* Space items out */
+        gap: 3rem;
+    }
+
+    .resell-page {
+        width: 80%;
+        height: 100vh;
+    }
+
+    .resell-image-container {
+        width: 30rem; /* Use a fixed size for larger screens */
+        height: 30rem; /* Match height to width */
+    }
 }

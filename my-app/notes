@@ -1,387 +1,53 @@
-// src/pages/Products.js
-import React from 'react';
-import products from '../data/product.js';
-import Card from '../components/Cards.js';
-import '../styles/card.css';
-import { useLocation } from 'react-router-dom';
+/* Frontend mobil och desktop
 
-const Products = () => {
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const kategori = searchParams.get('kategori')?.toLowerCase(); // Få sökordet och gör det till lowercase
+klart för:
 
-  // Filtrera produkter baserat på sökordet
-  const filteredProducts = kategori
-    ? products.filter(product => 
-        product.name.toLowerCase().includes(kategori) || 
-        product.category.toLowerCase().includes(kategori)
-      )
-    : products; // Om inget sökord, visa alla produkter
-
-  const productCards = filteredProducts.map((product) => {
-    const { productId, name, category, images, sizeVariants, priceTiers } = product;
-    const { modelUrl, variants } = images;
-
-    const minPrice = Math.min(...priceTiers.map((tier) => tier.price));
-    const maxPrice = Math.max(...priceTiers.map((tier) => tier.price));
-
-    const firstVariantImage = variants[0]?.images; // Kontrollera om det finns bilder
-    const colorCodes = variants.slice(0, 2).map((variant) => variant.colorCode);
-
-    return {
-      productId,
-      name,
-      category,
-      modelImage: modelUrl,
-      firstVariantImage,
-      minPrice,
-      maxPrice,
-      sizeVariantsCount: sizeVariants.length,
-      variantsCount: variants.length,
-      colorCodes,
-    };
-  });
-
-  return (
-    <div className="product-wrapper">
-      {/* Lägg till en rubrik för sökresultat */}
-      <h2>
-        {kategori ? `Sökresultat för "${kategori}"` : ''}
-      </h2>
-      {productCards.length > 0 ? (
-        productCards.map((card) => (
-          <Card
-            key={card.productId}
-            id={card.productId}
-            name={card.name}
-            category={card.category}
-            modelImage={card.modelImage}
-            firstVariantImage={card.firstVariantImage}
-            minPrice={card.minPrice}
-            maxPrice={card.maxPrice}
-            sizeVariantsCount={card.sizeVariantsCount}
-            variantsCount={card.variantsCount}
-            colorCodes={card.colorCodes}
-          />
-        ))
-      ) : (
-        <p>Inga produkter hittades för din sökning.</p>
-      )}
-    </div>
-  );
-};
-
-export default Products;
+Förstasidan
+Produktsidan
+Produtkdetaljer
+Hela Beställningsprocessen
+Logga in
+Registrera
+Tjänster
 
 
 
 
 
 
-// src/pages/Products.js
-import React, { useState } from 'react';
-import products from '../data/product.js';
-import Card from '../components/Cards.js';
-import '../styles/card.css';
+BEHÖVER GODKÄNNAS:
 
-const Products = () => {
-  // State för filter
-  const [sort, setSort] = useState('');
-  const [selectedColor, setSelectedColor] = useState('');
-  const [selectedBrand, setSelectedBrand] = useState('');
-  const [selectedSize, setSelectedSize] = useState('');
-
-  // Sorteringsalternativ
-  const handleSortChange = (event) => {
-    setSort(event.target.value);
-  };
-
-  // Färgfilter
-  const handleColorChange = (event) => {
-    setSelectedColor(event.target.value);
-  };
-
-  // Varumärkefilter
-  const handleBrandChange = (event) => {
-    setSelectedBrand(event.target.value);
-  };
-
-  // Storleksfilter
-  const handleSizeChange = (event) => {
-    setSelectedSize(event.target.value);
-  };
-
-  // Filtrera och sortera produkter baserat på filter
-  const filteredProducts = products
-    .filter((product) => {
-      const hasColorMatch = selectedColor
-        ? product.variants && product.variants.some((variant) => variant.color && variant.color.toLowerCase() === selectedColor.toLowerCase())
-        : true;
-      const hasBrandMatch = selectedBrand
-        ? product.brand && product.brand.toLowerCase() === selectedBrand.toLowerCase()
-        : true;
-      const hasSizeMatch = selectedSize
-        ? product.sizeVariants && product.sizeVariants.includes(selectedSize)
-        : true;
-      return hasColorMatch && hasBrandMatch && hasSizeMatch;
-    })
-    .sort((a, b) => {
-      if (sort === 'Nyast') return b.date - a.date;
-      if (sort === 'Lägsta pris') return a.priceTiers?.[0]?.price - b.priceTiers?.[0]?.price;
-      if (sort === 'Högsta pris') return b.priceTiers?.[0]?.price - a.priceTiers?.[0]?.price;
-      if (sort === 'Deals') return a.discount ? -1 : 1;
-      return 0;
-    });
-
-  return (
-    <div className="product-wrapper">
-      <h2>Produkter</h2>
-      {/* Filter-sektionen */}
-      <div className="filter-wrapper">
-        <label>
-          Sortera:
-          <select value={sort} onChange={handleSortChange}>
-            <option value="">Välj sortering</option>
-            <option value="Nyast">Nyast</option>
-            <option value="Lägsta pris">Lägsta pris</option>
-            <option value="Högsta pris">Högsta pris</option>
-            <option value="Deals">Deals</option>
-          </select>
-        </label>
-
-        <label>
-          Färg:
-          <select value={selectedColor} onChange={handleColorChange}>
-            <option value="">Alla färger</option>
-            <option value="svart">Svart</option>
-            <option value="brun">Brun</option>
-            <option value="beige">Beige</option>
-            <option value="grå">Grå</option>
-            <option value="vit">Vit</option>
-            <option value="blå">Blå</option>
-            <option value="grön">Grön</option>
-            <option value="gul">Gul</option>
-            <option value="orange">Orange</option>
-            <option value="röd">Röd</option>
-            <option value="rosa">Rosa</option>
-            <option value="lila">Lila</option>
-          </select>
-        </label>
-
-        <label>
-          Varumärke:
-          <select value={selectedBrand} onChange={handleBrandChange}>
-            <option value="">Alla varumärken</option>
-            <option value="Stanley Stella">Stanley Stella</option>
-            <option value="Neutral">Neutral</option>
-          </select>
-        </label>
-
-        <label>
-          Storlek:
-          <select value={selectedSize} onChange={handleSizeChange}>
-            <option value="">Alla storlekar</option>
-            <option value="XSS">XSS</option>
-            <option value="XS">XS</option>
-            <option value="S">S</option>
-            <option value="M">M</option>
-            <option value="L">L</option>
-            <option value="XL">XL</option>
-            <option value="XXL">XXL</option>
-            <option value="3XL">3XL</option>
-          </select>
-        </label>
-      </div>
-
-      {/* Produktkort */}
-      {filteredProducts.length > 0 ? (
-        <div className="products-list">
-          {filteredProducts.map((product) => {
-            const modelImage = product.images?.modelUrl || '';
-            const firstVariantImage = product.images?.variants?.[0]?.images || '';
-            const minPrice = product.priceTiers?.length ? Math.min(...product.priceTiers.map((tier) => tier.price)) : 0;
-            const maxPrice = product.priceTiers?.length ? Math.max(...product.priceTiers.map((tier) => tier.price)) : 0;
-
-            return (
-              <Card
-                key={product.productId}
-                id={product.productId}
-                name={product.name}
-                category={product.category}
-                modelImage={modelImage}
-                firstVariantImage={firstVariantImage}
-                minPrice={minPrice}
-                maxPrice={maxPrice}
-                sizeVariantsCount={product.sizeVariants?.length || 0}
-                variantsCount={product.variants?.length || 0}
-                colorCodes={product.variants?.slice(0, 2).map((variant) => variant.colorCode) || []}
-              />
-            );
-          })}
-        </div>
-      ) : (
-        <p>Inga produkter hittades baserat på ditt filter.</p>
-      )}
-    </div>
-  );
-};
-
-export default Products;
-
-
-
-
-//navbar.js
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { FaShoppingCart, FaUserAlt, FaSearch, FaBars, FaTimes } from 'react-icons/fa';
-import '../styles/navbar.css';
-
-const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
-
-  const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
-
-  const toggleMenu = () => {
-    setIsMenuOpen((prevState) => !prevState);
-  };
-
-  const handleUserDropdownToggle = () => {
-    setIsUserDropdownOpen((prevState) => !prevState);
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem('loggedInUser');
-    // Redirect or update state if necessary
-  };
-
-  return (
-    <nav className="navbar">
-      {/* Top bar for desktop and mobile */}
-      <div className="navbar-top">
-        <div className="navbar-brand">
-          <Link to="/">
-            <img src="/img/decorative/logotyp_horizontell.png" alt="Gröna Tryck" className="navbar-logo" />
-          </Link>
-        </div>
-
-        {/* Icons for mobile and desktop */}
-        <div className="navbar-icons">
-          <Link to="/cart" className="icon cart-icon">
-            <FaShoppingCart />
-          </Link>
-          <div
-            className="icon user-icon"
-            onMouseEnter={handleUserDropdownToggle}
-            onMouseLeave={handleUserDropdownToggle}
-          >
-            <FaUserAlt />
-            {isUserDropdownOpen && (
-              <ul className="user-dropdown">
-                {loggedInUser ? (
-                  <>
-                    <li>
-                      <Link to="/customer">Profil</Link>
-                    </li>
-                    <li onClick={handleLogout}>Logga ut</li>
-                  </>
-                ) : (
-                  <>
-                    <li>
-                      <Link to="/login">Logga in</Link>
-                    </li>
-                    <li>
-                      <Link to="/register">Registrera dig</Link>
-                    </li>
-                  </>
-                )}
-              </ul>
-            )}
-          </div>
-          <Link to="/search" className="icon">
-            <FaSearch />
-          </Link>
-          <button onClick={toggleMenu} className="menu-toggle">
-            {isMenuOpen ? <FaTimes /> : <FaBars />}
-          </button>
-        </div>
-      </div>
-
-      {/* Desktop menu centered */}
-      <ul className="navbar-links">
-        <li>
-          <Link to="/">Hem</Link>
-        </li>
-        <li>
-          <Link to="/products">Sortiment</Link>
-        </li>
-        <li>
-          <Link to="/services">Tjänster</Link>
-        </li>
-        <li>
-          <Link to="/stanley">Stanley Stella</Link>
-        </li>
-        <li>
-          <Link to="/materials">Hållbara Material</Link>
-        </li>
-        <li>
-          <Link to="/about">Om Gröna Tryck</Link>
-        </li>
-        <li>
-          <Link to="/resellers">För Återförsäljare</Link>
-        </li>
-      </ul>
-
-      {/* Mobile menu */}
-      <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`}>
-        <ul className="navbar-links-mobile">
-          <li>
-            <Link to="/products">Sortiment</Link>
-          </li>
-          <li>
-            <Link to="/services">Tjänster</Link>
-          </li>
-          <li>
-            <Link to="/stanley">Stanley Stella</Link>
-          </li>
-          <li>
-            <Link to="/materials">Hållbara Material</Link>
-          </li>
-          <li>
-            <Link to="/about">Om Gröna Tryck</Link>
-          </li>
-          <li>
-            <Link to="/resellers">För Återförsäljare</Link>
-          </li>
-
-          {/* Contact Details */}
-          <li className="contact-info">
-            <p>Ring oss på: <a href="tel:+4690131340">+46 (0)90 13 13 40</a></p>
-            <p>Maila oss på: <a href="mailto:kontakt@gronatryck.se">kontakt@gronatryck.se</a></p>
-          </li>
-        </ul>
-      </div>
-
-      {/* Overlay when menu is open */}
-      {isMenuOpen && (
-        <div className="menu-overlay" onClick={toggleMenu}></div>
-      )}
-    </nav>
-  );
-};
-
-export default Navbar;
+Återförsäljare
 
 
 
 
 
-/* 
+Att GÖRA!!!!
 
 
-Styling för sidan återställ lösenord!!
-
-*/ 
+Kika över width på navbar
 
 
+Om oss bilden är för stor i figma
+
+
+Stanley stella sidan
+Hållbara material
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/

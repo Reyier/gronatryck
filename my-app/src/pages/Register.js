@@ -211,7 +211,9 @@ function Register({ onRegister }) {
               <div className="checkbox-container">
               <input type="checkbox" id="news" name="news" className="checkbox-input" />
               <label htmlFor="news">Ja, Jag vill ta emot nyhetsbrev.</label>
+              
             </div>
+            <p className='login-link' onClick={() => navigate('/login')}>Har du redan ett konto? Logga in här</p>
             </div>
 
             
@@ -219,8 +221,8 @@ function Register({ onRegister }) {
            
           </div>
            {/* Registreringsknapp */}
-           <div className="button-container">
-           <p className='login-link' onClick={() => navigate('/login')}>Har du redan ett konto? Logga in här</p>
+           <div className="btn-container">
+          
     <button className='login-btn' type="submit">
         Skapa konto
     </button>

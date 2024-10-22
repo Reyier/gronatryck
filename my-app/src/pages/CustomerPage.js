@@ -12,8 +12,8 @@ function CustomerPage({onLogin}) {
   const [isLoggedIn, setIsLoggedIn] = useState(isAuthenticated());
 
   return (
-    <section style={{ marginBlockStart: "10.8rem" }}>
-      <h1 className="heading-1">Mina Sidor</h1>
+    <section style={{ marginBlockStart: "0rem" }}>
+      
       {isLoggedIn ? <Dashboard /> : <Login onLogin={onLogin} />}
     </section>
   );
@@ -24,12 +24,18 @@ export default CustomerPage;
 function Dashboard() {
   const navigate = useNavigate();
   return (
+
+    
     <div className="Dashboard">
-      <h1>Hej! </h1> 
-      <ul className="options-list">
-        <li>Mina Beställningar/Ordrar</li>
-        <li>Gör en Retur</li>
-        <li>Ändra Dina Uppgifter</li>
+
+<div className="cart-heading">
+      <h1 className='heading-3 header-label'>Mina sidor</h1>
+      </div>
+      
+      <ul className="options-list ">
+        <li className="nav-link">Mina Beställningar</li>
+        <li className="nav-link">Gör en Retur</li>
+        <li className="nav-link">Ändra Dina Uppgifter</li>
       </ul>
       <button className="learn-more-btn main-btn btn-container"
         onClick={() => {

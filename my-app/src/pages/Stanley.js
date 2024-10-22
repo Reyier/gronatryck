@@ -6,9 +6,9 @@ const Stanley = () => {
   return (
     <div className="stanley-page">
       <div className="stanley-page-container">
-        <div className="cart-heading">
-          <h1 className="heading-3">Stanley / Stella </h1>
-        </div>
+      <div className="cart-heading">
+      <h1 className='heading-3 header-label'>Stanley / Stella</h1>
+      </div>
 
         <div className="stanley-container">
           <div className="stanley-container-p">

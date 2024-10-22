@@ -10,9 +10,9 @@ const DurableMaterials = () => {
         <div className="DurableMaterials-page">
     
             <div className="DurableMaterials-container">
-                <div className="cart-heading">
-                    <h1 className="heading-3">Hållbarhetsarbete</h1>
-                </div>
+            <div className="cart-heading">
+      <h1 className='heading-3 header-label'>Hållbarhetsarbete</h1>
+      </div>
     
     
                 <div className="DurableMaterials-container">

@@ -1,63 +1,108 @@
-.aboutus-page {
+/* Container for about us page */
+.aboutus-page-container {
     width: 90%;
     margin: auto;
-}
-.aboutus-container h1{
-    margin: 3rem 0px;
+    position: relative; /* This makes img-container relative to this container */
 }
 
-.header-img{
-    margin-bottom: 5rem;
+/* Adjust heading styling */
+.aboutus-container h1 {
+    margin: 3rem 0;
 }
 
+/* About us header image */
+.aboutus-header-img {
+    width: 100%;
+    display: block; /* Ensures the image takes up the full width */
+    height: auto;
+}
 
+/* Section heading styling */
+.section-heading {
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+}
 
-.text-containers{
+/* Image container now placed on top of the header image */
+.img-container {
+    position: absolute;
+    top: -17%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the img-container */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%; /* Adjust width to control size */
+    z-index: 1; /* Ensure it's layered on top of the header image */
+}
+
+/* Styling for images inside the img-container */
+.img-container img {
+    border-radius: 50%;
+    width: 20rem;
+    margin: 0 auto;
+}
+
+/* Styling for the text containers */
+.text-containers {
     background-color: var(--bright-color);
     border-radius: 6px;
     padding: 2rem;
     margin-bottom: 2rem;
+    max-width: 800px;
+    margin: auto;
 }
 
+/* Partnership section container */
 .sammarbete-container {
-    background-color: var(--bright-color); 
+    background-color: var(--bright-color);
     padding: 2rem;
     border-radius: 0.6rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: auto; 
     width: 80%;
     margin: 0 auto;
     margin-bottom: 20rem;
 }
 
+/* Logo grid container */
 .logo-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); 
-    grid-gap: 2rem; 
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 2rem;
     justify-items: center;
 }
 
+/* Individual logo styling */
 .sammarbete-logo img {
-    width: 100px; 
+    width: 100px;
     max-width: 100%;
     height: auto;
     object-fit: contain;
 }
 
-
-.kundansvariga-img{
-   border-radius: 50%;
-   width: 20rem; 
-   
-}
-.img-container{
-    display: grid; 
-    grid-template-columns: repeat(2, 1fr); 
-    position: absolute;
-    bottom: 50rem;
-    left: 6rem;
-    gap: 2rem;
+/* Rounded profile images */
+.kundansvariga-img {
+    border-radius: 50%;
+    width: 20rem;
 }
 
+/* Media queries for screens wider than 768px */
+@media (min-width: 768px) {
+    /* Adjusting width for larger screens */
+    .aboutus-page-container {
+        width: 80%;
+    }
+
+    .img-container{
+        top: -25%;
+        height: 100vh;
+    }
+
+    /* Logo grid adjusts for larger screens */
+    .logo-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

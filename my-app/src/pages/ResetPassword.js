@@ -9,7 +9,9 @@ function ResetPassword({ onReset }) {
 
   return (
     <div>
-      <h1 className='heading-3 header-label'>Återställ lösenord</h1>
+      <div className="cart-heading">
+      <h1 className='heading-3 header-label'>Glömt lösenord</h1>
+      </div>
       <div className="login-container">
       <input 
       className="input-login"

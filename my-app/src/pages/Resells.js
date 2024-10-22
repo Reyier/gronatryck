@@ -9,12 +9,12 @@ const services = () => {
         <div>
 
             <div className="resell-page">
-                <div className="cart-heading">
-                    <h1 className="heading-3">Återförsäljare</h1>
-                </div>
+            <div className="cart-heading">
+      <h1 className='heading-3 header-label'>Återförsäljare</h1>
+      </div>
 
 
-                <div className="resell-page">
+                <div className="resell-page-container">
                     <div className="resell-container">
                         <p className="main-body text-container">
                             Behöver du en pålitlig partner inom profilprodukter som stärker ditt varumärke med hållbara lösningar? På Gröna Tryck erbjuder vi rättvisemärkta och ekologiska profilkläder och reklamprodukter, perfekt anpassade för dina marknadsföringsbehov.

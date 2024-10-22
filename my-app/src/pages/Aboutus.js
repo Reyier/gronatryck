@@ -9,18 +9,19 @@ const aboutus = () => {
 
 return (
     <div className="aboutus-page">
+         <img
+            className="aboutus-header-img"
+            src="./img/cover/Stanley_Stella_AW24_Timeless_Outerwear_Mix_01.jpg"
+          />
 
         <div className="aboutus-page-container">
-            <div className="cart-heading">
-                <h1 className="heading-3">Om oss</h1>
-            </div>
-            
+    
             <div className="img-container">
                     <img className="kundansvariga-img" src="./img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"/>
                     <img className="kundansvariga-img" src="./img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"/>
             </div>
             <div className="aboutus-container">
-                <img className="header-img" src="./img/cover/Stanley_Stella_AW24_Timeless_Outerwear_Mix_01.jpg"/>
+                
                 <h1 className="section-heading heading-3">Norrländska problemlösare ..</h1>
                 <div className="text-containers">
                     <p className="main-body">

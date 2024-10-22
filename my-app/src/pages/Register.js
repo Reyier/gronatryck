@@ -67,7 +67,7 @@ function Register({ onRegister }) {
   return (
     <div>
      <div className="cart-heading">
-      <h1 className='heading-3'>Mina sidor</h1>
+     <h1 className='heading-3 header-label'>Registrera</h1>
       </div>
       <div className="login-container">
         <h3>Skapa konto</h3>

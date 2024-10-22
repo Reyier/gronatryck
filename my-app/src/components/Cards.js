@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "../styles/searchbar-filter.css";
 //import slugify from "../../utils/slugify";
 
 const hello = `asd`;

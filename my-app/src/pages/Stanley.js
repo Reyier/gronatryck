@@ -39,8 +39,12 @@ const Stanley = () => {
             className="stanley-image"
             src="./img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"
           />
-
-          <div className="btn-container-2"></div>
+          
+          <img
+            className="Circular-image"
+            src="./img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"
+          />
+          
         </div>
       </div>
     </div>

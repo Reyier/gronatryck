@@ -14,12 +14,15 @@ return (
             <div className="cart-heading">
                 <h1 className="heading-3">Om oss</h1>
             </div>
-
-
+            
+            <div className="img-container">
+                    <img className="kundansvariga-img" src="./img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"/>
+                    <img className="kundansvariga-img" src="./img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"/>
+            </div>
             <div className="aboutus-container">
-                <img className="header-img" src="./img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"/>
+                <img className="header-img" src="./img/cover/Stanley_Stella_AW24_Timeless_Outerwear_Mix_01.jpg"/>
+                <h1 className="section-heading heading-3">Norrländska problemlösare ..</h1>
                 <div className="text-containers">
-                    <h1 className="section-heading heading-3">Norrländska problemlösare ..</h1>
                     <p className="main-body">
                         Gröna Tryck är en Gröna Tryck är din hållbara partner för profilprodukter och återförsäljare av ekologiska och miljövänliga varumärken.<br/> <br/>
                         Som ett team av norrländska problemlösare brinner vi för tryck och ser det som en självklarhet att allt vi gör sker på ett så hållbart sätt som möjligt. Tillsammans med producenter i Sverige och Europa erbjuder vi allt från mindre beställningar till skräddarsydd produktion, direkt från råvaran.<br/> <br/>
@@ -28,35 +31,33 @@ return (
                         Vi strävar alltid efter att erbjuda produkter som är hållbara, både för ditt varumärke och för planeten.<br/> <br/>
                     </p>
                 </div>
-                <div className="sammarbete-container">
-                    <h1 className="section-heading heading-3">
-                        I stolt sammarbete med
-                    </h1>
-                    <div className="sammarbete-logo">
-                        <img src="./img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"/>
-                        <img src="./img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"/> 
-                        <img src="./img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"/> 
-                        <img src="./img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"/> 
-                        <img src="./img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"/> 
-                        <img src="./img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"/> 
-                        <img src="./img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"/> 
-                        <img src="./img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"/> 
-                        <img src="./img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"/> 
-                        <img src="./img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"/> 
-                        <img src="./img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"/> 
-                        <img src="./img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"/> 
-                        <img src="./img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"/>  
-                        <img src="./img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"/> 
-                        <img src="./img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"/> 
-                        <img src="./img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"/> 
-                        <img src="./img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"/> 
-                        <img src="./img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"/> 
+                <h1 className="section-heading heading-3">
+                        I stolt sammarbete med  
+                </h1>
+                <div className="text-containers">
+                    <div className="logo-container">
+                        <img src="./img/certificates/partners/atlantis-green-collection-logo-grona-tryck-2 2.png"/>
+                        <img src="./img/certificates/partners/dedicated-logo-grona-tryck-2 2.png"/>
+                        <img src="./img/certificates/partners/ecovero-logo-grona-tryck 2.png"/>
+                        <img src="./img/certificates/partners/knowledge-cotton-apparel-logo-grona-tryck-2 2.png"/>
+                        <img src="./img/certificates/partners/langbrett-logo-2048x844 2.png"/>
+                        <img src="./img/certificates/partners/mantis-logo-grona-tryck 2.png"/>
+                        <img src="./img/certificates/partners/neoblu-logo-2048x844 2.png"/>
+                        <img src="./img/certificates/partners/regatta-honestly-made-logo-grona-tryck 2.png"/>
+                        <img src="./img/certificates/partners/result-genuine-recycled-logo-grona-tryck 2.png"/>
+                        <img src="./img/certificates/partners/royk-logo-grona-tryck 2.png"/>
+                        <img src="./img/certificates/partners/russel-pure-organic-logo-grona-tryck 2.png"/>
+                        <img src="./img/certificates/partners/salvage-logo-grona-tryck 2.png"/>
+                        <img src="./img/certificates/partners/stst-logo-grona-tryck-2023 2.png"/>
+                        <img src="./img/certificates/partners/tiger-logo-2048x844 2.png"/>
+                        <img src="./img/certificates/partners/xd-logo-2048x844 2.png"/>
+                        <img src="./img/certificates/partners/neutral-logo-grona-tryck 2.png"/>
+                        <img src="./img/certificates/partners/atlantis-green-collection-logo-grona-tryck-2 2.png"/>
+                        <img src="./img/certificates/partners/atlantis-green-collection-logo-grona-tryck-2 2.png"/>
+                                          
                     </div>        
                 </div>
-                <div className="img-container">
-                    <img className="kundansvariga-img" src="./img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"/>
-                    <img className="kundansvariga-img" src="./img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"/>
-                </div>
+
                
             </div>
 

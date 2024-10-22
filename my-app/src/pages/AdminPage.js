@@ -1,6 +1,6 @@
 // components/AdminPage.js
 import React from 'react';
-
+import "../styles/admin.css";
 
 function AdminPage({ onLogout }) {
   return (

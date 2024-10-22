@@ -61,6 +61,7 @@
   transition: right 200ms ease;
   z-index: 100;
   .search-content {
+    padding-inline: 2rem;
     display: flex;
     width: 100%;
     justify-content: space-between;

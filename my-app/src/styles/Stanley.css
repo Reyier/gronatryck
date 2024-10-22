@@ -3,8 +3,8 @@
 }
 
 .stanley-image{
-    margin-top: 50px;
-    height:1000px;
+    margin-top: 5rem   ;
+    height:100rem;
 }
 
 .stanley-container{
@@ -15,16 +15,22 @@
     font-size: var(--fontSizeSM);
     color: var(--primary-dark); 
     width: 90%;
-    padding: 40px;
+    padding: 4rem;
 }
 
 .stanley-container-p{
     position: absolute;
-    bottom: 150px;
-    left: 40px;
-    right: 40px;
+    bottom: 45rem;
+    left: 4rem;
+    right: 4rem;
     background-color: var(--bright-color);
-    border-radius: 15px;
-    box-shadow: 0px 2px 10px 0px black;
+    border-radius: 1.5rem;
+    box-shadow: 0rem .2rem 1rem 0rem black;
 }
 
+.Circular-image{
+    border-radius: 50%;
+    margin-left: 25rem;
+    margin-top: 7.5rem;
+    margin-bottom: -5rem;
+}

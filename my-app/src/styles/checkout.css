@@ -5,7 +5,11 @@
     justify-content: center;
 }
 
-
+.quote-summary{
+  background-color: var(--bright-color);
+  padding: 1rem;
+  border-radius: 6px;
+}
 
 .quote-summary h1{
     margin: auto;
@@ -60,16 +64,15 @@
     margin-right: 5px;
   } 
 
-  .price-heading{
-    margin: 2rem;
-  }
+ 
 
 .confirmation-heading{
     margin-top: 10rem;
     justify-content: center;
     text-align: center;
+    align-items: center;
     width: 100%;
-  height: auto;
+  height: 60vh;
   background-color: var(--bright-color);
   padding: 4rem 2rem;
   margin: auto;
@@ -86,96 +89,56 @@
     
   }
 
+  .confirmation-text{
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+  }
+
+ 
 
 
 
 
+  @media (min-width: 768px){
+    .checkout-container .confirmation-page {
+      width: 80%;
+    }
+
+
+    .confirmation-page {
+      width: 80%;
+    }
+  }
+  
+  
+  
+  
+  
+  @media (min-width: 1005px) {
+    .checkout-container  {
+      width: 70%;
+    }
+    .confirmation-page {
+      width: 70%;
+    }
+
+ 
+  }
+
+
+  @media (min-width: 1200px) {
+    .checkout-container {
+      width: 60%;
+    }
+
+    .confirmation-page {
+      width: 60%;
+    }
+
+
+  }
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-/* styles/checkout.css */
-/* 
-.checkout-container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-h1, h2, h3 {
-    color: #333;
-    margin-bottom: 10px;
-}
-
-form {
-    margin: 20px 0;
-}
-
-label {
-    display: block;
-    margin-bottom: 10px;
-}
-
-input[type="text"], input[type="email"] {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-button {
-    padding: 10px 15px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 20px;
-}
-
-button:hover {
-    background-color: #45a049; 
-}
-
-.quote-summary {
-    margin-top: 20px;
-    border-top: 2px solid #4caf50;
-    padding-top: 10px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-}
-
-th, td {
-    padding: 10px;
-    text-align: left;
-    border: 1px solid #ddd;
-}
-
-th {
-    background-color: #4caf50;
-    color: white;
-}
-
-tr:nth-child(even) {
-    background-color: #f2f2f2; 
-}  */

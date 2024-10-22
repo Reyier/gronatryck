@@ -1,39 +1,63 @@
-.kundansvariga-img{
-   border-radius: 50%;
-   width: 150px; 
-   margin-bottom: 100px;
+.aboutus-page {
+    width: 90%;
+    margin: auto;
+}
+.aboutus-container h1{
+    margin: 3rem 0px;
 }
 
 .header-img{
-    margin-bottom: 50px;
+    margin-bottom: 5rem;
 }
 
-.sammarbete-logo{
-    width: 100px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2px;
-    
-}
+
 
 .text-containers{
     background-color: var(--bright-color);
+    border-radius: 6px;
+    padding: 2rem;
+    margin-bottom: 2rem;
 }
 
-.sammarbete-container{
-    bottom: 50px;
-    left: 400px;
-    right: 40px;
-    background-color: var(--bright-color);
-    width: 200px;
- 
+.sammarbete-container {
+    background-color: var(--bright-color); 
+    padding: 2rem;
+    border-radius: 0.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto; 
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 20rem;
 }
 
-.img-container{
-    bottom: 300px;
-    left: 400px;
-    right: 40px;
+.logo-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    grid-gap: 2rem; 
+    justify-items: center;
+}
+
+.sammarbete-logo img {
+    width: 100px; 
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+
+.kundansvariga-img{
+   border-radius: 50%;
+   width: 20rem; 
    
-    
+}
+.img-container{
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); 
+    position: absolute;
+    bottom: 50rem;
+    left: 6rem;
+    gap: 2rem;
 }
 

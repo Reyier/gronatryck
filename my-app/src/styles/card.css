@@ -2,12 +2,13 @@
   display: flex;
   flex-wrap: wrap;
   max-width: 1440px;
-  width: 90%;
+  width: 80%;
   margin-inline: auto;
 
   gap: 1rem;
-  
+ 
 }
+
 
 .card {
   display: flex;
@@ -115,6 +116,14 @@
 }
 
 
+
+
+
+
+
+
+
+
 @media (min-width: 768px){
 
   .product-wrapper{
@@ -128,6 +137,8 @@
   }
   
 
+
+
   }
 
 
@@ -137,7 +148,14 @@
       width: 70%;
       
      
+    
     }
+
+
+
+
+
+    
 
     
   }

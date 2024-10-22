@@ -30,9 +30,9 @@ const Login = ({ onLogin }) => {
   };
 
   return (
-    <div>
+    <div> 
       <div className="cart-heading">
-      <h1 className='heading-3'>Mina sidor</h1>
+      <h1 className='heading-3 header-label'>Mina sidor</h1>
       </div>
     <div className='login-container'>
       <h3 className='subheading-1'>Logga in</h3>

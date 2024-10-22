@@ -51,12 +51,12 @@ const Quote = ({ customer, cartItems }) => {
   const quoteDate = new Date();
 
   return (
-    <div className="quote-summary collapse-container">
+    <div className="quote-summary">
       <h1 className='heading-2'>Offert</h1>
       <h3 className='subheading-3'>Kundinformation</h3>
       <div className="main-body">
         <p>Företagsnamn: {customer.companyName || 'Inget företag angivet'}</p>
-        <p>Företagsadress: {customer.street || 'Ingen adress angiven'}</p>
+        <p>Adress: {customer.street || 'Ingen adress angiven'}</p>
         <p>Telefon: {customer.phone || 'Ingen telefon angiven'}</p>
         <p>E-post: {customer.email}</p>
         <p>Organisationsnummer: {customer.organizationNumber || 'Ingen organisationsnummer angiven'}</p>

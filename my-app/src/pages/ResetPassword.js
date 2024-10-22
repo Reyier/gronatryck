@@ -9,21 +9,28 @@ function ResetPassword({ onReset }) {
 
   return (
     <div>
-      <h2>Återställ lösenord</h2>
+      <h1 className='heading-3 header-label'>Återställ lösenord</h1>
+      <div className="login-container">
       <input 
+      className="input-login"
         type="email" 
         placeholder="Ange din email" 
         value={resetEmail} 
         onChange={(e) => setResetEmail(e.target.value)} 
       /><br />
       <input 
+      className="input-login"
         type="password" 
         placeholder="Ange nytt lösenord" 
         value={newPassword} 
         onChange={(e) => setNewPassword(e.target.value)} 
       /><br />
-      <button onClick={() => onReset(resetEmail, newPassword)}>Återställ lösenord</button>
-      <p onClick={() => navigate('/login')}>Tillbaka till inloggning</p>
+      <div className='btn-container'>
+      <p  className=" second-btn" onClick={() => navigate('/login')}>Tillbaka till inloggning</p>
+      <button className='main-btn' onClick={() => onReset(resetEmail, newPassword)}>Återställ lösenord</button>
+      
+    </div>
+    </div>
     </div>
   );
 }

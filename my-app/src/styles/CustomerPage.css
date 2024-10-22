@@ -1,0 +1,27 @@
+.Dashboard {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 5rem;
+}
+
+
+.options-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 40rem;
+    margin: 4rem 0rem 10rem 0rem;
+}
+  
+.options-list li {
+    background-color: var(--white-color);
+    color: var(--primary-green);
+    padding: 1.5rem;
+    margin: 1rem 0;
+    text-align: left;
+    border-bottom: 1px solid var(--primary-lightgreen);
+    font-size: 2rem;
+    cursor: pointer;
+    margin-bottom: 2rem;
+}

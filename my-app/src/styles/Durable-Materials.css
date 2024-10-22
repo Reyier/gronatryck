@@ -1,0 +1,14 @@
+.DurableMaterials-page{
+    margin: auto;
+    width: 90%;
+}
+
+
+.imges-container{
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); 
+    bottom: 50rem;
+    left: 6rem;
+    gap: 2rem;
+}
+

@@ -14,7 +14,6 @@ import CartPage from "./pages/CartPage";
 import Stanley from "./pages/Stanley";
 import Services from "./pages/Services";
 import Resells from "./pages/Resells.js";
-import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -30,6 +29,7 @@ import Footer from "./components/Footer"; // Importera Footer
 import Aboutus from "./pages/Aboutus.js";
 import Header from "./components/Header.js";
 import Assortment from "./pages/Assortment";
+import DurableMaterials from "./pages/Durable-Materials.js"
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null); // Track logged in user
@@ -118,13 +118,13 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/stanley-stella" element={<Stanley />} />
-            <Route path="/services" element={<Services />} />
+            <Route path="/tjanster" element={<Services />} />
             <Route path="/produkter" element={<Products />} />
-            <Route path="/resells" element={<Resells />} />
+            <Route path="/for-aterforsaljare" element={<Resells />} />
             <Route path="/cart" element={<CartPage />} />
-            <Route path="/blog" element={<Blog />} />
             <Route path="/kontakt" element={<Contact />} />
-            <Route path="/mina-sidor" element={<CustomerPage />} />
+            <Route path="/mina-sidor" element={<CustomerPage onLogin={handleLogin} />} />
+            {/* komponenter */}
             <Route path="/login" element={<Login onLogin={handleLogin} />} />
             <Route
               path="/register"
@@ -142,7 +142,8 @@ function App() {
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/produkter/:id" element={<ProductDetail />} />
             <Route path="/confirmation" element={<ConfirmationPage />} />
-            <Route path="/about-us" element={<Aboutus />} />
+            <Route path="/om-grona-tryck" element={<Aboutus />} />
+            <Route path="/hallbara-material" element={<DurableMaterials />} />
 
             {/* Protected Routes */}
             <Route

@@ -79,14 +79,14 @@ function Checkout() {
             </div>
 
             <div className="input-container">
-              <h6 className='input-label'>Företagsadress</h6>
+              <h6 className='input-label'>Adress</h6>
               <input
                 className='input-login'
                 type="text"
                 name="street"
                 value={customerInfo.street}
                 onChange={handleChange}
-                placeholder="Företagsadress"
+                placeholder="Adress"
               />
             </div>
 

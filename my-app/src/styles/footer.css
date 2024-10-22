@@ -9,6 +9,8 @@
   display: grid;
   justify-content: center;
   width: 100%;
+  z-index: 1;
+
 }
 
 .footer ul {

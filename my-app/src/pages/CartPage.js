@@ -170,13 +170,13 @@ function CartPage() {
         <thead>
           <tr>
             <td>Antal</td>
-            <th>1 färg</th>
-            <th>2 färg</th>
-            <th>3 färg</th>
-            <th>4 färg</th>
-            <th>5 färg</th>
-            <th>6 färg</th>
-            <th>7 färg</th>
+            <td>1 färg</td>
+            <td>2 färg</td>
+            <td>3 färg</td>
+            <td>4 färg</td>
+            <td>5 färg</td>
+            <td>6 färg</td>
+            <td>7 färg</td>
           </tr>
         </thead>
         <tbody>
@@ -184,7 +184,7 @@ function CartPage() {
             <tr key={quantity}>
               <td>{quantity}</td>
               {prices.map((price, index) => (
-                <th key={index}>{price} SEK</th>
+                <td key={index}>{price} SEK</td>
               ))}
             </tr>
           ))}
@@ -342,7 +342,7 @@ function CartPage() {
                 </select>
               </label>
             </div>
-            <h4 className="main-body">Antal: {getTotalQuantity()}</h4>
+            
             <h4 className="main-body">Pris/St: {pricePerItem} SEK</h4>{" "}
             <h4 className="main-body"> Schablon: {totalStencilPrice()}SEK</h4>
             <h4 className="main-body">
@@ -359,23 +359,27 @@ function CartPage() {
                   value={globalComment}
                   onChange={handleGlobalCommentChange}
                   rows="4"
-                  placeholder="Besrkiv hur du vill använda ditt tryck här..."
+                  placeholder="Beskriv hur du vill använda ditt tryck här..."
                 />
               </label>
             </div>
-            <div className="collapse-container ">
-              <h3
-                className="main-body"
+
+            
+            <div className="tab-content print-price">
+              <h1
+                className="heading-3"
                 onClick={togglePrintSection}
                 style={{ cursor: "pointer" }}
               >
-                Tryckpriser:
+                Tryckpriser 
                 <span className="toggle-arrow">
                   {openPrintSection ? "▲" : "▼"}
                 </span>
-              </h3>
+              </h1>
               {openPrintSection && renderPrintPrices()}
             </div>
+
+
           </div>
         </div>
       )}

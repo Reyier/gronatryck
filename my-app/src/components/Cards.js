@@ -5,19 +5,19 @@ import "../styles/searchbar-filter.css";
 const hello = `asd`;
 
 function Card(props) {
-    function slugify(text) {
-        return text
-          .toString()
-          .toLowerCase()
-          .replace(/\s+/g, "-") // Replace spaces with -
-          .replace(/[åä]/g, "a") // Replace å and ä with a
-          .replace(/ö/g, "o") // Replace ö with o
-          .replace(/[^\w\-]+/g, "") // Remove all non-word chars
-          .replace(/\-\-+/g, "-") // Replace multiple - with single -
-          .replace(/^-+/, "") // Trim - from start of text
-          .replace(/-+$/, ""); // Trim - from end of text
-      }
-      
+  function slugify(text) {
+    return text
+      .toString()
+      .toLowerCase()
+      .replace(/\s+/g, "-") // Replace spaces with -
+      .replace(/[åä]/g, "a") // Replace å and ä with a
+      .replace(/ö/g, "o") // Replace ö with o
+      .replace(/[^\w\-]+/g, "") // Remove all non-word chars
+      .replace(/\-\-+/g, "-") // Replace multiple - with single -
+      .replace(/^-+/, "") // Trim - from start of text
+      .replace(/-+$/, ""); // Trim - from end of text
+  }
+
   return (
     <article className="card">
       <Link to={`/produkter/${props.id}/${slugify(props.name)}`}>
@@ -72,8 +72,6 @@ function Card(props) {
             Från {props.minPrice},00 SEK
           </p>
         </section>
-
-       
       </div>
     </article>
   );

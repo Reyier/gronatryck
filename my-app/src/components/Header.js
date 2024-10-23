@@ -14,14 +14,13 @@ import "../styles/header.css";
 const navLinks = [
   { to: "/sortiment", textContent: "Sortiment" },
 
-  // Behövs tjänster här eller ska de ligga under sortiment{ to: "/tjanster", textContent: "Tjänster" }, 
-  
+  // Behövs tjänster här eller ska de ligga under sortiment{ to: "/tjanster", textContent: "Tjänster" },
+
   { to: "/stanley-stella", textContent: "Stanley Stella" },
   { to: "/hallbara-material", textContent: "Hållbara Material" },
   { to: "/om-grona-tryck", textContent: "Om Oss" },
   { to: "/for-aterforsaljare", textContent: "Återförsäljare" },
   { to: "/kontakt", textContent: "Kontakt" },
- 
 ];
 
 export default function Header() {
@@ -54,7 +53,7 @@ export default function Header() {
           />
         </Link>
         <nav>
-          <NavList links={navLinks} className="desktop" />
+          <NavList key="desktop-menu" links={navLinks} className="desktop" />
         </nav>
         <div
           style={{
@@ -71,7 +70,11 @@ export default function Header() {
           <HamburgerMenu active={mobileMenuActive} onClick={toggleMenu} />
         </div>
         <div className={`mobile-menu-2 ${mobileMenuActive ? "active" : ""}`}>
-          <NavList links={navLinks} handleClick={toggleMenu} />
+          <NavList
+            key="mobile-menu"
+            links={navLinks}
+            handleClick={toggleMenu}
+          />
         </div>
       </div>
     </header>

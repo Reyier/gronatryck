@@ -29,8 +29,11 @@ import Footer from "./components/Footer"; // Importera Footer
 import Aboutus from "./pages/Aboutus.js";
 import Header from "./components/Header.js";
 import Assortment from "./pages/Assortment";
-import DurableMaterials from "./pages/Durable-Materials.js"
-import Categories from "./pages/Categories.js"
+import DurableMaterials from "./pages/Durable-Materials.js";
+import Categories from "./pages/Categories.js";
+
+// TA BORT SEN
+import Max from "./pages/MaxRum.js";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null); // Track logged in user
@@ -121,11 +124,17 @@ function App() {
             <Route path="/stanley-stella" element={<Stanley />} />
             <Route path="/tjanster" element={<Services />} />
             <Route path="/produkter" element={<Products />} />
-            <Route path="/produkter/kategori/:category" element={<Products />} />
+            <Route
+              path="/produkter/kategori/:category"
+              element={<Products />}
+            />
             <Route path="/for-aterforsaljare" element={<Resells />} />
             <Route path="/cart" element={<CartPage />} />
             <Route path="/kontakt" element={<Contact />} />
-            <Route path="/mina-sidor" element={<CustomerPage onLogin={handleLogin} />} />
+            <Route
+              path="/mina-sidor"
+              element={<CustomerPage onLogin={handleLogin} />}
+            />
             {/* komponenter */}
             <Route path="/login" element={<Login onLogin={handleLogin} />} />
             <Route
@@ -142,11 +151,15 @@ function App() {
               element={<ProductDetail />}
             />
             <Route path="/checkout" element={<Checkout />} />
+            {/* MAX TABORT*/}
+            <Route path="/max" element={<Max />} />
+            <Route path="/max/kategori/:category" element={<Max />} />
+
             <Route path="/produkter/:id" element={<ProductDetail />} />
             <Route path="/confirmation" element={<ConfirmationPage />} />
             <Route path="/om-grona-tryck" element={<Aboutus />} />
             <Route path="/hallbara-material" element={<DurableMaterials />} />
-            <Route path="/alla-kategorier" element={<Categories/>} />
+            <Route path="/alla-kategorier" element={<Categories />} />
             {/* Protected Routes */}
             <Route
               path="/customer"

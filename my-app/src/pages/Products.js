@@ -37,15 +37,6 @@ const getUniqueSizes = (products) => {
 };
 
 const Products = () => {
-  {
-    /*Kolla */
-  }
-  const { category } = useParams();
-  console.log(category);
-  {
-    /* kolla vad category är, sök i products om category matchar produtct.category*/
-  }
-
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const kategori = searchParams.get("kategori")?.toLowerCase();

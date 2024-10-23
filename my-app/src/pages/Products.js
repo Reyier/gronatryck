@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import products from "../data/product.js";
 import Card from "../components/Cards.js";
 import "../styles/card.css";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import Breadcrumb from "../components/Breadcrumb.js";
 
 const getUniqueColors = (products) => {
@@ -37,6 +37,11 @@ const getUniqueSizes = (products) => {
 };
 
 const Products = () => {
+  {/*Kolla */}
+  const { category } = useParams();
+  console.log(category);
+  {/* kolla vad category är, sök i products om category matchar produtct.category*/}
+
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const kategori = searchParams.get("kategori")?.toLowerCase();

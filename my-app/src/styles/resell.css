@@ -17,29 +17,31 @@
 }
 
 .resell-image-container {
-    width: 50rem; /* Adjust width as needed */
-    height: 50rem; /* Set height to match width */
-    overflow: hidden; /* Hide overflow */
-    border-radius: 50%; /* Circular shape */
-    margin: 0 auto; /* Center the image container */
-    position: relative; /* Ensure children are positioned correctly */
+    width: 50rem;
+    height: 50rem; 
+    overflow: hidden; 
+    border-radius: 50%; 
+    margin: 0 auto; 
+    position: relative; 
+    margin-bottom: 5rem;
 }
 
 .resell-image {
-    width: 100%; /* Fill the container */
-    height: 100%; /* Fill the container */
-    object-fit: cover; /* Cover to fill without distortion */
-    position: absolute; /* Position absolute to ensure it fills the container */
-    top: 50%; /* Center it vertically */
-    left: 50%; /* Center it horizontally */
-    transform: translate(-50%, -50%); /* Adjust position */
-    border-radius: 50%; /* Circular image */
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover;
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    border-radius: 50%; 
+   
 }
 
 @media (min-width: 768px) {
     .resell-page-container {
-        flex-direction: row; /* Align items horizontally on larger screens */
-        justify-content: space-between; /* Space items out */
+        flex-direction: row;
+        justify-content: space-between; 
         gap: 3rem;
     }
 
@@ -49,7 +51,7 @@
     }
 
     .resell-image-container {
-        width: 30rem; /* Use a fixed size for larger screens */
-        height: 30rem; /* Match height to width */
+        width: 30rem; 
+        height: 30rem; 
     }
 }

@@ -1,6 +1,9 @@
 import NavList from "../components/NavList";
+import PopularCategories from "../components/PopularCategories";
+
 
 const categories = [
+  { to: "/sortiment/produkter", textContent: "Visa alla" },
   { to: "/sortiment/produkter", textContent: "Nyheter" },
   { to: "/produkter", textContent: "Bästsäljare" },
   { to: "/produkter", textContent: "Kollektioner" },
@@ -12,14 +15,46 @@ const categories = [
   { to: "/produkter", textContent: "Tjänster" },
 ];
 
+
 export default function Sortiment() {
+  const categorylist = [{
+    img: "/img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg",
+    alt: "Cool tröja",
+    label: "T-shirt",
+
+  },
+  {
+    img: "/img/informative/Liner_Desert Dust_Duo_Front_Main_0.jpg",
+    alt: "Västar",
+    label: "Västar",
+
+  },{
+    img: "/img/informative/Trekker_Desert Dust_Duo_Front_Main_0.jpg",
+    alt: "Jackor",
+    label: "Jackor",
+
+  },{
+    img: "/img/informative/Cruiser 2.0_Heather Haze_Duo_Front_Main_0.jpg",
+    alt: "Huvtröjor",
+    label: "Huvtröjor",
+
+  }]
+
+
+
+  
   return (
     <div className="container" style={{ marginBlockStart: "10.8rem" }}>
-      {/*  Lägg breadcrumb här */}
-      <h1 className="heading-1">Sortiment</h1>
+     
+      
       <NavList links={categories} className="categories" />
 
-      {/* Populära kategorier här */}
+      <div className="nav-heading">
+<h1 className="section-heading heading-3">Populära Kategori</h1>
+</div>
+      <PopularCategories  categoryList={categorylist}/>
+
+   
     </div>
   );
 }

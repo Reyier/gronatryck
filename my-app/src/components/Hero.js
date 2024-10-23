@@ -1,15 +1,15 @@
 import { useState } from "react";
 import "../styles/hero.css";
 import Button from "./Button";
+import HeroDisplay from "./HeroDisplay.js"; 
 
 export default function Hero() {
-  /* Byt till useffect eller kolla om man kan ändra dena variabel beroende på nätverk eller brandbredd, så att bild 
-    visas om man ansluter från telefon. Byt till false om du inte orkar att videon spelar helat tiden*/
   const [video, setVideo] = useState(true);
   return (
     <section className="hero-section">
+      <div>
       <HeroDisplay media={video} />
-
+      </div>
       <div className="hero-content-container container">
         <div className="hero-content">
           <span style={{ textTransform: "uppercase", fontWeight: "300" }}>
@@ -24,7 +24,6 @@ export default function Hero() {
             med och bidra till en mer hållbar framtid.
           </p>
           <div style={{ display: "flex", gap: "1.6rem" }}>
-            {" "}
             <Button
               to="/sortiment"
               content={"Utforska vårt sortiment"}
@@ -40,35 +39,4 @@ export default function Hero() {
       </div>
     </section>
   );
-}
-
-function HeroDisplay({ media }) {
-  if (media) {
-    return (
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="hero-video"
-        id="hero-video"
-        style={{ display: "block" }}
-      >
-        <source
-          src="/videos/STST_AW24_CAMPAIGN_VIDEO_NO_TEXT.mp4"
-          type="video/mp4"
-        />
-        Your browser does not support the video tag.
-      </video>
-    );
-  } else {
-    return (
-      <img
-        src="/img/cover/Stanley_Stella_AW24_Timeless_Outerwear_Mix_01.jpg"
-        alt="Hero"
-        className="hero-image"
-        id="hero-image"
-      />
-    );
-  }
 }

@@ -2,63 +2,49 @@ import React from "react";
 import "../styles/home.css";
 import Button from "../components/Button";
 import Hero from "../components/Hero";
+import PopularCategories from "../components/PopularCategories";
 
 const Home = () => {
+  const categorylist = [{
+    img: "/img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg",
+    alt: "Cool tröja",
+    label: "T-shirt",
+
+  },
+  {
+    img: "/img/informative/Liner_Desert Dust_Duo_Front_Main_0.jpg",
+    alt: "Västar",
+    label: "Västar",
+
+  },{
+    img: "/img/informative/Trekker_Desert Dust_Duo_Front_Main_0.jpg",
+    alt: "Jackor",
+    label: "Jackor",
+
+  },{
+    img: "/img/informative/Cruiser 2.0_Heather Haze_Duo_Front_Main_0.jpg",
+    alt: "Huvtröjor",
+    label: "Huvtröjor",
+
+  }]
+
+  
   return (
     <div className="home-page">
       <Hero />
       <div className="body-container">
         <div>
-          {/*  Bryt upp populära kategorier till en egen komponent, möjligtvis en mer generell komponent som innehåller kategorier så kan vi återanvända den inne på stortiment/kläder också fast där ha en större lista 
-          De behöver även göras om till <Link> element för att de ska ta en vidare till den kategorin. Vi måste då göra någon dynamisk route som tar en dit man vill.*/}
-          <section
-            className="popular-categories"
-            style={{ marginBlockStart: "3.4rem" }}
-          >
-            <div className="categories-grid">
-              <div className="category">
-                <img
-                  src="/img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"
-                  alt="T-shirt"
-                />
-                <div className="category-label label-with-bg main-body ">
-                  T-shirt
-                </div>
-              </div>
-              <div className="category">
-                <img
-                  src="/img/informative/Liner_Desert Dust_Duo_Front_Main_0.jpg"
-                  alt="Västar"
-                />
-                <div className="category-label label-with-bg main-body">
-                  Västar
-                </div>
-              </div>
-              <div className="category">
-                <img
-                  src="/img/informative/Trekker_Desert Dust_Duo_Front_Main_0.jpg"
-                  alt="Jackor"
-                />
-                <div className="category-label label-with-bg main-body">
-                  Jackor
-                </div>
-              </div>
-              <div className="category">
-                <img
-                  src="/img/informative/Cruiser 2.0_Heather Haze_Duo_Front_Main_0.jpg"
-                  alt="Huvtröjor"
-                />
-                <div className="category-label label-with-bg main-body">
-                  Huvtröjor
-                </div>
-              </div>
-            </div>
+         
+          <PopularCategories  categoryList={categorylist}/>
+          <div className="btn-container">
             <Button
-              to="/produkter"
-              className="main-btn btn-container"
+              to="/alla-kategorier"
+              className="main-btn"
               content="Alla Kategorier"
             />
-          </section>
+            </div>
+         
+          
         </div>
 
         <section className="certified-section">
@@ -95,7 +81,7 @@ const Home = () => {
           
           <Button
                 to="/mer-info"
-                className="learn-more-btn main-btn btn-container"
+                className=" main-btn btn-container"
                 content="Läs mer"
               />
         </section>
@@ -176,7 +162,7 @@ const Home = () => {
               placeholder="Din e-post"
               required
             />
-            <button type="submit" className="main-btn">
+            <button type="submit" className=" main-btn ">
               Prenumerera nu!
             </button>
           </form>

@@ -1,36 +1,112 @@
-.stanley-page{
+html {
+    scroll-behavior: smooth;
+  }
+
+.stanley-container {
+    width: 100%;
     margin: auto;
+    margin: 2rem 0;
 }
 
-.stanley-image{
-    margin-top: 5rem   ;
-    height:100rem;
-}
-
-.stanley-container{
-    position: relative;
-}
-
-.stanley-container p {
-    font-size: var(--fontSizeSM);
-    color: var(--primary-dark); 
+.stanley {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
     width: 90%;
-    padding: 4rem;
+    max-width: 1200px; 
+    margin: auto; 
 }
 
-.stanley-container-p{
+.stanley-text-container {
+    width: 100%; 
+    max-width: 500px; 
+    text-align: left; 
+    margin: 0 auto;
+    padding: 1rem; 
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+}
+
+.image-carousel {
+    display: flex;
+    overflow-x: auto; 
+    scroll-snap-type: x mandatory;
+    gap: 0.5rem; 
+    padding: 1rem; 
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+    background-color: #f8f8f8; 
+    border-radius: 6px; 
+}
+
+.image-carousel::-webkit-scrollbar {
+    display: none; 
+}
+
+.image-carousel img {
+    width: 15rem; 
+    height: auto; 
+    border-radius: 6px; 
+    object-fit: cover; 
+    scroll-snap-align: start;
+    transition: transform 0.2s; 
+}
+
+.image-carousel img:hover {
+    transform: scale(1.03);
+}
+
+.carousel-arrow {
     position: absolute;
-    bottom: 45rem;
-    left: 4rem;
-    right: 4rem;
-    background-color: var(--bright-color);
-    border-radius: 1.5rem;
-    box-shadow: 0rem .2rem 1rem 0rem black;
+    top: 50%;
+    transform: translateY(-50%);
+    
+    border: none;
+    color: white;
+    font-size: 3rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    z-index: 2;
+    border-radius: 50%;
 }
 
-.Circular-image{
-    border-radius: 50%;
-    margin-left: 25rem;
-    margin-top: 7.5rem;
-    margin-bottom: -5rem;
+.carousel-arrow.left {
+    left: 10px;
+}
+
+.carousel-arrow.right {
+    right: 10px;
+}
+
+
+
+.benefits-list {
+    display: flex; 
+    flex-direction: column; 
+    margin: 1rem 0;
+    align-items: center; 
+}
+
+.benefit-item {
+    margin: 0.5rem 0; 
+}
+
+@media (min-width: 768px) {
+    .stanley {
+        width: 80%;
+    }
+    
+    .image-carousel img {
+        width: 30rem; 
+    }
+    
+    .benefits-list {
+        flex-direction: row; 
+        justify-content: space-around; 
+        width: 100%; 
+    }
 }

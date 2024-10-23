@@ -12,13 +12,16 @@ import NavList from "./NavList";
 import "../styles/header.css";
 
 const navLinks = [
-  { to: "/sortiment", textContent: "Sortiment", icon: <LuChevronRight /> },
-  { to: "/tjanster", textContent: "Tjänster" },
+  { to: "/sortiment", textContent: "Sortiment" },
+
+  // Behövs tjänster här eller ska de ligga under sortiment{ to: "/tjanster", textContent: "Tjänster" }, 
+  
   { to: "/stanley-stella", textContent: "Stanley Stella" },
   { to: "/hallbara-material", textContent: "Hållbara Material" },
-  { to: "/om-grona-tryck", textContent: "Om Gröna Tryck" },
-  { to: "/for-aterforsaljare", textContent: "För Återförsäljare" },
-  { to: "/mina-sidor", textContent: "Mina Sidor" },
+  { to: "/om-grona-tryck", textContent: "Om Oss" },
+  { to: "/for-aterforsaljare", textContent: "Återförsäljare" },
+  { to: "/kontakt", textContent: "Kontakt" },
+ 
 ];
 
 export default function Header() {
@@ -43,7 +46,7 @@ export default function Header() {
     <header className="page-header">
       <SearchContainer handleClick={cancelSearch} isActive={searchActive} />
 
-      <div className="container top-bar">
+      <div className="header-container top-bar">
         <Link to="/" className="logo">
           <img
             src="/img/decorative/gronatryck_logo_webb.png"

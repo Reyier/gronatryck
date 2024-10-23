@@ -371,8 +371,13 @@ input[type="radio"]:checked + .color-circle {
     
   }
 
-  .container {
-    width: 60%;
-  }
+  
 }
 
+@media (min-width: 1500px) {
+
+    .container {
+      width: 60%;
+      
+    }
+}

@@ -58,6 +58,9 @@ function Contact() {
         <form onSubmit={handleSubmit}>
               <div className="cart-heading">
         <h1 className="heading-3">Kontakta oss</h1>
+        <div className="cart-heading">
+            <h1 className='heading-3 header-label'>Kontakta oss</h1>
+         </div>
       </div>
           <div className='login-container print-container'>
             <div className='input-container'>

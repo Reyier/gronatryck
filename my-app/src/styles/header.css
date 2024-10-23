@@ -5,7 +5,7 @@
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 15;
+  z-index: 150;
   background-color: var(--white-color);
   box-shadow: 0px 2px 8px 0px rgba(55, 58, 33, 0.25);
   color: var(--primary-green);
@@ -14,6 +14,11 @@
     justify-content: space-between;
     align-items: flex-end;
   }
+}
+
+.header-container{
+  width: 90%;
+margin: auto;
 }
 
 .mobile-menu-2 {
@@ -97,8 +102,18 @@
   max-width: 12.5rem;
 }
 
-@container header (min-width: 1316px) {
+
+
+
+
+
+
+
+
+
+@container header (min-width: 1005px) {
   .desktop {
+    width: 100%;
     display: flex !important;
     line-height: 1;
     a {
@@ -111,4 +126,20 @@
   .hamburger {
     display: none;
   }
-}
+
+
+  
+    .header-container{
+      width: 90%;
+    
+    }
+  }
+
+
+
+  @media (min-width: 1500px){
+    .header-container{
+      width: 75%;
+    
+    }
+  }

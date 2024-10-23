@@ -221,14 +221,14 @@ function Register({ onRegister }) {
            
           </div>
            {/* Registreringsknapp */}
-           <div className="btn-container">
-          
-    <button className='login-btn' type="submit">
+           
+           <div className="btn-container-1">
+    <button className='main-btn' type="submit">
         Skapa konto
     </button>
-
+   </div>
     
-</div>
+
         </form>
       </div>
     </div>

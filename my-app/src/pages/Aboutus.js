@@ -9,6 +9,9 @@ const aboutus = () => {
 
 return (
     <div className="aboutus-page">
+         <div className="cart-heading">
+            <h1 className='heading-3 header-label'>Om Grona Tryck</h1>
+         </div>
          <img
             className="aboutus-header-img"
             src="./img/cover/Stanley_Stella_AW24_Timeless_Outerwear_Mix_01.jpg"

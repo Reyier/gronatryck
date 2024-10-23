@@ -2,12 +2,7 @@ import React, { useState } from "react";
 import Button from "../components/Button";
 import "../styles/Stanley.css";
 
-const scrollToSection = (sectionId) => {
-  const section = document.getElementById(sectionId);
-  if (section) {
-    section.scrollIntoView({ behavior: "smooth" });
-  }
-};
+
 
 const scrollCarousel = (direction) => {
   const carousel = document.querySelector(".image-carousel");
@@ -20,14 +15,13 @@ const Stanley = () => {
 
   return (
     <div>
-      <section className="hero-section">
+      <section className="hero-section-2">
         <img
           src="/img/cover/Stanley_Stella_AW24_Timeless_Outerwear_Mix_01.jpg"
           alt="Hero"
           className="hero-image"
           id="hero-image"
         />
-
         <div className="hero-content-container container">
           <div className="hero-content">
             <span style={{ textTransform: "uppercase", fontWeight: "300" }}>
@@ -46,19 +40,19 @@ const Stanley = () => {
                 content={"Se sortiment"}
                 className="main-btn"
               />
-             <Button
-  onClick={() => scrollToSection("stanley-section")}
-  content="Läs Mer"
-  className="second-btn"
-/>
+             
             </div>
           </div>
         </div>
       </section>
 
       <div id="stanley-section" className="stanley">
-      <div id="stanley-container" className="stanley-container">
+        <div id="stanley-container" className="stanley-container">
           <div className="stanley-text-container">
+          <div className="text-container main-body">
+            <h1 className="section-heading heading-3">
+              Hållbara Kläder i Toppklass
+            </h1>
             <p className="main-body">
               Sedan 2013 har Gröna Tryck och Stanley/Stella samarbetat för att
               erbjuda kläder som kombinerar stil, kvalitet och hållbarhet. Sedan
@@ -84,10 +78,23 @@ const Stanley = () => {
               <br />
               <br />
             </p>
+            </div>
+
+            <div className="img-container">
+            <div className="img-wrapper">
+              <img
+                className="stanley-img"
+                src="./img/decorative/StanleyStella_SS2023.png"
+                alt="About Image 1"
+              />
+              </div>
+            </div>
           </div>
 
           <section className="gallery-section stanley-container">
-            <h1 className="section-heading subheading-1">Populära Produkter</h1>
+            <h1 className="section-heading heading-3 stanley-heading">
+              Populära Produkter
+            </h1>
 
             <div className="carousel-container">
               <button
@@ -98,22 +105,6 @@ const Stanley = () => {
               </button>
 
               <div className="image-carousel">
-                <img
-                  src="./img/informative/Brooker_Khaki_Duo_Front_Main_0.jpg"
-                  alt="Product 1"
-                />
-                <img
-                  src="./img/informative/Liner_Desert Dust_Duo_Front_Main_0.jpg"
-                  alt="Product 2"
-                />
-                <img
-                  src="./img/informative/Radder 2.0 Vintage_G. Dyed Blue Stone_Duo_Front_Main_0.jpg"
-                  alt="Product 3"
-                />
-                <img
-                  src="./img/informative/Puffer Gilet_French Navy_Duo_Front_Main_0.jpg"
-                  alt="Product 4"
-                />
                 <img
                   src="./img/informative/Brooker_Khaki_Duo_Front_Main_0.jpg"
                   alt="Product 1"
@@ -142,25 +133,23 @@ const Stanley = () => {
           </section>
 
           <section className="benefits-section stanley-container">
-            <div id="stanley-section">
-            <h1 className="section-heading subheading-1" >
+            <h1 className="section-heading heading-3 stanley-heading">
               Varför Välja Stanley/Stella?
             </h1>
             <div className="benefits-list">
               <div className="benefit-item">
                 <h3 className="subheading-2">Miljövänliga Material</h3>
-                <p className="main-body"> Hållbara och ekologiska tyger.</p>
+                <p className="main-body">Hållbara och ekologiska tyger.</p>
               </div>
               <div className="benefit-item">
                 <h3 className="subheading-2">Customisering</h3>
-                <p className="main-body"> Egen design och tryck.</p>
+                <p className="main-body">Egen design och tryck.</p>
               </div>
               <div className="benefit-item">
                 <h3 className="subheading-2">Rättvisa Arbetsvillkor</h3>
                 <p className="main-body">
                   Produktion under Fairwear-principer.
                 </p>
-              </div>
               </div>
             </div>
           </section>

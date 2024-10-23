@@ -1,75 +1,172 @@
 import React from "react";
-import "../styles/Aboutus.css";
 import Button from "../components/Button";
+import "../styles/Aboutus.css";
+import FAQ from "../components/FAQ";
 
+const AboutUs = () => {
+  return (
+    <div>
+      {/* Hero Section */}
+      <section className="hero-section-2">
+        <img
+          src="./img/decorative/DJI_20241010094358_0007_D-Enhanced-NR.jpg"
+          alt="Hero"
+          className="hero-image"
+          id="aboutus-hero-image"
+        />
 
-
-const aboutus = () => {
-
-
-return (
-    <div className="aboutus-page">
-         <div className="cart-heading">
-            <h1 className='heading-3 header-label'>Om Grona Tryck</h1>
-         </div>
-         <img
-            className="aboutus-header-img"
-            src="./img/cover/Stanley_Stella_AW24_Timeless_Outerwear_Mix_01.jpg"
-          />
-
-        <div className="aboutus-page-container">
-    
-            <div className="img-container">
-                    <img className="kundansvariga-img" src="./img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"/>
-                    <img className="kundansvariga-img" src="./img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"/>
-            </div>
-            <div className="aboutus-container">
-                
-                <h1 className="section-heading heading-3">Norrländska problemlösare ..</h1>
-                <div className="text-containers">
-                    <p className="main-body">
-                        Gröna Tryck är en Gröna Tryck är din hållbara partner för profilprodukter och återförsäljare av ekologiska och miljövänliga varumärken.<br/> <br/>
-                        Som ett team av norrländska problemlösare brinner vi för tryck och ser det som en självklarhet att allt vi gör sker på ett så hållbart sätt som möjligt. Tillsammans med producenter i Sverige och Europa erbjuder vi allt från mindre beställningar till skräddarsydd produktion, direkt från råvaran.<br/> <br/>
-                        Sedan starten 2008 som ett litet screentryckeri i Norrland har vi vuxit till att specialisera oss på helhetslösningar för ekologisk och miljösmart profilreklam. <br/> <br/>
-                        Idag är vi ledande inom ekologiska profilkläder och hjälper företag och organisationer med allt från arbetskläder och merchandise till mässmaterial och gåvor för medlemmar.<br/> <br/>
-                        Vi strävar alltid efter att erbjuda produkter som är hållbara, både för ditt varumärke och för planeten.<br/> <br/>
-                    </p>
-                </div>
-                <h1 className="section-heading heading-3">
-                        I stolt sammarbete med  
-                </h1>
-                <div className="text-containers">
-                    <div className="logo-container">
-                        <img src="./img/certificates/partners/atlantis-green-collection-logo-grona-tryck-2 2.png"/>
-                        <img src="./img/certificates/partners/dedicated-logo-grona-tryck-2 2.png"/>
-                        <img src="./img/certificates/partners/ecovero-logo-grona-tryck 2.png"/>
-                        <img src="./img/certificates/partners/knowledge-cotton-apparel-logo-grona-tryck-2 2.png"/>
-                        <img src="./img/certificates/partners/langbrett-logo-2048x844 2.png"/>
-                        <img src="./img/certificates/partners/mantis-logo-grona-tryck 2.png"/>
-                        <img src="./img/certificates/partners/neoblu-logo-2048x844 2.png"/>
-                        <img src="./img/certificates/partners/regatta-honestly-made-logo-grona-tryck 2.png"/>
-                        <img src="./img/certificates/partners/result-genuine-recycled-logo-grona-tryck 2.png"/>
-                        <img src="./img/certificates/partners/royk-logo-grona-tryck 2.png"/>
-                        <img src="./img/certificates/partners/russel-pure-organic-logo-grona-tryck 2.png"/>
-                        <img src="./img/certificates/partners/salvage-logo-grona-tryck 2.png"/>
-                        <img src="./img/certificates/partners/stst-logo-grona-tryck-2023 2.png"/>
-                        <img src="./img/certificates/partners/tiger-logo-2048x844 2.png"/>
-                        <img src="./img/certificates/partners/xd-logo-2048x844 2.png"/>
-                        <img src="./img/certificates/partners/neutral-logo-grona-tryck 2.png"/>
-                        <img src="./img/certificates/partners/atlantis-green-collection-logo-grona-tryck-2 2.png"/>
-                        <img src="./img/certificates/partners/atlantis-green-collection-logo-grona-tryck-2 2.png"/>
-                                          
-                    </div>        
-                </div>
-
-               
-            </div>
-
+        <div className="hero-content-container container">
+          <div className="hero-content">
+            <h1 className="main-heading">Om Gröna Tryck</h1>
+            <p>
+              Gröna Tryck är din hållbara partner för profilprodukter och
+              återförsäljare av ekologiska och miljövänliga varumärken. Vi
+              strävar alltid efter att erbjuda produkter som är hållbara, både
+              för ditt varumärke och för planeten.
+            </p>
+          </div>
         </div>
+      </section>
 
+      {/* About Us Content Section */}
+      <div className="aboutus-page">
+        <div id="aboutus-container" className="aboutus-page-container">
+          <div className="about-text-containers">
+            <div className="text-container main-body">
+              <h1 className="section-heading heading-3">
+                Norrländska problemlösare ..
+              </h1>
+              <p>
+                Vi är ett gäng norrländska problemlösare som brinner för tryck,
+                och vi tycker det är en självklarhet att det görs på bästa sätt.
+              </p>
+              <p>
+                Sedan starten 2008 som ett litet screentryckeri i en bunker har
+                vi vuxit till att bli experter på helhetslösningar för ekologisk
+                profilreklam. Det hela började med att vi tryckte kläder för
+                andra märken. En av våra första kunder sålde babybodies, och vi
+                blev nyfikna på vad som faktiskt fanns i textiltryckfärgerna.
+              </p>
+              <p>
+                Det ledde oss till att byta ut hela vårt färglager till PVC- och
+                ftalatfria alternativ redan 2009. Vi gjorde ingen reklam, men
+                snart började kunder ringa och fråga om vi var de som tryckte
+                med den gröna färgen – och så föddes namnet Gröna Tryck!
+              </p>
+              <p>
+                Så, oavsett om du letar efter profilkläder, merchandise eller
+                arbetskläder, är vi här för att hjälpa dig att göra medvetna val
+                med stil. Häng med på vår resa mot en grönare framtid!
+              </p>
 
+              <p>
+                <a href="/hallbara-material" className="link-text">
+                  Läs mer om vårt hållbarhetsarbete →
+                </a>
+              </p>
+            </div>
+
+            {/* Images Container */}
+            <div className="img-container">
+              <div className="img-wrapper">
+                <img
+                  className="about-img"
+                  src="./img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"
+                  alt="About Image 1"
+                />
+                <h1 className="section-heading heading-3 stanley-heading">
+                  Joel
+                </h1>
+              </div>
+
+              <div className="img-wrapper">
+                <img
+                  className="about-img"
+                  src="./img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"
+                  alt="About Image 2"
+                />
+                <h1 className="section-heading heading-3 stanley-heading">
+                  Josef
+                </h1>
+              </div>
+            </div>
+          </div>
+
+          <h1 className="section-heading heading-3">I stolt samarbete med</h1>
+          <div className="about-text-containers">
+            <div className="logo-container">
+              <img
+                src="./img/certificates/partners/atlantis-green-collection-logo-grona-tryck-2 2.png"
+                alt="Partner Logo"
+              />
+              <img
+                src="./img/certificates/partners/dedicated-logo-grona-tryck-2 2.png"
+                alt="Partner Logo"
+              />
+              <img
+                src="./img/certificates/partners/ecovero-logo-grona-tryck 2.png"
+                alt="Partner Logo"
+              />
+              <img
+                src="./img/certificates/partners/knowledge-cotton-apparel-logo-grona-tryck-2 2.png"
+                alt="Partner Logo"
+              />
+              <img
+                src="./img/certificates/partners/langbrett-logo-2048x844 2.png"
+                alt="Partner Logo"
+              />
+              <img
+                src="./img/certificates/partners/mantis-logo-grona-tryck 2.png"
+                alt="Partner Logo"
+              />
+              <img
+                src="./img/certificates/partners/neoblu-logo-2048x844 2.png"
+                alt="Partner Logo"
+              />
+              <img
+                src="./img/certificates/partners/regatta-honestly-made-logo-grona-tryck 2.png"
+                alt="Partner Logo"
+              />
+              <img
+                src="./img/certificates/partners/result-genuine-recycled-logo-grona-tryck 2.png"
+                alt="Partner Logo"
+              />
+              <img
+                src="./img/certificates/partners/royk-logo-grona-tryck 2.png"
+                alt="Partner Logo"
+              />
+              <img
+                src="./img/certificates/partners/russel-pure-organic-logo-grona-tryck 2.png"
+                alt="Partner Logo"
+              />
+              <img
+                src="./img/certificates/partners/salvage-logo-grona-tryck 2.png"
+                alt="Partner Logo"
+              />
+              <img
+                src="./img/certificates/partners/stst-logo-grona-tryck-2023 2.png"
+                alt="Partner Logo"
+              />
+              <img
+                src="./img/certificates/partners/tiger-logo-2048x844 2.png"
+                alt="Partner Logo"
+              />
+              <img
+                src="./img/certificates/partners/xd-logo-2048x844 2.png"
+                alt="Partner Logo"
+              />
+              <img
+                src="./img/certificates/partners/neutral-logo-grona-tryck 2.png"
+                alt="Partner Logo"
+              />
+            </div>
+          </div>
+
+          <FAQ></FAQ>
+        </div>
+      </div>
     </div>
-)
+  );
+};
 
-}
-export default aboutus
+export default AboutUs;

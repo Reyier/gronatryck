@@ -1,0 +1,26 @@
+.faq-section {
+    padding: 2rem 0rem;
+    background-color: #f9f9f9; /* Light background for contrast */
+  }
+  
+  .section-heading {
+   
+    color: var(--primary-green); 
+  
+  }
+  
+  .faq-item {
+    border-bottom: 1px solid #ddd; /* Subtle border between FAQ items */
+    padding: 1.5rem 0; /* Vertical padding for spacing */
+  }
+  
+  
+  
+  .faq-item:last-child {
+    border-bottom: none; /* Remove border from the last item */
+  }
+  
+.long{
+    max-width: 200ch;
+}
+  

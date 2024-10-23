@@ -26,6 +26,14 @@
     border: 1px solid #ccc; /* Ramfärg */
     border-radius: 4px; /* Rundade hörn */
 }
+.contact{
+    
+    margin: auto;
+    justify-content: left;
+    align-items: left;
+    text-align: left;
+    width: 50%;
+}
 
 h4 {
     font-size: var(--fontSizeSM); /* Storlek för rubriken */

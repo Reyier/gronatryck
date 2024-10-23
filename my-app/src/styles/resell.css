@@ -2,7 +2,8 @@
     width: 90%;
     justify-content: center; 
     margin: auto;
-    max-width: 800px; 
+    max-width: 900px; 
+    margin-bottom: 5rem;
 }
 
 .resell-page-container {
@@ -16,6 +17,10 @@
     margin: 2rem 0; 
 }
 
+.resell-text-container{
+    margin: 1rem 0;
+}
+
 .resell-image-container {
     width: 50rem;
     height: 50rem; 
@@ -23,8 +28,15 @@
     border-radius: 50%; 
     margin: 0 auto; 
     position: relative; 
-    margin-bottom: 5rem;
+    
 }
+
+.resell-heading{
+    margin: 2rem 0;
+    width: 100%;
+}
+
+text-container
 
 .resell-image {
     width: 100%; 

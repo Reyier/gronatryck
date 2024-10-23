@@ -5,46 +5,43 @@ import Hero from "../components/Hero";
 import PopularCategories from "../components/PopularCategories";
 
 const Home = () => {
-  const categorylist = [{
-    img: "/img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg",
-    alt: "Cool tröja",
-    label: "T-shirt",
+  const categorylist = [
+    {
+      img: "/img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg",
+      alt: "Cool tröja",
+      label: "T-shirt",
+    },
+    {
+      img: "/img/informative/Liner_Desert Dust_Duo_Front_Main_0.jpg",
+      alt: "Västar",
+      label: "Västar",
+    },
+    {
+      img: "/img/informative/Trekker_Desert Dust_Duo_Front_Main_0.jpg",
+      alt: "Jackor",
+      label: "Jackor",
+    },
+    {
+      img: "/img/informative/Cruiser 2.0_Heather Haze_Duo_Front_Main_0.jpg",
+      alt: "Huvtröjor",
+      label: "Huvtröjor",
+    },
+  ];
 
-  },
-  {
-    img: "/img/informative/Liner_Desert Dust_Duo_Front_Main_0.jpg",
-    alt: "Västar",
-    label: "Västar",
-
-  },{
-    img: "/img/informative/Trekker_Desert Dust_Duo_Front_Main_0.jpg",
-    alt: "Jackor",
-    label: "Jackor",
-
-  },{
-    img: "/img/informative/Cruiser 2.0_Heather Haze_Duo_Front_Main_0.jpg",
-    alt: "Huvtröjor",
-    label: "Huvtröjor",
-
-  }]
-
-  
   return (
     <div className="home-page">
       <Hero />
       <div className="body-container">
         <div>
-         
-          <PopularCategories  categoryList={categorylist}/>
-          <div className="btn-container">
+          <PopularCategories categoryList={categorylist} />
+
+          {/* <div className="btn-container">
             <Button
               to="/alla-kategorier"
               className="main-btn"
               content="Alla Kategorier"
             />
-            </div>
-         
-          
+            </div> */}
         </div>
 
         <section className="certified-section">
@@ -60,14 +57,18 @@ const Home = () => {
               <div className="eco-text-container">
                 <p className="main-body">
                   Vår passion för miljön och rättvisa genomsyrar allt vi gör –
-                  från att erbjuda ekologiska och rättvisemärkta textilier, till
-                  att säkerställa att våra kunder får smarta och hållbara
-                  helhetslösningar för sin marknadsföring. Vi är också stolta
-                  över våra långvariga samarbeten med partners som delar vår
-                  vision om en grönare framtid och hållbar affärsutveckling.
+                  från att erbjuda hållbara och rättvisemärkta textilier till
+                  att säkerställa att våra kunder får genomtänkta och hållbara
+                  helhetslösningar för sin marknadsföring, utan att någonsin
+                  kompromissa med våra värderingar. Tillsammans med våra
+                  långvariga samarbetspartners, som delar vår vision om en
+                  grönare och mer rättvis framtid, arbetar vi ständigt för att
+                  minimera miljöpåverkan genom hela leveranskedjan. Genom att
+                  välja Gröna Tryck för dina profilkläder gör du ett medvetet
+                  och hållbart val som både du och dina medarbetare kan bära med
+                  stolthet, varje dag.
                 </p>
               </div>
-
             </div>
             <div className="certified-image half-img">
               <img
@@ -75,15 +76,13 @@ const Home = () => {
                 alt="Person wearing sustainable clothing"
               />
             </div>
-            
           </div>
 
-          
           <Button
-                to="/mer-info"
-                className=" main-btn btn-container"
-                content="Läs mer"
-              />
+            to="/mer-info"
+            className=" main-btn btn-container"
+            content="Läs mer"
+          />
         </section>
 
         {/* Section 5: Beställningsprocess */}
@@ -153,8 +152,8 @@ const Home = () => {
           <div className="brush-background"></div> {/* Background div */}
           <form className="membership-form">
             <p className="membership-subheading main-body">
-              Anmäl dig till vårt nyhetsbrev för att få exklusiva insikter om
-              våra hållbara tjänster och lösningar.
+              Var först med att ta del av våra nyheter och härliga erbjudanden.
+              Anmäl dig till vårt nyhetsbrev!
             </p>
             <input
               type="email"

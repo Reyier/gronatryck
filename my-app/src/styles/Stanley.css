@@ -1,11 +1,10 @@
 html {
     scroll-behavior: smooth;
-  }
+}
 
 .stanley-container {
     width: 100%;
     margin: auto;
-    margin: 2rem 0;
 }
 
 .stanley {
@@ -19,11 +18,35 @@ html {
 }
 
 .stanley-text-container {
+    display: flex; 
+    flex-direction: column; 
     width: 100%; 
-    max-width: 500px; 
-    text-align: left; 
-    margin: 0 auto;
-    padding: 1rem; 
+    margin: auto;
+    margin-top: 2rem;
+}
+
+.text-container {
+    flex: 1; 
+    margin-right: 2rem;
+}
+
+.text-container p {
+    margin: 1rem 0;
+}
+
+.img-container {
+    flex: 1; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem; 
+    gap: 1rem; 
+}
+
+.stanley-img {
+    width: 100%; 
+   
+    border-radius: 6px; 
 }
 
 .carousel-container {
@@ -82,8 +105,6 @@ html {
     right: 10px;
 }
 
-
-
 .benefits-list {
     display: flex; 
     flex-direction: column; 
@@ -95,15 +116,58 @@ html {
     margin: 0.5rem 0; 
 }
 
+.stanley-heading {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+    margin: 2rem 0; 
+}
+
+.stanley-heading .subheading-1 {
+    font-size: 2rem; 
+    font-weight: bold; 
+}
+
 @media (min-width: 768px) {
     .stanley {
         width: 80%;
     }
-    
+
+  
+
     .image-carousel img {
         width: 30rem; 
     }
-    
+
+    .benefits-list {
+        flex-direction: row; 
+        justify-content: space-around; 
+        width: 100%; 
+    }
+}
+
+
+
+@media (min-width: 1005px) {
+    .stanley {
+        width: 80%;
+    }
+
+    .stanley-text-container {
+        flex-direction:row-reverse; /* Change to row on larger screens */
+        justify-content: space-between; /* Space between */
+        align-items: flex-start; /* Align items to the top */
+    }
+
+    .image-carousel img {
+        width: 30rem; 
+    }
+    .img-container{
+       
+        margin: 5rem 5rem 0 0;
+    }
+
     .benefits-list {
         flex-direction: row; 
         justify-content: space-around; 

@@ -12,7 +12,7 @@
     max-width: 500px;
     min-width: 200px;
    
- 
+ z-index: 100;
   justify-content: center;
   
 }

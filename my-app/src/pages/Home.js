@@ -45,7 +45,7 @@ const Home = () => {
         </div>
 
         <section className="certified-section">
-          <h1 className="section-heading heading-3">Rättvisecertifierade</h1>
+          <h1 className="section-heading heading-3">Vår drivkraft</h1>
           <div className="certified-content">
             <div className="certified-text">
               <div className="eco-label">
@@ -87,22 +87,34 @@ const Home = () => {
 
         {/* Section 5: Beställningsprocess */}
         <section className="order-process">
-          <h1 className="section-heading heading-3">Beställningsprocess</h1>
-          <div className="process-steps">
-            {Array.from({ length: 4 }, (_, index) => (
-              <React.Fragment key={index}>
-                <div className={`heading-3`}>
-                  <span className="process-step-number">{index + 1}</span>
-                </div>
-                {index < 3 && <span className="process-arrow">→</span>}
-              </React.Fragment>
-            ))}
-          </div>
-          <p className="process-description main-body">
-            Välj, anpassa och beställ i stora volymer – vi gör bulk enkelt och
-            hållbart.
-          </p>
-        </section>
+  <h1 className="section-heading heading-3">Beställningsprocess</h1>
+  <div className="process-steps main-body">
+    {[
+      { step: "Välj produkt", description: "Lägg produkter i varukorgen på vår hemsida." },
+      { step: "Offertförfrågan", description: "Din varukorg sammanställs till en offert som skickas till oss." },
+      { step: "Granskning & Förslag", description: "Vi granskar offerten och ger dig förslag på tryck." },
+      { step: "Orderbekräftelse", description: "Efter att du godkänt förslaget startar tryckprocessen." }
+    ].map((stepInfo, index, array) => (
+      <div key={index} className="process-step">
+        <div className="process-circle">{index + 1}</div> 
+        <p className="process-step-title">{stepInfo.step}</p>
+        <p className="process-step-description">{stepInfo.description}</p>
+     
+        {index < array.length - 1 ? (
+          <span className="process-divider">→</span>
+        ) : (
+          <span className="process-checkmark">✓</span>
+        )}
+      </div>
+    ))}
+  </div>
+  <p className="process-description main-body">
+    Vi gör bulkbeställningar enkla och hållbara – från offert till leverans.
+  </p>
+</section>
+
+
+
 
         {/* Section 6: Testimonial */}
         <section className="testimonial-section">

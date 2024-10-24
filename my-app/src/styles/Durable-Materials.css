@@ -1,14 +1,5 @@
-.DurableMaterials-page{
-    margin: auto;
+.sustainability-page-container{
     width: 90%;
+    margin: auto;
+    margin-top: 15rem;
 }
-
-
-.imges-container{
-    display: grid; 
-    grid-template-columns: repeat(2, 1fr); 
-    bottom: 50rem;
-    left: 6rem;
-    gap: 2rem;
-}
-

@@ -2,58 +2,99 @@ import { useParams } from "react-router-dom";
 import products from "../data/productnew";
 import CardMax from "../components/CardsMax.js";
 import Breadcrumb from "../components/Breadcrumb.js";
+import { LuListFilter, LuRotateCcw, LuChevronDown } from "react-icons/lu";
 
 import "../styles/card.css";
-import { useState, useEffect } from "react"; // Import useEffect
+import { useState, useEffect } from "react";
 
 export default function Max() {
-  /* Hitta produkter från route route */
   const { category } = useParams();
   const [title, setTitle] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [sortOption, setSortOption] = useState("");
+  const [selectedColor, setSelectedColor] = useState("");
+  const [selectedSize, setSelectedSize] = useState("");
+  const [selectedBrand, setSelectedBrand] = useState("");
 
+  /* FILTER */
   useEffect(() => {
+    let filtered = products;
+
+    // Filter by category
     if (category && typeof category === "string") {
-      // Om det är en kategori i URLEN, sätt titel och filtrera efter kategorin
       setTitle(category);
-      const filtered = products.filter(
+      filtered = filtered.filter(
         (product) => product.category.toLowerCase() === category.toLowerCase()
       );
-      setFilteredProducts(filtered);
     } else {
-      // Om ingen kategori, visa alla produkter.
-      setTitle("Alla profilkläder");
-      setFilteredProducts(products);
+      setTitle("Alla produkter");
     }
-  }, [category]);
 
-  // Extrahera data, destruct av produkt
-  const formatProductData = (product) => {
+    // Filter by selected color
+    if (selectedColor) {
+      filtered = filtered.filter((product) =>
+        product.variants.some((variant) => variant.colorCode === selectedColor)
+      );
+    }
+
+    // Filter by selected size
+    if (selectedSize) {
+      filtered = filtered.filter((product) =>
+        product.sizeVariants.includes(selectedSize)
+      );
+    }
+
+    // Filter by selected brand
+    if (selectedBrand) {
+      filtered = filtered.filter(
+        (product) => product.brand.toLowerCase() === selectedBrand.toLowerCase()
+      );
+    }
+
+    // Apply sorting logic
+    if (sortOption === "Lägsta pris") {
+      filtered = filtered.sort(
+        (a, b) =>
+          Math.min(...a.priceTiers.map((tier) => tier.price)) -
+          Math.min(...b.priceTiers.map((tier) => tier.price))
+      );
+    } else if (sortOption === "Högsta pris") {
+      filtered = filtered.sort(
+        (a, b) =>
+          Math.max(...b.priceTiers.map((tier) => tier.price)) -
+          Math.max(...a.priceTiers.map((tier) => tier.price))
+      );
+    }
+
+    setFilteredProducts(filtered);
+  }, [category, sortOption, selectedColor, selectedSize, selectedBrand]);
+
+  const formattedProducts = filteredProducts.map((product) => {
     const {
       productId: id,
       name,
       category,
       images: { modelUrl }, // Model images in different formats
-      variants,
+      variants = [],
       priceTiers,
       sizeVariants,
     } = product;
 
-    // Get the first variant images in all formats and sizes
-    const { small, medium, large } = variants[0]?.images ?? {};
+    // Extract images from the first variant
+    const { small, medium, large } = modelUrl || {};
 
-    // Calculate minimum and maximum price
+    // Find the colors from the variants
+    const colors = variants.map((variant) => ({
+      colorName: variant.colorName || "Unknown Color",
+      colorCode: variant.colorCode || "#000000", // Default to black if undefined
+    }));
+
+    // Price calculations based on tiers
     const minPrice = Math.min(...priceTiers.map((tier) => tier.price));
     const maxPrice = Math.max(...priceTiers.map((tier) => tier.price));
 
-    // Get the length of the sizeVariants array
-    const sizeVariantsLength = sizeVariants.length;
-
-    // Get the length of the variants array
-    const variantsLength = variants.length;
-
-    // Get all color codes from variants
-    const colorCodes = variants.map((variant) => variant.colorCode);
+    const sizeVariantsLength = sizeVariants?.length || 0;
+    const variantsLength = variants?.length || 0;
 
     return {
       id,
@@ -67,17 +108,24 @@ export default function Max() {
       maxPrice,
       sizeVariantsLength,
       variantsLength,
-      colorCodes,
+      colors, // Now we have both colorName and colorCode as an array of objects
     };
-  };
-
-  const formattedProducts = filteredProducts.map(formatProductData);
+  });
 
   return (
     <div className="product-page" style={{ marginBlockStart: "11.5rem" }}>
-      <div>
+      <div className="container">
         <h2 className="subheading-1">{title}</h2>
+        <p>Att välja profilkläder ska vara enkelt</p>
       </div>
+      <Filter
+        products={formattedProducts}
+        setSortOption={setSortOption}
+        setSelectedColor={setSelectedColor}
+        setSelectedSize={setSelectedSize}
+        setSelectedBrand={setSelectedBrand}
+      />
+
       <div className="product-wrapper">
         {formattedProducts.length > 0 ? (
           formattedProducts.map((product) => (
@@ -94,13 +142,140 @@ export default function Max() {
               maxPrice={product.maxPrice}
               sizeVariantsLength={product.sizeVariantsLength}
               variantsLength={product.variantsLength}
-              colorCodes={product.colorCodes}
+              colorCodes={product.colors.map((color) => color.colorCode)} // Pass color codes
             />
           ))
         ) : (
-          <p>Inga produkter hittades inom den angiva kategorin: {title} </p>
+          <p>
+            Inga produkter hittades inom den angiva kategorin eller filtreringen
+          </p>
         )}
       </div>
+    </div>
+  );
+}
+
+function Filter({
+  products,
+  setSortOption,
+  setSelectedColor,
+  setSelectedSize,
+  setSelectedBrand,
+}) {
+  const [isFilterVisible, setIsFilterVisible] = useState(false);
+  console.log(products);
+  const uniqueColors = [];
+
+  // Create a set to store unique color combinations (name + code)
+  const colorSet = new Set();
+
+  products.forEach((product) => {
+    product.colors.forEach((color) => {
+      const colorKey = `${color.colorName}-${color.colorCode}`; // Create a unique key for each color
+
+      // Only add the color if it's not already in the set
+      if (!colorSet.has(colorKey)) {
+        colorSet.add(colorKey);
+        uniqueColors.push({
+          colorName: color.colorName,
+          colorCode: color.colorCode,
+        });
+      }
+    });
+  });
+
+  return (
+    <div className="filter-wrapper">
+      <button
+        className="filter-toggle-btn"
+        style={{ display: "flex", alignItems: "center", gap: "16px" }}
+        onClick={() => {
+          setIsFilterVisible((prev) => !prev);
+        }}
+      >
+        <LuListFilter />
+        Filtrera och sortera<span className="toggle-arrow"></span>
+        <LuChevronDown />
+      </button>
+      {isFilterVisible && (
+        <div className="filter-content">
+          <div className="filter-group" style={{ display: "flex" }}>
+            <label className="filter-label main-body">
+              Sortera:
+              <select onChange={(e) => setSortOption(e.target.value)}>
+                <option value="">Välj sortering</option>
+                <option value="Nyast">Nyast</option>
+                <option value="Lägsta pris">Lägsta pris</option>
+                <option value="Högsta pris">Högsta pris</option>
+                <option value="Deals">Deals</option>
+              </select>
+            </label>
+          </div>
+
+          {/* Color Filter */}
+          <div className="filter-group">
+            <label className="filter-label main-body">
+              Färg:
+              <select onChange={(e) => setSelectedColor(e.target.value)}>
+                <option value="">Välj färg</option>
+                {uniqueColors.map((color, index) => (
+                  <option
+                    style={{ backgroundColor: color.colorCode }}
+                    key={index}
+                    value={color.colorCode}
+                  >
+                    {color.colorName}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
+
+          {/* Size Filter */}
+          <div className="filter-group">
+            <label className="filter-label main-body">
+              Storlek:
+              <select onChange={(e) => setSelectedSize(e.target.value)}>
+                <option value="">Välj storlek</option>
+                <option value="XSS">XSS</option>
+                <option value="XS">XS</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+                <option value="XXL">XXL</option>
+                <option value="3XL">3XL</option>
+              </select>
+            </label>
+          </div>
+
+          {/* Brand Filter */}
+          <div className="filter-group">
+            <label className="filter-label main-body">
+              Varumärke:
+              <select onChange={(e) => setSelectedBrand(e.target.value)}>
+                <option value="">Välj varumärke</option>
+                <option value="Stanley Stella">Stanley Stella</option>
+                <option value="Green Go Co">Green Go Co</option>
+              </select>
+            </label>
+          </div>
+
+          <button
+            className="reset"
+            style={{ display: "flex", alignItems: "center", gap: "16px" }}
+            onClick={() => {
+              setSortOption("");
+              setSelectedColor("");
+              setSelectedSize("");
+              setSelectedBrand("");
+            }}
+          >
+            <LuRotateCcw />
+            Återställ filter
+          </button>
+        </div>
+      )}
     </div>
   );
 }

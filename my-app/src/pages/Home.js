@@ -17,14 +17,14 @@ const Home = () => {
       label: "Västar",
     },
     {
-      img: "/img/informative/Trekker_Desert Dust_Duo_Front_Main_0.jpg",
-      alt: "Jackor",
-      label: "Jackor",
+      img: "/img/informative/Prepster 2.0_Eco-Heather_Duo_Front_Main_0.jpg",
+      alt: "Pike",
+      label: "Pike",
     },
     {
-      img: "/img/informative/Cruiser 2.0_Heather Haze_Duo_Front_Main_0.jpg",
-      alt: "Huvtröjor",
-      label: "Huvtröjor",
+      img: "/img/informative/Knoxer_Natural Raw_Duo_Front_Main_0.jpg",
+      alt: "Tröjor",
+      label: "Tröjor",
     },
   ];
 
@@ -129,9 +129,16 @@ const Home = () => {
                 levererat snabbt, samtidigt som jag vet att produkterna är
                 certifierade och miljövänliga.”
               </p>
+            <div className="btn-container">
+              <Button
+            to="/kundcase"
+            className=" main-btn btn-container"
+            content="Se mer om våra arbeten"
+          />
+</div>
             </blockquote>
             <div className="testimonial-image">
-              {/* Byt ut bilden*/}
+              
               <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2ZUGI3aCcwaPeDQ6nZsiMnmt7oX8-3BRqJg&s"
                 alt="Petter"

@@ -31,6 +31,7 @@ import Header from "./components/Header.js";
 import Assortment from "./pages/Assortment";
 import DurableMaterials from "./pages/Durable-Materials.js";
 import Categories from "./pages/Categories.js";
+import Cases from "./pages/Cases.js";
 
 // TA BORT SEN
 import Max from "./pages/MaxRum.js";
@@ -122,6 +123,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/stanley-stella" element={<Stanley />} />
+            <Route path="/kundcase" element={<Cases />} />
             <Route path="/tjanster" element={<Services />} />
             <Route path="/produkter" element={<Products />} />
             <Route

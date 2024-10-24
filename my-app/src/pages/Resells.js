@@ -32,7 +32,18 @@ const services = () => {
               Låt oss tillsammans bygga en stark och pålitlig produktlinje som
               sätter ditt varumärke i fokus!
             </p>
+
+            <div className="btn-container">
+          <div style={{ display: "flex", gap: "1.6rem" }}>
+            <Button
+              to="/kontakt"
+              content={"Kontakta oss"}
+              className="main-btn"
+            />
           </div>
+        </div>
+          </div>
+          
           <div className="resell-image-container">
             <img
               className="resell-image"
@@ -40,22 +51,9 @@ const services = () => {
               alt="Product Image"
             />
           </div>
-
-         
           
-
-
-
-
         </div>
-        <div style={{ display: "flex", gap: "1.6rem" }}>
-              <Button
-                to="/kontakt"
-                content={"Kontakta oss"}
-                className="main-btn"
-              />
-            
-            </div>
+        
       </div>
     </div>
   );

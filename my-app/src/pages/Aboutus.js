@@ -2,6 +2,7 @@ import React from "react";
 import Button from "../components/Button";
 import "../styles/Aboutus.css";
 import FAQ from "../components/FAQ";
+import CustomerCases from "../components/Customer-logos";
 
 const AboutUs = () => {
   return (
@@ -34,7 +35,7 @@ const AboutUs = () => {
           <div className="about-text-containers">
             <div className="text-container main-body">
               <h1 className="section-heading heading-3">
-                Norrländska problemlösare ..
+                Norrländska problemlösare..
               </h1>
               <p>
                 Vi är ett gäng norrländska problemlösare som brinner för tryck,
@@ -90,6 +91,7 @@ const AboutUs = () => {
                 </h1>
               </div>
             </div>
+
           </div>
 
           <h1 className="section-heading heading-3">I stolt samarbete med</h1>
@@ -161,8 +163,17 @@ const AboutUs = () => {
               />
             </div>
           </div>
-
+         
           <FAQ></FAQ>
+
+          <CustomerCases></CustomerCases>
+          <div className="btn-container">
+              <Button
+            to="/kundcase"
+            className=" main-btn btn-container"
+            content="Se mer om våra arbeten"
+          />
+</div>
         </div>
       </div>
     </div>

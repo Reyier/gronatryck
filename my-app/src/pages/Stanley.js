@@ -20,13 +20,11 @@ const Stanley = () => {
           src="/img/cover/Stanley_Stella_AW24_Timeless_Outerwear_Mix_01.jpg"
           alt="Hero"
           className="hero-image"
-          id="hero-image"
+          id="aboutus-hero-image"
         />
         <div className="hero-content-container container">
           <div className="hero-content">
-            <span style={{ textTransform: "uppercase", fontWeight: "300" }}>
-              Most Northern Official Stanley Stella Dealer
-            </span>
+          
             <h1 className="main-heading">Stanley Stella</h1>
             <p>
               Sedan 2013 har Gröna Tryck och Stanley/Stella samarbetat för att
@@ -84,7 +82,7 @@ const Stanley = () => {
             <div className="img-wrapper">
               <img
                 className="stanley-img"
-                src="./img/decorative/StanleyStella_SS2023.png"
+                src="./img/decorative/Feature-Stanley-Stella-1.jpg"
                 alt="About Image 1"
               />
               </div>
@@ -106,7 +104,23 @@ const Stanley = () => {
 
               <div className="image-carousel">
                 <img
-                  src="./img/informative/Brooker_Khaki_Duo_Front_Main_0.jpg"
+                  src="./img/informative/Connector 2.0_French Navy_Duo_Front_Main_0.jpg"
+                  alt="Product 1"
+                />
+                <img
+                  src="./img/informative/Liner_Desert Dust_Duo_Front_Main_0.jpg"
+                  alt="Product 2"
+                />
+                <img
+                  src="./img/informative/Radder 2.0 Vintage_G. Dyed Blue Stone_Duo_Front_Main_0.jpg"
+                  alt="Product 3"
+                />
+                <img
+                  src="./img/informative/Puffer Gilet_French Navy_Duo_Front_Main_0.jpg"
+                  alt="Product 4"
+                />
+                 <img
+                  src="./img/informative/Connector 2.0_French Navy_Duo_Front_Main_0.jpg"
                   alt="Product 1"
                 />
                 <img

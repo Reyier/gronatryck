@@ -233,7 +233,7 @@
 .sustainability-section {
   color: var(--primary-green);
   display: flex;
-  justify-content: center;
+  
   align-items: center;
 
   margin: 0;
@@ -243,11 +243,13 @@
   width: 65%;
   max-width: 800px;
   text-align: left;
-  box-sizing: border-box;
+  box-sizing:   border-box;
+margin-top: 10rem;
 }
 
 .sustainability-container .subheading-1 {
   margin: 0;
+  font-size: var(--fontSizeXL);
 }
 
 .membership-section {
@@ -443,9 +445,7 @@
     justify-content: flex-end;
   }
 
-  .sustainability-container {
-    margin-top: 5rem;
-  }
+ 
 
   .sustainability-container .subheading-1 {
     font-size: var(--fontSizeXL);

@@ -16,6 +16,28 @@ export default function Max() {
   const [selectedSize, setSelectedSize] = useState("");
   const [selectedBrand, setSelectedBrand] = useState("");
 
+  const [allColors, setAllColors] = useState([]);
+
+  useEffect(() => {
+    // Populate unique colors for all products
+    const colorSet = new Set();
+    const uniqueColors = [];
+  
+    products.forEach((product) => {
+      product.variants.forEach((variant) => {
+        const colorKey = `${variant.colorName}-${variant.colorCode}`;
+        if (!colorSet.has(colorKey)) {
+          colorSet.add(colorKey);
+          uniqueColors.push({
+            colorName: variant.colorName || "Unknown Color",
+            colorCode: variant.colorCode || "#000000",
+          });
+        }
+      });
+    });
+  
+    setAllColors(uniqueColors); // Set unique colors for all products
+  }, [products]);
   /* FILTER */
   useEffect(() => {
     let filtered = products;
@@ -119,12 +141,13 @@ export default function Max() {
         <p>Att välja profilkläder ska vara enkelt</p>
       </div>
       <Filter
-        products={formattedProducts}
-        setSortOption={setSortOption}
-        setSelectedColor={setSelectedColor}
-        setSelectedSize={setSelectedSize}
-        setSelectedBrand={setSelectedBrand}
-      />
+  products={formattedProducts}
+  allColors={allColors} // Pass the unique color options
+  setSortOption={setSortOption}
+  setSelectedColor={setSelectedColor}
+  setSelectedSize={setSelectedSize}
+  setSelectedBrand={setSelectedBrand}
+/>
 
       <div className="product-wrapper">
         {formattedProducts.length > 0 ? (
@@ -157,6 +180,7 @@ export default function Max() {
 
 function Filter({
   products,
+  allColors, // Add allColors prop
   setSortOption,
   setSelectedColor,
   setSelectedSize,
@@ -214,21 +238,21 @@ function Filter({
 
           {/* Color Filter */}
           <div className="filter-group">
-            <label className="filter-label main-body">
-              Färg:
-              <select onChange={(e) => setSelectedColor(e.target.value)}>
-                <option value="">Välj färg</option>
-                {uniqueColors.map((color, index) => (
-                  <option
-                    style={{ backgroundColor: color.colorCode }}
-                    key={index}
-                    value={color.colorCode}
-                  >
-                    {color.colorName}
-                  </option>
-                ))}
-              </select>
-            </label>
+          <label className="filter-label main-body">
+          Färg:
+          <select onChange={(e) => setSelectedColor(e.target.value)}>
+            <option value="">Välj färg</option>
+            {allColors.map((color, index) => (
+              <option
+                style={{ backgroundColor: color.colorCode }}
+                key={index}
+                value={color.colorCode}
+              >
+                {color.colorName}
+              </option>
+            ))}
+          </select>
+        </label>
           </div>
 
           {/* Size Filter */}

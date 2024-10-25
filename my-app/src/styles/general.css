@@ -95,3 +95,12 @@ a {
 .small-spacing {
   margin: var(--small-spacing);
 }
+
+.arrow-icon svg {
+  transition: transform 200ms ease;
+}
+.arrow-icon {
+  &.active svg {
+    transform: rotate(180deg);
+  }
+}

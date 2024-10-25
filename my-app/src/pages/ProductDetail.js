@@ -18,7 +18,9 @@ const ProductDetail = () => {
   // State variables
   const [printIndex, setPrintIndex] = useState("");
   const [quantity, setQuantity] = useState(0);
-  const [selectedColor, setSelectedColor] = useState(product.images.variants[0]?.colorName);
+  const [selectedColor, setSelectedColor] = useState(
+    product.images.variants[0]?.colorName
+  );
   const [sizeQuantities, setSizeQuantities] = useState({});
   const [confirmationMessage, setConfirmationMessage] = useState("");
   const [isExpanded, setIsExpanded] = useState(false); // for read more functionality
@@ -118,7 +120,9 @@ const ProductDetail = () => {
           clothprice: (calculatePricePerItem(quantity) * quantity).toFixed(2),
           totalPrintPrice: getPriceByTotalQuantity(totalQuantity) * quantity,
           totalPrice: (
-            parseFloat((calculatePricePerItem(quantity) * quantity).toFixed(2)) +
+            parseFloat(
+              (calculatePricePerItem(quantity) * quantity).toFixed(2)
+            ) +
             getPriceByTotalQuantity(totalQuantity) * quantity
           ).toFixed(2),
         };
@@ -134,10 +138,10 @@ const ProductDetail = () => {
   useEffect(() => {
     if (confirmationMessage) {
       const timer = setTimeout(() => {
-        setConfirmationMessage(""); 
-      }, 3000); 
+        setConfirmationMessage("");
+      }, 3000);
 
-      return () => clearTimeout(timer); 
+      return () => clearTimeout(timer);
     }
   }, [confirmationMessage]);
 
@@ -145,14 +149,15 @@ const ProductDetail = () => {
     setIsExpanded(!isExpanded);
   };
 
-  const truncatedDescription = product.description.length > 150
-    ? `${product.description.substring(0, 150)}...`
-    : product.description;
+  const truncatedDescription =
+    product.description.length > 150
+      ? `${product.description.substring(0, 150)}...`
+      : product.description;
 
   const printPrice = darkPrintPrice;
 
   const getLowestPrice = () => {
-    return Math.min(...product.priceTiers.map(tier => tier.price));
+    return Math.min(...product.priceTiers.map((tier) => tier.price));
   };
 
   const lowestPrice = getLowestPrice();
@@ -163,63 +168,70 @@ const ProductDetail = () => {
       <div className="container">
         <main className="product">
           <div className="product-grid">
-          <ProductGallery images={product.images} className="product-gallery" />
+            <ProductGallery
+              images={product.images}
+              className="product-gallery"
+            />
 
-          <section className="product-info">
-            <p className="brand-name">{product.brand}</p>
-            <h1 className="heading-2">{product.name}</h1>
-            <p className="product-description">
-              {isExpanded ? product.description : truncatedDescription}
-            </p>
-            <button onClick={toggleDescription} className="read-more-btn">
-              {isExpanded ? "" : "Läs mer"}
-            </button>
+            <section className="product-info">
+              <p className="brand-name">{product.brand}</p>
+              <h1 className="heading-2">{product.name}</h1>
+              <p className="product-description">
+                {isExpanded ? product.description : truncatedDescription}
+              </p>
+              <button onClick={toggleDescription} className="read-more-btn">
+                {isExpanded ? "" : "Läs mer"}
+              </button>
 
-            <div className="certificate-container">
-              {product.certificates.map((certificate, index) => (
-                <div key={index} className="certificate-item">
-                  <a href={certificate.link} target="_blank" rel="noopener noreferrer">
-                    <img src={certificate.img} alt={certificate.name} />
-                  </a>
-                </div>
-              ))}
-            </div>
-            <h3 className="heading-3">Pris fr {lowestPrice} SEK:</h3>
-            <form>
-              {/* Color and Size Selection */}
-              <fieldset>
-                <legend className="main-body">Färg:</legend>
-                {product.images.variants.map((variant, index) => (
-                  <Radiobutton
-                    key={index}
-                    name={variant.colorName}
-                    color={variant.colorCode}
-                    onChange={() => handleColorChange(variant.colorName)}
-                  />
-                ))}
-              </fieldset>
-
-              <div className="size-container">
-                <fieldset>
-                  <legend className="main-body">Storlek</legend>
-                  <div className="grid-container">
-                    {product.sizeVariants.map((variant, index) => {
-                      const key = `${selectedColor}-${variant}`;
-                      return (
-                        <IncrementButton
-                          key={index}
-                          id={key}
-                          size={variant}
-                          handleChange={handleQuantityChange}
-                          quantity={sizeQuantities[key] || 0}
-                        />
-                      );
-                    })}
+              <div className="certificate-container">
+                {product.certificates.map((certificate, index) => (
+                  <div key={index} className="certificate-item">
+                    <a
+                      href={certificate.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img src={certificate.img} alt={certificate.name} />
+                    </a>
                   </div>
-                </fieldset>
+                ))}
               </div>
-            </form>
-          </section>
+              <h3 className="heading-3">Pris fr {lowestPrice} SEK:</h3>
+              <form>
+                {/* Color and Size Selection */}
+                <fieldset>
+                  <legend className="main-body">Färg:</legend>
+                  {product.images.variants.map((variant, index) => (
+                    <Radiobutton
+                      key={index}
+                      name={variant.colorName}
+                      color={variant.colorCode}
+                      onChange={() => handleColorChange(variant.colorName)}
+                    />
+                  ))}
+                </fieldset>
+
+                <div className="size-container">
+                  <fieldset>
+                    <legend className="main-body">Storlek</legend>
+                    <div className="grid-container">
+                      {product.sizeVariants.map((variant, index) => {
+                        const key = `${selectedColor}-${variant}`;
+                        return (
+                          <IncrementButton
+                            key={index}
+                            id={key}
+                            size={variant}
+                            handleChange={handleQuantityChange}
+                            quantity={sizeQuantities[key] || 0}
+                          />
+                        );
+                      })}
+                    </div>
+                  </fieldset>
+                </div>
+              </form>
+            </section>
           </div>
           {/* Order Summary */}
           {totalQuantity > 0 && (
@@ -230,17 +242,28 @@ const ProductDetail = () => {
                 {Object.entries(sizeQuantities).map(([key, quantity]) => (
                   <li key={key}>
                     <p>
-                      Färg: {key}: {quantity} 
-                      <button className="remove-btn-2" onClick={() => removeFromSpecification(key)}>Ta bort</button>
+                      Färg: {key}: {quantity}
+                      <button
+                        className="remove-btn-2"
+                        onClick={() => removeFromSpecification(key)}
+                      >
+                        Ta bort
+                      </button>
                     </p>
                   </li>
                 ))}
               </ul>
-              <p>Antal: <span>{totalQuantity}</span></p>
+              <p>
+                Antal: <span>{totalQuantity}</span>
+              </p>
               <p>Pris per styck {pricePerItem} SEK</p>
-              <p>Totalt pris: <span>{totalPrice.toFixed(2)} SEK</span></p>
+              <p>
+                Totalt pris: <span>{totalPrice.toFixed(2)} SEK</span>
+              </p>
               <div className="button-container">
-                <button onClick={handleAddToCart} className="main-btn">Lägg till i offert</button>
+                <button onClick={handleAddToCart} className="main-btn">
+                  Lägg till i offert
+                </button>
               </div>
 
               {confirmationMessage && (
@@ -248,7 +271,8 @@ const ProductDetail = () => {
               )}
               <div className="spacing">
                 <p className="main-body">
-                  Vår offert är flexibel! Du kan justera dina val innan du bekräftar, så att du får det du verkligen vill ha.
+                  Vår offert är flexibel! Du kan justera dina val innan du
+                  bekräftar, så att du får det du verkligen vill ha.
                 </p>
               </div>
             </div>
@@ -271,102 +295,98 @@ const ProductDetail = () => {
           </div>
 
           {/* Tab Content */}
-         {/* Tab Content */}
-<div className="tab-content">
-  {activeTab === "price" && (
-    <div className="price-info">
-      <table>
-        <thead>
-          <tr>
-            <td>Antal (St)</td>
-            {product.priceTiers.map((tier, index) => (
-              <td key={index}>
-                {tier.maxQuantity !== null
-                  ? `${tier.minQuantity}-${tier.maxQuantity}`
-                  : `${tier.minQuantity}+`}
-              </td>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Pris (SEK/st)</td>
-            {product.priceTiers.map((tier, index) => (
-              <td key={index}>{tier.price}</td>
-            ))}
-          </tr>
-        </tbody>
-      </table>
-      <p className="main-body">
-        Obs: Tryck -och schablonkostnaderna varierar beroende på plaggets färg och tryckmetod.
-      </p>
-    </div>
-  )}
-  
-  {activeTab === "product" && (
-    <div className="product-collapse">
-      <table>
-        <tbody>
-          <tr>
-            <td>Artikelnummer</td>
-            <td>{product.artNr}</td>
-          </tr>
-          <tr>
-            <td>Beskrivning</td>
-            <td>{product.description}</td>
-          </tr>
-          <tr>
-            <td>Storlek</td>
-            <td>Finns i storlekarna: {product.sizeVariants.join(", ")}</td>
-          </tr>
-          <tr>
-            <td>Material</td>
-            <td>{product.material}</td>
-          </tr>
-          <tr>
-            <td>Materialvikt</td>
-            <td>{product.weight}</td>
-          </tr>
-          <tr>
-            <td>Egenskaper</td>
-            <td>
-              <ul>
-                {product.properties.map((property, index) => (
-                  <li key={index}>{property}</li>
-                ))}
-              </ul>
-            </td>
-          </tr>
-          <tr>
-            <td>Certifikat</td>
-            <td>
-              <ul>
-                {product.certificates.map((certificate, index) => (
-                  <li key={index}>
-                    <a href={certificate.link} target="_blank" rel="noopener noreferrer">
-                      {certificate.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  )}
-</div>
+          {/* Tab Content */}
+          <div className="tab-content">
+            {activeTab === "price" && (
+              <div className="price-info">
+                <table>
+                  <thead>
+                    <tr>
+                      <td>Antal (St)</td>
+                      {product.priceTiers.map((tier, index) => (
+                        <td key={index}>
+                          {tier.maxQuantity !== null
+                            ? `${tier.minQuantity}-${tier.maxQuantity}`
+                            : `${tier.minQuantity}+`}
+                        </td>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Pris (SEK/st)</td>
+                      {product.priceTiers.map((tier, index) => (
+                        <td key={index}>{tier.price}</td>
+                      ))}
+                    </tr>
+                  </tbody>
+                </table>
+                <p className="main-body">
+                  Obs: Tryck -och schablonkostnaderna varierar beroende på
+                  plaggets färg och tryckmetod.
+                </p>
+              </div>
+            )}
 
-
-
-
-
-
-
-
-
-
-
+            {activeTab === "product" && (
+              <div className="product-collapse">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>Artikelnummer</td>
+                      <td>{product.artNr}</td>
+                    </tr>
+                    <tr>
+                      <td>Beskrivning</td>
+                      <td>{product.description}</td>
+                    </tr>
+                    <tr>
+                      <td>Storlek</td>
+                      <td>
+                        Finns i storlekarna: {product.sizeVariants.join(", ")}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Material</td>
+                      <td>{product.material}</td>
+                    </tr>
+                    <tr>
+                      <td>Materialvikt</td>
+                      <td>{product.weight}</td>
+                    </tr>
+                    <tr>
+                      <td>Egenskaper</td>
+                      <td>
+                        <ul>
+                          {product.properties.map((property, index) => (
+                            <li key={index}>{property}</li>
+                          ))}
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Certifikat</td>
+                      <td>
+                        <ul>
+                          {product.certificates.map((certificate, index) => (
+                            <li key={index}>
+                              <a
+                                href={certificate.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                {certificate.name}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
         </main>
       </div>
     </div>

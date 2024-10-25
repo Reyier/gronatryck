@@ -3,7 +3,6 @@
   border-radius: 6px;
   width: 100%;
   margin: 2rem 0;
- 
 }
 
 .filter-toggle-btn {
@@ -19,14 +18,13 @@
   transition: background-color 0.3s ease;
 }
 
-
-
 .filter-content {
   margin-top: 1rem;
 }
 
 .filter-group {
   margin-bottom: 1.5rem;
+  position: relative;
 }
 
 .filter-label {
@@ -46,24 +44,18 @@
   background-color: #fff;
   cursor: pointer;
 }
-
-.filter-group h3 {
+.filter-btn {
+  width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 1rem 0;
-  font-weight: 500;
-  color: #333;
-  cursor: pointer;
-  border-bottom: 1px solid #ddd;
-  transition: color 0.3s ease;
+  justify-content: space-between;
 }
-
-.filter-group h3:hover {
-  color: var(--primary-green);
-}
-
 .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 999;
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 0.5rem;
@@ -125,19 +117,7 @@
   background-color: #e64545;
 }
 
-
-
-
-
-
-
-
-
-
-
-@media (min-width: 768px){
-
-  
+@media (min-width: 768px) {
   /* Flexbox for the filter-content section */
   .filter-content {
     display: flex;
@@ -157,8 +137,4 @@
   .filter-group {
     margin-bottom: 0;
   }
-
-  
-
 }
-

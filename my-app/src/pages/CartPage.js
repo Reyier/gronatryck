@@ -85,11 +85,7 @@ function CartPage() {
       const itemTotal = printPricePerItem * item.totalQuantity;
       console.log(`Item Total for ${item.name || "unknown"}: ${itemTotal}`);
       return total + itemTotal;
-
-      
     }, 0);
-
-    
 
     const stencilPrice = totalStencilPrice();
     console.log(`Stencil Price: ${stencilPrice}`);
@@ -132,12 +128,11 @@ function CartPage() {
       const totalQuantity = getTotalQuantity();
       const totalClothPriceValue = clothTotalPrice();
       const totalPrintPriceValue = totalPrintPrice();
-  
-     
+
       localStorage.setItem("totalQuantity", totalQuantity);
       localStorage.setItem("totalClothPrice", totalClothPriceValue);
       localStorage.setItem("totalPrintPrice", totalPrintPriceValue);
-  
+
       // Navigate to the checkout page
       navigate("/checkout");
     } else {
@@ -204,10 +199,6 @@ function CartPage() {
     localStorage.setItem("totalPrintPrice", printPrice);
   }, [cartItems, globalPrintType]);
 
-
-
-
-
   return (
     <div className="cartpage">
       <ProgressTracker />
@@ -234,11 +225,11 @@ function CartPage() {
                         className="cart-item-link"
                       >
                         <img
-                          src={
+                          src={`${
                             product.images.variants.find(
                               (v) => v.colorName === item.selectedColor
-                            )?.images.medium
-                          }
+                            )?.basePath
+                          }.jpg`}
                           alt={product.name}
                           className="cart-item-image"
                         />
@@ -342,7 +333,6 @@ function CartPage() {
                 </select>
               </label>
             </div>
-            
             <h4 className="main-body">Pris/St: {pricePerItem} SEK</h4>{" "}
             <h4 className="main-body"> Schablon: {totalStencilPrice()}SEK</h4>
             <h4 className="main-body">
@@ -363,29 +353,25 @@ function CartPage() {
                 />
               </label>
             </div>
-
-            
             <div className="tab-content print-price">
               <h1
                 className="heading-3"
                 onClick={togglePrintSection}
                 style={{ cursor: "pointer" }}
               >
-                Tryckpriser 
+                Tryckpriser
                 <span className="toggle-arrow">
                   {openPrintSection ? "▲" : "▼"}
                 </span>
               </h1>
               {openPrintSection && renderPrintPrices()}
             </div>
-
-
           </div>
         </div>
       )}
 
       <div className="price-container">
-      <h5 className="main-body">Antal varor: {getTotalQuantity()} St</h5>
+        <h5 className="main-body">Antal varor: {getTotalQuantity()} St</h5>
         <h5 className="main-body">Pris för kläder: {clothTotalPrice()} SEK</h5>
         <h5 className="main-body">Pris för tryck: {totalPrintPrice()} SEK</h5>
 
@@ -405,11 +391,7 @@ function CartPage() {
         )}
       </div>
     </div>
-
-    
   );
-
-  
 }
 
 export default CartPage;

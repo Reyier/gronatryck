@@ -33,9 +33,6 @@ import DurableMaterials from "./pages/Durable-Materials.js";
 import Categories from "./pages/Categories.js";
 import Cases from "./pages/Cases.js";
 
-// TA BORT SEN
-import Max from "./pages/MaxRum.js";
-
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null); // Track logged in user
 
@@ -153,9 +150,6 @@ function App() {
               element={<ProductDetail />}
             />
             <Route path="/checkout" element={<Checkout />} />
-            {/* MAX TABORT*/}
-            <Route path="/max" element={<Max />} />
-            <Route path="/max/kategori/:category" element={<Max />} />
 
             <Route path="/produkter/:id" element={<ProductDetail />} />
             <Route path="/confirmation" element={<ConfirmationPage />} />

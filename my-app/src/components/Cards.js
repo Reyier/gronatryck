@@ -1,76 +1,92 @@
 import { Link } from "react-router-dom";
 import "../styles/searchbar-filter.css";
-//import slugify from "../../utils/slugify";
+import slugify from "../utils/slugify";
 
-const hello = `asd`;
+function Card({
+  id,
+  name,
+  category,
+  modelImage,
+  firstVariantImage,
+  minPrice,
+  maxPrice,
+  sizeVariantsCount,
+  variantsCount,
+  colorCodes,
+}) {
+  const path = modelImage.basePath.replace(/\s/g, "%20");
 
-function Card(props) {
-  function slugify(text) {
-    return text
-      .toString()
-      .toLowerCase()
-      .replace(/\s+/g, "-") // Replace spaces with -
-      .replace(/[åä]/g, "a") // Replace å and ä with a
-      .replace(/ö/g, "o") // Replace ö with o
-      .replace(/[^\w\-]+/g, "") // Remove all non-word chars
-      .replace(/\-\-+/g, "-") // Replace multiple - with single -
-      .replace(/^-+/, "") // Trim - from start of text
-      .replace(/-+$/, ""); // Trim - from end of text
-  }
+  const variantPath = firstVariantImage.replace(/\s/g, "%20");
 
   return (
     <article className="card">
-      <Link to={`/produkter/${props.id}/${slugify(props.name)}`}>
+      <Link to={`/produkter/${id}/${slugify(name)}`}>
         <figure className="card-image">
-          <img
-            className="default-image"
-            src={props.modelImage.large}
-            srcSet={`${props.modelImage.small}, 600w, ${props.modelImage.medium}, 1024w, ${props.modelImage.large}, 1600w,`}
-            sizes="(max-width: 600px) 600px, (max-width: 1024px) 1024px, 1600px"
-            alt={props.modelImage.alt}
-            loading="lazy"
-          />
-          <img
-            className="hover-image"
-            src={props.firstVariantImage.large}
-            srcSet={`${props.firstVariantImage.small}, 600w, ${props.firstVariantImage.medium}, 1024w, ${props.firstVariantImage.large}, 1600w,`}
-            sizes="(max-width: 600px) 600px, (max-width: 1024px) 1024px, 1600px"
-            alt="Tjock vintage infärgad sweatshirt"
-            loading="lazy"
-          />
+          <picture className="default-image">
+            <source
+              srcSet={`${path}-small.webp 600w, ${path}-medium.webp 1024w, ${path}.webp 1600w`}
+              type="image/webp"
+              sizes="(max-width: 600px) 600px, (max-width: 1024px) 1024px, 1600px"
+            />
+            <source
+              srcSet={`${path}-small.jpg 600w, ${path}-medium.jpg 1024w, ${path}.jpg 1600w`}
+              type="image/webp"
+              sizes="(max-width: 600px) 600px, (max-width: 1024px) 1024px, 1600px"
+            />
+            <img
+              src={`${path}.jpg`} // Fallback
+              alt={modelImage.alt}
+              loading="lazy"
+            />
+          </picture>
+          <picture className="hover-image">
+            <source
+              srcSet={`${variantPath}-small.jpg 600w, ${variantPath}-medium.webp 1024w, ${variantPath}.webp 1600w`}
+              type="image/webp"
+              sizes="(max-width: 600px) 600px, (max-width: 1024px) 1024px, 1600px"
+            />
+            <source
+              srcSet={`${variantPath}-small.jpg 600w, ${variantPath}-medium.jpg 1024w, ${variantPath}.jpg 1600w`}
+              type="image/webp"
+              sizes="(max-width: 600px) 600px, (max-width: 1024px) 1024px, 1600px"
+            />
+            <img
+              src={`${path}.jpg`} // Fallback
+              alt={name}
+              loading="lazy"
+            />
+          </picture>
         </figure>
       </Link>
       <div className="card-content">
         <header className="card-header">
-          <p className="card-category info-text">{props.category}</p>
-          <Link to={`/produkter/${props.id}/${slugify(props.name)}`}>
-            <h2 className="card-name main-body">{props.name}</h2>
+          <p className="card-category info-text">{category}</p>
+          <Link to={`/produkter/${id}/${slugify(name)}`}>
+            <h2 className="card-name main-body">{name}</h2>
           </Link>
         </header>
 
         <div className="card-footer">
-          <p className="main-body">{props.sizeVariantsCount} olika storlekar</p>
+          <p className="main-body">{sizeVariantsCount} olika storlekar</p>
           <div style={{ display: "flex", alignItems: "center", gap: ".8rem" }}>
             <span
               className="circle-color"
-              style={{ backgroundColor: props.colorCodes[0] }}
+              style={{ backgroundColor: colorCodes[0] }}
             ></span>
             <span
               className="circle-color"
-              style={{ backgroundColor: props.colorCodes[1] }}
+              style={{ backgroundColor: colorCodes[1] }}
             ></span>
             <p className="main-body">
               {" "}
-              + {props.variantsCount - 2}{" "}
-              {props.variantsCount - 2 > 1 ? "färger" : "färg"} till
+              + {variantsCount - 2} {variantsCount - 2 > 1 ? "färger" : "färg"}{" "}
+              till
             </p>
           </div>
         </div>
 
         <section className="card-info">
-          <p className="card-price .subheading-2">
-            Från {props.minPrice},00 SEK
-          </p>
+          <p className="card-price .subheading-2">Från {minPrice},00 SEK</p>
         </section>
       </div>
     </article>

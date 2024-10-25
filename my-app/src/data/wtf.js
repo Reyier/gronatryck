@@ -493,7 +493,7 @@ const products = [
     ],
     images: {
       modelUrl: {
-        basePath: "/img/informative/Liner_Desert Dust_Duo_Front_Main_0",
+        basePath: "/img/infomrative/Liner_Desert Dust_Duo_Front_Main_0",
         alt: "Sherpa fleece-väst på två glada modeller",
       },
       sizeGuideUrl: {
@@ -559,7 +559,7 @@ const products = [
         alt: "Tjock vadderad Puffer-väst på två glada modeller",
       },
       sizeGuideUrl: {
-        basePath: "/img/informative/Puffer Gilet-size",
+        basePath: "Puffer Gilet-size",
         alt: "Size guide of the product",
       },
       variants: [
@@ -646,7 +646,8 @@ const products = [
         {
           colorName: "Black",
           colorCode: "#212829",
-          basePath: "/img/informative/Radder 2.0_Black_Packshot_Front_Main_0",
+          basePath:
+            "/img/informative/Radder 2.0 Vintage_G. Dyed Black Rock_Packshot_Front_Main_0",
         },
         {
           colorName: "Dyed Latte",
@@ -681,7 +682,7 @@ const products = [
           colorName: "Heather Grey",
           colorCode: "#A2A2A2",
           basePath:
-            "/img/informative/Radder 2.0_Heather Grey_Packshot_Front_Main_0",
+            "/img/informative/Radder 2.0_Heather Grey_Packshot_Front_Main",
         },
         {
           colorName: "Blue Ice",
@@ -873,7 +874,7 @@ const products = [
         {
           colorName: "Aloe green",
           colorCode: "#A6BCB1",
-          basePath: "/img/informative/Prepster 2.0_Aloe_Packshot_Front_Main_0",
+          basePath: "/img/informative/Prepster 2.0_Aloe_Packshot_Front_Main_0-",
         },
         {
           colorName: "Anthracite",

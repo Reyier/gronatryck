@@ -4,6 +4,7 @@ import Card from "../components/Cards.js";
 import "../styles/card.css";
 import { useLocation, useParams } from "react-router-dom";
 import Breadcrumb from "../components/Breadcrumb.js";
+import { LuChevronDown } from "react-icons/lu";
 
 const getUniqueColors = (products) => {
   const colors = new Set();
@@ -98,7 +99,7 @@ const Products = () => {
     const minPrice = Math.min(...priceTiers.map((tier) => tier.price));
     const maxPrice = Math.max(...priceTiers.map((tier) => tier.price));
 
-    const firstVariantImage = variants[0]?.images;
+    const firstVariantImage = variants[0]?.basePath;
     const colorCodes = variants.slice(0, 2).map((variant) => variant.colorCode);
 
     return {
@@ -193,17 +194,22 @@ const Products = () => {
               </div>
 
               <div className="filter-group">
-                <h3
-                  className="main-body"
+                <button
+                  className="filter-btn"
                   onClick={() => setIsColorDropdownOpen((prev) => !prev)}
-                  style={{ cursor: "pointer" }}
                 >
-                  Färg{" "}
-                  {selectedColors.length > 0 && `(${selectedColors.length})`}
-                  <span className="toggle-arrow">
-                    {isColorDropdownOpen ? "▲" : "▼"}
+                  <h3 className="main-body">
+                    Färg{" "}
+                    {selectedColors.length > 0 && `(${selectedColors.length})`}
+                  </h3>
+                  <span
+                    className={`arrow-icon ${
+                      isColorDropdownOpen ? "active" : ""
+                    }`}
+                  >
+                    <LuChevronDown />
                   </span>
-                </h3>
+                </button>
                 {isColorDropdownOpen && (
                   <div className="dropdown-menu">
                     {uniqueColors.map((color) => (

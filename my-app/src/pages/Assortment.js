@@ -2,8 +2,8 @@ import NavList from "../components/NavList";
 import PopularCategories from "../components/PopularCategories";
 
 const categories = [
-  { to: "/sortiment/produkter", textContent: "Visa alla" },
-  { to: "/sortiment/produkter", textContent: "Nyheter" },
+  { to: "/produkter", textContent: "Visa alla" },
+  { to: "/produkter", textContent: "Nyheter" },
   { to: "/produkter", textContent: "Bästsäljare" },
   { to: "/produkter", textContent: "Kollektioner" },
   { to: "/produkter", textContent: "Kläder" },

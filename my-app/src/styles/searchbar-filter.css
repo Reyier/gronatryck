@@ -127,6 +127,9 @@
     align-items: center;
     margin: auto;
   }
+  .dropdown-menu {
+    min-width: 300%;
+  }
 
   .reset {
     width: 20%;

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "../styles/login.css"; // Assuming the same styles are used for both components
+import "../styles/login.css";
+import "../styles/contact.css";
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -54,20 +55,69 @@ function Contact() {
           <Link to="/">Hem</Link>
         </div>
       ) : (
-        <div>
+        <div className="contact-page">
+          <section className="hero-section-2">
+            <img
+              src="./img/decorative/DJI_20241010094358_0007_D-Enhanced-NR.jpg"
+              alt="Hero"
+              className="hero-image"
+              id="aboutus-hero-image"
+            />
+          </section>
+
+          <div className="contact-info main-body">
+            <div className="contact-section">
+              <h1 className="section-heading heading-3">Gröna Tryck</h1>
+              <p>
+                <strong>Besöksadress:</strong>
+                <br />
+                Västra Kyrkogatan 1B
+                <br />
+                903 29 Umeå, Sverige
+              </p>
+              <p>
+                <strong>Öppettider:</strong>
+                <br />
+                Kontor: Tis-Fre: 09.00-16.00
+                <br />
+                Telefon: Mån-Fre 09.00-16.30
+              </p>
+              <p>
+                <strong>Kontaktinfo:</strong>
+                <br />
+                Telefon: +46 (0)90 13 13 40
+                <br />
+                E-post: kontakt@gronatryck.se
+              </p>
+              <p>
+                Instagram: gronatryck <br />
+                Facebook: Gröna Tryck
+              </p>
+            </div>
+
+            <div className="contact-section">
+              <h1 className="section-heading heading-3">Lager</h1>
+              <p>
+                Adress: Kungsgatan 26
+                <br />
+                903 21 Umeå, Sverige
+                <br />
+                (ej post/leveransadress)
+              </p>
+              <p>Dir. tel. Produktion: +46 (0)90 34 35 351</p>
+            </div>
+          </div>
+
           <div className="cart-heading">
             <h1 className="heading-3 header-label">Kontakta oss</h1>
           </div>
 
-          
-
           <div className="login-container print-container">
-
-          <p className="main-body">
+            <p className="main-body">
               Har du frågor, funderingar eller idéer? Tveka inte att höra av
               dig! Vårt team är här för att hjälpa dig!
-              </p>
-            
+            </p>
+
             <form onSubmit={handleSubmit}>
               <div className="input-container">
                 <h6 className="input-label">Namn:</h6>

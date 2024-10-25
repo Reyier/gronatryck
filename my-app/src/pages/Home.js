@@ -7,24 +7,24 @@ import PopularCategories from "../components/PopularCategories";
 const Home = () => {
   const categorylist = [
     {
-      img: "/img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg",
+      img: "/img/cover/Stanley_Stella_AW24_Timeless_Outerwear_Mix_01.jpg",
       alt: "Cool tröja",
-      label: "T-shirt",
+      label: "Profilkläder",
+    },
+    {
+      img: "/img/decorative/emarts-emarts-ZCTh4f4mv18-unsplash.jpg",
+      alt: "Västar",
+      label: "Tjänster",
+    },
+    {
+      img: "/img/decorative/matthew-moloney-mKtfd1SOYDc-unsplash.jpg",
+      alt: "Pike",
+      label: "Kundberättelser",
     },
     {
       img: "/img/informative/Liner_Desert Dust_Duo_Front_Main_0.jpg",
-      alt: "Västar",
-      label: "Västar",
-    },
-    {
-      img: "/img/informative/Prepster 2.0_Eco-Heather_Duo_Front_Main_0.jpg",
-      alt: "Pike",
-      label: "Pike",
-    },
-    {
-      img: "/img/informative/Knoxer_Natural Raw_Duo_Front_Main_0.jpg",
       alt: "Tröjor",
-      label: "Tröjor",
+      label: "Nyheter",
     },
   ];
 
@@ -34,14 +34,6 @@ const Home = () => {
       <div className="body-container">
         <div>
           <PopularCategories categoryList={categorylist} />
-
-          {/* <div className="btn-container">
-            <Button
-              to="/alla-kategorier"
-              className="main-btn"
-              content="Alla Kategorier"
-            />
-            </div> */}
         </div>
 
         <section className="certified-section">
@@ -50,7 +42,7 @@ const Home = () => {
             <div className="certified-text">
               <div className="eco-label">
                 <div className="label-with-bg">
-                  <h5 className="eco main-body">Ekologiskt</h5>
+                  <h5 className="eco main-body">Miljö</h5>
                 </div>
               </div>
 
@@ -87,39 +79,54 @@ const Home = () => {
 
         {/* Section 5: Beställningsprocess */}
         <section className="order-process">
-  <h1 className="section-heading heading-3">Beställningsprocess</h1>
-  <div className="process-steps main-body">
-    {[
-      { step: "Välj produkt", description: "Lägg produkter i varukorgen på vår hemsida." },
-      { step: "Offertförfrågan", description: "Din varukorg sammanställs till en offert som skickas till oss." },
-      { step: "Granskning & Förslag", description: "Vi granskar offerten och ger dig förslag på tryck." },
-      { step: "Orderbekräftelse", description: "Efter att du godkänt förslaget startar tryckprocessen." }
-    ].map((stepInfo, index, array) => (
-      <div key={index} className="process-step">
-        <div className="process-circle">{index + 1}</div> 
-        <p className="process-step-title">{stepInfo.step}</p>
-        <p className="process-step-description">{stepInfo.description}</p>
-     
-        {index < array.length - 1 ? (
-          <span className="process-divider">→</span>
-        ) : (
-          <span className="process-checkmark">✓</span>
-        )}
-      </div>
-    ))}
-  </div>
-  <p className="process-description main-body">
-    Vi gör bulkbeställningar enkla och hållbara – från offert till leverans.
-  </p>
-</section>
+          <h1 className="section-heading heading-3">Beställningsprocess</h1>
+          <div className="process-steps main-body">
+            {[
+              {
+                step: "Välj produkt",
+                description: "Lägg produkter i varukorgen på vår hemsida.",
+              },
+              {
+                step: "Offertförfrågan",
+                description:
+                  "Din varukorg sammanställs till en offert som skickas till oss.",
+              },
+              {
+                step: "Granskning & Förslag",
+                description:
+                  "Vi granskar offerten och ger dig förslag på tryck.",
+              },
+              {
+                step: "Orderbekräftelse",
+                description:
+                  "Efter att du godkänt förslaget startar tryckprocessen.",
+              },
+            ].map((stepInfo, index, array) => (
+              <div key={index} className="process-step">
+                <div className="process-circle">{index + 1}</div>
+                <p className="process-step-title">{stepInfo.step}</p>
+                <p className="process-step-description">
+                  {stepInfo.description}
+                </p>
 
-
-
+                {index < array.length - 1 ? (
+                  <span className="process-divider">→</span>
+                ) : (
+                  <span className="process-checkmark">✓</span>
+                )}
+              </div>
+            ))}
+          </div>
+          <p className="process-description main-body">
+            Vi gör bulkbeställningar enkla och hållbara – från offert till
+            leverans.
+          </p>
+        </section>
 
         {/* Section 6: Testimonial */}
         <section className="testimonial-section">
           <h1 className="section-heading heading-3">
-            Petter väljer rättvisemärkta kläder för sina fans
+            Peter väljer rättvisemärkta kläder för sina fans
           </h1>
 
           <div className="testimonial-label">
@@ -133,7 +140,7 @@ const Home = () => {
               <p className="main-body">
                 “Jag vill att min merch speglar mina värderingar, och tack vare
                 Gröna Tryck kunde jag erbjuda mina fans produkter jag verkligen
-                står bakom,” säger Petter.
+                står bakom,” säger Peter.
               </p>
               <br></br>
               <p className="main-body">
@@ -141,18 +148,17 @@ const Home = () => {
                 levererat snabbt, samtidigt som jag vet att produkterna är
                 certifierade och miljövänliga.”
               </p>
-            <div className="btn-container">
-              <Button
-            to="/kundcase"
-            className=" main-btn btn-container"
-            content="Se mer om våra arbeten"
-          />
-</div>
+              <div className="btn-container">
+                <Button
+                  to="/kundcase"
+                  className=" main-btn btn-container"
+                  content="Se mer om våra arbeten"
+                />
+              </div>
             </blockquote>
             <div className="testimonial-image">
-              
               <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2ZUGI3aCcwaPeDQ6nZsiMnmt7oX8-3BRqJg&s"
+                src="/img/decorative/vidar-nordli-mathisen-qusExK3sba8-unsplash.jpg"
                 alt="Petter"
               />
             </div>

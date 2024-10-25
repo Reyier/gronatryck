@@ -7,16 +7,25 @@ import Breadcrumb from "../components/Breadcrumb.js";
 import { LuChevronDown } from "react-icons/lu";
 
 const getUniqueColors = (products) => {
-  const colors = new Set();
+  const colorMap = new Map();
+
   products.forEach((product) => {
     product.images.variants?.forEach((variant) => {
-      colors.add({
-        name: variant.colorName.toLowerCase(),
-        code: variant.colorCode,
-      });
+      const colorKey = `${variant.colorName.toLowerCase()}-${
+        variant.colorCode
+      }`;
+      if (!colorMap.has(colorKey)) {
+        colorMap.set(colorKey, {
+          name: variant.colorName.toLowerCase(),
+          code: variant.colorCode,
+        });
+      }
     });
   });
-  return Array.from(colors);
+
+  const uniqueColors = Array.from(colorMap.values());
+  console.log(uniqueColors);
+  return uniqueColors;
 };
 
 const getUniqueBrands = (products) => {
@@ -38,9 +47,8 @@ const getUniqueSizes = (products) => {
 };
 
 const Products = () => {
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const kategori = searchParams.get("kategori")?.toLowerCase();
+  const { category } = useParams();
+  const [title, setTitle] = useState(category || "Alla produkter");
 
   const [sort, setSort] = useState("");
   const [selectedColors, setSelectedColors] = useState([]);
@@ -57,11 +65,6 @@ const Products = () => {
 
   const filteredProducts = products
     .filter((product) => {
-      const matchesSearch = kategori
-        ? product.name.toLowerCase().includes(kategori) ||
-          product.category.toLowerCase().includes(kategori)
-        : true;
-
       const matchesColor =
         selectedColors.length > 0
           ? product.images.variants?.some((variant) =>
@@ -79,7 +82,7 @@ const Products = () => {
           ? selectedSizes.some((size) => product.sizeVariants?.includes(size))
           : true;
 
-      return matchesSearch && matchesColor && matchesBrand && matchesSize;
+      return matchesColor && matchesBrand && matchesSize;
     })
     .sort((a, b) => {
       if (sort === "Nyast") return b.date - a.date;
@@ -149,8 +152,8 @@ const Products = () => {
   return (
     <div className="product-page">
       <div>
-        <Breadcrumb category={kategori} />
-        <h2 className="subheading-1">Alla kläder</h2>
+        <Breadcrumb />
+        <h2 className="subheading-1">{title}</h2>
         {/* <p className="main-body">
           
           Upptäck ett noga utvalt sortiment av profilkläder och produkter som

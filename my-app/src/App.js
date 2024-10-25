@@ -123,10 +123,7 @@ function App() {
             <Route path="/kundcase" element={<Cases />} />
             <Route path="/tjanster" element={<Services />} />
             <Route path="/produkter" element={<Products />} />
-            <Route
-              path="/produkter/kategori/:category"
-              element={<Products />}
-            />
+            <Route path="/produkter/:category" element={<Products />} />
             <Route path="/for-aterforsaljare" element={<Resells />} />
             <Route path="/cart" element={<CartPage />} />
             <Route path="/kontakt" element={<Contact />} />
@@ -151,7 +148,7 @@ function App() {
             />
             <Route path="/checkout" element={<Checkout />} />
 
-            <Route path="/produkter/:id" element={<ProductDetail />} />
+            {/*  <Route path="/produkter/:id" element={<ProductDetail />} /> */}
             <Route path="/confirmation" element={<ConfirmationPage />} />
             <Route path="/om-grona-tryck" element={<Aboutus />} />
             <Route path="/hallbara-material" element={<DurableMaterials />} />

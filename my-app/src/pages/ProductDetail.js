@@ -177,7 +177,13 @@ const ProductDetail = () => {
               <p className="brand-name">{product.brand}</p>
               <h1 className="heading-2">{product.name}</h1>
               <p className="product-description">
-                {isExpanded ? product.description : truncatedDescription}
+                {isExpanded
+                  ? product.description.split("\n").map((line, index) => (
+                      <React.Fragment key={index}>
+                        {line} <br />
+                      </React.Fragment>
+                    ))
+                  : truncatedDescription}
               </p>
               <button onClick={toggleDescription} className="read-more-btn">
                 {isExpanded ? "" : "Läs mer"}

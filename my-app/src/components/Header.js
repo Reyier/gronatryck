@@ -10,6 +10,8 @@ import {
 } from "react-icons/lu";
 import NavList from "./NavList";
 import "../styles/header.css";
+import IconButton from "./IconButton.js";
+import SearchBar from "./Search.js";
 
 const navLinks = [
   { to: "/sortiment", textContent: "Sortiment" },
@@ -43,7 +45,7 @@ export default function Header() {
   }
   return (
     <header className="page-header">
-      <SearchContainer handleClick={cancelSearch} isActive={searchActive} />
+      <SearchBar handleClick={cancelSearch} isActive={searchActive} />
 
       <div className="header-container top-bar">
         <Link to="/" className="logo">
@@ -78,104 +80,6 @@ export default function Header() {
         </div>
       </div>
     </header>
-  );
-}
-
-function IconButton({ icon, handleClick }) {
-  return (
-    <button onClick={handleClick} className="icon-button">
-      {icon}
-    </button>
-  );
-}
-
-function SearchContainer({ handleClick, isActive }) {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [filteredKeywords, setFilteredKeywords] = useState([]);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const navigate = useNavigate();
-
-  // Dynamiskt hämta unika kategorier
-  const getUniqueCategories = () => {
-    const categories = new Set();
-
-    products.forEach((product) => {
-      categories.add(product.category);
-    });
-
-    return Array.from(categories);
-  };
-
-  const recommendedCategories = getUniqueCategories();
-
-  const handleSearch = (e) => {
-    const value = e.target.value;
-    setSearchTerm(value);
-
-    if (value.length > 0) {
-      const filtered = recommendedCategories.filter((category) =>
-        category.toLowerCase().includes(value.toLowerCase())
-      );
-      setFilteredKeywords(filtered);
-      setIsDropdownOpen(filtered.length > 0);
-    } else {
-      setFilteredKeywords([]);
-      setIsDropdownOpen(false);
-    }
-  };
-
-  // Navigera till Products-sidan med det valda sökordet
-  const handleKeywordClick = (keyword) => {
-    setSearchTerm(keyword);
-    setIsDropdownOpen(false);
-    setFilteredKeywords([]);
-    navigate(`/products?kategori=${encodeURIComponent(keyword)}`);
-  };
-
-  // Filtrera produkter baserat på sökordet
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    navigate(`/products?kategori=${encodeURIComponent(searchTerm)}`);
-    resetSearch();
-  };
-
-  const resetSearch = () => {
-    setSearchTerm("");
-    setFilteredKeywords([]);
-    setIsDropdownOpen(false);
-  };
-  return (
-    <div className={`search-container ${isActive ? "active" : ""}`}>
-      <form className="container search-content" onSubmit={handleSearchSubmit}>
-        <IconButton
-          icon={<LuSearch />}
-          handleClick={() => console.log("pressed search btn")}
-        />
-        <input
-          type="search"
-          value={searchTerm}
-          onChange={handleSearch}
-          placeholder="Sök i vårt sortiment..."
-        />
-        <IconButton icon={<LuX />} handleClick={handleClick} />
-      </form>
-      {isDropdownOpen && (
-        <div className="dropdown-list">
-          <h2>Rekommenderade kategorier</h2>
-          {filteredKeywords.length > 0 ? (
-            <ul>
-              {filteredKeywords.map((category, index) => (
-                <li key={index} onClick={() => handleKeywordClick(category)}>
-                  {category}
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p>Inga sökresultat hittades.</p>
-          )}
-        </div>
-      )}
-    </div>
   );
 }
 

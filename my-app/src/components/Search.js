@@ -1,94 +1,50 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Importera useNavigate
 import products from "../data/product.js";
+import { LuSearch, LuX } from "react-icons/lu";
 import "../styles/searchbar-filter.css"; // Se till att du har en CSS-fil för stilar
+import IconButton from "./IconButton.js";
 
-const SearchBar = () => {
+export default function SearchBar({ handleClick, isActive }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredKeywords, setFilteredKeywords] = useState([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const navigate = useNavigate();
-
-  // Dynamiskt hämta unika kategorier
-  const getUniqueCategories = () => {
-    const categories = new Set();
-
-    products.forEach((product) => {
-      categories.add(product.category);
-    });
-
-    return Array.from(categories);
-  };
-
-  const recommendedCategories = getUniqueCategories();
 
   const handleSearch = (e) => {
     const value = e.target.value;
+    console.log(value);
     setSearchTerm(value);
-
-    if (value.length > 0) {
-      const filtered = recommendedCategories.filter((category) =>
-        category.toLowerCase().includes(value.toLowerCase())
-      );
-      setFilteredKeywords(filtered);
-      setIsDropdownOpen(filtered.length > 0);
-    } else {
-      setFilteredKeywords([]);
+    if (value === "") {
       setIsDropdownOpen(false);
+    } else {
+      setIsDropdownOpen(true);
     }
   };
 
-  // Navigera till Products-sidan med det valda sökordet
-  const handleKeywordClick = (keyword) => {
-    setSearchTerm(keyword);
-    setIsDropdownOpen(false);
-    setFilteredKeywords([]);
-    navigate(`/products?kategori=${encodeURIComponent(keyword)}`);
-  };
-
-  // Filtrera produkter baserat på sökordet
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    navigate(`/products?kategori=${encodeURIComponent(searchTerm)}`);
-    resetSearch();
-  };
-
-  const resetSearch = () => {
-    setSearchTerm("");
-    setFilteredKeywords([]);
-    setIsDropdownOpen(false);
-  };
-
   return (
-    <div className="search-container">
-      <form onSubmit={handleSearchSubmit}>
+    <div className={`search-container ${isActive ? "active" : ""}`}>
+      <form className="container search-content">
+        <IconButton
+          icon={<LuSearch />}
+          handleClick={() => console.log("pressed search btn")}
+        />
         <input
-          type="text"
+          type="search"
           value={searchTerm}
           onChange={handleSearch}
-          placeholder="Sök produkter..."
+          placeholder="Sök i vårt sortiment..."
         />
-        <button type="submit">Sök</button>
+        <IconButton icon={<LuX />} handleClick={handleClick} />
       </form>
 
       {isDropdownOpen && (
         <div className="dropdown-list">
-          <h2>Rekommenderade kategorier</h2>
-          {filteredKeywords.length > 0 ? (
-            <ul>
-              {filteredKeywords.map((category, index) => (
-                <li key={index} onClick={() => handleKeywordClick(category)}>
-                  {category}
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p>Inga sökresultat hittades.</p>
-          )}
+          <h2>Din söknings gav 5 resultat...</h2>
+          <div className="container">
+            <div>product 1</div> <div>product 1</div>
+            <div>product 1</div>
+          </div>
         </div>
       )}
     </div>
   );
-};
-
-export default SearchBar;
+}

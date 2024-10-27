@@ -1,7 +1,7 @@
 const products = [
   {
     productId: "p1",
-    name: "Vadderade bomarjacka",
+    name: "Vadderade bombarjacka",
     artName: "StSt Eco 251, Bomber 2.0",
     artNr: "2561",
     category: "Jackor",

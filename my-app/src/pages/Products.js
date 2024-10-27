@@ -24,7 +24,7 @@ const getUniqueColors = (products) => {
   });
 
   const uniqueColors = Array.from(colorMap.values());
-  console.log(uniqueColors);
+
   return uniqueColors;
 };
 

@@ -31,4 +31,12 @@
 .long{
     max-width: 200ch;
 }
+
+.terms-page{
+ max-width: 1150px;
+ margin: auto;
+ width: 90%;
+ margin-top: 15rem;
+ 
+}
   

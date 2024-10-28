@@ -3,7 +3,6 @@
   background-color: var(--bright-color);
   padding: 2rem;
   color: var(--primary-dark);
-  text-align: center;
   width: 100%;
   z-index: 1;
   margin-block-start: auto; /*Den här måste finnas för att hålla footern längst ned på sidan // MAX*/
@@ -15,6 +14,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.Page-links{
+  display: grid;
 }
 
 .footer-links {
@@ -37,8 +40,6 @@
   cursor: pointer;
   outline: none;
   display: flex;
-  justify-content: center;
-  align-items: center;
   position: relative;
 }
 
@@ -59,15 +60,9 @@ details[open] summary::after {
 .footer-text-container {
   list-style: none;
   padding: 0;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   margin: auto;
   width: 100%;
-  display: flex;
-  flex-direction: row;
   gap: 2.5rem;
-  flex-wrap: wrap;
 }
 
 .footer-links details p {

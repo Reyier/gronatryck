@@ -32,6 +32,8 @@ import Assortment from "./pages/Assortment";
 import DurableMaterials from "./pages/Durable-Materials.js";
 import Categories from "./pages/Categories.js";
 import Cases from "./pages/Cases.js";
+import FAQ from "./components/FAQ.js";
+import TermsPage from "./pages/TermsOfPurchase.js";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null); // Track logged in user
@@ -127,6 +129,7 @@ function App() {
             <Route path="/for-aterforsaljare" element={<Resells />} />
             <Route path="/cart" element={<CartPage />} />
             <Route path="/kontakt" element={<Contact />} />
+            <Route path="/kopvillkor" element={<TermsPage />} />
             <Route
               path="/mina-sidor"
               element={<CustomerPage onLogin={handleLogin} />}

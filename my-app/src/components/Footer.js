@@ -32,12 +32,14 @@ const Footer = () => {
             </div>
           </details>
           <details>
-            <summary>Köpvillkor</summary>
-            <p>Information om köpvillkor...</p>
-          </details>
-          <details>
-            <summary>Jobba hos oss</summary>
-            <p>Se våra lediga tjänster...</p>
+            <summary>Hjälp</summary>
+            <div className="Page-links">
+              <Link to="/">FAQ</Link>
+              <Link to="/om-grona-tryck">Om oss</Link>
+              <Link to="/kopvillkor">Köpvillkor</Link>
+              <Link to="/kontakt">Kontakt oss</Link>
+              <Link to="/om-grona-tryck">Jobba hos oss</Link>
+            </div>
           </details>
         </div>
         <div className="social-media">
@@ -99,12 +101,11 @@ const Footer = () => {
           </div>
           <div className="footer-column">
             <h4>Hjälp</h4>
-            <a href="">Tjänster</a>
-            <a href="">FAQ</a>
-          </div>
-          <div className="footer-column">
-            <h4>Jobba hos oss</h4>
-            <p>Se våra lediga tjänster...</p>
+            <Link to="/">FAQ</Link>
+              <Link to="/om-grona-tryck">Om oss</Link>
+              <Link to="/kopvillkor">Köpvillkor</Link>
+              <Link to="/kontakt">Kontakt oss</Link>
+              <Link to="/om-grona-tryck">Jobba hos oss</Link>
           </div>
           <div className="footer-column">
             <h4>Vi finns även här</h4>

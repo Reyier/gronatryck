@@ -98,8 +98,9 @@ const Footer = () => {
             <p>Adress: Västra Kyrkogatan 1B, 903 29 Umeå, Sverige</p>
           </div>
           <div className="footer-column">
-            <h4>Köpvillkor</h4>
-            <p>Information om köpvillkor...</p>
+            <h4>Hjälp</h4>
+            <a href="">Tjänster</a>
+            <a href="">FAQ</a>
           </div>
           <div className="footer-column">
             <h4>Jobba hos oss</h4>

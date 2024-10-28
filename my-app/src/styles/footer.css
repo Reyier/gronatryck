@@ -41,6 +41,8 @@
   outline: none;
   display: flex;
   position: relative;
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
 
 summary::after {
@@ -102,17 +104,13 @@ details[open] summary::after {
 }
 
 .icon {
-  font-size: 1.5rem;
-  color: var(--primary-green);
   cursor: pointer;
+  width: 2rem;
 }
 
-.icon:hover {
-  color: var(--primary-dark);
-}
 
 .copyright {
-  font-size: 0.75rem;
+  font-size: 1.5rem;
   color: var(--primary-green);
   margin-top: 1.25rem;
 }
@@ -145,9 +143,16 @@ details[open] summary::after {
     margin-bottom: 2rem;
   }
 
-  .footer-logo img {
-    width: 100px;
+  .footer-logo img{
+    height: 6rem;
   }
+
+  .footer-logo p{
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    width: 15rem;
+  }
+
 
   .footer-logo p {
     font-style: italic;
@@ -157,7 +162,7 @@ details[open] summary::after {
   .footer-columns {
     display: flex;
     justify-content: space-between;
-    width: 80%;
+    width: 72%;
     margin-bottom: 2rem;
   }
 
@@ -165,7 +170,6 @@ details[open] summary::after {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 20%;
     text-align: left;
   }
 
@@ -204,7 +208,7 @@ details[open] summary::after {
 
   .copyright {
     text-align: center;
-    font-size: 0.75rem;
+    font-size: 1.5rem;
     margin-top: 2rem;
     color: var(--primary-green);
   }

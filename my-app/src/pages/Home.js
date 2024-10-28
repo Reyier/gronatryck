@@ -71,7 +71,7 @@ const Home = () => {
           </div>
 
           <Button
-            to="/mer-info"
+            to="/om-grona-tryck"
             className=" main-btn btn-container"
             content="Läs mer"
           />

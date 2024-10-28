@@ -25,18 +25,18 @@ export default function ProductGallery({ images }) {
       },
     ],
     [images]
-  ); // Only recalculate if images prop changes
+  ); 
 
-  // Set the initial main image to index 2 in combinedImages
+ 
   useEffect(() => {
     if (combinedImages[2]) {
-      // Ensure index 2 exists
+      
       setMainImage({
         path: combinedImages[2].basePath,
         alt: combinedImages[2].alt,
       });
     }
-  }, [combinedImages]); // Runs only when combinedImages is initially populated
+  }, [combinedImages]); 
 
   function changeMainImage(id) {
     setMainImage({

@@ -30,7 +30,7 @@ export default function Hero() {
               className="main-btn"
             />
             <Button
-              to="/om-oss"
+              to="/om-grona-tryck"
               content="Vår historia"
               className="second-btn"
             />

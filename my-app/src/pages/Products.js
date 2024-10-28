@@ -64,26 +64,32 @@ const Products = () => {
   const uniqueSizes = getUniqueSizes(products);
 
   const filteredProducts = products
-    .filter((product) => {
-      const matchesColor =
-        selectedColors.length > 0
-          ? product.images.variants?.some((variant) =>
-              selectedColors.includes(variant.colorName.toLowerCase())
-            )
-          : true;
+  .filter((product) => {
+    const matchesCategory =
+      category && category !== "alla produkter"
+        ? product.category.toLowerCase() === category.toLowerCase()
+        : true;
+    const matchesColor =
+      selectedColors.length > 0
+        ? product.images.variants?.some((variant) =>
+            selectedColors.includes(variant.colorName.toLowerCase())
+          )
+        : true;
 
-      const matchesBrand =
-        selectedBrands.length > 0
-          ? selectedBrands.includes(product.brand?.toLowerCase())
-          : true;
+    const matchesBrand =
+      selectedBrands.length > 0
+        ? selectedBrands.includes(product.brand?.toLowerCase())
+        : true;
 
-      const matchesSize =
-        selectedSizes.length > 0
-          ? selectedSizes.some((size) => product.sizeVariants?.includes(size))
-          : true;
+    const matchesSize =
+      selectedSizes.length > 0
+        ? selectedSizes.some((size) => product.sizeVariants?.includes(size))
+        : true;
 
-      return matchesColor && matchesBrand && matchesSize;
-    })
+    return matchesCategory && matchesColor && matchesBrand && matchesSize;
+  })
+
+
     .sort((a, b) => {
       if (sort === "Nyast") return b.date - a.date;
       if (sort === "Lägsta pris")

@@ -23,8 +23,8 @@ const ProductDetail = () => {
   );
   const [sizeQuantities, setSizeQuantities] = useState({});
   const [confirmationMessage, setConfirmationMessage] = useState("");
-  const [isExpanded, setIsExpanded] = useState(false); // for read more functionality
-  const [activeTab, setActiveTab] = useState("price"); // Active tab state
+  const [isExpanded, setIsExpanded] = useState(false); 
+  const [activeTab, setActiveTab] = useState("price"); 
 
   const handleColorChange = (color) => {
     setSelectedColor(color);
@@ -400,3 +400,14 @@ const ProductDetail = () => {
 };
 
 export default ProductDetail;
+
+
+
+
+
+
+
+
+
+
+

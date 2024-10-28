@@ -34,7 +34,7 @@ const Footer = () => {
           <details>
             <summary>Hjälp</summary>
             <div className="Page-links">
-              <Link to="/">FAQ</Link>
+              <Link to="/FAQ">FAQ</Link>
               <Link to="/om-grona-tryck">Om oss</Link>
               <Link to="/kopvillkor">Köpvillkor</Link>
               <Link to="/kontakt">Kontakt oss</Link>
@@ -50,28 +50,28 @@ const Footer = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <FaFacebookF className="icon" />
+              <img className="icon" src="/img/decorative/icons/fb_line_icon.png"></img>
             </a>
             <a
               href="https://www.linkedin.com/company/gronatryck/"
               target="_blank"
               rel="noreferrer"
             >
-              <FaLinkedinIn className="icon" />
+              <img className="icon" src="/img/decorative/icons/li_line_icon.png"></img>
             </a>
             <a
               href="https://www.youtube.com/@gronatryck508"
               target="_blank"
               rel="noreferrer"
             >
-              <FaYoutube className="icon" />
+              <img className="icon" src="/img/decorative/icons/yt_line_icon.png"></img>
             </a>
             <a
               href="https://www.instagram.com/gronatryck/"
               target="_blank"
               rel="noreferrer"
             >
-              <FaInstagram className="icon" />
+              <img className="icon" src="/img/decorative/icons/ig_line_icon.png"></img>
             </a>
           </div>
         </div>
@@ -86,7 +86,7 @@ const Footer = () => {
               src="./img/decorative/gronatryck_logo_webb.png"
               alt="Gröna Tryck logo"
             />
-            <p>Tryck med omtanke - hållbarhet i varje detalj</p>
+            <p>Tryck med omtanke <br/>- hållbarhet i varje detalj</p>
           </div>
           <div className="footer-column">
             <h4>Kontakt</h4>
@@ -101,7 +101,7 @@ const Footer = () => {
           </div>
           <div className="footer-column">
             <h4>Hjälp</h4>
-            <Link to="/">FAQ</Link>
+            <Link to="/FAQ">FAQ</Link>
               <Link to="/om-grona-tryck">Om oss</Link>
               <Link to="/kopvillkor">Köpvillkor</Link>
               <Link to="/kontakt">Kontakt oss</Link>
@@ -115,28 +115,28 @@ const Footer = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <FaFacebookF className="icon" />
+                 <img className="icon" src="/img/decorative/icons/fb_line_icon.png"></img>
               </a>
               <a
                 href="https://www.linkedin.com/company/gronatryck/"
                 target="_blank"
                 rel="noreferrer"
               >
-                <FaLinkedinIn className="icon" />
+                <img className="icon" src="/img/decorative/icons/li_line_icon.png"></img>
               </a>
               <a
                 href="https://www.youtube.com/@gronatryck508"
                 target="_blank"
                 rel="noreferrer"
               >
-                <FaYoutube className="icon" />
+                 <img className="icon" src="/img/decorative/icons/yt_line_icon.png"></img>
               </a>
               <a
                 href="https://www.instagram.com/gronatryck/"
                 target="_blank"
                 rel="noreferrer"
               >
-                <FaInstagram className="icon" />
+                <img className="icon" src="/img/decorative/icons/ig_line_icon.png"></img>
               </a>
             </div>
           </div>

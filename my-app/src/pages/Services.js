@@ -1,38 +1,24 @@
 import React from "react";
+import ServiceList from '../components/ServiceList';
 import "../styles/services.css";
-import Button from "../components/Button";
+import Breadcrumb from "../components/Breadcrumb";
 
 
 
-const services = () => {
+
+const Services = () => {
 
 
-return (
-    <div className="services-page">
 
-        <div className="services-page-container">
-        <div className="cart-heading">
-      <h1 className='heading-3 header-label'>Tjänster</h1>
-      </div>
-
-      <h1 className="section-heading heading-3">Egen infärgning utifrån profilfärger</h1>
-            <div className="services-container">
-                
-                <img src="./img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"/>
-                <img src="./img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"/>
-                
-                <p className="main-body">från 15kg kläder</p>
-                <div className="btn-container-2">
-                <Button to="/kontakt" className="main-btn" content="Intresseförfrågan"/>
-                <Button to="/kontakt" className="main-btn" content="Mer information"/>
-                </div>
-            </div>
-
+    return (
+        <div className="services-page">¨
+        <Breadcrumb />
+            <div className="service-container">
+          <h2 className="subheading-1"> Tjänster</h2>
+          <ServiceList />
+          </div>
         </div>
-
-
-    </div>
-)
+      );
 
 }
-export default services
+export default Services

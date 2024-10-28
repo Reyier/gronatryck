@@ -5,7 +5,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import { CartProvider } from "./context/CartContext"; // Importera CartProvider
+import { CartProvider } from "./context/CartContext"; 
 //import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
@@ -25,18 +25,21 @@ import "./styles/general.css";
 import Chat from "./components/Chat";
 import ScrollToTopButton from "./components/ScrollToTop";
 import ConfirmationPage from "./pages/ConfirmationPage";
-import Footer from "./components/Footer"; // Importera Footer
+import Footer from "./components/Footer"; 
 import Aboutus from "./pages/Aboutus.js";
 import Header from "./components/Header.js";
 import Assortment from "./pages/Assortment";
 import DurableMaterials from "./pages/Durable-Materials.js";
 import Categories from "./pages/Categories.js";
 import Cases from "./pages/Cases.js";
-import FAQ from "./components/FAQ.js";
+import FAQpage from "./pages/FAQ.js";
 import TermsPage from "./pages/TermsOfPurchase.js";
 
+import ServiceDetail from './pages/ServiceDetail'; 
+
+
 function App() {
-  const [loggedInUser, setLoggedInUser] = useState(null); // Track logged in user
+  const [loggedInUser, setLoggedInUser] = useState(null); 
 
   useEffect(() => {
     // Kontrollera om användaren redan är inloggad
@@ -130,6 +133,8 @@ function App() {
             <Route path="/cart" element={<CartPage />} />
             <Route path="/kontakt" element={<Contact />} />
             <Route path="/kopvillkor" element={<TermsPage />} />
+            <Route path="/kategori" element={<Categories/>} />
+            <Route path="/FAQ" element={<FAQpage/>} />
             <Route
               path="/mina-sidor"
               element={<CustomerPage onLogin={handleLogin} />}
@@ -149,6 +154,8 @@ function App() {
               path="/produkter/:id/:productSlug"
               element={<ProductDetail />}
             />
+            <Route path="/tjanster/:serviceId" element={<ServiceDetail />} />
+
             <Route path="/checkout" element={<Checkout />} />
 
             {/*  <Route path="/produkter/:id" element={<ProductDetail />} /> */}

@@ -1,45 +1,89 @@
-.services-page {
+/* General Styles */
+.container {
     width: 90%;
-    margin: auto;
-    justify-content: center; /* This is useful if the parent is flex or grid */
   }
   
-  /* Centering the services container */
-  .services-container {
-      text-align: center;
-      margin-top: 2rem;
-      position: relative;
-      width: 100%;
-      height: auto;
-      max-width: 500px;
-      margin-left: auto; /* Centering horizontally */
-      margin-right: auto; /* Centering horizontally */
-      padding-left: 1rem; /* Optional: Add some padding for better spacing */
-      padding-right: 1rem; /* Optional: Add some padding for better spacing */
+  .service-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
-  .services-container img {
-      width: 100%;
-      border-radius: 50%; 
-     margin: 2rem 0;
-      
+ 
+  
+ 
+  .service-name {
+    font-size: var(--fontSizeLG);
+    font-family: var(--headingFont);
+    margin: 1.5rem 0;
   }
   
-  .services-container img:nth-child(2) {
-      position: absolute;
-      width: 15rem; 
-      height: 15rem; 
-      border-radius: 50%; 
-      top: 65%; /* Adjust position from the top */
-      left: 15%; /* Center horizontally */
-      transform: translate(-50%, -50%); /* Center the image perfectly */
+  .service-description {
+    font-size: var(--fontSizeXS);
+    font-family: var(--bodyFont);
+    margin-bottom: 2rem;
   }
   
-  .services-container p {
-      font-size: var(--fontSizeLG);
-      color: var(--primary-green); 
-      margin-top: .5rem;
-      margin-left: auto; /* Centering horizontally */
-      margin-right: auto; /* Centering horizontally */
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+  }
+
+  .service-info h2{
+    text-align: left;
+    margin: 2rem 0;
+}
+.service-gallery{
+    width: 100%;
+   
+}
+
+.thumbnail-image-2 {
+    width: 8rem;
+    height: auto;
+    cursor: pointer;
+    margin: 1rem 0;
+    transition: transform 0.3s;
+    border-radius: 6px;
+  }
+
+ 
+  
+  /* Responsive Styles */
+  @media (min-width: 768px) {
+    .container {
+      width: 80%;
+    }
+    
+  }
+  
+  @media (min-width: 1005px) {
+    .container {
+      width: 70%;
+      margin: auto;
+      line-height: 1.2;
+    }
+  
+    .service-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr; 
+      gap: 2rem;
+      align-items: start; 
+    }
+  
+    .main-image {
+      grid-area: 1 / 1 / 2 / 2; 
+    }
+  
+    .service-info {
+      grid-area: 1 / 2 / 2 / 3; 
+    }
+  }
+  
+  @media (min-width: 1500px) {
+    .container {
+      width: 60%;
+    }
   }
   

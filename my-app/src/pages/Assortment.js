@@ -6,12 +6,12 @@ const categories = [
   { to: "/produkter", textContent: "Nyheter" },
   { to: "/produkter", textContent: "Bästsäljare" },
   { to: "/produkter", textContent: "Kollektioner" },
-  { to: "/produkter", textContent: "Kläder" },
+  { to: "/kategori", textContent: "Kläder" },
   { to: "/produkter", textContent: "Accessoarer" },
   { to: "/produkter", textContent: "Huvudbonader" },
   { to: "/produkter", textContent: "Barnkläder" },
   { to: "/produkter", textContent: "Gåvor" },
-  { to: "/produkter", textContent: "Tjänster" },
+  { to: "/tjanster", textContent: "Tjänster" },
 ];
 
 export default function Sortiment() {

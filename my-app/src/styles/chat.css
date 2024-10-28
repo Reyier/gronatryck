@@ -144,8 +144,9 @@
 @media (min-width: 768px) {
 
 .chat-window{
-width:30%;
-height: 80%;
+width:40%;
+max-width: 450px;
+height: 50vh;
 border-radius: 6px;
 bottom: 30px;
 left: 30px; 

@@ -28,18 +28,16 @@
   position: absolute;
   top: 100%;
   right: -100%;
+  opacity: 0;
   width: 100%;
   height: calc(100vh - 100%);
   background: var(--white-color);
-  transition: right 200ms ease;
+  transition: right 500ms ease, opacity 500ms ease;
   &.active {
     right: 0;
+    opacity: 1;
   }
 }
-
-
-
-
 
 /* HAMBURGER */
 
@@ -93,4 +91,3 @@
     width: 90%;
   }
 }
-

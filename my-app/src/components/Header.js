@@ -6,7 +6,6 @@ import "../styles/header.css"; // Importera CSS för header
 import IconButton from "./IconButton.js"; // Importera IconButton-komponenten
 import SearchBar from "./Search.js"; // Importera SearchBar-komponenten
 
-
 // Definiera navigationslänkar
 const navLinks = [
   { to: "/sortiment", textContent: "Sortiment" },
@@ -45,55 +44,67 @@ export default function Header() {
   }
 
   return (
-    <header className="page-header"> {/* Header-element */}
-      <SearchBar handleClick={cancelSearch} isActive={searchActive} /> {/* Sökfält */}
-
-      <div className="header-container top-bar"> {/* Header-kontainer */}
-        <Link to="/" className="logo"> {/* Logotyplänk */}
+    <header className="page-header">
+      {" "}
+      {/* Header-element */}
+      <SearchBar handleClick={cancelSearch} isActive={searchActive} />{" "}
+      {/* Sökfält */}
+      <div className="header-container top-bar">
+        {" "}
+        {/* Header-kontainer */}
+        <Link
+          to="/"
+          className="logo"
+          onClick={() => window.scrollTo({ top: 0 })}
+        >
+          {" "}
+          {/* Logotyplänk */}
           <img
             src="/img/decorative/gronatryck_logo_webb.png"
             alt="brand logotype" // Alt-text för logotyp
           />
         </Link>
         <nav>
-          <NavList key="desktop-menu" links={navLinks} className="desktop" /> {/* Desktopmeny */}
+          <NavList key="desktop-menu" links={navLinks} className="desktop" />{" "}
+          {/* Desktopmeny */}
         </nav>
         <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        fontSize: "2.4rem",
-        gap: "1.6rem",
-      }}
-    >
-      <div style={{ position: "relative" }}>
-        <img 
-          src="/img/decorative/icons/shopbag_icon.svg" 
-          alt="Varukorg" 
-          className="header-icon cart-icon" 
-          onClick={toggleCart} 
-        />
-        {cartQuantity > 0 && (
-          <span className="cart-quantity-badge">{cartQuantity}</span>
-        )}
-      </div>
-      <img 
-        src="/img/decorative/icons/profile_icon.svg"
-        alt="Användar-ikon" 
-        className="header-icon user-icon" 
-        onClick={toggleSite} 
-      />
-      <img 
-        src="/img/decorative/icons/search_icon.svg" 
-        alt="Sök-ikon" 
-        className="header-icon search-icon" 
-        onClick={cancelSearch} 
-      />
+          style={{
+            display: "flex",
+            alignItems: "center",
+            fontSize: "2.4rem",
+            gap: "1.6rem",
+          }}
+        >
+          <div style={{ position: "relative" }}>
+            <img
+              src="/img/decorative/icons/shopbag_icon.svg"
+              alt="Varukorg"
+              className="header-icon cart-icon"
+              onClick={toggleCart}
+            />
+            {cartQuantity > 0 && (
+              <span className="cart-quantity-badge">{cartQuantity}</span>
+            )}
+          </div>
+          <img
+            src="/img/decorative/icons/profile_icon.svg"
+            alt="Användar-ikon"
+            className="header-icon user-icon"
+            onClick={toggleSite}
+          />
+          <img
+            src="/img/decorative/icons/search_icon.svg"
+            alt="Sök-ikon"
+            className="header-icon search-icon"
+            onClick={cancelSearch}
+          />
 
-      <HamburgerMenu active={mobileMenuActive} onClick={toggleMenu} />
-    </div>
-    
-        <div className={`mobile-menu-2 ${mobileMenuActive ? "active" : ""}`}> {/* Mobilmeny */}
+          <HamburgerMenu active={mobileMenuActive} onClick={toggleMenu} />
+        </div>
+        <div className={`mobile-menu-2 ${mobileMenuActive ? "active" : ""}`}>
+          {" "}
+          {/* Mobilmeny */}
           <NavList
             key="mobile-menu"
             links={navLinks}

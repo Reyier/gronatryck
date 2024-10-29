@@ -30,7 +30,7 @@ export default function SearchBar({ handleClick, isActive }) {
 
   return (
     <div className={`search-container ${isActive ? "active" : ""}`}>
-      <form className="container search-content">
+      <div className="container search-content">
         {/* Sökningsikonen */}
         <IconButton
           icon={<LuSearch />}
@@ -45,45 +45,42 @@ export default function SearchBar({ handleClick, isActive }) {
         />
         {/* Stängningsikonen */}
         <IconButton icon={<LuX />} handleClick={handleClick} />
-      </form>
+      </div>
       {/* Visar sökresultaten om det finns en sökterm */}
-      {searchTerm.length > 0 && (
-        <div className="dropdown-list">
-          <h2>Din sökning gav {results.length} resultat...</h2>
-          <div className="container search-items-wrapper">
-            {results.map((item) => (
-              <Link
-                className="h-card slide-in"
-                key={item.name}
-                to={`/produkter/${item.productId}/${slugify(item.name)}`} // Navigerar till produktens sida
-                onClick={resetSearch} // Återställer sökningen vid klick
-              >
-                <div className="thumbnail">
-                  <img
-                    src={`${item.images.variants[0].basePath}-small.jpg`} // Visar bild på produkten
-                    alt={`${item.name} i färgen ${item.images.variants[0].colorName} `}
-                  />
-                </div>
-                <div>
-                  <h3>{item.name}</h3> {/* Produktnamn */}
-                  <p>
-                    Finns i {item.images.variants.length}{" "}
-                    {item.images.variants.length > 1 ? "färger" : "färg"} {/* Antal färger */}
-                  </p>
-                  <p>
-                    Pris från{" "}
-                    <b>
-                      {item.priceTiers[item.priceTiers.length - 1].price},00{" "}
-                    </b>
-                    <small>SEK</small> {/* Visar priset */}
-                  </p>
-                </div>
-              </Link>
-            ))}
-          </div>
+
+      <div className={`dropdown-list ${searchTerm.length > 0 ? "active" : ""}`}>
+        <h2>Din sökning gav {results.length} resultat...</h2>
+        <div className="container search-items-wrapper">
+          {results.map((item) => (
+            <Link
+              className="h-card slide-in"
+              key={item.name}
+              to={`/produkter/${item.productId}/${slugify(item.name)}`} // Navigerar till produktens sida
+              onClick={resetSearch} // Återställer sökningen vid klick
+            >
+              <div className="thumbnail">
+                <img
+                  src={`${item.images.variants[0].basePath}-small.jpg`} // Visar bild på produkten
+                  alt={`${item.name} i färgen ${item.images.variants[0].colorName} `}
+                />
+              </div>
+              <div>
+                <h3>{item.name}</h3> {/* Produktnamn */}
+                <p>
+                  Finns i {item.images.variants.length}{" "}
+                  {item.images.variants.length > 1 ? "färger" : "färg"}{" "}
+                  {/* Antal färger */}
+                </p>
+                <p>
+                  Pris från{" "}
+                  <b>{item.priceTiers[item.priceTiers.length - 1].price},00 </b>
+                  <small>SEK</small> {/* Visar priset */}
+                </p>
+              </div>
+            </Link>
+          ))}
         </div>
-      )}
+      </div>
     </div>
   );
 }
-

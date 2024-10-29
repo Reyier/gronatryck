@@ -28,5 +28,5 @@
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
-  /*  backdrop-filter: blur(10px); */
+  
 }

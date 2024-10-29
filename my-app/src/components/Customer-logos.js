@@ -1,6 +1,7 @@
 import React from "react";
-import "./CustomerCase.css"; 
+import "../styles/CustomerCase.css"; // Importera CSS-filen för att styla komponenten
 
+// Lista över logotyper som ska visas i sektionen
 const logos = [
   "./img/decorative/case-icons/bob_hund.png",  
   "./img/decorative/case-icons/fatta.png",
@@ -16,18 +17,18 @@ const logos = [
 const CustomerCases = () => {
     return (
         <div>
-            <h1 className="section-heading heading-3">Andra arbeten</h1>
+            <h1 className="section-heading heading-3">Andra arbeten</h1> {/* Rubrik för sektionen */}
   
-            {/* Logos Section */}
+            {/* Sektion för att visa logotyper */}
             <div className="customer-cases-text-containers">
-               
                 <div className="customer-logo-container">
+                    {/* Loopar igenom logotyperna och skapar en bild för varje */}
                     {logos.map((logo, index) => (
                         <div key={index} className="customer-logo-wrapper">
                             <img
-                                src={logo}
-                                alt={`Partner Logo ${index + 1}`}
-                                className="customer-logo-image"
+                                src={logo} // Använder logotypens sökväg som källa
+                                alt={`Partner Logo ${index + 1}`} // Beskrivning för tillgänglighet
+                                className="customer-logo-image" // CSS-klass för styling
                             />
                         </div>
                     ))}
@@ -38,3 +39,4 @@ const CustomerCases = () => {
 };
 
 export default CustomerCases;
+

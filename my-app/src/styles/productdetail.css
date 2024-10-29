@@ -1,4 +1,4 @@
-/* General Styles */
+
 .container {
   width: 90%;
 }
@@ -25,13 +25,13 @@
 .thumbnail-carousel {
   overflow-x: auto;
   white-space: nowrap;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* Internet Explorer and Edge */
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
   width: 100%;
 }
 
 .thumbnail-carousel::-webkit-scrollbar {
-  display: none; /* Safari */
+  display: none; 
 }
 
 .thumbnail-images {
@@ -59,7 +59,7 @@
   transform: scale(1.1);
 }
 
-/* Section for Info Text */
+
 .brand-name {
   font-size: var(--fontSizeXS);
   font-family: var(--subHeadingFont);
@@ -99,7 +99,7 @@
   font-size: var(--fontSizeMD);
 }
 
-/* Section for Colors */
+
 .color-circle-main input[type="radio"] {
   display: none;
 }
@@ -121,7 +121,7 @@ input[type="radio"]:checked + .color-circle {
   outline: 2px solid var(--primary-green);
 }
 
-/* Section for Size */
+
 .size-container {
   margin: 2rem 0;
 }

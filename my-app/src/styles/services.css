@@ -1,4 +1,6 @@
-/* General Styles */
+General Styles
+
+
 .container {
     width: 90%;
   }
@@ -10,7 +12,9 @@
   }
   
  
-  
+  .service-detail{
+    height: 100vh;
+  }
  
   .service-name {
     font-size: var(--fontSizeLG);
@@ -38,9 +42,16 @@
     width: 100%;
    
 }
+.thumbnail-carousel-2{
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  width: 100%;
+}
 
 .thumbnail-image-2 {
-    width: 8rem;
+    width: 18rem;
     height: auto;
     cursor: pointer;
     margin: 1rem 0;
@@ -49,8 +60,12 @@
   }
 
  
+  .heading-margin{
+    margin-top: 15rem;
+  }
+
   
-  /* Responsive Styles */
+
   @media (min-width: 768px) {
     .container {
       width: 80%;
@@ -63,6 +78,12 @@
       width: 70%;
       margin: auto;
       line-height: 1.2;
+    }
+
+    .thumbnail-carousel-2{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
     }
   
     .service-grid {

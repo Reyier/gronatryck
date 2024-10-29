@@ -12,9 +12,10 @@ const Services = () => {
 
     return (
         <div className="services-page">¨
-        <Breadcrumb />
+        
             <div className="service-container">
-          <h2 className="subheading-1"> Tjänster</h2>
+          
+          <h2 className="subheading-1 heading-margin"> Tjänster</h2>
           <ServiceList />
           </div>
         </div>

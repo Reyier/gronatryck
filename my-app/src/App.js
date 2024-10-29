@@ -8,6 +8,7 @@ import {
 import { CartProvider } from "./context/CartContext"; 
 //import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
+import PageScroller from "./components/PageScroller";
 import Products from "./pages/Products";
 import ProductDetail from "./pages/ProductDetail";
 import CartPage from "./pages/CartPage";
@@ -118,8 +119,10 @@ function App() {
   return (
     <CartProvider>
       <Router>
+      <PageScroller />
         {/* <Navbar loggedInUser={loggedInUser} onLogout={handleLogout} /> */}
         <div className="page-wrapper">
+       
           <Header />
           <Chat />
           <Routes>

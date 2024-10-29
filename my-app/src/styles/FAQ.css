@@ -5,10 +5,10 @@
    
   }
 
-  .faq-item h2,  /* Targeting h2 within faq-item */
+  .faq-item h2,  
   .faq-item p
-  {   /* Targeting p within faq-item */
-      text-align: left; /* Align text to the left */
+  {   
+      text-align: left; 
   }
   
   .section-heading {

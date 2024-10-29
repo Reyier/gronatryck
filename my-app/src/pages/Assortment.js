@@ -17,22 +17,26 @@ const categories = [
 export default function Sortiment() {
   const categorylist = [
     {
+      to: "/produkter/T-shirts", 
       img: "/img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg",
       alt: "Cool tröja",
       label: "T-shirt",
     },
     {
+      to: "/produkter/Västar", 
       img: "/img/informative/Liner_Desert Dust_Duo_Front_Main_0.jpg",
       alt: "Västar",
       label: "Västar",
     },
     {
-      img: "/img/informative/Trekker_Desert Dust_Duo_Front_Main_0.jpg",
+      to: "/produkter/Jackor", 
+      img: "/img/informative/Bomber 2.0_Black_Duo_Front_Main_0.jpg",
       alt: "Jackor",
       label: "Jackor",
     },
     {
-      img: "/img/informative/Cruiser 2.0_Heather Haze_Duo_Front_Main_0.jpg",
+      to: "/produkter/Huvtröjor", 
+      img: "/img/informative/Connector 2.0_French Navy_Duo_Front_Main_0.jpg",
       alt: "Huvtröjor",
       label: "Huvtröjor",
     },

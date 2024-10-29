@@ -72,8 +72,8 @@ const AboutUs = () => {
               <div className="img-wrapper">
                 <img
                   className="about-img"
-                  src="./img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"
-                  alt="About Image 1"
+                  src="./img/decorative/derek-owens-YCbJCM249KE-unsplash.jpg"
+                  alt="Fejk bild på joel"
                 />
                 <h1 className="section-heading heading-3 stanley-heading">
                   Joel
@@ -83,8 +83,8 @@ const AboutUs = () => {
               <div className="img-wrapper">
                 <img
                   className="about-img"
-                  src="./img/informative/Creator 2.0_Heather Haze_Duo_Front_Main_0.jpg"
-                  alt="About Image 2"
+                  src="./img/decorative/alano-oliveira-3UknV3EZVBs-unsplash.jpg"
+                  alt="Fejk bild på Josef"
                 />
                 <h1 className="section-heading heading-3 stanley-heading">
                   Josef

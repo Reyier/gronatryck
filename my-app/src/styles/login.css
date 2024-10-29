@@ -29,7 +29,7 @@
   .input-label {
     font-size: var(--fontSizeXS);
     color: var(--primary-dark);  
-    margin-bottom: 5px; 
+    margin-bottom: .5rem; 
     width:100% ;
      
   }

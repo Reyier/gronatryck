@@ -7,21 +7,25 @@ import PopularCategories from "../components/PopularCategories";
 const Home = () => {
   const categorylist = [
     {
+      to: "/produkter", 
       img: "/img/cover/Stanley_Stella_AW24_Timeless_Outerwear_Mix_01.jpg",
       alt: "Cool tröja",
       label: "Profilkläder",
     },
     {
+      to: "/tjanster",
       img: "/img/decorative/emarts-emarts-ZCTh4f4mv18-unsplash.jpg",
       alt: "Västar",
       label: "Tjänster",
     },
     {
+      to: "/kundcase",
       img: "/img/decorative/matthew-moloney-mKtfd1SOYDc-unsplash.jpg",
       alt: "Pike",
       label: "Kundberättelser",
     },
     {
+      to: "/produkter",
       img: "/img/informative/Liner_Desert Dust_Duo_Front_Main_0.jpg",
       alt: "Tröjor",
       label: "Nyheter",
@@ -174,7 +178,7 @@ const Home = () => {
 
         {/* Section 7: Membership Registration */}
         <section className="membership-section">
-          <div className="brush-background"></div> {/* Background div */}
+          <div className="brush-background"></div> 
           <form className="membership-form">
             <p className="membership-subheading main-body">
               Var först med att ta del av våra nyheter och härliga erbjudanden.

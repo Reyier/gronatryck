@@ -1,4 +1,4 @@
-/* MOVE TO SEARCHCONT */
+
 .search-container {
   position: absolute;
   top: 0;
@@ -50,13 +50,13 @@
 .filter-toggle-btn {
   display: flex;
   justify-content: space-between;
-  /* background-color:var(--primary-lightgreen); */
+ 
   border: 2px solid var(--primary-green);
-  padding: 10px 15px;
+  padding: 1rem 1.5rem;
 
   color: #333;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 6px;
   transition: background-color 0.3s ease;
 }
 
@@ -179,7 +179,7 @@
 }
 
 @media (min-width: 768px) {
-  /* Flexbox for the filter-content section */
+  
   .filter-content {
     display: flex;
     flex-wrap: wrap;
@@ -189,7 +189,7 @@
     margin: auto;
   }
   .dropdown-menu {
-    min-width: 300%;
+    min-width: 500%;
   }
 
   .reset {

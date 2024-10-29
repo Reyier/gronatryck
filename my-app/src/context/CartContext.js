@@ -1,4 +1,4 @@
-// context/CartContext.js
+
 import React, { createContext, useContext, useState, useEffect } from "react";
 
 const CartContext = createContext();
@@ -9,15 +9,21 @@ export const useCart = () => {
 
 export const CartProvider = ({ children }) => {
     const [cartItems, setCartItems] = useState(() => {
-        // Hämta varukorg från localStorage vid initialisering
         const savedCart = localStorage.getItem('cartItems');
         return savedCart ? JSON.parse(savedCart) : [];
     });
 
     useEffect(() => {
-        // Spara varukorgsinnehåll i localStorage varje gång den uppdateras
         localStorage.setItem('cartItems', JSON.stringify(cartItems));
     }, [cartItems]);
+
+   
+    const cartQuantity = cartItems.reduce((total, item) => total + item.totalQuantity, 0);
+
+    
+    const clearCart = () => {
+        setCartItems([]); 
+    };
 
     const updateCartItem = (productId, selectedColor, size, quantity) => {
         setCartItems(prevItems => 
@@ -41,21 +47,16 @@ export const CartProvider = ({ children }) => {
             item.selectedColor === product.selectedColor &&
             item.size === product.size
         );
-    
+
         if (existingProduct) {
-            // If the product already exists, update the quantity
             updateCartItem(product.productId, product.selectedColor, product.size, existingProduct.totalQuantity + product.totalQuantity);
         } else {
-            // Otherwise, add the new product to the cart
             setCartItems(prevItems => [...prevItems, product]);
         }
     };
 
-
-    
-
     return (
-        <CartContext.Provider value={{ cartItems, updateCartItem, removeFromCart, addToCart }}>
+        <CartContext.Provider value={{ cartItems, cartQuantity, updateCartItem, removeFromCart, addToCart, clearCart }}>
             {children}
         </CartContext.Provider>
     );

@@ -1,24 +1,26 @@
 import React, { useState } from "react";
-import "../styles/chat.css"; // Se till att CSS-filen finns
-import { LuMessageCircle } from "react-icons/lu";
+import "../styles/chat.css"; // Se till att CSS-filen finns för att styla chatten
+import { LuMessageCircle } from "react-icons/lu"; // Importera ikonen för chatten
 
 const Chat = () => {
-  const [isVisible, setIsVisible] = useState(false); // Håll koll på om chatten är synlig eller inte
+  // useState-hooken för att hålla koll på chattsynlighet
+  const [isVisible, setIsVisible] = useState(false); // Initialt är chatten dold
 
+  // Funktion för att växla mellan att visa och dölja chatten
   const toggleChat = () => {
-    setIsVisible(!isVisible); // Byt till synlig eller dold när knappen trycks
+    setIsVisible(!isVisible); // Byter till synlig eller dold status
   };
 
   return (
     <div className="chat-container">
-      {/* Knappen för att öppna/stänga chatten */}
+      {/* Knappen för att öppna eller stänga chatten */}
       {!isVisible && (
         <button
-          onClick={toggleChat}
+          onClick={toggleChat} // Anropar toggleChat-funktionen vid klick
           className="chat-toggle-button"
-          style={{ fontSize: "2.8rem" }}
+          style={{ fontSize: "2.8rem" }} // Sätter storlek på knappen
         >
-          <LuMessageCircle />
+          <LuMessageCircle /> {/* Visar meddelande-ikon */}
         </button>
       )}
 
@@ -27,17 +29,20 @@ const Chat = () => {
           {/* Header för chatten */}
           <div className="chat-header">
             <div>
-              {" "}
-              <h4>Kundtjänst</h4>
-              <div className="online-status"></div>
+              <h4 className="customer-service">
+                Kundtjänst
+                <span className="status-container">
+                  <div className="online-status"></div> {/* Visar online-status */}
+                </span>
+              </h4>
             </div>
             {/* Ny knapp för att stänga chatten */}
             <button className="close-chat-btn" onClick={toggleChat}>
-              X
+              X {/* Knapp för att stänga chatten */}
             </button>
           </div>
 
-          {/* Meddelanden */}
+          {/* Meddelanden i chatten */}
           <div className="chat-body">
             <div className="message">Hej! Hur kan vi hjälpa dig?</div>
             {/* Fler meddelanden kan läggas till här */}
@@ -45,8 +50,8 @@ const Chat = () => {
 
           {/* Footer för att skriva meddelanden */}
           <div className="chat-footer">
-            <input type="text" placeholder="Skriv ditt meddalande här.." />
-            <button>Skicka</button>
+            <input type="text" placeholder="Skriv ditt meddelande här.." /> {/* Textfält för att skriva meddelanden */}
+            <button>Skicka</button> {/* Knapp för att skicka meddelande */}
           </div>
         </div>
       )}
@@ -56,28 +61,4 @@ const Chat = () => {
 
 export default Chat;
 
-/*
 
-<div className="chat-container">
-<button onClick={toggleChat} className="chat-toggle-button">
-  {isVisible ? 'Close Chat' : 'Open Chat'}
-</button>
-{visible && (
-  <div className="chat-window">
-    <div className="chat-header">
-      <h4>Gröna Trycks Kundtjänst</h4>
-      <span className="online-status">Online</span>
-    </div>
-    <div className="chat-body">
-      <div className="message">
-        <p>Hej! Kan vi hjälpa dig med något?</p>
-      </div>
-    </div>
-    <div className="chat-footer">
-      <input type="text" placeholder="Skriv ett meddelande här..." />
-      <button>Send</button>
-    </div>
-  </div>
-)}
-</div>
-);*/

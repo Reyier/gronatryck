@@ -12,7 +12,7 @@ const generateOrderId = () => {
 
 function Checkout() {
   const navigate = useNavigate();
-  const { cartItems } = useCart();
+  const { cartItems, clearCart } = useCart(); // Destructure clearCart from useCart
   const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
 
   const [customerInfo, setCustomerInfo] = useState(loggedInUser || {});
@@ -29,15 +29,20 @@ function Checkout() {
   const totalCost = calculateTotalPrice();
 
   const handleCheckout = () => {
-    // Simulate order processing here
     const orderDetails = {
       customerInfo,
       items: cartItems,
       totalCost,
-      orderId: generateOrderId() // This should come from your backend in a real application
+      orderId: generateOrderId(),
+      orderDate: new Date().toLocaleDateString(),
     };
-
-    // Navigate to the confirmation page with order details
+  
+    const existingOrders = JSON.parse(localStorage.getItem('customerOrders')) || [];
+    
+    const updatedOrders = [...existingOrders, orderDetails];
+    localStorage.setItem('customerOrders', JSON.stringify(updatedOrders));
+    
+    clearCart(); 
     navigate('/confirmation', { state: { orderDetails } });
   };
 
@@ -49,7 +54,6 @@ function Checkout() {
       </div>
       {loggedInUser ? (
         <>
-
           <h1 className='heading-3'>Kundinformation</h1>
 
           <form>
@@ -128,14 +132,11 @@ function Checkout() {
             </div>
           </form>
 
-      
-          <Quote customer={customerInfo} cartItems={cartItems} totalCost={totalCost}
-           />
+          <Quote customer={customerInfo} cartItems={cartItems} totalCost={totalCost} />
 
-
-<div className='btn-container-2'>
-          <button className='second-btn' onClick={() => navigate('/cart')}>Gå till varukorg</button>
-          <button className='main-btn' onClick={handleCheckout}>Skicka offert</button>
+          <div className='btn-container-2'>
+            <button className='second-btn' onClick={() => navigate('/cart')}>Gå till varukorg</button>
+            <button className='main-btn' onClick={handleCheckout}>Skicka offertförfrågan</button>
           </div>
         </>
       ) : (

@@ -1,6 +1,12 @@
 /* Breadcrumb.css */
 .breadcrumb-wrapper{
-    margin: 10rem 0 0 2rem;
+    margin: 10rem 0 1rem 0;
+    position: relative;
+   
+}
+
+.product-wrapper .breadcrumb-wrapper{
+margin: 0rem;
 }
   
   .breadcrumb {
@@ -8,6 +14,9 @@
     align-items: center;
     font-size: var(--fontSizeXS);  
     color: #333;  
+   
+    margin: auto;
+    text-align: left;
   }
   
   .breadcrumb a {
@@ -25,11 +34,3 @@
     margin: 0 5px; 
   }
   
-  
-  /* .category-heading {
-    font-size: 24px;  
-    font-weight: bold;  
-    margin: 10px 0 20px 0;  
-    color: #333;  
-  }
-   */

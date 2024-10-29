@@ -157,9 +157,10 @@ const Products = () => {
 
   return (
     <div className="product-page">
-      <div>
-        <Breadcrumb />
+      <div className="heading-margin">
+       
         <h2 className="subheading-1">{title}</h2>
+        
         {/* <p className="main-body">
           
           Upptäck ett noga utvalt sortiment av profilkläder och produkter som
@@ -172,6 +173,7 @@ const Products = () => {
       </div>
 
       <div className="product-wrapper">
+      <Breadcrumb />
         <div className="filter-wrapper">
           <button
             className="filter-toggle-btn"

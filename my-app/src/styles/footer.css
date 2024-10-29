@@ -1,14 +1,14 @@
-/* Common Styles */
+
 .footer {
   background-color: var(--bright-color);
   padding: 2rem;
   color: var(--primary-dark);
   width: 100%;
   z-index: 1;
-  margin-block-start: auto; /*Den här måste finnas för att hålla footern längst ned på sidan // MAX*/
+  margin-block-start: auto; 
 }
 
-/* Mobile Footer Styles */
+
 .footer-mobile {
   display: flex;
   flex-direction: column;
@@ -76,7 +76,7 @@ details[open] summary::after {
 }
 
 .footer-links details img {
-  width: 20px;
+  width: 2rem;
   height: auto;
 }
 
@@ -115,19 +115,18 @@ details[open] summary::after {
   margin-top: 1.25rem;
 }
 
-/* Desktop Footer Styles */
+
 .footer-desktop {
-  display: none; /* Hidden by default, only shown at 1200px and above */
+  display: none; 
 }
 
-/* Media Queries for Larger Screens */
 @media (min-width: 1200px) {
-  /* Hide the mobile footer */
+  
   .footer-mobile {
     display: none;
   }
 
-  /* Show the desktop footer */
+ 
   .footer-desktop {
     display: flex;
     flex-direction: column;
@@ -213,39 +212,3 @@ details[open] summary::after {
     color: var(--primary-green);
   }
 }
-
-/* 
-@container (min-width: 768px) {
-  .footer {
-    padding: 2.5rem;
-    text-align: center;
-    grid-template-columns: 1fr 1fr 1fr;
-    justify-content: space-between;
-  }
-
-  .footer-links {
-    margin: 0;
-    display: flex;
-    gap: 2.5rem;
-    border: none;
-    font-size: 0.875rem;
-    flex-direction: row;
-    justify-content: center;
-  }
-
-  .footer-links details {
-    margin-bottom: 0;
-    padding-bottom: 0;
-    border: none;
-  }
-
-  .icons {
-    justify-content: flex-start;
-  }
-
-  .copyright {
-    font-size: 0.875rem;
-    text-align: center;
-    margin: 0;
-  }
-} */

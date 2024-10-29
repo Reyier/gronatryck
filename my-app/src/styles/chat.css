@@ -18,8 +18,8 @@
 .chat-header {
     background-color: #606f4a;
     color: white;
-    padding: 15px;
-    font-size: 18px;
+    padding: 1.5rem;
+   
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -32,24 +32,24 @@
 
 .chat-body {
     flex: 1;
-    padding: 20px;
+    padding: 2rem;
     background-color: #ffffff;
     overflow-y: auto;
 }
 
 .message {
     background-color: #e1f5fe;
-    padding: 12px;
-    border-radius: 12px;
-    margin-bottom: 12px;
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+    margin-bottom: 1.5rem;
     color: #0277bd;
-    font-size: 15px;
+    font-size: var(--fontSizeXS);
     max-width: 70%;
     word-wrap: break-word;
 }
 
 .chat-footer {
-    padding: 10px 15px;
+    padding: 1rem 1.5rem;
     background-color: #f0f4f8;
     border-top: 2px solid #e0e0e0;
     display: flex;
@@ -61,21 +61,21 @@
     flex: 1;
     padding: 12px;
     border: none;
-    border-radius: 30px;
+    border-radius: 6px;
     background-color: #e0e0e0;
-    margin-right: 10px;
-    font-size: 14px;
+    margin-right: 1rem;
+    font-size: var(--fontSizeXS);
     outline: none;
 }
 
 .chat-footer button {
-    padding: 10px 20px;
+    padding: 1rem 2rem;
     background-color: #9daf88;
     color: white;
     border: none;
-    border-radius: 30px;
+    border-radius: 6px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: var(--fontSizeXS);
     transition: background-color 0.3s ease;
    
 }
@@ -84,12 +84,25 @@
     background-color: #606f4a;
 }
 
+.customer-service {
+    display: flex;
+    align-items: center;
+  
+  
+}
+.status-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    margin-left: 1rem; 
+  }
+
 .online-status {
     background-color: #4caf50;
     border-radius: 50%;
-    width: 12px;
-    height: 12px;
-    margin-left: 10px;
+    width: 1.5rem;
+    height: 1.5rem;
+   
    
 }
 
@@ -99,7 +112,7 @@
 
 ::-webkit-scrollbar-thumb {
     background-color: #606f4a;
-    border-radius: 10px;
+    border-radius: 6px;
 }
 
 .chat-toggle-button {
@@ -129,7 +142,7 @@
     background: none;
     border: none;
     color: white;
-    font-size: 20px;
+    font-size: 2rem;
     cursor: pointer;
     position: absolute;
     right: 15px;

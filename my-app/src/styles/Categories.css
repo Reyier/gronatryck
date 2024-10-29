@@ -1,20 +1,3 @@
-/*
-.categori .popular-categories {
-    background-color: red;
-    padding: 1rem;
-   
-}
-
-
-.categori .popular-categories .categories-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem; 
-    margin-bottom: 2rem;
-    padding: 0.5rem;
-    
-}
-*/
 
 
 .container {
@@ -60,7 +43,7 @@
 @media (max-width: 1199px) and (min-width: 768px) {
     .categori .popular-categories .categories-grid {
         grid-template-columns: repeat(3, 1fr); 
-        gap: 5rem;
+        
     }
 }
 
@@ -68,7 +51,7 @@
 @media (max-width: 767px) and (min-width: 480px) {
     .categori .popular-categories .categories-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 5rem;
+        
     }
     
 }
@@ -76,7 +59,7 @@
 @media (max-width: 479px) {
     .categori .popular-categories .categories-grid {
         grid-template-columns: 1fr 1fr; 
-        gap: 5rem;
+        
     }
 
 }

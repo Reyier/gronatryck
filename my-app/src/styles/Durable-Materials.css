@@ -46,8 +46,8 @@
 
 .flex-section {
     display: flex;
-    flex-direction: column; /* Stack items in a column by default */
-    margin: 20px 0; /* Add spacing between sections */
+    flex-direction: column; 
+    margin: 2rem 0; 
   }
 
 
@@ -122,13 +122,13 @@
   
   @media (min-width: 768px) {
     .flex-section {
-      flex-direction: row; /* Change to row layout on larger screens */
-      justify-content: space-between; /* Space out columns */
+      flex-direction: row;
+      justify-content: space-between; 
     }
     
     .flex{
-      flex: 1; /* Allow each main-body div to take equal space */
-      margin: 0 10px; /* Optional: space between columns */
+      flex: 1; 
+      margin: 0 1rem; 
     }
 
     .brush-background-2 {

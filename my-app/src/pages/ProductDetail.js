@@ -128,7 +128,7 @@ const ProductDetail = () => {
         };
 
         console.log("Adding to cart:", cartItem);
-        addToCart(cartItem); // This will either add a new item or update the quantity
+        addToCart(cartItem); 
       }
     });
 
@@ -164,8 +164,9 @@ const ProductDetail = () => {
 
   return (
     <div>
-      <Breadcrumb />
+     
       <div className="container">
+      <Breadcrumb />
         <main className="product">
           <div className="product-grid">
             <ProductGallery
@@ -275,6 +276,7 @@ const ProductDetail = () => {
               {confirmationMessage && (
                 <p className="confirmation-message">{confirmationMessage}</p>
               )}
+
               <div className="spacing">
                 <p className="main-body">
                   Vår offert är flexibel! Du kan justera dina val innan du
@@ -284,7 +286,7 @@ const ProductDetail = () => {
             </div>
           )}
 
-          {/* Tabs for Price Information and Specifications */}
+        
           <div className="tabs">
             <button
               className={`tab ${activeTab === "price" ? "active" : ""}`}
@@ -300,8 +302,7 @@ const ProductDetail = () => {
             </button>
           </div>
 
-          {/* Tab Content */}
-          {/* Tab Content */}
+          
           <div className="tab-content">
             {activeTab === "price" && (
               <div className="price-info">

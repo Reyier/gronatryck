@@ -27,21 +27,21 @@ const ServiceDetail = () => {
   };
 
   // Render additional images with click functionality to update main image
-  const renderAdditionalImages = () => {
-    return (
-      <div className="thumbnail-carousel">
-        {(service.images?.additionalInfo || []).map((img, index) => (
-          <img
-            key={index}
-            src={`${img.basePath}.jpg`}
-            alt={img.alt}
-            className="thumbnail-image-2"
-            onClick={() => setCurrentImage(img.basePath)}
-          />
-        ))}
-      </div>
-    );
-  };
+  // const renderAdditionalImages = () => {
+  //   return (
+  //     <div className="thumbnail-carousel-2">
+  //       {(service.images?.additionalInfo || []).map((img, index) => (
+  //         <img
+  //           key={index}
+  //           src={`${img.basePath}.jpg`}
+  //           alt={img.alt}
+  //           className="thumbnail-image-2"
+  //           onClick={() => setCurrentImage(img.basePath)}
+  //         />
+  //       ))}
+  //     </div>
+  //   );
+  // };
 
   
   if (!service || !service.name) {
@@ -56,11 +56,11 @@ const ServiceDetail = () => {
           <div className="service-grid">
             
             <div className="service-gallery">
-              <div className="main-image">
+              <div className="main-image-2">
                 <img src={`${currentImage}.jpg`} alt="Main Service Image" loading="lazy" />
               </div>
               
-              {renderAdditionalImages()}
+              {/* {renderAdditionalImages()} */}
             </div>
 
             {/* Service details section */}

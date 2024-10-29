@@ -1,18 +1,10 @@
 import React, { useState } from "react"; // Importera React och useState för att hantera tillstånd
 import { Link, useNavigate } from "react-router-dom"; // Importera Link och useNavigate för navigation
 import { useCart } from "../context/CartContext"; // Importera useCart för att hämta varukorgens kvantitet
-import {
-  LuChevronRight,
-  LuX,
-  LuShoppingCart,
-  LuSearch,
-  LuUser2,
-} from "react-icons/lu"; // Importera ikoner
 import NavList from "./NavList"; // Importera NavList-komponenten
 import "../styles/header.css"; // Importera CSS för header
 import IconButton from "./IconButton.js"; // Importera IconButton-komponenten
 import SearchBar from "./Search.js"; // Importera SearchBar-komponenten
-
 
 
 // Definiera navigationslänkar
@@ -76,7 +68,7 @@ export default function Header() {
     >
       <div style={{ position: "relative" }}>
         <img 
-          src="/img/decorative/icons/shopbag_icon.png" 
+          src="/img/decorative/icons/shopbag_icon.svg" 
           alt="Varukorg" 
           className="header-icon cart-icon" 
           onClick={toggleCart} 
@@ -86,24 +78,19 @@ export default function Header() {
         )}
       </div>
       <img 
-        src="/img/decorative/icons/profile_icon.png"
+        src="/img/decorative/icons/profile_icon.svg"
         alt="Användar-ikon" 
         className="header-icon user-icon" 
         onClick={toggleSite} 
       />
       <img 
-        src="/img/decorative/icons/search_icon.png" 
+        src="/img/decorative/icons/search_icon.svg" 
         alt="Sök-ikon" 
         className="header-icon search-icon" 
         onClick={cancelSearch} 
       />
 
-<img 
-          src="/img/decorative/icons/ham_menu_icon.png" // Use direct path here
-          alt="Hamburgermeny-ikon" 
-          className="header-icon ham-icon" 
-          onClick={toggleMenu} 
-        />
+      <HamburgerMenu active={mobileMenuActive} onClick={toggleMenu} />
     </div>
     
         <div className={`mobile-menu-2 ${mobileMenuActive ? "active" : ""}`}> {/* Mobilmeny */}
@@ -122,7 +109,7 @@ export default function Header() {
 function HamburgerMenu({ onClick, active }) {
   return (
     <button
-      className="hamburger" // Klass för stil
+      className="hamburger " // Klass för stil
       aria-label="Menu" // Aria-label för tillgänglighet
       aria-expanded={active ? "true" : "false"} // Ange menyns tillstånd
       aria-controls="navigation" // Koppla knappen till navigationen

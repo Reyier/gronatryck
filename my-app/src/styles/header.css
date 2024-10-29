@@ -19,6 +19,8 @@
 .header-container {
   width: 90%;
   margin: auto;
+  max-width: 1300px;
+  cursor: pointer;
 }
 
 .mobile-menu-2 {
@@ -44,9 +46,9 @@
 .hamburger--line {
   display: block;
   width: 2.4rem;
-  height: 3px;
+  height: 1px;
   background-color: var(--primary-green);
-  margin: 5px 0;
+  margin: 7px 0;
   transition: all 0.3s ease;
 }
 .hamburger[aria-expanded="true"] .hamburger--line:nth-child(1) {
@@ -58,7 +60,7 @@
 }
 
 .hamburger[aria-expanded="true"] .hamburger--line:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
+  transform: rotate(-45deg) translate(3px, -4px);
 }
 
 .icon-button svg {
@@ -92,8 +94,3 @@
   }
 }
 
-@media (min-width: 1500px) {
-  .header-container {
-    width: 75%;
-  }
-}

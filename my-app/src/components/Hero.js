@@ -14,10 +14,13 @@ export default function Hero() {
       </div>
       <div className="hero-content-container container"> {/* Innehåll i hero-sektionen */}
         <div className="hero-content">
-          <span style={{ textTransform: "uppercase", fontWeight: "300" }}>
+          {/* <span style={{ textTransform: "uppercase", fontWeight: "300" }}>
             Most Northern Official Stanley Stella Dealer
-          </span>
-          <h1 className="main-heading">Hållbart Tryck, Rättvis Framtid.</h1> {/* Huvudrubrik */}
+          </span> */}
+          <div className="sustainability-container">
+            <h2 className="section-heading subheading-1">Tryck med omtanke</h2>
+            <p className="main-body">– hållbarhet i varje detalj.</p>
+          </div>
           <p>
             Välkommen till Gröna Tryck – din pålitliga partner för hållbara och
             rättvisemärkta trycklösningar och profilkläder. Vi kombinerar modern

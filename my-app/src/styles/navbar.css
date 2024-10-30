@@ -1,6 +1,6 @@
 .nav {
   width: 90%;
-  
+  margin: auto;
   &.desktop {
     display: none;
     li .nav-link {
@@ -12,6 +12,7 @@
   &.categories {
     display: grid;
     grid-template-columns: 1fr;
+    width: 100%;
   }
   li {
     max-width: 100%;

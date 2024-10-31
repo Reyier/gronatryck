@@ -234,7 +234,7 @@
   display: flex; 
   justify-content: center; 
   align-items: center; 
-  margin: 4rem 10rem  0 0rem; 
+  margin: 4rem 4rem  0 0rem; 
 }
 
 .testimonial-image img {
@@ -449,11 +449,11 @@ line-height: 1.2;
 
 .certified-image {
     position: relative;
-    width: 25rem;
-    height: 25rem; 
+    width: 15rem;
+    height: 15rem; 
     top: 0%;
     left: 0%;
-    transform: translate(0%,0%);
+    transform: translate(0%,50%);
 
 }
 
@@ -558,6 +558,7 @@ line-height: 1.2;
     height: 40rem;
     transform: translate(0%,-20%);
     z-index: 1;
+    top: 10%;
   }
    
  

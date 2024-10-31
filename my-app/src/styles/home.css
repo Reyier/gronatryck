@@ -6,8 +6,6 @@
   max-width: 1300px;
 }
 
-
-
 .section-heading {
   font-family: var(--headingFont);
   font-size: var(--fontSizeXL);
@@ -19,7 +17,7 @@
   line-height: 1.2;
 }
 
-.home-page section{
+.home-page section {
   margin-bottom: 5rem;
 }
 
@@ -36,7 +34,6 @@
   color: var(--primary-green);
   margin-top: 5px;
 }
-
 
 .popular-categories {
   margin: 0px 0px 10rem 0;
@@ -61,8 +58,6 @@
   object-fit: cover;
   object-position: center top;
 }
-
-
 
 .category-label {
   position: absolute;
@@ -105,23 +100,9 @@
   transform: translate(-50%, -50%);
 }
 
-.certified-image::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--primary-lightgreen);
-  opacity: 0.4;
-  border-radius: 50%;
-  z-index: 1;
-}
-
 .certified-content {
   position: relative;
   z-index: 10;
- 
 }
 
 .eco-text-container {
@@ -134,174 +115,121 @@
   z-index: 100;
 }
 
-
-
-
-
-
 .order-process {
   padding: 2rem;
-  text-align: center; 
- 
+  text-align: center;
 }
 
-
-
 .process-steps {
-  display: flex; 
-  flex-direction: row; 
-  justify-content: center; 
-  flex-wrap: wrap; 
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
   margin-top: 2rem;
 }
 
 .process-step {
-  margin: 10px 0; 
-  display: flex; 
-  flex-direction: column; 
-  align-items: center; 
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   flex: 1 1 15rem;
 }
 
-
-
-
 .process-circle {
-  width: 48px; 
-  height: 48px; 
-  border-radius: 50%; 
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
   background-color: var(--primary-lightgreen);
-  color: white; 
-  display: flex; 
-  justify-content: center; 
-  align-items: center; 
-  font-weight: 500; 
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
 
-  margin-bottom: 1rem; 
+  margin-bottom: 1rem;
 }
 
 .process-step-title {
-
-   
-  font-weight: 600; 
- 
+  font-weight: 600;
 }
 
 .process-step-description {
- 
-  color: #666; 
+  color: #666;
 }
 
 .process-divider {
-  margin: 0 .5rem; 
-  font-size: 2.5rem; 
-  color: var(--primary-lightgreen); 
+  margin: 0 0.5rem;
+  font-size: 2.5rem;
+  color: var(--primary-lightgreen);
   opacity: 0.7;
 }
 
 .process-checkmark {
-  font-size: 2.5rem; 
+  font-size: 2.5rem;
   color: var(--primary-lightgreen);
-  margin-top: .5rem; 
+  margin-top: 0.5rem;
 }
 
-
-
-
-
-
-
 .process-description {
-  margin-top: 2rem; 
- 
+  margin-top: 2rem;
+
   color: #555;
 }
 
-
-
-
 .testimonial-content {
   display: flex;
-  flex-direction: column; 
-  align-items: center; 
+  flex-direction: column;
+  align-items: center;
   width: 100%;
-  height: 100%; 
+  height: 100%;
   justify-content: space-between;
 }
 
 .testimonial-image {
-  flex: 1; 
-  display: flex; 
-  justify-content: center; 
-  align-items: center; 
-  margin: 4rem 10rem  0 0rem; 
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 4rem 10rem 0 0rem;
 }
 
 .testimonial-image img {
-  width: 30rem; 
-  height: 30rem; 
-  
-  object-fit: cover; 
-  border-radius: 50%; 
+  width: 30rem;
+  height: 30rem;
+
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .testimonial-text-container {
   flex: 1;
-  display: flex; 
-  flex-direction: column; 
-  justify-content: center; 
-  text-align: left; 
-  padding: 1rem; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  padding: 1rem;
 }
 
-.testimonial-text-container p{
-  
+.testimonial-text-container p {
   margin-bottom: 1rem;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .sustainability-section {
   color: var(--primary-green);
   display: flex;
-  
+
   align-items: center;
-justify-content: center;
+  justify-content: center;
   margin: auto;
 }
 
 .sustainability-container {
- 
   max-width: 800px;
   text-align: left;
-  box-sizing:   border-box;
-margin-top: 10rem;
-line-height: 1.2;
+  box-sizing: border-box;
+  margin-top: 10rem;
+  line-height: 1.2;
 }
 
 .sustainability-container .subheading-1 {
@@ -344,12 +272,9 @@ line-height: 1.2;
   text-align: left;
 }
 
-
-
 .membership-form {
   margin: 1rem;
   width: 80%;
-  
 }
 
 .membership-form button {
@@ -368,10 +293,8 @@ line-height: 1.2;
   max-width: 800px;
 }
 
-@media (min-width: 768px){
-
-
-.body-container{
+@media (min-width: 768px) {
+  .body-container {
     width: 80%;
   }
 
@@ -401,89 +324,65 @@ line-height: 1.2;
     bottom: -10%;
   }
 
+  .brush-background {
+    width: 100%;
+    height: 15rem;
+  }
 
+  .testimonial-content {
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    height: auto;
+  }
 
-.brush-background{
-  width: 100%;
-  height: 15rem;
-}
+  .testimonial-text-container {
+    max-width: 50%;
+  }
 
-
-
-
-
-.testimonial-content {
-  flex-direction: row; 
-  justify-content: center; 
-  align-items: stretch; 
-  height: auto;
-}
-
-.testimonial-text-container {
-  max-width: 50%;
-}
-
-.testimonial-image img {
-  width: 25rem; 
-  height: 25rem;
-  object-fit: cover;
-  border-radius: 50%;
-}
+  .testimonial-image img {
+    width: 25rem;
+    height: 25rem;
+    object-fit: cover;
+    border-radius: 50%;
+  }
 
   .certified-section {
     display: flex;
     flex-direction: column;
-}
+  }
 
-.certified-content {
-    display: flex; 
-    justify-content: center; 
-    align-items: flex-start; 
-   
-}
+  .certified-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
 
-.certified-text {
-    
+  .certified-text {
     margin-right: 2rem;
-}
+  }
 
-.certified-image {
+  .certified-image {
     position: relative;
     width: 25rem;
-    height: 25rem; 
+    height: 25rem;
     top: 0%;
     left: 0%;
-    transform: translate(0%,0%);
+    transform: translate(0%, 0%);
+  }
 
-}
-
-.certified-image img {
-    width: 100%; 
+  .certified-image img {
+    width: 100%;
     height: 100%;
-    object-fit: cover; 
-}
+    object-fit: cover;
+  }
 
-
-
-
-
-
-
-
-
-
-  
- 
-
-  .eco-text-container{
+  .eco-text-container {
     width: 100%;
     margin-bottom: 8rem;
   }
 
-  
-
-  .section-heading{
-    
+  .section-heading {
     margin: 0;
     justify-content: left;
   }
@@ -494,8 +393,6 @@ line-height: 1.2;
     margin: auto;
   }
 
-
-
   .sustainability-container .subheading-1 {
     font-size: var(--fontSizeXL);
   }
@@ -504,108 +401,74 @@ line-height: 1.2;
     font-size: var(--fontSizeSM);
   }
 
-    .learn-more-btn{
-      width: 100%;
-    }
- 
-
-
-
-
-
-
-
+  .learn-more-btn {
+    width: 100%;
+  }
 }
 
-
-@media (min-width: 1005px){
-  .body-container{
+@media (min-width: 1005px) {
+  .body-container {
     width: 70%;
   }
 
-  .certified-image{
+  .certified-image {
     width: 25rem;
     height: 25rem;
   }
 
-  .membership-form .membership-subheading{
-  justify-content: center;
-  align-items: center;
-  
-  margin: auto;
-  margin-bottom: 1rem;
+  .membership-form .membership-subheading {
+    justify-content: center;
+    align-items: center;
+
+    margin: auto;
+    margin-bottom: 1rem;
   }
-
-
-  
-  
 }
 
-
-@media (min-width: 1200px){
- 
+@media (min-width: 1200px) {
   .category img {
     height: 25rem;
-    object-position:25% 10%;;
+    object-position: 25% 10%;
   }
 
-  .certified-content{
-    height: 40vh;}
+  .certified-content {
+    height: 40vh;
+  }
 
   .certified-image {
-  
-    width:40rem;
+    width: 40rem;
     height: 40rem;
-    transform: translate(0%,-20%);
+    transform: translate(0%, -20%);
     z-index: 1;
   }
-   
- 
-.home-page section{
-  margin-bottom: 10rem;
+
+  .home-page section {
+    margin-bottom: 10rem;
+  }
+
+  .testimonial-image img {
+    width: 35rem;
+    height: 35rem;
+  }
 }
 
-
-.testimonial-image img {
-  width: 35rem; 
-  height: 35rem;
-
-}
-
-
-
-
-}
-
-@media (min-width: 1500px){
-  
- 
-
-
-
+@media (min-width: 1500px) {
   .sustainability-container {
     margin-top: 10rem;
   }
 
   .category-label {
     position: absolute;
-   
-    transform: translateX(-20%);
-  
-  }
 
- 
+    transform: translateX(-20%);
+  }
 
   .certified-image {
     position: relative;
     width: 45rem;
-    height: 45rem; 
+    height: 45rem;
     top: -10%;
     left: 0%;
-    transform: translate(0%,0%);
-
-}
-
-  
-
+    transform: translate(0%, 0%);
+  }
 }

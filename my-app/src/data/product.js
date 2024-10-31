@@ -102,8 +102,7 @@ const products = [
     ],
     images: {
       modelUrl: {
-        basePath:
-          "/img/informative/Connector 2.0_French Navy_Duo_Front_Main_0-small",
+        basePath: "/img/informative/Connector 2.0_French Navy_Duo_Front_Main_0",
         alt: "Ziphood huvtröjapå två glada modeller",
       },
       sizeGuideUrl: {
@@ -985,29 +984,94 @@ const products = [
           basePath:
             "/img/informative/Prepster 2.0_Worker Blue_Packshot_Front_Main_0",
         },
-
-
-
-
-
-
-
-
-
-
-       
-
-
-
-
-
-
-
-
-
-
-
-
+      ],
+    },
+    isInStock: true,
+  },
+  {
+    productId: "p11",
+    name: "Skön Testprodukt",
+    artName: "StSt Tst 123, Tester",
+    artNr: "1234",
+    category: "Test",
+    description: `En väldigt skönt och trevlig test produkt som alla i familjen kan njuta av. Det finns inte på kartan att den här produkten inte är den bästa i världen av sitt slag. Vi är all medvetna av hur bra den här produkten verkligen är. Vi vill verkligen att du köper denna produkt.`,
+    sizeVariants: [
+      "XXS",
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "3XL",
+      "4XL",
+      "5XL",
+    ],
+    material: "100% Testologisk av testspunnen testull",
+    weight: "240g/tst)",
+    fit: "test fit",
+    properties: ["Tester i test färger", "Slits i testen av testet"],
+    certificates: [
+      {
+        name: "Fairwear",
+        img: "/img/certificates/fairwear.svg",
+        link: "https://www.fairwear.com",
+      },
+      {
+        name: "Peta approved vegan",
+        img: "/img/certificates/peta-approved-vegan.svg",
+        link: "https://petaapprovedvegan.peta.org/",
+      },
+      {
+        name: "Certifierad Ekologisk Bomull",
+        img: "/img/certificates/certifierad-ekologisk-bomull.svg",
+        link: "https://gronatryck.se/miljoledning-grona-tryck/#tab_certifikat",
+      },
+    ],
+    brand: "Stanley Stella",
+    minBuy: 10,
+    priceTiers: [
+      { minQuantity: 10, maxQuantity: 49, price: 500 },
+      { minQuantity: 50, maxQuantity: 99, price: 325 },
+      { minQuantity: 100, maxQuantity: 249, price: 245 },
+      { minQuantity: 250, maxQuantity: 499, price: 135 },
+      { minQuantity: 500, maxQuantity: null, price: 64 },
+    ],
+    images: {
+      modelUrl: {
+        basePath: "/img/informative/test",
+        alt: "test bild",
+      },
+      sizeGuideUrl: {
+        basePath: "/img/informative/test",
+        alt: "Size guide of the product",
+      },
+      variants: [
+        {
+          colorName: "Eco Heather",
+          colorCode: "#F9F0E8",
+          basePath: "/img/informative/test",
+        },
+        {
+          colorName: "Blue Ice",
+          colorCode: "#E0EBED",
+          basePath: "/img/informative/test",
+        },
+        {
+          colorName: "Aloe green",
+          colorCode: "#A6BCB1",
+          basePath: "/img/informative/test",
+        },
+        {
+          colorName: "Anthracite",
+          colorCode: "#4D5354",
+          basePath: "/img/informative/test",
+        },
+        {
+          colorName: "Black",
+          colorCode: "#212829",
+          basePath: "/img/informative/test",
+        },
       ],
     },
     isInStock: true,

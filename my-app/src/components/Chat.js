@@ -44,7 +44,10 @@ const Chat = () => {
 
           {/* Meddelanden i chatten */}
           <div className="chat-body">
-            <div className="message">Hej! Hur kan vi hjälpa dig?</div>
+          <div className="message">
+              <strong>Joel</strong>: Hej! Hur kan vi hjälpa dig? <br />
+              <span className="timestamp">12:30</span>
+            </div>
             {/* Fler meddelanden kan läggas till här */}
           </div>
 

@@ -62,10 +62,12 @@ function Contact() {
               className="hero-image"
               id="aboutus-hero-image"
             />
-          </section>
 
+
+          </section>
+<div className="contact-page-container">
           <div className="cart-heading">
-            <h1 className="heading-3 header-label">Kontakta oss</h1>
+            <h1 className="main-heading">Kontakta oss</h1>
           </div>
           <div className="login-container print-container">
             <form onSubmit={handleSubmit}>
@@ -83,7 +85,7 @@ function Contact() {
               </div>
 
               <div className="input-container">
-                <h6 className="input-label">Email</h6>
+                <h6 className="input-label">Email:</h6>
                 <input
                   className="input-login"
                   type="email"
@@ -96,7 +98,7 @@ function Contact() {
               </div>
 
               <div className="input-container">
-                <h6 className="input-label">Telefonnummer</h6>
+                <h6 className="input-label">Telefonnummer:</h6>
                 <input
                   className="input-login"
                   type="tel"
@@ -125,7 +127,7 @@ function Contact() {
               )}
 
               <div className="input-container">
-                <h6 className="input-label">Meddelande</h6>
+                <h6 className="input-label">Meddelande:</h6>
                 <textarea
                   className="input-login"
                   name="message"
@@ -186,8 +188,10 @@ function Contact() {
             </div>
           </div>
         </div>
+        </div>
       )}
     </div>
+    
   );
 }
 

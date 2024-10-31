@@ -82,9 +82,10 @@ function Dashboard() {
   }, []);
 
   return (
-    <div className="Dashboard">
+    <div >
+      <div className="Dashboard">
       <div className="cart-heading">
-        <h1 className="heading-3 header-label">Mina sidor</h1>
+        <h1 className="main-heading page-heading">Mina sidor</h1>
       </div>
       
       <ul className="options-list">
@@ -94,8 +95,8 @@ function Dashboard() {
         </li>
         <li className="nav-link">Gör en Retur</li>
         <li className="nav-link">Ändra Dina Uppgifter</li>
+        
       </ul>
-
       <button className="learn-more-btn main-btn btn-container"
         onClick={() => {
           localStorage.removeItem("loggedInUser");
@@ -104,7 +105,13 @@ function Dashboard() {
       >
         Logga ut
       </button>
+
+      </div>
+
+
+     
     </div>
+    
   );
 }
 

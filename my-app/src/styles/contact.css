@@ -21,6 +21,10 @@
     margin-top: 9rem;
 }
 
+.contact-page-container{
+    margin-top: 2rem;
+}
+
 @media (min-width: 768px) {
     .contact-info {
         flex-direction: row;

@@ -2,12 +2,12 @@
 import React from 'react'; // Importerar React-biblioteket
 import '../styles/admin.css'; // Importerar stilmallen för admin-sidan
 
-function AdminPage({ onLogout }) { // Tar emot en prop för logga ut-funktionalitet
+function AdminPage({ onLogout, orders }) { // Tar emot en prop för logga ut-funktionalitet och ordrar
   return (
     <div className="admin-container"> {/* Huvudbehållare för admin-innehållet */}
 
       <div className="cart-heading">
-        <h1 className='heading-3 header-label'>Admin Panel</h1> {/* Rubrik för admin-sidan */}
+        <h1 className='main-heading page-heading'>Admin Panel</h1> {/* Rubrik för admin-sidan */}
       </div>
 
       {/* Tabbar för att växla mellan olika tidsperioder */}
@@ -52,6 +52,17 @@ function AdminPage({ onLogout }) { // Tar emot en prop för logga ut-funktionali
             <li>Skicka order 123667 till annan adress enligt kundens önskemål</li> {/* Anteckning 2 */}
           </ul>
         </div>
+      </div>
+
+      <div className="orders-list">
+        <h3>Lista över Ordrar</h3>
+        <ul>
+          {orders.map((order, index) => (
+            <li key={index}>
+              {order.orderId}: {order.customerName} - {order.totalAmount} SEK
+            </li>
+          ))}
+        </ul>
       </div>
 
       {/* Logga ut-knapp */}

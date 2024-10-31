@@ -16,14 +16,14 @@ const Breadcrumb = () => {
           const path = `/${pathSegments.slice(0, index + 1).join("/")}`;
           const isLast = index === pathSegments.length - 1;
 
-          // Determine what to display
+          
           let displayName = segment;
 
-          // If the segment is the product ID (for example, p3), show the category instead
+        
           if (isLast && params.productId) {
-            displayName = params.category; // Show category instead of product ID
+            displayName = params.category; 
           } else {
-            displayName = segment.charAt(0).toUpperCase() + segment.slice(1); // Capitalize first letter
+            displayName = segment.charAt(0).toUpperCase() + segment.slice(1); 
           }
 
           return (

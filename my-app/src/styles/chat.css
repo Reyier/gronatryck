@@ -154,6 +154,14 @@
     color: #ff6666;
 }
 
+
+.timestamp {
+    font-size: 1rem; 
+    color: gray; 
+    
+  }
+
+
 @media (min-width: 768px) {
 
 .chat-window{

@@ -61,13 +61,16 @@ function Register({ onRegister }) {
     }
 
     // Redirect to login page after registration
+
     navigate("/login");
+
+    
   };
 
   return (
     <div>
      <div className="cart-heading">
-     <h1 className='heading-3 header-label'>Registrera</h1>
+        <h1 className="main-heading page-heading">Registrera dig</h1>
       </div>
       <div className="login-container">
         <h3>Skapa konto</h3>
@@ -207,7 +210,7 @@ function Register({ onRegister }) {
                   required
                 />
               </div>
-              <p className="info-text">Lösenordet måste vara minst 6 tecken och innehålla minst en stor bokstav.</p>
+             
               <div className="checkbox-container">
               <input type="checkbox" id="news" name="news" className="checkbox-input" />
               <label htmlFor="news">Ja, Jag vill ta emot nyhetsbrev.</label>

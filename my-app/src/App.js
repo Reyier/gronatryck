@@ -65,7 +65,6 @@ function App() {
     if (user) {
       user.role = "Customer";
       localStorage.setItem(user.email, JSON.stringify(user));
-      alert("Registration successful!");
     }
   };
 

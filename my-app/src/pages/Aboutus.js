@@ -10,7 +10,7 @@ const AboutUs = () => {
       {/* Hero Section */}
       <section className="hero-section-2">
         <img
-          src="./img/decorative/peter-van-der-meulen-BZ4ZuzDsBLI-unsplash.jpg" // Bakgrundsbild för hero-sektionen
+          src="./img/decorative/kaja-sariwating-ICOnjJTa3N4-unsplash.jpg" // Bakgrundsbild för hero-sektionen
           alt="Hero"
           className="hero-image"
           id="aboutus-hero-image"

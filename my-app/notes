@@ -1,4 +1,4 @@
-/* Frontend mobil och desktop
+// Frontend mobil och desktop 
 
 
 
@@ -6,21 +6,87 @@
 ATT GODKÄNNA!!!!!
 FAQ
 
+Linje under navlinks vid hover
+Footer
+Sociala medier länkar!
+Ikoner från mobil till desktop, samt bold i desktop men inte mobil
+Kontakt lite ihoptryck i mobil
+
+Kontakta oss
+Kika struktur
+Ta bort underrubrik vid kontaktformulär eller lägg ovanför
+kika över text
+Kika över meddelandet nör man skickar ett kontaktformulär
+byta plats på formuläret
+Hero texten måste bli läsbar
+Lägg till slogan vid header istället för "Hållbart tryck, Rättvis Framtid"?
+mindre height på videon
+kika knapp på heron
+kontakt-sidan vid bredd mellan 0 och 767 pixlar (Kanske kikar på)
+
+
+Chat
+Grön färg istället för blå
+Tidpunkt 
+kanske vem som skrev, profil
+
+
+Ta bort brush på grejer som inte är säsongsbaserat, tex mina sidor osv
+
+"Beställningsprocess"
+under rubrik
+Spacing mellan rubrik och cirklar
+
+ta bort slogan
+
+
+
+
+Stanley 
+max width
+samt läsbarhet
+Ta bort Varför Stanley Stella
+
+
+
+Logga in. lösenord
+ta bort begränsing
+
+
+navbar bredd vid 1005-1085 pixlar Tajt
+
+
+Se filtret på produktsidan (klicka utanför så ska collapse gå ihop)
+
+
+"Produkter"
+Återställ knappen lite skev
+
+Cards spacing, kanske lite skev
+
+
+
+
+
+
+
+
+
 
 
 
 Att GÖRA!!!!
 
-Se filtret på produktsidan (klicka utanför så ska collapse gå ihop)
-navbar bredd vid 1005-1085 pixlar Tajt
-kontakt-sidan vid bredd mellan 0 och 767 pixlar (Kanske kikar på)
+
+
+
 
 Breadcrumps, kategory till produktnamn
 
 
 
+Populära kategorier ser skect ut i olika skärmstorlekar. Sortiment -> kläder 
 
-/////////////////////////////////////////////////////
 
 Samma spacing på allt
 
@@ -30,20 +96,14 @@ ifyllda ikoner vid hover och klick, navbar
 
 Gap mellan ikonerna
 
-Linje under navlinks vid hover
 
 
-Hero texten måste bli läsbar
-Lägg till slogan vid header istället för "Hållbart tryck, Rättvis Framtid"?
-mindre height på videon
-kika knapp på heron
 
-Chat
-Grön färg istället för blå
-Tidpunkt 
-kanske vem som skrev, profil
 
-Ta bort brush på grejer som inte är säsongsbaserat, tex mina sidor osv
+
+
+
+
 
 För stora bilder
 
@@ -56,9 +116,7 @@ Lägga knappen under textcontainer
 Kika spacing
 
 
-"Beställningsprocess"
-under rubrik
-Spacing mellan rubrik och cirklar
+
 
 
 "Peter"
@@ -66,37 +124,22 @@ Spacing mellan rubrik och cirklar
 Se över spacing osv
 
 
-ta bort slogan
-
-
-
-Stanley 
-max width
-samt läsbarhet
-Ta bort Varför Stanley Stella
-
-
-
-"Kontakta oss"
-kika över text
-
-Logga in. lösenord
-ta bort begränsing
 
 
 Ta bort alla alerts
 
-"Produkter"
-Återställ knappen lite skev
-går att öppna alla collapse
-Cards spacing, kanske lite skev
+
 
 
 "Produktdetail"
-
+"MAx kikar på detta"
 Carousel på alt bilder
 
 ta bort nollan i storleksinput
+
+
+
+
 
 
 "Kassa"

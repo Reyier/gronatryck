@@ -144,27 +144,8 @@ const Stanley = () => {
             </div>
           </section>
 
-          <section className="benefits-section stanley-container">
-            <h1 className="section-heading heading-3 stanley-heading">
-              Varför Välja Stanley/Stella?
-            </h1>
-            <div className="benefits-list">
-              <div className="benefit-item">
-                <h3 className="subheading-2">Miljövänliga Material</h3>
-                <p className="main-body">Hållbara och ekologiska tyger.</p>
-              </div>
-              <div className="benefit-item">
-                <h3 className="subheading-2">Customisering</h3>
-                <p className="main-body">Egen design och tryck.</p>
-              </div>
-              <div className="benefit-item">
-                <h3 className="subheading-2">Rättvisa Arbetsvillkor</h3>
-                <p className="main-body">
-                  Produktion under Fairwear-principer.
-                </p>
-              </div>
-            </div>
-          </section>
+          
+        
         </div>
       </div>
     </div>

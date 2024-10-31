@@ -6,7 +6,7 @@
     li .nav-link {
       border-bottom: none;
       padding: 0rem;
-      margin-inline-end: 1.6rem;
+      margin-inline-end: 1rem;
     }
   }
   &.categories {
@@ -88,6 +88,14 @@
     width: auto; 
   }
 
+  .desktop li:hover {
+    
+    border-bottom: 1px solid var(--primary-dark); 
+  }
+
+  .desktop li .nav-link {
+    transition: margin-bottom 0.3s ease, border-bottom 0.3s ease; 
+  }
  
 }
 

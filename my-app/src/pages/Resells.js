@@ -6,9 +6,9 @@ const services = () => {
   return (
     <div>
       <div className="resell-page">
-        <div className="cart-heading">
-          <h1 className="heading-3 header-label">Återförsäljare</h1>
-        </div>
+      <div className="cart-heading">
+            <h1 className="main-heading">Återförsäljare</h1>
+          </div>
 
         <div className="resell-page-container">
           <div className="resell-container">

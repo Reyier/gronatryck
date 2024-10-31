@@ -1,37 +1,10 @@
 /* Frontend mobil och desktop
 
-klart för:
 
 
 
-Produtkdetaljer
-Hela Beställningsprocessen
-Logga in
-Registrera
-Glömt lösenord
-Navbar 
-
-
-
-
-
-BEHÖVER GODKÄNNAS:
-OM oss
-Kontakta oss. 
-Återförsäljare. 
-Admin
-Produktsidan för större skärm
-Stanley
+ATT GODKÄNNA!!!!!
 FAQ
-Kundcase
-Kontakt
-Home
-Hållbarhetssidan
-
-
-
-
-
 
 
 
@@ -47,6 +20,110 @@ Breadcrumps, kategory till produktnamn
 
 
 
+/////////////////////////////////////////////////////
+
+Samma spacing på allt
+
+lägg in btns eler länkar i divar till iconerna på nav
+
+ifyllda ikoner vid hover och klick, navbar
+
+Gap mellan ikonerna
+
+Linje under navlinks vid hover
+
+
+Hero texten måste bli läsbar
+Lägg till slogan vid header istället för "Hållbart tryck, Rättvis Framtid"?
+mindre height på videon
+kika knapp på heron
+
+Chat
+Grön färg istället för blå
+Tidpunkt 
+kanske vem som skrev, profil
+
+Ta bort brush på grejer som inte är säsongsbaserat, tex mina sidor osv
+
+För stora bilder
+
+
+"Vår drivkraft"
+Newbalance bilden måste bytas ut
+Kanske göra bilden större vid större skärmar
+Miljö kan tas bort
+Lägga knappen under textcontainer
+Kika spacing
+
+
+"Beställningsprocess"
+under rubrik
+Spacing mellan rubrik och cirklar
+
+
+"Peter"
+
+Se över spacing osv
+
+
+ta bort slogan
+
+
+
+Stanley 
+max width
+samt läsbarhet
+Ta bort Varför Stanley Stella
+
+
+
+"Kontakta oss"
+kika över text
+
+Logga in. lösenord
+ta bort begränsing
+
+
+Ta bort alla alerts
+
+"Produkter"
+Återställ knappen lite skev
+går att öppna alla collapse
+Cards spacing, kanske lite skev
+
+
+"Produktdetail"
+
+Carousel på alt bilder
+
+ta bort nollan i storleksinput
+
+
+"Kassa"
+
+Max width container
+Mindre bilder
+
+Flytta priser under tryck och lägga en sticky
+
+
+"checkout"
+
+Offertförfrågan
+
+hämta för och efternamn till informationen
+Kika över priserna för offertfrågan
+Hämtas inte rätt priser om det inte är under 10 st i checkout
+Använda komma istället för punkt i alla priser
+
+
+Ändra dina uppgifter måste kunnas göra
+
+
+Andra arbeten har brutna länkar inom kundberättelser
+
+
+Ladda in en lista med alla ordrar i admin panel
 
 
 

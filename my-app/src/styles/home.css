@@ -192,6 +192,11 @@
   justify-content: center;
   align-items: center;
   margin: 4rem 10rem 0 0rem;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 4rem 4rem 0 0rem;
 }
 
 .testimonial-image img {
@@ -440,6 +445,7 @@
     height: 40rem;
     transform: translate(0%, -20%);
     z-index: 1;
+    top: 10%;
   }
 
   .home-page section {

@@ -63,7 +63,7 @@ function Checkout() {
                 className='input-login'
                 type="text"
                 name="personName"
-                value={customerInfo.personName}
+                value={customerInfo.firstName}
                 onChange={handleChange}
                 placeholder="För & Efternamn"
                 required

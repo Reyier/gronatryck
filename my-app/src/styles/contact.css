@@ -13,10 +13,12 @@
     
 }
 
-
-
 .contact-section p {
     margin: 0.5rem 0;
+}
+
+.submitted{
+    margin-top: 9rem;
 }
 
 @media (min-width: 768px) {

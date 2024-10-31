@@ -18,7 +18,7 @@ export default function Hero() {
             Most Northern Official Stanley Stella Dealer
           </span> */}
           <div className="sustainability-container">
-            <h2 className="section-heading subheading-1">Tryck med omtanke</h2>
+            <h1 className="main-heading">Tryck med omtanke</h1>
             <p className="main-body">– hållbarhet i varje detalj.</p>
           </div>
           <p>

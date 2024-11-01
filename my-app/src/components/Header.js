@@ -125,7 +125,7 @@ export default function Header() {
 function HamburgerMenu({ onClick, active }) {
   return (
     <button
-      className="hamburger " // Klass för stil
+      className="hamburger nav-btn" // Klass för stil
       aria-label="Menu" // Aria-label för tillgänglighet
       aria-expanded={active ? "true" : "false"} // Ange menyns tillstånd
       aria-controls="navigation" // Koppla knappen till navigationen

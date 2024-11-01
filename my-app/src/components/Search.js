@@ -1,5 +1,5 @@
 // Importerar nödvändiga moduler och komponenter
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import products from "../data/product.js"; // Importerar produktdata (ej använd i koden)
 import { Link } from "react-router-dom"; // Importerar Link för navigering
 import { LuSearch, LuX } from "react-icons/lu"; // Importerar ikoner för sökning och stängning
@@ -12,6 +12,7 @@ export default function SearchBar({ handleClick, isActive }) {
   // State för att hålla sökord och sökresultat
   const [searchTerm, setSearchTerm] = useState("");
   const [results, setResults] = useState([]);
+  const inputRef = useRef(null);
 
   // Funktion för att hantera sökningen
   const handleSearch = (e) => {
@@ -28,6 +29,13 @@ export default function SearchBar({ handleClick, isActive }) {
     handleClick(); // Anropar handleClick för att stänga sökfältet
   }
 
+  useEffect(() => {
+    // Fokus på search inputfält när man aktiverar search
+    if (isActive && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [isActive]);
+
   return (
     <div className={`search-container ${isActive ? "active" : ""}`}>
       <div className="container search-content">
@@ -38,6 +46,7 @@ export default function SearchBar({ handleClick, isActive }) {
         />
         {/* Sökfält */}
         <input
+          ref={inputRef}
           type="search"
           value={searchTerm}
           onChange={handleSearch} // Anropar handleSearch vid förändring

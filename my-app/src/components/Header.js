@@ -76,29 +76,34 @@ export default function Header() {
             gap: "1.6rem",
           }}
         >
-          <div style={{ position: "relative" }}>
+          <button
+            className="nav-btn"
+            style={{ position: "relative" }}
+            onClick={toggleCart}
+          >
             <img
               src="/img/decorative/icons/shopbag_icon.svg"
               alt="Varukorg"
               className="header-icon cart-icon"
-              onClick={toggleCart}
             />
             {cartQuantity > 0 && (
               <span className="cart-quantity-badge">{cartQuantity}</span>
             )}
-          </div>
-          <img
-            src="/img/decorative/icons/profile_icon.svg"
-            alt="Användar-ikon"
-            className="header-icon user-icon"
-            onClick={toggleSite}
-          />
-          <img
-            src="/img/decorative/icons/search_icon.svg"
-            alt="Sök-ikon"
-            className="header-icon search-icon"
-            onClick={cancelSearch}
-          />
+          </button>
+          <button className="nav-btn" onClick={toggleSite}>
+            <img
+              src="/img/decorative/icons/profile_icon.svg"
+              alt="Användar-ikon"
+              className="header-icon user-icon"
+            />
+          </button>
+          <button className="nav-btn" onClick={cancelSearch}>
+            <img
+              src="/img/decorative/icons/search_icon.svg"
+              alt="Sök-ikon"
+              className="header-icon search-icon"
+            />
+          </button>
 
           <HamburgerMenu active={mobileMenuActive} onClick={toggleMenu} />
         </div>

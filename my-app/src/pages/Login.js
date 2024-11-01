@@ -12,7 +12,6 @@ const Login = ({ onLogin }) => {
     setUser({ ...user, [name]: value });
   };
 
-  const [registrationSuccess, setRegistrationSuccess] = useState(false);
   const handleLoginClick = () => {
     const loggedInUser = onLogin(user); // Call the prop function to log in
 
@@ -29,65 +28,59 @@ const Login = ({ onLogin }) => {
         navigate(from);
       }
     } else {
-      setRegistrationSuccess(true);
+      alert("Login failed");
     }
   };
 
   return (
     <div>
-      <div className="cart-heading">
-        <h1 className="main-heading page-heading">Logga in</h1>
-      </div>
+     <div className="cart-heading">
+            <h1 className="main-heading page-heading">Logga in</h1>
+          </div>
       <div className='login-container'>
-        {registrationSuccess ? (
-          <p className="success-message">Registreringen lyckades! Du omdirigeras till inloggningssidan om några sekunder...</p>
-        ) : (
-          <>
-            <form>
-              <div className="input-container">
-                <h6 className='input-label'>Email eller kundnummer</h6>
-                <input
-                  className='input-login'
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="Email eller kundnummer"
-                  value={user.email}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
+        
+        <form>
+          <div className="input-container">
+            <h6 className='input-label'>Email eller kundnummer</h6>
+            <input
+              className='input-login'
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email eller kundnummer"
+              value={user.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-              <div className="input-container">
-                <h6 className='input-label'>Lösenord</h6>
-                <input
-                  className='input-login'
-                  type="password"
-                  name="password"
-                  id="password"
-                  placeholder="Lösenord"
-                  value={user.password}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
+          <div className="input-container">
+            <h6 className='input-label'>Lösenord</h6>
+            <input
+              className='input-login'
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Lösenord"
+              value={user.password}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-              <p className='login-link' onClick={() => navigate('/reset-password')}>
-                Glömt lösenord?
-              </p>
-              <p className='login-link' onClick={() => navigate('/register')}>Ny kund? Skapa konto här</p>
-              <div className='btn-container-1'>
-                <button className='main-btn' type="button" onClick={handleLoginClick}>
-                  Logga in
-                </button>
-              </div>
-            </form>
-          </>
-        )}
+          <p className='login-link' onClick={() => navigate('/reset-password')}>
+            Glömt lösenord?
+          </p>
+          <p className='login-link' onClick={() => navigate('/register')}>Ny kund? Skapa konto här</p>
+          <div className='btn-container-1'>
+            <button className='main-btn' type="button" onClick={handleLoginClick}>
+              Logga in
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );
 };
 
 export default Login;
-

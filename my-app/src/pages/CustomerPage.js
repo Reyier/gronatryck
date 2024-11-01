@@ -104,9 +104,10 @@ function Dashboard() {
           }}>
             Ändra Dina Uppgifter
           </li>
+          {showEditProfile && <EditProfile />}
         </ul>
 
-        {showEditProfile && <EditProfile />}
+     
 
         <button className="learn-more-btn main-btn btn-container"
           onClick={() => {
@@ -163,6 +164,7 @@ function EditProfile() {
   };
 
   const handleSave = () => {
+    // Uppdatera localStorage med de nya användaruppgifterna
     localStorage.setItem("loggedInUser", JSON.stringify(userDetails));
     alert("Dina uppgifter har sparats!");
   };

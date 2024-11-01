@@ -11,7 +11,7 @@
     width: 100%;
     display: grid;
     gap: 2rem;
-    grid-template-columns: 1fr; /* Single column by default */
+    grid-template-columns: 1fr; 
     max-width: 1300px;
 }
 
@@ -89,17 +89,17 @@
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
 
-/* Styles for each order card */
+
 .order-card {
     padding: 1rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Add divider line */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); 
 }
 
 .order-card:last-child {
-    border-bottom: none; /* Remove divider on the last item */
+    border-bottom: none; 
 }
 
-/* Scrollable section for orders */
+
 .order-cards {
     max-height: 400px; 
     overflow-y: auto; 
@@ -107,7 +107,7 @@
     padding-right: 1rem;
 }
 
-/* Toggle button for collapsing orders */
+
 .toggle-orders-btn {
    
     margin-top: 5rem;

@@ -199,7 +199,7 @@ input[type="radio"]:checked + .color-circle {
 
 .tab.active {
   border-bottom: 2px solid var(--primary-dark);
-  color: var(--primary-green);
+ 
 }
 
 .tab:hover {

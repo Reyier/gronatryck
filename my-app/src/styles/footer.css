@@ -166,7 +166,7 @@ details[open] summary::after {
   .footer-columns {
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: 90%;
     margin-bottom: 2rem;
   }
 

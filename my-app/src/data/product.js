@@ -31,7 +31,7 @@ const products = [
     brand: "Stanley Stella",
     minBuy: 10,
     priceTiers: [
-      { minQuantity: 10, maxQuantity: 49, price: 790 },
+      { minQuantity: 1, maxQuantity: 49, price: 790 },
       { minQuantity: 50, maxQuantity: 99, price: 711 },
       { minQuantity: 100, maxQuantity: 249, price: 672 },
       { minQuantity: 250, maxQuantity: 499, price: 652 },
@@ -188,7 +188,7 @@ const products = [
     brand: "Stanley Stella",
     minBuy: 10,
     priceTiers: [
-      { minQuantity: 10, maxQuantity: 49, price: 132 },
+      { minQuantity: 1, maxQuantity: 49, price: 132 },
       { minQuantity: 50, maxQuantity: 99, price: 118 },
       { minQuantity: 100, maxQuantity: 249, price: 112 },
       { minQuantity: 250, maxQuantity: 499, price: 108 },
@@ -318,7 +318,7 @@ const products = [
     brand: "Stanley Stella",
     minBuy: 10,
     priceTiers: [
-      { minQuantity: 10, maxQuantity: 49, price: 106 },
+      { minQuantity: 1, maxQuantity: 49, price: 106 },
       { minQuantity: 50, maxQuantity: 99, price: 94 },
       { minQuantity: 100, maxQuantity: 249, price: 85 },
       { minQuantity: 250, maxQuantity: 499, price: 80 },
@@ -400,7 +400,7 @@ const products = [
     brand: "Stanley Stella",
     minBuy: 10,
     priceTiers: [
-      { minQuantity: 10, maxQuantity: 49, price: 453 },
+      { minQuantity: 1, maxQuantity: 49, price: 453 },
       { minQuantity: 50, maxQuantity: 99, price: 408 },
       { minQuantity: 100, maxQuantity: 249, price: 385 },
       { minQuantity: 250, maxQuantity: 499, price: 374 },
@@ -484,7 +484,7 @@ const products = [
     brand: "Stanley Stella",
     minBuy: 10,
     priceTiers: [
-      { minQuantity: 10, maxQuantity: 49, price: 612 },
+      { minQuantity: 1, maxQuantity: 49, price: 612 },
       { minQuantity: 50, maxQuantity: 99, price: 550 },
       { minQuantity: 100, maxQuantity: 249, price: 520 },
       { minQuantity: 250, maxQuantity: 499, price: 504 },
@@ -546,7 +546,7 @@ const products = [
     brand: "Stanley Stella",
     minBuy: 10,
     priceTiers: [
-      { minQuantity: 10, maxQuantity: 49, price: 717 },
+      { minQuantity: 1, maxQuantity: 49, price: 717 },
       { minQuantity: 50, maxQuantity: 99, price: 645 },
       { minQuantity: 100, maxQuantity: 249, price: 609 },
       { minQuantity: 250, maxQuantity: 499, price: 592 },
@@ -619,7 +619,7 @@ const products = [
     brand: "Stanley Stella",
     minBuy: 10,
     priceTiers: [
-      { minQuantity: 10, maxQuantity: 49, price: 321 },
+      { minQuantity: 1, maxQuantity: 49, price: 321 },
       { minQuantity: 50, maxQuantity: 99, price: 303 },
       { minQuantity: 100, maxQuantity: 249, price: 295 },
       { minQuantity: 250, maxQuantity: 499, price: 286 },
@@ -757,7 +757,7 @@ const products = [
     brand: "Stanley Stella",
     minBuy: 10,
     priceTiers: [
-      { minQuantity: 10, maxQuantity: 49, price: 225 },
+      { minQuantity: 1, maxQuantity: 49, price: 225 },
       { minQuantity: 50, maxQuantity: 99, price: 202 },
       { minQuantity: 100, maxQuantity: 249, price: 191 },
       { minQuantity: 250, maxQuantity: 499, price: 185 },
@@ -841,7 +841,7 @@ const products = [
     brand: "Stanley Stella",
     minBuy: 10,
     priceTiers: [
-      { minQuantity: 10, maxQuantity: 49, price: 212 },
+      { minQuantity: 1, maxQuantity: 49, price: 212 },
       { minQuantity: 50, maxQuantity: 99, price: 162 },
       { minQuantity: 100, maxQuantity: 249, price: 153 },
       { minQuantity: 250, maxQuantity: 499, price: 144 },
@@ -1031,7 +1031,7 @@ const products = [
     brand: "Stanley Stella",
     minBuy: 10,
     priceTiers: [
-      { minQuantity: 10, maxQuantity: 49, price: 500 },
+      { minQuantity: 1, maxQuantity: 49, price: 500 },
       { minQuantity: 50, maxQuantity: 99, price: 325 },
       { minQuantity: 100, maxQuantity: 249, price: 245 },
       { minQuantity: 250, maxQuantity: 499, price: 135 },

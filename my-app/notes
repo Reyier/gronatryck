@@ -39,7 +39,12 @@ Spacing mellan rubrik och cirklar
 
 ta bort slogan
 
+Offertförfrågan
 
+hämta för och efternamn till informationen
+Kika över priserna för offertfrågan
+Hämtas inte rätt priser om det inte är under 10 st i checkout
+Använda komma istället för punkt i alla priser
 
 
 Stanley 
@@ -47,7 +52,7 @@ max width
 samt läsbarhet
 Ta bort Varför Stanley Stella
 
-
+Andra arbeten har brutna länkar inom kundberättelser
 
 Logga in. lösenord
 ta bort begränsing
@@ -66,47 +71,7 @@ Cards spacing, kanske lite skev
 
 Ladda in en lista med alla ordrar i admin panel
 
-
-
-
-
-
-
-
-
-
-Att GÖRA!!!!
-
-
-
-
-
-Breadcrumps, kategory till produktnamn
-
-
-
-Populära kategorier ser skect ut i olika skärmstorlekar. Sortiment -> kläder 
-
-
-Samma spacing på allt
-
-lägg in btns eler länkar i divar till iconerna på nav
-
-ifyllda ikoner vid hover och klick, navbar
-
-Gap mellan ikonerna
-
-
-
-
-
-
-
-
-
-
-För stora bilder
-
+Ändra dina uppgifter måste kunnas göra
 
 "Vår drivkraft"
 Newbalance bilden måste bytas ut
@@ -116,6 +81,26 @@ Lägga knappen under textcontainer
 Kika spacing
 
 
+Flytta priser under tryck och lägga en sticky
+
+
+
+
+Att GÖRA!!!!
+
+Breadcrumps, kategory till produktnamn
+
+Populära kategorier ser skect ut i olika skärmstorlekar. Sortiment -> kläder 
+
+Samma spacing på allt
+
+lägg in btns eler länkar i divar till iconerna på nav
+
+ifyllda ikoner vid hover och klick, navbar
+
+Gap mellan ikonerna
+
+För stora bilder
 
 
 
@@ -123,13 +108,7 @@ Kika spacing
 
 Se över spacing osv
 
-
-
-
 Ta bort alla alerts
-
-
-
 
 "Produktdetail"
 "MAx kikar på detta"
@@ -137,42 +116,14 @@ Carousel på alt bilder
 
 ta bort nollan i storleksinput
 
-
-
-
-
-
 "Kassa"
 
 Max width container
 Mindre bilder
 
-Flytta priser under tryck och lägga en sticky
 
 
 "checkout"
-
-Offertförfrågan
-
-hämta för och efternamn till informationen
-Kika över priserna för offertfrågan
-Hämtas inte rätt priser om det inte är under 10 st i checkout
-Använda komma istället för punkt i alla priser
-
-
-Ändra dina uppgifter måste kunnas göra
-
-
-Andra arbeten har brutna länkar inom kundberättelser
-
-
-
-
-
-
-
-
-
 
 
 

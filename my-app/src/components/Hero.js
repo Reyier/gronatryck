@@ -5,14 +5,16 @@ import HeroDisplay from "./HeroDisplay.js"; // Importera HeroDisplay-komponenten
 
 // Hero-komponenten
 export default function Hero() {
-  const [video, setVideo] = useState(true); // Hantera tillstånd för att visa video eller bild
+  const [video, setVideo] = useState(window.innerWidth > 768); // Hantera tillstånd för att visa video eller bild
 
   return (
-    <section className="hero-section"> {/* Wrapper för hero-sektionen */}
-      <div>
-        <HeroDisplay media={video} /> {/* Visa media baserat på tillstånd */}
-      </div>
-      <div className="hero-content-container container"> {/* Innehåll i hero-sektionen */}
+    <section className="hero-section">
+      {" "}
+      {/* Wrapper för hero-sektionen */}
+      <HeroDisplay media={video} /> {/* Visa media baserat på tillstånd */}
+      <div className="hero-content-container container">
+        {" "}
+        {/* Innehåll i hero-sektionen */}
         <div className="hero-content">
           {/* <span style={{ textTransform: "uppercase", fontWeight: "300" }}>
             Most Northern Official Stanley Stella Dealer
@@ -28,7 +30,9 @@ export default function Hero() {
             produkter, anpassade efter dina behov. Utforska vårt utbud och var
             med och bidra till en mer hållbar framtid.
           </p>
-          <div style={{ display: "flex", gap: "1.6rem" }}> {/* Flexbox för knappar */}
+          <div style={{ display: "flex", gap: "1.6rem" }}>
+            {" "}
+            {/* Flexbox för knappar */}
             <Button
               to="/sortiment"
               content={"Utforska vårt sortiment"} // Text för första knappen
@@ -45,4 +49,3 @@ export default function Hero() {
     </section>
   );
 }
-

@@ -16,6 +16,7 @@ const Chat = () => {
       {/* Knappen för att öppna eller stänga chatten */}
       {!isVisible && (
         <button
+          aria-label="Chatknapp"
           onClick={toggleChat} // Anropar toggleChat-funktionen vid klick
           className="chat-toggle-button"
           style={{ fontSize: "2.8rem" }} // Sätter storlek på knappen
@@ -32,7 +33,8 @@ const Chat = () => {
               <h4 className="customer-service">
                 Kundtjänst
                 <span className="status-container">
-                  <div className="online-status"></div> {/* Visar online-status */}
+                  <div className="online-status"></div>{" "}
+                  {/* Visar online-status */}
                 </span>
               </h4>
             </div>
@@ -44,7 +46,7 @@ const Chat = () => {
 
           {/* Meddelanden i chatten */}
           <div className="chat-body">
-          <div className="message">
+            <div className="message">
               <strong>Joel</strong>: Hej! Hur kan vi hjälpa dig? <br />
               <span className="timestamp">12:30</span>
             </div>
@@ -53,7 +55,8 @@ const Chat = () => {
 
           {/* Footer för att skriva meddelanden */}
           <div className="chat-footer">
-            <input type="text" placeholder="Skriv ditt meddelande här.." /> {/* Textfält för att skriva meddelanden */}
+            <input type="text" placeholder="Skriv ditt meddelande här.." />{" "}
+            {/* Textfält för att skriva meddelanden */}
             <button>Skicka</button> {/* Knapp för att skicka meddelande */}
           </div>
         </div>
@@ -63,5 +66,3 @@ const Chat = () => {
 };
 
 export default Chat;
-
-

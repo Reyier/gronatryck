@@ -40,10 +40,7 @@ export default function SearchBar({ handleClick, isActive }) {
     <div className={`search-container ${isActive ? "active" : ""}`}>
       <div className="container search-content">
         {/* Sökningsikonen */}
-        <IconButton
-          icon={<LuSearch />}
-          handleClick={() => console.log("pressed search btn")}
-        />
+        <IconButton icon={<LuSearch />} description="Sökikon" />
         {/* Sökfält */}
         <input
           ref={inputRef}
@@ -53,7 +50,11 @@ export default function SearchBar({ handleClick, isActive }) {
           placeholder="Sök i vårt sortiment..."
         />
         {/* Stängningsikonen */}
-        <IconButton icon={<LuX />} handleClick={handleClick} />
+        <IconButton
+          icon={<LuX />}
+          handleClick={handleClick}
+          description="Stäng sök"
+        />
       </div>
       {/* Visar sökresultaten om det finns en sökterm */}
 

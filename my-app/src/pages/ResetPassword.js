@@ -1,11 +1,21 @@
-// components/ResetPassword.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function ResetPassword({ onReset }) {
   const [resetEmail, setResetEmail] = useState("");
   const [newPassword, setNewPassword] = useState("");
-  const navigate = useNavigate(); // Use the useNavigate hook
+  const [message, setMessage] = useState(""); 
+  const navigate = useNavigate();
+
+  const handleResetClick = () => {
+    const resetResult = onReset(resetEmail, newPassword);
+
+    if (resetResult) {
+      setMessage("Lösenordet har återställts! Du kan nu logga in med ditt nya lösenord.");
+    } else {
+      setMessage("E-postadressen finns inte. Vänligen försök igen.");
+    }
+  };
 
   return (
     <div>
@@ -13,6 +23,7 @@ function ResetPassword({ onReset }) {
         <h1 className="main-heading page-heading">Glömt lösenord</h1>
       </div>
       <div className="login-container">
+        {message && <p className="reset-message">{message}</p>} 
         <input
           className="input-login"
           type="email"
@@ -30,15 +41,14 @@ function ResetPassword({ onReset }) {
         />
         <br />
         <div className="btn-container-1 space">
-          
           <button
             className="main-btn"
-            onClick={() => onReset(resetEmail, newPassword)}
+            onClick={handleResetClick}
           >
             Återställ lösenord
           </button>
         </div>
-         <p className="main-body" onClick={() => navigate('/login')}>Tillbaka till inloggning</p> 
+        <p className="main-body" onClick={() => navigate('/login')}>Tillbaka till inloggning</p>
       </div>
     </div>
   );

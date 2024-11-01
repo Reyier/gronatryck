@@ -154,6 +154,7 @@ function EditProfile() {
   const [userDetails, setUserDetails] = useState(() => {
     return JSON.parse(localStorage.getItem("loggedInUser")) || {};
   });
+  const [message, setMessage] = useState(""); 
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -164,9 +165,9 @@ function EditProfile() {
   };
 
   const handleSave = () => {
-    // Uppdatera localStorage med de nya användaruppgifterna
     localStorage.setItem("loggedInUser", JSON.stringify(userDetails));
-    alert("Dina uppgifter har sparats!");
+    setMessage("Dina uppgifter har sparats!"); 
+    setTimeout(() => setMessage(""), 3000); 
   };
 
   return (
@@ -240,6 +241,7 @@ function EditProfile() {
           Spara Uppgifter
         </button>
       </form>
+      {message && <p className="save-message">{message}</p>} 
     </div>
   );
 }

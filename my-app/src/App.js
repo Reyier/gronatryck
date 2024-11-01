@@ -71,9 +71,8 @@ function App() {
   // Handle login
   const handleLogin = (user) => {
     if (!user || !user.email || !user.password) {
-      alert("Please enter both email and password.");
-      return null;
-    }
+      return "Vänligen ange både e-postadress och lösenord.";
+  }
 
     const storedUser = localStorage.getItem(user.email);
 
@@ -84,14 +83,8 @@ function App() {
         setLoggedInUser(parsedUser);
         localStorage.setItem("loggedInUser", JSON.stringify(parsedUser)); // Save logged in user
         return parsedUser; // Return the logged-in user object
-      } else {
-        alert("Incorrect password.");
-        return null;
-      }
-    } else {
-      alert("User does not exist.");
-      return null;
-    }
+      } 
+    } 
   };
 
   // Hantera lösenordsåterställning
@@ -102,17 +95,18 @@ function App() {
         const parsedUser = JSON.parse(storedUser);
         parsedUser.password = newPassword;
         localStorage.setItem(email, JSON.stringify(parsedUser));
-        alert("Password reset!");
+        return true; 
       } else {
-        alert("Email address does not exist.");
+        return false; 
       }
     }
   };
+  
 
   // Hantera utloggning
   const handleLogout = () => {
-    localStorage.removeItem("loggedInUser"); // Ta bort inloggningsdata
-    setLoggedInUser(null); // Återställ state
+    localStorage.removeItem("loggedInUser"); 
+    setLoggedInUser(null); 
   };
 
   return (

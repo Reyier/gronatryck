@@ -75,7 +75,7 @@ export default function Header() {
             display: "flex",
             alignItems: "center",
             fontSize: "2.4rem",
-            gap: "1.6rem",
+            gap: "2rem",
           }}
         >
           <button

@@ -71,7 +71,7 @@ function App() {
   const handleLogin = (user) => {
     if (!user || !user.email || !user.password) {
       return "Vänligen ange både e-postadress och lösenord.";
-  }
+    }
 
     const storedUser = localStorage.getItem(user.email);
 
@@ -82,8 +82,8 @@ function App() {
         setLoggedInUser(parsedUser);
         localStorage.setItem("loggedInUser", JSON.stringify(parsedUser)); // Save logged in user
         return parsedUser; // Return the logged-in user object
-      } 
-    } 
+      }
+    }
   };
 
   // Hantera lösenordsåterställning
@@ -94,18 +94,17 @@ function App() {
         const parsedUser = JSON.parse(storedUser);
         parsedUser.password = newPassword;
         localStorage.setItem(email, JSON.stringify(parsedUser));
-        return true; 
+        return true;
       } else {
-        return false; 
+        return false;
       }
     }
   };
-  
 
   // Hantera utloggning
   const handleLogout = () => {
-    localStorage.removeItem("loggedInUser"); 
-    setLoggedInUser(null); 
+    localStorage.removeItem("loggedInUser");
+    setLoggedInUser(null);
   };
 
   return (
@@ -149,6 +148,7 @@ function App() {
               path="/produkter/:id/:productSlug"
               element={<ProductDetail />}
             />
+
             <Route path="/tjanster/:serviceId" element={<ServiceDetail />} />
 
             <Route path="/checkout" element={<Checkout />} />

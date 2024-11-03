@@ -3,6 +3,7 @@ import "../styles/home.css";
 import Button from "../components/Button";
 import Hero from "../components/Hero";
 import PopularCategories from "../components/PopularCategories";
+import "../styles/Categories.css";
 
 const Home = () => {
   const categorylist = [
@@ -37,13 +38,13 @@ const Home = () => {
       <Hero />
       <div className="body-container">
         <div>
-          <PopularCategories categoryList={categorylist} />
+          <PopularCategories grid={true} categoryList={categorylist} />
         </div>
 
         <section className="certified-section">
           <div className="certified-content">
             <div className="certified-text">
-              <h1 className="section-heading heading-3">Vår drivkraft</h1>
+              <h2 className="section-heading heading-3">Vår drivkraft</h2>
               <div className="eco-label"></div>
 
               <div className="eco-text-container">
@@ -79,7 +80,7 @@ const Home = () => {
 
         {/* Section 5: Beställningsprocess */}
         <section className="order-process">
-          <h1 className="section-heading heading-3">Beställningsprocess</h1>
+          <h2 className="section-heading heading-3">Beställningsprocess</h2>
           <div className="process-steps main-body">
             {[
               {
@@ -130,9 +131,9 @@ const Home = () => {
 
           <div className="testimonial-content">
             <blockquote className="testimonial-quote">
-              <h1 className="section-heading heading-3">
+              <h2 className="section-heading heading-3">
                 Peter väljer rättvisemärkta kläder för sina fans
-              </h1>
+              </h2>
 
               <div className="testimonial-content">
                 <div className="testimonial-image">

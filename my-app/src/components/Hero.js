@@ -40,7 +40,7 @@ export default function Hero() {
             />
             <Button
               to="/om-grona-tryck"
-              content="Vår historia" // Text för andra knappen
+              content="Om oss" // Text för andra knappen
               className="second-btn" // Klass för styling
             />
           </div>

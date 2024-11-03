@@ -1,105 +1,61 @@
-.categori {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem 1rem;
-    background-color: #f8f8f8;
+.category-label {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--autumn-color);
+  color: var(--white-color);
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 6px;
+  font-size: var(--fontSizeXS);
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--bodyFont);
+  text-align: center;
+  max-width: 500px;
+  min-width: 150px;
+  cursor: pointer;
+  z-index: 100;
+  justify-content: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.categori .popular-categories .categories-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-    width: 100%;
+.categories-grid {
+  /* text-align: center; */
+  display: grid;
+  gap: 2rem;
+  margin-bottom: 4rem;
 }
-
-
+.grid-type-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.grid-type-4 {
+  grid-template-columns: repeat(2, 1fr);
+}
 
 .category {
-    position: relative; 
-    display: inline-block; /* Allow category to size based on content */
-    text-decoration: none; 
-    width: 100%; 
-    margin: 0 auto; 
+  position: relative;
 }
 
 .category img {
-    width: 100%; 
-    height: auto; 
+  width: 100%;
+  height: 20rem;
+  border-radius: 6px;
+  object-fit: cover;
+  object-position: center top;
 }
 
-.label-with-bg {
-    position: absolute; 
-    bottom: -20%; 
-    right: -20%; 
-    display: flex;  
-    justify-content: center; 
-    align-items: center; 
-    height: 50%; 
-    width: 100%; 
-    padding: 0; 
-    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201000%20327.898%22%20width%3D%221000%22%20height%3D%22327.898%22%3E%3Cpath%20d%3D%22m176.775%20170.213%20-31.02%206.164c-17.101%2010.34%2057.864%2019.288%20-13.124%2030.026%20-76.755%205.369%2044.939%209.942%20-20.481%2015.908%20-45.138%201.392%20-21.475%2012.13%20-1.392%2012.925l27.839%20-0.398c21.277%203.182%20-15.908%2010.937%20-7.357%2017.3%200%200%2029.429%20-1.988%2055.677%20-2.585%206.363%201.79%20-11.135%208.55%20-5.965%209.545s19.288%200%2045.337%200l581.03%20-13.919c11.533%20-3.579%20-16.504%20-15.311%20-16.504%20-15.311%20-16.902%20-8.352%2058.063%20-3.977%201.79%20-15.709%20-28.236%20-5.965%2053.291%20-19.885%2050.109%20-24.458s-35.196%20-2.983%20-36.19%20-6.562c-1.591%20-5.369%2070.591%20-10.141%2057.069%20-15.51%20-26.645%20-10.539%20-1.79%20-11.533%20-1.79%20-11.533%2055.279%20-3.38%20-5.965%20-16.107%2014.516%20-20.084l23.066%20-4.176c9.545%20-1.591%20-1.591%20-6.562%20-1.591%20-6.562%20-12.726%20-3.182%20-4.573%20-8.55%20-4.573%20-8.55%209.545%20-7.158%2012.726%20-3.977%2012.726%20-7.158%200%20-6.96%20-51.501%2010.141%20-15.311%20-13.522%200%200%203.778%20-3.778%20-0.398%20-4.375%20-29.827%20-4.971%2038.974%20-17.896%20-11.931%20-16.504l-660.171%2010.141c-1.193%200%20-0.994%201.79%200%202.187l27.043%206.761c21.873%206.761%20-76.158%209.545%20-57.467%2016.305%200%200%2046.53%2015.112%2024.259%2020.282s-67.409%2013.323%20-53.689%2020.68%2044.741%2012.527%2018.095%2019.089z%22%20style%3D%22fill%3A%23cc7f3a%22%20data-name%3D%22Lager_1%22%2F%3E%3C%2Fsvg%3E");
-    background-size: cover; 
-    background-position: bottom right; 
-    background-repeat: no-repeat; 
-    z-index: 1; 
+.category-label:hover {
+  background-color: var(--bright-color);
 }
 
-.category-label {
-    position: relative; 
-    z-index: 2; 
-    color: white; 
-    text-align: center; 
-    font-size: 1.5rem;
-  
-   
-   
-}
+@media (min-width: 1005px) {
+  .grid-type-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
 
-@media (min-width: 768px) {
-    .category-label{
-        font-size: 2rem;
-    }
-}
-
-
-
-@media (min-width: 1200px) {
-    .categori .popular-categories .categories-grid {
-        grid-template-columns: repeat(4, 1fr); 
-        gap: 5rem;  
-
-    }
-
-    
-
-
-
-
-
-
-
-}
-
-@media (max-width: 1199px) and (min-width: 768px) {
-    .categori .popular-categories .categories-grid {
-        grid-template-columns: repeat(3, 1fr); 
-        
-    }
-}
-
-@media (max-width: 767px) and (min-width: 480px) {
-    .categori .popular-categories .categories-grid {
-        grid-template-columns: repeat(2, 1fr);
-        
-    }
-    
-}
-
-@media (max-width: 479px) {
-    .categori .popular-categories .categories-grid {
-        grid-template-columns: 1fr 1fr; 
-        
-    }
-
+  .category img {
+    height: 30rem;
+  }
 }

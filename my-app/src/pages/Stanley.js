@@ -15,7 +15,7 @@ const Stanley = () => {
     <div>
       <section className="hero-section-2">
         <img
-          src="/img/decorative/cover/Stanley_Stella_AW24_Timeless_Outwear_Mix_01_fullhd.png"
+          src="/img/decorative/cover/Stanley_Stella_AW24_Timeless_Outwear_Mix_01_fullhd.jpg"
           alt="Hero"
           className="hero-image"
           id="aboutus-hero-image"

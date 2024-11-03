@@ -1,7 +1,4 @@
-// Frontend mobil och desktop 
-
-
-
+// Frontend mobil och desktop
 
 ATT GODKÄNNA!!!!!
 FAQ
@@ -24,12 +21,10 @@ mindre height på videon
 kika knapp på heron
 kontakt-sidan vid bredd mellan 0 och 767 pixlar (Kanske kikar på)
 
-
 Chat
 Grön färg istället för blå
-Tidpunkt 
+Tidpunkt
 kanske vem som skrev, profil
-
 
 Ta bort brush på grejer som inte är säsongsbaserat, tex mina sidor osv
 
@@ -46,8 +41,7 @@ Kika över priserna för offertfrågan
 Hämtas inte rätt priser om det inte är under 10 st i checkout
 Använda komma istället för punkt i alla priser
 
-
-Stanley 
+Stanley
 max width
 samt läsbarhet
 Ta bort Varför Stanley Stella
@@ -57,12 +51,9 @@ Andra arbeten har brutna länkar inom kundberättelser
 Logga in. lösenord
 ta bort begränsing
 
-
 navbar bredd vid 1005-1085 pixlar Tajt
 
-
 Se filtret på produktsidan (klicka utanför så ska collapse gå ihop)
-
 
 "Produkter"
 Återställ knappen lite skev
@@ -80,52 +71,28 @@ Miljö kan tas bort
 Lägga knappen under textcontainer
 Kika spacing
 
-
 Flytta priser under tryck och lägga en sticky
 
 Ta bort alla alerts
 
 ifyllda ikoner vid hover och klick, navbar
 Gap mellan ikonerna
+Populära kategorier ser skect ut i olika skärmstorlekar. Sortiment -> kläder
 
+"Kassa"
 
-Att GÖRA!!!!
-
-Breadcrumps, kategory till produktnamn
-
-Populära kategorier ser skect ut i olika skärmstorlekar. Sortiment -> kläder 
-
-Samma spacing på allt
-
-lägg in btns eler länkar i divar till iconerna på nav
-
-
-
-För stora bilder
-
-
-
-"Peter"
-
-Se över spacing osv
-
-
+Mindre bilder
 
 "Produktdetail"
 "MAx kikar på detta"
 Carousel på alt bilder
 
+lägg in btns eler länkar i divar till iconerna på nav
+
+Att GÖRA!!!!
+
+Breadcrumps, kategory till produktnamn
+
+Samma spacing på allt
+
 ta bort nollan i storleksinput
-
-"Kassa"
-
-Max width container
-Mindre bilder
-
-
-
-"checkout"
-
-
-
-

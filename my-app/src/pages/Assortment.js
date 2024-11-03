@@ -1,6 +1,6 @@
 import NavList from "../components/NavList"; // Importerar NavList-komponenten för att visa navigationsmenyn
 import PopularCategories from "../components/PopularCategories"; // Importerar PopularCategories-komponenten för att visa populära kategorier
-
+import "../styles/Categories.css";
 // Definierar kategorier som ska visas i navigationslistan
 const categories = [
   { to: "/produkter", textContent: "Visa alla" },
@@ -47,20 +47,22 @@ export default function Sortiment() {
 
   return (
     <div className="container" style={{ marginBlockStart: "10.8rem" }}>
-      {" "}
-      {/* Huvudbehållare för innehållet med margin */}
-      <NavList
-        key="category-menu"
-        links={categories}
-        className="categories"
-      />{" "}
-      {/* Renderar navigationslistan */}
-      <div className="nav-heading">
-        <h1 className="section-heading heading-3">Populära Kategori</h1>{" "}
-        {/* Rubrik för sektionen med populära kategorier */}
+      <div className="categori">
+        {" "}
+        {/* Huvudbehållare för innehållet med margin */}
+        <NavList
+          key="category-menu"
+          links={categories}
+          className="categories"
+        />{" "}
+        {/* Renderar navigationslistan */}
+        <div className="nav-heading">
+          <h1 className="section-heading heading-3">Populära Kategori</h1>
+          {/* Rubrik för sektionen med populära kategorier */}
+        </div>
+        <PopularCategories grid="true" categoryList={categorylist} />
+        {/* Renderar komponenten för populära kategorier */}
       </div>
-      <PopularCategories categoryList={categorylist} />{" "}
-      {/* Renderar komponenten för populära kategorier */}
     </div>
   );
 }

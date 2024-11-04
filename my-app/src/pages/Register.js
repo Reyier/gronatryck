@@ -103,7 +103,7 @@ function Register({ onRegister }) {
                 <div className="input-item wide">
                   <h6 className="input-label">Telefonnummer</h6>
                   <input
-                    className="input-phone"
+                    className="input-login"
                     type="number"
                     name="phoneNumber"
                     placeholder="Telefonnummer"

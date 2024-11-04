@@ -101,7 +101,7 @@ function Register({ onRegister }) {
                 </div>
 
                  <div className="input-item wide">
-                  <h6 className="input-label">Telefonnummer (valfritt) </h6>
+                  <h6 className="input-label">Telefonnummer* </h6>
                   <input
                     className="input-login"
                     type="text"
@@ -109,6 +109,7 @@ function Register({ onRegister }) {
                     placeholder="Telefonnummer"
                     value={user.phoneNumber}
                     onChange={handleChange}
+                    required
                   />
                 </div> 
 

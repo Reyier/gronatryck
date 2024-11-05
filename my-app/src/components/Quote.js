@@ -10,6 +10,8 @@ const Quote = ({ customer, cartItems }) => {
   const [totalQuantity, setTotalQuantity] = useState(0); // Totalt antal varor
   const [totalClothPrice, setTotalClothPrice] = useState(0); // Totalt pris för kläder
 
+  console.log(customer)
+  console.log(customer.firstname)
   // useEffect för att hämta sparat tryckpris från lokal lagring
   useEffect(() => {
     const price = localStorage.getItem("totalPrintPrice"); // Försök att hämta tryckpriset
@@ -62,15 +64,15 @@ const Quote = ({ customer, cartItems }) => {
       <div className="main-body">
         {/* Visar kundinformation med fallback-värden */}
         <p>
-          För & Efternamn: {customer.firstName && customer.lastName 
-            ? `${customer.firstName} ${customer.lastName}` 
+        
+          För & Efternamn: {customer.firstname && customer.lastname 
+            ? `${customer.firstname} ${customer.lastname}` 
             : 'Inget namn angivet'}
         </p>
         <p>Företagsnamn: {customer.companyName || 'Inget företag angivet'}</p>
         <p>Adress: {customer.street || 'Ingen adress angiven'}</p>
         <p>Telefonnummer: {customer.phoneNumber || 'Ingen telefon angiven'}</p>
         <p>E-post: {customer.email || 'Ingen e-post angiven'}</p>
-        <p>Organisationsnummer: {customer.organizationNumber || 'Ingen organisationsnummer angiven'}</p>
         <p>Offertnummer: {quoteNumber}</p> {/* Visar offertenummer */}
         <p>Datum: {formatDate(quoteDate)}</p> {/* Visar datum för offerten */}
         <p>Giltig till: {formatDate(new Date(quoteDate.getTime() + 7 * 24 * 60 * 60 * 1000))}</p> {/* Visar giltighetstid */}

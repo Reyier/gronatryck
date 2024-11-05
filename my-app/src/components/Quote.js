@@ -59,7 +59,7 @@ const Quote = ({ customer, cartItems }) => {
 
   return (
     <div className="quote-summary">
-      <h1 className='heading-2'>Offert</h1> {/* Huvudrubrik */}
+      <h1 className='heading-2'>Offertförfrågan</h1> {/* Huvudrubrik */}
       <h3 className='subheading-3'>Kundinformation</h3> {/* Under rubrik för kundinformation */}
       <div className="main-body">
         {/* Visar kundinformation med fallback-värden */}

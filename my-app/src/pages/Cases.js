@@ -15,7 +15,7 @@ const Cases = () => {
             <div className="case-section">
                 <img src="/img/decorative/adria-crehuet-cano-LIhB1_mAGhY-unsplash.jpg" alt="Description 1" className="case-image" />
                 <div className="case-text">
-                <h2 className="section-heading heading-3 spacing-between">
+                <h2 className="section-heading heading-3 ">
                 Svenska Fotbollsförbundet
               </h2>
                     <p className="case-description">
@@ -27,7 +27,7 @@ const Cases = () => {
             <div className="case-section reverse">
                 <img src="/img/decorative/matthew-moloney-mKtfd1SOYDc-unsplash.jpg" alt="Description 2" className="case-image" />
                 <div className="case-text">
-                <h2 className="section-heading heading-3 spacing-between">
+                <h2 className="section-heading heading-3">
                 EcoStore AB
               </h2>
                     <p className="case-description">
@@ -39,7 +39,7 @@ const Cases = () => {
             <div className="case-section">
                 <img src="/img/decorative/luke-porter-ohBhECoxQoU-unsplash.jpg" alt="Description 3" className="case-image" />
                 <div className="case-text">
-                <h2 className="section-heading heading-3 spacing-between">
+                <h2 className="section-heading heading-3">
                 GrafikDesign Studio
               </h2>
                     <p className="case-description">
@@ -51,7 +51,7 @@ const Cases = () => {
             <div className="case-section reverse">
                 <img src="/img/decorative/thriday-UXaZiRriRW0-unsplash.jpg" alt="Description 4" className="case-image" />
                 <div className="case-text">
-                <h2 className="section-heading heading-3 spacing-between">
+                <h2 className="section-heading heading-3">
                 Hållbara Event
               </h2>
                     <p className="case-description ">

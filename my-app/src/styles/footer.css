@@ -43,7 +43,7 @@
   position: relative;
   font-size: 2rem;
   margin-bottom: 1rem;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 summary::after {
@@ -191,7 +191,7 @@ details[open] summary::after {
   }
 
   .footer-column h4 {
-    font-weight: bold;
+    font-weight: 500;
     margin-bottom: 1rem;
     color: var(--primary-dark);
   }

@@ -35,7 +35,7 @@ function Register({ onRegister }) {
       setError("Vänligen fyll i alla obligatoriska fält.")
       return;
     }
-    if (password != confirmPassword){
+    if (password !== confirmPassword){
       setError("Lösenorden matchar inte varandra.")
       return;
     }

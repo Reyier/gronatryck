@@ -35,7 +35,7 @@ const AboutUs = () => {
           <div className="about-text-containers">
             <div className="text-container main-body">
               <h2 className="section-heading heading-3">
-                Norrländska problemlösare..
+                Norrländska problemlösare
               </h2>
               <p>
                 Vi är ett gäng norrländska problemlösare som brinner för tryck,

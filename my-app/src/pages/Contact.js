@@ -49,10 +49,15 @@ function Contact() {
   return (
     <div>
       {submitted ? (
-        <div className="submitted">
-          <Link to="/">Hem</Link>
-          <h2 className="main-body">Tack för att du kontaktar oss! <br/>Vi kommer att kontakta dig så snart som möjligt.</h2>
-        </div>
+      <div className="submitted-container">
+      <div className="submitted-content">
+        <Link to="/" className="home-link">Hem</Link>
+        <h2 className="thank-you-message main-body">
+          Tack för att du kontaktar oss! <br/>
+          Vi kommer att kontakta dig så snart som möjligt.
+        </h2>
+      </div>
+    </div>
       ) : (
         <div className="contact-page">
       

@@ -41,7 +41,7 @@ const services = () => {
         <div className="resell-page-container">
           <div className="resell-container">
             <h2 className="section-heading heading-3 resell-heading">
-              Bli Återförsäljare med Gröna Tryck
+              Bli återförsäljare med Gröna Tryck
             </h2>
             <p className="main-body resell-text-container">
               Söker du en pålitlig partner för profilprodukter som kan stärka

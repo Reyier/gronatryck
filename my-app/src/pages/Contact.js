@@ -64,7 +64,7 @@ function Contact() {
 
       <section className="hero-section-2">
         <img
-          src="/img/decorative/DJI_20241010094358_0007_D-Enhanced-NR.jpg" // Bakgrundsbild för hero-sektionen
+          src="/img/decorative/gronatryck_forest_img.png" // Bakgrundsbild för hero-sektionen
           alt="Hero"
           className="hero-image"
           id="aboutus-hero-image"
